@@ -1,0 +1,5921 @@
+{
+  "purpose": "Discovery only; native-existing also differs in PCRE2 support.",
+  "recorded_utc": "2026-09-26T14:17:37.185353+00:00",
+  "manifest_sha256": "03d643564ef283f672e86197a29701ea01e6b7cd4db5b3915a20027ed4e3ae18",
+  "modes": {
+    "baseline-a": [
+      "/usr/bin/rg",
+      [],
+      {}
+    ],
+    "baseline-b": [
+      "/usr/bin/rg",
+      [],
+      {}
+    ],
+    "six-threads": [
+      "/usr/bin/rg",
+      [
+        "-j6"
+      ],
+      {}
+    ],
+    "one-thread": [
+      "/usr/bin/rg",
+      [
+        "-j1"
+      ],
+      {}
+    ],
+    "jemalloc": [
+      "/usr/bin/rg",
+      [],
+      {
+        "LD_PRELOAD": "/usr/lib/libjemalloc.so.2"
+      }
+    ],
+    "native-existing": [
+      "/home/gardnmi/Projects/ripgrep/target/machine/rg-upstream-native",
+      [],
+      {}
+    ]
+  },
+  "samples": 9,
+  "seed": 260928,
+  "hashes": {
+    "/home/gardnmi/Projects/ripgrep/target/machine/rg-upstream-native": "bc5b2c5fa5e3fcb28fc38fd31ef24a1ee10bc4bf982c93f17010359f4cb45d84",
+    "/usr/bin/rg": "d006acfe51619144af4709e85945fe3b5a6f05038d356c4d8f752a33b4ecae42",
+    "/usr/lib/libjemalloc.so.2": "81a0f3d0fd1c088f511c87f085fc36a787310d1598529f008d14c1eb1f3bc1e5"
+  },
+  "cases": [
+    {
+      "name": "source-literal",
+      "verification": {
+        "baseline-a": {
+          "exit": 0,
+          "stdout_sha256": "bd141dfcb4a0c3cb7d7fde0b9933689870a561f56828871e65cb55ffeaf056d7",
+          "normalized_bytes": 48406,
+          "stderr_hex": ""
+        },
+        "baseline-b": {
+          "exit": 0,
+          "stdout_sha256": "bd141dfcb4a0c3cb7d7fde0b9933689870a561f56828871e65cb55ffeaf056d7",
+          "normalized_bytes": 48406,
+          "stderr_hex": ""
+        },
+        "six-threads": {
+          "exit": 0,
+          "stdout_sha256": "bd141dfcb4a0c3cb7d7fde0b9933689870a561f56828871e65cb55ffeaf056d7",
+          "normalized_bytes": 48406,
+          "stderr_hex": ""
+        },
+        "one-thread": {
+          "exit": 0,
+          "stdout_sha256": "bd141dfcb4a0c3cb7d7fde0b9933689870a561f56828871e65cb55ffeaf056d7",
+          "normalized_bytes": 48406,
+          "stderr_hex": ""
+        },
+        "jemalloc": {
+          "exit": 0,
+          "stdout_sha256": "bd141dfcb4a0c3cb7d7fde0b9933689870a561f56828871e65cb55ffeaf056d7",
+          "normalized_bytes": 48406,
+          "stderr_hex": ""
+        },
+        "native-existing": {
+          "exit": 0,
+          "stdout_sha256": "bd141dfcb4a0c3cb7d7fde0b9933689870a561f56828871e65cb55ffeaf056d7",
+          "normalized_bytes": 48406,
+          "stderr_hex": ""
+        }
+      },
+      "commands": {
+        "baseline-a": [
+          "/usr/bin/rg",
+          "--no-config",
+          "-n",
+          "Searcher",
+          "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep"
+        ],
+        "baseline-b": [
+          "/usr/bin/rg",
+          "--no-config",
+          "-n",
+          "Searcher",
+          "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep"
+        ],
+        "six-threads": [
+          "/usr/bin/rg",
+          "-j6",
+          "--no-config",
+          "-n",
+          "Searcher",
+          "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep"
+        ],
+        "one-thread": [
+          "/usr/bin/rg",
+          "-j1",
+          "--no-config",
+          "-n",
+          "Searcher",
+          "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep"
+        ],
+        "jemalloc": [
+          "/usr/bin/rg",
+          "--no-config",
+          "-n",
+          "Searcher",
+          "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep"
+        ],
+        "native-existing": [
+          "/home/gardnmi/Projects/ripgrep/target/machine/rg-upstream-native",
+          "--no-config",
+          "-n",
+          "Searcher",
+          "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep"
+        ]
+      },
+      "timings_ms": {
+        "baseline-a": [
+          4.610962615384616,
+          4.215135153846154,
+          3.9603618461538455,
+          4.14163823076923,
+          4.354282384615384,
+          4.250779076923076,
+          4.3935073846153845,
+          3.9357236153846165,
+          4.3947309230769225
+        ],
+        "baseline-b": [
+          4.439167153846154,
+          4.1315373846153856,
+          4.689640384615385,
+          4.190106307692308,
+          4.386126615384615,
+          4.365554076923077,
+          4.376510846153846,
+          4.322465923076923,
+          3.9615473846153852
+        ],
+        "six-threads": [
+          4.299979384615384,
+          4.272384692307693,
+          4.396170230769231,
+          4.495128923076924,
+          4.524304230769231,
+          4.366307384615384,
+          4.375929769230769,
+          4.366544846153846,
+          4.478972076923077
+        ],
+        "one-thread": [
+          4.199914307692308,
+          4.270955692307693,
+          4.360831692307692,
+          4.318875230769231,
+          4.343846384615384,
+          4.232710384615384,
+          4.3416763846153845,
+          4.111071615384616,
+          4.279518923076923
+        ],
+        "jemalloc": [
+          6.407858461538462,
+          6.1739739230769235,
+          6.153484153846154,
+          6.167998538461538,
+          6.239587615384614,
+          6.042383307692308,
+          6.253902615384616,
+          6.122582538461538,
+          6.176104769230769
+        ],
+        "native-existing": [
+          5.151303384615384,
+          5.420202846153846,
+          4.949918615384615,
+          5.256669461538461,
+          5.3337294615384625,
+          5.159132769230769,
+          5.328455538461539,
+          5.070504615384615,
+          5.09200376923077
+        ]
+      },
+      "resources": {
+        "baseline-a": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.069324
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.06659400000000004
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.0652649999999999
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.06532100000000018
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.0670569999999997
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.06950900000000027
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.07064100000000018
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.06547199999999975
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.06668800000000008
+          }
+        ],
+        "baseline-b": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.06845899999999998
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.06769299999999989
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.071272
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.06729399999999996
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.06869300000000034
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.06735099999999972
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.06564899999999962
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.06885500000000011
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.06726999999999972
+          }
+        ],
+        "six-threads": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.060279
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05839
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.061827999999999994
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.06076199999999998
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.059781000000000084
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.06011000000000011
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.06099200000000016
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.061014000000000124
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.06069100000000027
+          }
+        ],
+        "one-thread": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05185299999999998
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.053014000000000006
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05396600000000007
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05241499999999988
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.053795999999999955
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.052512000000000336
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05332500000000051
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05031100000000022
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05157200000000062
+          }
+        ],
+        "jemalloc": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.158873
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.1561379999999999
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.15780499999999997
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.1533009999999999
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.15633999999999992
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.15196200000000037
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.1589189999999998
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.1588259999999999
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.16276199999999985
+          }
+        ],
+        "native-existing": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.0815789999999999
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.07794100000000004
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.07891999999999988
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.07797799999999966
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.07787899999999981
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.07701899999999973
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.07736800000000033
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.07852999999999977
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.07649100000000031
+          }
+        ]
+      },
+      "order": [
+        [
+          "six-threads",
+          "baseline-b",
+          "baseline-a",
+          "jemalloc",
+          "native-existing",
+          "one-thread"
+        ],
+        [
+          "native-existing",
+          "baseline-b",
+          "six-threads",
+          "baseline-a",
+          "one-thread",
+          "jemalloc"
+        ],
+        [
+          "one-thread",
+          "native-existing",
+          "baseline-b",
+          "baseline-a",
+          "jemalloc",
+          "six-threads"
+        ],
+        [
+          "six-threads",
+          "jemalloc",
+          "baseline-b",
+          "one-thread",
+          "baseline-a",
+          "native-existing"
+        ],
+        [
+          "baseline-b",
+          "baseline-a",
+          "native-existing",
+          "one-thread",
+          "jemalloc",
+          "six-threads"
+        ],
+        [
+          "baseline-a",
+          "jemalloc",
+          "six-threads",
+          "one-thread",
+          "baseline-b",
+          "native-existing"
+        ],
+        [
+          "jemalloc",
+          "baseline-a",
+          "baseline-b",
+          "one-thread",
+          "six-threads",
+          "native-existing"
+        ],
+        [
+          "six-threads",
+          "one-thread",
+          "baseline-a",
+          "jemalloc",
+          "native-existing",
+          "baseline-b"
+        ],
+        [
+          "six-threads",
+          "baseline-a",
+          "baseline-b",
+          "one-thread",
+          "native-existing",
+          "jemalloc"
+        ]
+      ],
+      "repetitions": 13,
+      "comparisons": {
+        "six-threads": {
+          "baseline_ms": 4.308166576923076,
+          "candidate_ms": 4.375929769230769,
+          "elapsed_ratio": 1.0157290093355884,
+          "delta_ms": 0.06776319230769268,
+          "ratio_ci95": [
+            0.997929457860876,
+            1.072001652410259
+          ],
+          "delta_ci95_ms": [
+            -0.009079346153846757,
+            0.300832923076924
+          ],
+          "verdict": "INCONCLUSIVE"
+        },
+        "one-thread": {
+          "baseline_ms": 4.308166576923076,
+          "candidate_ms": 4.279518923076923,
+          "elapsed_ratio": 0.993350383896573,
+          "delta_ms": -0.02864765384615353,
+          "ratio_ci95": [
+            0.9710782022119355,
+            1.034873528551124
+          ],
+          "delta_ci95_ms": [
+            -0.1250868076923073,
+            0.14553896153846058
+          ],
+          "verdict": "INCONCLUSIVE"
+        },
+        "jemalloc": {
+          "baseline_ms": 4.308166576923076,
+          "candidate_ms": 6.1739739230769235,
+          "elapsed_ratio": 1.4330861662007555,
+          "delta_ms": 1.8658073461538471,
+          "ratio_ci95": [
+            1.422770535701685,
+            1.4793856820492712
+          ],
+          "delta_ci95_ms": [
+            1.8284830384615391,
+            2.0006376538461534
+          ],
+          "verdict": "FAIL"
+        },
+        "native-existing": {
+          "baseline_ms": 4.308166576923076,
+          "candidate_ms": 5.159132769230769,
+          "elapsed_ratio": 1.1975239761772303,
+          "delta_ms": 0.850966192307693,
+          "ratio_ci95": [
+            1.1747531758924419,
+            1.2765801389426055
+          ],
+          "delta_ci95_ms": [
+            0.7662942692307686,
+            1.1551192692307692
+          ],
+          "verdict": "FAIL"
+        }
+      },
+      "controls": {
+        "baseline_ms": 4.250779076923076,
+        "candidate_ms": 4.365554076923077,
+        "elapsed_ratio": 1.0270009327520921,
+        "delta_ms": 0.11477500000000074,
+        "ratio_ci95": [
+          0.9622954915594942,
+          1.0914320688334929
+        ],
+        "delta_ci95_ms": [
+          -0.16417607692307623,
+          0.3621040769230772
+        ],
+        "verdict": "INCONCLUSIVE"
+      }
+    },
+    {
+      "name": "source-absent",
+      "verification": {
+        "baseline-a": {
+          "exit": 1,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "normalized_bytes": 0,
+          "stderr_hex": ""
+        },
+        "baseline-b": {
+          "exit": 1,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "normalized_bytes": 0,
+          "stderr_hex": ""
+        },
+        "six-threads": {
+          "exit": 1,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "normalized_bytes": 0,
+          "stderr_hex": ""
+        },
+        "one-thread": {
+          "exit": 1,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "normalized_bytes": 0,
+          "stderr_hex": ""
+        },
+        "jemalloc": {
+          "exit": 1,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "normalized_bytes": 0,
+          "stderr_hex": ""
+        },
+        "native-existing": {
+          "exit": 1,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "normalized_bytes": 0,
+          "stderr_hex": ""
+        }
+      },
+      "commands": {
+        "baseline-a": [
+          "/usr/bin/rg",
+          "--no-config",
+          "NOT_PRESENT_XYZ_84921",
+          "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep"
+        ],
+        "baseline-b": [
+          "/usr/bin/rg",
+          "--no-config",
+          "NOT_PRESENT_XYZ_84921",
+          "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep"
+        ],
+        "six-threads": [
+          "/usr/bin/rg",
+          "-j6",
+          "--no-config",
+          "NOT_PRESENT_XYZ_84921",
+          "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep"
+        ],
+        "one-thread": [
+          "/usr/bin/rg",
+          "-j1",
+          "--no-config",
+          "NOT_PRESENT_XYZ_84921",
+          "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep"
+        ],
+        "jemalloc": [
+          "/usr/bin/rg",
+          "--no-config",
+          "NOT_PRESENT_XYZ_84921",
+          "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep"
+        ],
+        "native-existing": [
+          "/home/gardnmi/Projects/ripgrep/target/machine/rg-upstream-native",
+          "--no-config",
+          "NOT_PRESENT_XYZ_84921",
+          "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep"
+        ]
+      },
+      "timings_ms": {
+        "baseline-a": [
+          4.451700785714285,
+          4.151808428571429,
+          4.3054311428571435,
+          4.360744642857143,
+          4.393516142857144,
+          4.236841714285715,
+          4.349543428571429,
+          4.191626071428572,
+          4.2614455
+        ],
+        "baseline-b": [
+          4.212365857142857,
+          3.977699142857143,
+          4.352173571428571,
+          4.2447833571428575,
+          4.231829357142857,
+          4.198639999999999,
+          4.306523285714285,
+          3.9939761428571425,
+          4.3369275
+        ],
+        "six-threads": [
+          4.191877071428571,
+          4.3887664285714285,
+          3.992571071428571,
+          4.4152640000000005,
+          4.171752571428571,
+          4.251125785714286,
+          4.3999149285714285,
+          4.585886142857143,
+          4.1173335714285715
+        ],
+        "one-thread": [
+          4.038724357142857,
+          4.042000499999999,
+          3.9559775,
+          4.1013022857142865,
+          4.056010071428571,
+          3.9777917857142855,
+          3.9614248571428567,
+          3.975543642857143,
+          3.866336428571429
+        ],
+        "jemalloc": [
+          6.410049714285714,
+          6.22162,
+          6.038232857142858,
+          6.469902785714285,
+          5.994083285714287,
+          5.94559057142857,
+          6.181035857142857,
+          6.371407857142856,
+          6.415122285714287
+        ],
+        "native-existing": [
+          5.172699714285713,
+          5.251812071428572,
+          4.9979666428571425,
+          4.9489566428571425,
+          5.196953000000001,
+          5.180008642857142,
+          5.107501785714285,
+          5.350991642857144,
+          5.339490499999999
+        ]
+      },
+      "resources": {
+        "baseline-a": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.06864500000000007
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.06752599999999953
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.06985900000000056
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.07052299999999967
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.0684800000000001
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.0659370000000008
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.06946999999999992
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.06791099999999961
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.06715800000000005
+          }
+        ],
+        "baseline-b": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.06558799999999998
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.0676190000000001
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.0668650000000004
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.06750999999999951
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.06703099999999917
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.06781900000000007
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.06764299999999945
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.06574600000000164
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.06756000000000117
+          }
+        ],
+        "six-threads": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.058349000000000206
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05712900000000065
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05708700000000011
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05904899999999991
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.0596609999999993
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05737599999999965
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05849300000000035
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05829100000000054
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05846599999999924
+          }
+        ],
+        "one-thread": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05337899999999962
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05365299999999973
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.052429999999999755
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05446700000000071
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.053888999999999854
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05200600000000133
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05231099999999955
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05255399999999977
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05123799999999967
+          }
+        ],
+        "jemalloc": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.16414799999999996
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.1600100000000002
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.15928500000000012
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.1687619999999992
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.157648
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.15684500000000057
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.1658350000000004
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.16755500000000012
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.1664380000000012
+          }
+        ],
+        "native-existing": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.07661099999999976
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.07677700000000032
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.07714600000000038
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.07566900000000043
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.07677899999999926
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.07828499999999927
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.07544199999999979
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.0758479999999997
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.07520700000000069
+          }
+        ]
+      },
+      "order": [
+        [
+          "baseline-a",
+          "one-thread",
+          "six-threads",
+          "native-existing",
+          "baseline-b",
+          "jemalloc"
+        ],
+        [
+          "baseline-b",
+          "native-existing",
+          "jemalloc",
+          "one-thread",
+          "six-threads",
+          "baseline-a"
+        ],
+        [
+          "native-existing",
+          "baseline-b",
+          "one-thread",
+          "jemalloc",
+          "baseline-a",
+          "six-threads"
+        ],
+        [
+          "baseline-a",
+          "jemalloc",
+          "one-thread",
+          "six-threads",
+          "native-existing",
+          "baseline-b"
+        ],
+        [
+          "one-thread",
+          "baseline-b",
+          "six-threads",
+          "jemalloc",
+          "baseline-a",
+          "native-existing"
+        ],
+        [
+          "native-existing",
+          "baseline-a",
+          "baseline-b",
+          "one-thread",
+          "six-threads",
+          "jemalloc"
+        ],
+        [
+          "jemalloc",
+          "baseline-a",
+          "baseline-b",
+          "one-thread",
+          "six-threads",
+          "native-existing"
+        ],
+        [
+          "jemalloc",
+          "baseline-a",
+          "native-existing",
+          "six-threads",
+          "baseline-b",
+          "one-thread"
+        ],
+        [
+          "baseline-b",
+          "one-thread",
+          "six-threads",
+          "native-existing",
+          "jemalloc",
+          "baseline-a"
+        ]
+      ],
+      "repetitions": 14,
+      "comparisons": {
+        "six-threads": {
+          "baseline_ms": 4.302764,
+          "candidate_ms": 4.251125785714286,
+          "elapsed_ratio": 0.9879988271990483,
+          "delta_ms": -0.051638214285714135,
+          "ratio_ci95": [
+            0.9577006188097613,
+            1.0723136340322146
+          ],
+          "delta_ci95_ms": [
+            -0.18185292857142787,
+            0.29596532142857157
+          ],
+          "verdict": "INCONCLUSIVE"
+        },
+        "one-thread": {
+          "baseline_ms": 4.302764,
+          "candidate_ms": 3.9777917857142855,
+          "elapsed_ratio": 0.924473614103466,
+          "delta_ms": -0.3249722142857143,
+          "ratio_ci95": [
+            0.9152944375082136,
+            0.9713503145605895
+          ],
+          "delta_ci95_ms": [
+            -0.36660850000000034,
+            -0.11725746428571382
+          ],
+          "verdict": "PASS"
+        },
+        "jemalloc": {
+          "baseline_ms": 4.302764,
+          "candidate_ms": 6.22162,
+          "elapsed_ratio": 1.4459589231480043,
+          "delta_ms": 1.918856,
+          "ratio_ci95": [
+            1.3948968696109003,
+            1.5201373917588803
+          ],
+          "delta_ci95_ms": [
+            1.7094305000000007,
+            2.1536669999999987
+          ],
+          "verdict": "FAIL"
+        },
+        "native-existing": {
+          "baseline_ms": 4.302764,
+          "candidate_ms": 5.180008642857142,
+          "elapsed_ratio": 1.2038793303228208,
+          "delta_ms": 0.8772446428571419,
+          "ratio_ci95": [
+            1.1615711767731491,
+            1.2831828212377534
+          ],
+          "delta_ci95_ms": [
+            0.6952026428571427,
+            1.1590109642857147
+          ],
+          "verdict": "FAIL"
+        }
+      },
+      "controls": {
+        "baseline_ms": 4.3054311428571435,
+        "candidate_ms": 4.231829357142857,
+        "elapsed_ratio": 0.9829048977275147,
+        "delta_ms": -0.07360178571428655,
+        "ratio_ci95": [
+          0.9528464788596787,
+          1.0105780505028834
+        ],
+        "delta_ci95_ms": [
+          -0.19764992857142927,
+          0.04507778571428567
+        ],
+        "verdict": "PASS"
+      }
+    },
+    {
+      "name": "source-files",
+      "verification": {
+        "baseline-a": {
+          "exit": 0,
+          "stdout_sha256": "2deed0501b682e2118ee0796efa8afe900176e8f55570e1b0e407f1179687e47",
+          "normalized_bytes": 21231,
+          "stderr_hex": ""
+        },
+        "baseline-b": {
+          "exit": 0,
+          "stdout_sha256": "2deed0501b682e2118ee0796efa8afe900176e8f55570e1b0e407f1179687e47",
+          "normalized_bytes": 21231,
+          "stderr_hex": ""
+        },
+        "six-threads": {
+          "exit": 0,
+          "stdout_sha256": "2deed0501b682e2118ee0796efa8afe900176e8f55570e1b0e407f1179687e47",
+          "normalized_bytes": 21231,
+          "stderr_hex": ""
+        },
+        "one-thread": {
+          "exit": 0,
+          "stdout_sha256": "2deed0501b682e2118ee0796efa8afe900176e8f55570e1b0e407f1179687e47",
+          "normalized_bytes": 21231,
+          "stderr_hex": ""
+        },
+        "jemalloc": {
+          "exit": 0,
+          "stdout_sha256": "2deed0501b682e2118ee0796efa8afe900176e8f55570e1b0e407f1179687e47",
+          "normalized_bytes": 21231,
+          "stderr_hex": ""
+        },
+        "native-existing": {
+          "exit": 0,
+          "stdout_sha256": "2deed0501b682e2118ee0796efa8afe900176e8f55570e1b0e407f1179687e47",
+          "normalized_bytes": 21231,
+          "stderr_hex": ""
+        }
+      },
+      "commands": {
+        "baseline-a": [
+          "/usr/bin/rg",
+          "--no-config",
+          "--files",
+          "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep"
+        ],
+        "baseline-b": [
+          "/usr/bin/rg",
+          "--no-config",
+          "--files",
+          "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep"
+        ],
+        "six-threads": [
+          "/usr/bin/rg",
+          "-j6",
+          "--no-config",
+          "--files",
+          "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep"
+        ],
+        "one-thread": [
+          "/usr/bin/rg",
+          "-j1",
+          "--no-config",
+          "--files",
+          "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep"
+        ],
+        "jemalloc": [
+          "/usr/bin/rg",
+          "--no-config",
+          "--files",
+          "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep"
+        ],
+        "native-existing": [
+          "/home/gardnmi/Projects/ripgrep/target/machine/rg-upstream-native",
+          "--no-config",
+          "--files",
+          "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep"
+        ]
+      },
+      "timings_ms": {
+        "baseline-a": [
+          3.5886959999999997,
+          3.583519785714285,
+          3.282256214285714,
+          3.4796076428571423,
+          3.3554828571428565,
+          3.6151298571428567,
+          4.150678214285714,
+          3.4955036428571438,
+          3.879424357142857
+        ],
+        "baseline-b": [
+          3.416385428571428,
+          3.558614714285714,
+          3.7549987142857146,
+          3.4921344285714278,
+          3.4995212857142852,
+          4.032998642857143,
+          4.105181142857143,
+          3.3689584999999993,
+          3.3334351428571423
+        ],
+        "six-threads": [
+          3.431906642857143,
+          3.451402785714286,
+          3.5560435000000004,
+          3.1867177142857144,
+          3.0922582857142857,
+          4.003249357142857,
+          3.3910204999999998,
+          3.1357467142857134,
+          3.0506280714285716
+        ],
+        "one-thread": [
+          2.775058785714285,
+          2.806083857142857,
+          2.865511,
+          2.829505571428572,
+          2.8466422142857146,
+          2.8943048571428567,
+          2.957502642857143,
+          2.8151402857142864,
+          2.884212285714285
+        ],
+        "jemalloc": [
+          5.953073357142857,
+          5.819308071428572,
+          5.879390071428571,
+          5.98622057142857,
+          5.998069500000001,
+          5.9065557857142865,
+          6.286301428571427,
+          5.911302642857144,
+          5.776033785714286
+        ],
+        "native-existing": [
+          3.4539768571428566,
+          3.494071642857143,
+          3.4244858571428565,
+          3.706417357142857,
+          3.7651124285714284,
+          3.498489928571428,
+          4.261832571428571,
+          3.4713233571428574,
+          3.6516849999999996
+        ]
+      },
+      "resources": {
+        "baseline-a": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04721699999999984
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04733999999999927
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.046332999999999736
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04785299999999992
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04623600000000039
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.047703999999998636
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05170199999999969
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04668299999999892
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.0475550000000009
+          }
+        ],
+        "baseline-b": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04734000000000016
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.047721000000000124
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.048209000000000835
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04608100000000004
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04644000000000048
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05251000000000072
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.0517909999999997
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04705100000000062
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04673600000000011
+          }
+        ],
+        "six-threads": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04095499999999941
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.03977300000000117
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.041999000000000564
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.03961900000000096
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.03976300000000066
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04537700000000022
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.03960499999999989
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.040859999999998564
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04020099999999971
+          }
+        ],
+        "one-thread": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.03623800000000088
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.0365359999999999
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.03729700000000058
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.036909999999999776
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.03702300000000047
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.03791599999999917
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.03849499999999928
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.036268999999999885
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.03725699999999854
+          }
+        ],
+        "jemalloc": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.1279930000000009
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.1244279999999991
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.1268590000000005
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.1279540000000008
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.12915100000000024
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.12612300000000065
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.13073099999999993
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.13037300000000052
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.12625500000000045
+          }
+        ],
+        "native-existing": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.047318999999999
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04749300000000112
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.0492120000000007
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04806899999999992
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04760999999999971
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.046875000000001776
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05304299999999884
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04737200000000197
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.047254999999999825
+          }
+        ]
+      },
+      "order": [
+        [
+          "native-existing",
+          "six-threads",
+          "baseline-b",
+          "baseline-a",
+          "one-thread",
+          "jemalloc"
+        ],
+        [
+          "baseline-b",
+          "one-thread",
+          "native-existing",
+          "six-threads",
+          "jemalloc",
+          "baseline-a"
+        ],
+        [
+          "native-existing",
+          "one-thread",
+          "jemalloc",
+          "baseline-b",
+          "six-threads",
+          "baseline-a"
+        ],
+        [
+          "baseline-a",
+          "jemalloc",
+          "one-thread",
+          "six-threads",
+          "baseline-b",
+          "native-existing"
+        ],
+        [
+          "jemalloc",
+          "baseline-b",
+          "native-existing",
+          "baseline-a",
+          "six-threads",
+          "one-thread"
+        ],
+        [
+          "one-thread",
+          "baseline-a",
+          "native-existing",
+          "jemalloc",
+          "baseline-b",
+          "six-threads"
+        ],
+        [
+          "one-thread",
+          "baseline-b",
+          "jemalloc",
+          "native-existing",
+          "baseline-a",
+          "six-threads"
+        ],
+        [
+          "six-threads",
+          "native-existing",
+          "baseline-b",
+          "baseline-a",
+          "one-thread",
+          "jemalloc"
+        ],
+        [
+          "one-thread",
+          "baseline-b",
+          "jemalloc",
+          "six-threads",
+          "baseline-a",
+          "native-existing"
+        ]
+      ],
+      "repetitions": 14,
+      "comparisons": {
+        "six-threads": {
+          "baseline_ms": 3.5186274642857143,
+          "candidate_ms": 3.3910204999999998,
+          "elapsed_ratio": 0.9637338804460168,
+          "delta_ms": -0.1276069642857145,
+          "ratio_ci95": [
+            0.8694878125064585,
+            0.9957929243701588
+          ],
+          "delta_ci95_ms": [
+            -0.47068303571428594,
+            -0.015023749999999225
+          ],
+          "verdict": "PASS"
+        },
+        "one-thread": {
+          "baseline_ms": 3.5186274642857143,
+          "candidate_ms": 2.8466422142857146,
+          "elapsed_ratio": 0.8090206318171812,
+          "delta_ms": -0.6719852499999996,
+          "ratio_ci95": [
+            0.7568661685385796,
+            0.8202070976947837
+          ],
+          "delta_ci95_ms": [
+            -0.929759392857143,
+            -0.6170907857142849
+          ],
+          "verdict": "PASS"
+        },
+        "jemalloc": {
+          "baseline_ms": 3.5186274642857143,
+          "candidate_ms": 5.911302642857144,
+          "elapsed_ratio": 1.6800024165266798,
+          "delta_ms": 2.3926751785714293,
+          "ratio_ci95": [
+            1.5654079482133623,
+            1.7222915706536994
+          ],
+          "delta_ci95_ms": [
+            2.16215632142857,
+            2.5003495357142844
+          ],
+          "verdict": "FAIL"
+        },
+        "native-existing": {
+          "baseline_ms": 3.5186274642857143,
+          "candidate_ms": 3.498489928571428,
+          "elapsed_ratio": 0.9942768775840343,
+          "delta_ms": -0.020137535714286336,
+          "ratio_ci95": [
+            0.9692351160529945,
+            1.0632686405116476
+          ],
+          "delta_ci95_ms": [
+            -0.11764689285714258,
+            0.2205463214285719
+          ],
+          "verdict": "INCONCLUSIVE"
+        }
+      },
+      "controls": {
+        "baseline_ms": 3.583519785714285,
+        "candidate_ms": 3.4995212857142852,
+        "elapsed_ratio": 0.9765597778098337,
+        "delta_ms": -0.08399849999999986,
+        "ratio_ci95": [
+          0.9387695419171754,
+          1.1155888729387275
+        ],
+        "delta_ci95_ms": [
+          -0.21973750000000036,
+          0.417868785714286
+        ],
+        "verdict": "INCONCLUSIVE"
+      }
+    },
+    {
+      "name": "tools-literal",
+      "verification": {
+        "baseline-a": {
+          "exit": 0,
+          "stdout_sha256": "80a64fae40e72ec85d2cab580ee1e17d818553df30bd666cc8e6a5b85f908dbc",
+          "normalized_bytes": 15274,
+          "stderr_hex": ""
+        },
+        "baseline-b": {
+          "exit": 0,
+          "stdout_sha256": "80a64fae40e72ec85d2cab580ee1e17d818553df30bd666cc8e6a5b85f908dbc",
+          "normalized_bytes": 15274,
+          "stderr_hex": ""
+        },
+        "six-threads": {
+          "exit": 0,
+          "stdout_sha256": "80a64fae40e72ec85d2cab580ee1e17d818553df30bd666cc8e6a5b85f908dbc",
+          "normalized_bytes": 15274,
+          "stderr_hex": ""
+        },
+        "one-thread": {
+          "exit": 0,
+          "stdout_sha256": "80a64fae40e72ec85d2cab580ee1e17d818553df30bd666cc8e6a5b85f908dbc",
+          "normalized_bytes": 15274,
+          "stderr_hex": ""
+        },
+        "jemalloc": {
+          "exit": 0,
+          "stdout_sha256": "80a64fae40e72ec85d2cab580ee1e17d818553df30bd666cc8e6a5b85f908dbc",
+          "normalized_bytes": 15274,
+          "stderr_hex": ""
+        },
+        "native-existing": {
+          "exit": 0,
+          "stdout_sha256": "80a64fae40e72ec85d2cab580ee1e17d818553df30bd666cc8e6a5b85f908dbc",
+          "normalized_bytes": 15274,
+          "stderr_hex": ""
+        }
+      },
+      "commands": {
+        "baseline-a": [
+          "/usr/bin/rg",
+          "--no-config",
+          "-n",
+          "TODO",
+          "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux/tools"
+        ],
+        "baseline-b": [
+          "/usr/bin/rg",
+          "--no-config",
+          "-n",
+          "TODO",
+          "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux/tools"
+        ],
+        "six-threads": [
+          "/usr/bin/rg",
+          "-j6",
+          "--no-config",
+          "-n",
+          "TODO",
+          "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux/tools"
+        ],
+        "one-thread": [
+          "/usr/bin/rg",
+          "-j1",
+          "--no-config",
+          "-n",
+          "TODO",
+          "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux/tools"
+        ],
+        "jemalloc": [
+          "/usr/bin/rg",
+          "--no-config",
+          "-n",
+          "TODO",
+          "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux/tools"
+        ],
+        "native-existing": [
+          "/home/gardnmi/Projects/ripgrep/target/machine/rg-upstream-native",
+          "--no-config",
+          "-n",
+          "TODO",
+          "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux/tools"
+        ]
+      },
+      "timings_ms": {
+        "baseline-a": [
+          12.3282935,
+          12.059160250000001,
+          11.86607875,
+          11.73482975,
+          11.733054000000001,
+          11.17645275,
+          11.49509525,
+          11.500475,
+          12.503739500000002
+        ],
+        "baseline-b": [
+          12.282967750000001,
+          13.72842775,
+          12.589424,
+          11.6278045,
+          11.66842625,
+          11.407826750000002,
+          11.72558475,
+          11.613407,
+          11.89568525
+        ],
+        "six-threads": [
+          13.42698825,
+          13.522333999999999,
+          13.442272500000001,
+          14.0421585,
+          14.06536225,
+          14.087274,
+          14.124815,
+          13.5328165,
+          13.35854375
+        ],
+        "one-thread": [
+          55.90040875,
+          55.89398425,
+          59.679367000000006,
+          55.10894975,
+          54.973179249999994,
+          54.887682,
+          56.43473575,
+          55.57918925,
+          55.399913999999995
+        ],
+        "jemalloc": [
+          13.87432475,
+          14.61194425,
+          14.063937000000001,
+          13.735171000000001,
+          12.963223499999998,
+          13.3304975,
+          13.87466775,
+          13.2644275,
+          13.258215750000002
+        ],
+        "native-existing": [
+          11.97654875,
+          12.5945965,
+          12.060287500000001,
+          11.928172,
+          11.634447,
+          11.93375725,
+          11.915394999999998,
+          12.326224750000002,
+          11.977653000000002
+        ]
+      },
+      "resources": {
+        "baseline-a": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.3138609999999993
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.31466100000000097
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.3114739999999987
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.30970499999999923
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.3114629999999998
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.3058009999999989
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.3085490000000011
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.31238600000000183
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.2984259999999921
+          }
+        ],
+        "baseline-b": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.30547000000000146
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.31866400000000183
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.30917999999999957
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.31108599999999775
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.31162899999999993
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.3047789999999999
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.31225900000000095
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.30175999999999803
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.302779000000001
+          }
+        ],
+        "six-threads": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.2277749999999994
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.23593399999999853
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.23047299999999638
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.23369400000000162
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.23317400000000177
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.23818399999999862
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.2309619999999999
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.23709500000000006
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.22212499999999835
+          }
+        ],
+        "one-thread": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.22144600000000025
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.22152700000000003
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.2359069999999992
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.21848500000000115
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.21790200000000048
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.21770200000000095
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.22359600000000235
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.22026900000000005
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.21970200000000517
+          }
+        ],
+        "jemalloc": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.33129600000000003
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.3361270000000012
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.3374560000000013
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.3299780000000023
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.33116799999999813
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.3298269999999981
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.3399870000000007
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.33614300000000163
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.33247499999999874
+          }
+        ],
+        "native-existing": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.30312999999999946
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.30026200000000003
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.3045250000000017
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.30729199999999857
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.3061870000000013
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.3081870000000002
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.30783199999999944
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.30901900000000104
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.311357000000001
+          }
+        ]
+      },
+      "order": [
+        [
+          "baseline-a",
+          "one-thread",
+          "jemalloc",
+          "six-threads",
+          "baseline-b",
+          "native-existing"
+        ],
+        [
+          "one-thread",
+          "native-existing",
+          "baseline-b",
+          "six-threads",
+          "jemalloc",
+          "baseline-a"
+        ],
+        [
+          "one-thread",
+          "baseline-b",
+          "native-existing",
+          "baseline-a",
+          "jemalloc",
+          "six-threads"
+        ],
+        [
+          "jemalloc",
+          "six-threads",
+          "baseline-a",
+          "baseline-b",
+          "native-existing",
+          "one-thread"
+        ],
+        [
+          "baseline-b",
+          "jemalloc",
+          "six-threads",
+          "native-existing",
+          "baseline-a",
+          "one-thread"
+        ],
+        [
+          "jemalloc",
+          "six-threads",
+          "baseline-b",
+          "one-thread",
+          "baseline-a",
+          "native-existing"
+        ],
+        [
+          "six-threads",
+          "native-existing",
+          "jemalloc",
+          "baseline-b",
+          "one-thread",
+          "baseline-a"
+        ],
+        [
+          "jemalloc",
+          "one-thread",
+          "baseline-b",
+          "baseline-a",
+          "native-existing",
+          "six-threads"
+        ],
+        [
+          "jemalloc",
+          "one-thread",
+          "baseline-a",
+          "baseline-b",
+          "native-existing",
+          "six-threads"
+        ]
+      ],
+      "repetitions": 4,
+      "comparisons": {
+        "six-threads": {
+          "baseline_ms": 11.700740125,
+          "candidate_ms": 13.5328165,
+          "elapsed_ratio": 1.1565778194736207,
+          "delta_ms": 1.8320763749999998,
+          "ratio_ci95": [
+            1.09887371172414,
+            1.2133386274648288
+          ],
+          "delta_ci95_ms": [
+            1.214521125000001,
+            2.476934
+          ],
+          "verdict": "FAIL"
+        },
+        "one-thread": {
+          "baseline_ms": 11.700740125,
+          "candidate_ms": 55.57918925,
+          "elapsed_ratio": 4.750057573815229,
+          "delta_ms": 43.878449125,
+          "ratio_ci95": [
+            4.541083617145523,
+            4.814709022302533
+          ],
+          "delta_ci95_ms": [
+            43.20020162499999,
+            44.290068749999996
+          ],
+          "verdict": "FAIL"
+        },
+        "jemalloc": {
+          "baseline_ms": 11.700740125,
+          "candidate_ms": 13.735171000000001,
+          "elapsed_ratio": 1.1738719818802916,
+          "delta_ms": 2.0344308750000017,
+          "ratio_ci95": [
+            1.0872737891084912,
+            1.1949972825946527
+          ],
+          "delta_ci95_ms": [
+            1.0647151249999993,
+            2.2639847499999988
+          ],
+          "verdict": "FAIL"
+        },
+        "native-existing": {
+          "baseline_ms": 11.700740125,
+          "candidate_ms": 11.97654875,
+          "elapsed_ratio": 1.0235718956282691,
+          "delta_ms": 0.2758086249999998,
+          "ratio_ci95": [
+            0.9733473533380986,
+            1.0435536099042126
+          ],
+          "delta_ci95_ms": [
+            -0.3279776249999973,
+            0.503346500000001
+          ],
+          "verdict": "INCONCLUSIVE"
+        }
+      },
+      "controls": {
+        "baseline_ms": 11.73482975,
+        "candidate_ms": 11.72558475,
+        "elapsed_ratio": 0.9992121743393848,
+        "delta_ms": -0.009244999999999948,
+        "ratio_ci95": [
+          0.9864439151142385,
+          1.043971863629559
+        ],
+        "delta_ci95_ms": [
+          -0.1634750000000018,
+          0.5302637499999978
+        ],
+        "verdict": "INCONCLUSIVE"
+      }
+    },
+    {
+      "name": "tools-files",
+      "verification": {
+        "baseline-a": {
+          "exit": 0,
+          "stdout_sha256": "9ebc6cf9846eb3929d3da642e0730445c121f4c094f3b2b1de6a4f1ecd6e903b",
+          "normalized_bytes": 654259,
+          "stderr_hex": ""
+        },
+        "baseline-b": {
+          "exit": 0,
+          "stdout_sha256": "9ebc6cf9846eb3929d3da642e0730445c121f4c094f3b2b1de6a4f1ecd6e903b",
+          "normalized_bytes": 654259,
+          "stderr_hex": ""
+        },
+        "six-threads": {
+          "exit": 0,
+          "stdout_sha256": "9ebc6cf9846eb3929d3da642e0730445c121f4c094f3b2b1de6a4f1ecd6e903b",
+          "normalized_bytes": 654259,
+          "stderr_hex": ""
+        },
+        "one-thread": {
+          "exit": 0,
+          "stdout_sha256": "9ebc6cf9846eb3929d3da642e0730445c121f4c094f3b2b1de6a4f1ecd6e903b",
+          "normalized_bytes": 654259,
+          "stderr_hex": ""
+        },
+        "jemalloc": {
+          "exit": 0,
+          "stdout_sha256": "9ebc6cf9846eb3929d3da642e0730445c121f4c094f3b2b1de6a4f1ecd6e903b",
+          "normalized_bytes": 654259,
+          "stderr_hex": ""
+        },
+        "native-existing": {
+          "exit": 0,
+          "stdout_sha256": "9ebc6cf9846eb3929d3da642e0730445c121f4c094f3b2b1de6a4f1ecd6e903b",
+          "normalized_bytes": 654259,
+          "stderr_hex": ""
+        }
+      },
+      "commands": {
+        "baseline-a": [
+          "/usr/bin/rg",
+          "--no-config",
+          "--files",
+          "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux/tools"
+        ],
+        "baseline-b": [
+          "/usr/bin/rg",
+          "--no-config",
+          "--files",
+          "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux/tools"
+        ],
+        "six-threads": [
+          "/usr/bin/rg",
+          "-j6",
+          "--no-config",
+          "--files",
+          "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux/tools"
+        ],
+        "one-thread": [
+          "/usr/bin/rg",
+          "-j1",
+          "--no-config",
+          "--files",
+          "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux/tools"
+        ],
+        "jemalloc": [
+          "/usr/bin/rg",
+          "--no-config",
+          "--files",
+          "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux/tools"
+        ],
+        "native-existing": [
+          "/home/gardnmi/Projects/ripgrep/target/machine/rg-upstream-native",
+          "--no-config",
+          "--files",
+          "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux/tools"
+        ]
+      },
+      "timings_ms": {
+        "baseline-a": [
+          7.412192142857143,
+          7.539789999999999,
+          7.555620142857143,
+          7.085051571428571,
+          8.399133857142855,
+          7.3673715714285715,
+          8.035924285714286,
+          7.4544108571428565,
+          7.792538142857144
+        ],
+        "baseline-b": [
+          7.944038571428572,
+          7.46984,
+          7.4957205714285715,
+          7.396284857142858,
+          7.557662571428572,
+          7.269767428571428,
+          7.390246285714285,
+          7.61008057142857,
+          7.508953
+        ],
+        "six-threads": [
+          7.647747714285714,
+          7.592153714285715,
+          7.631437,
+          7.474911285714286,
+          7.215697857142858,
+          7.7101875714285715,
+          7.478240142857144,
+          7.865093285714286,
+          7.664326285714286
+        ],
+        "one-thread": [
+          21.629149428571427,
+          21.567732857142857,
+          21.287783285714287,
+          21.80851714285714,
+          21.283375,
+          21.445491000000004,
+          21.468632142857142,
+          21.41991528571429,
+          21.792558285714282
+        ],
+        "jemalloc": [
+          9.054366571428572,
+          9.295827714285712,
+          9.558845571428572,
+          8.563278,
+          9.18314557142857,
+          9.113321714285716,
+          9.384530428571429,
+          9.074419285714287,
+          9.37673
+        ],
+        "native-existing": [
+          6.999218285714286,
+          7.260335142857143,
+          7.311845857142856,
+          7.371716857142856,
+          7.672923857142858,
+          7.715922714285713,
+          7.252477428571429,
+          7.517471857142858,
+          7.4436232857142866
+        ]
+      },
+      "resources": {
+        "baseline-a": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.235082000000002
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.23545799999999772
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.23350900000000507
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.23237600000000214
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.2354070000000057
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.23567499999999697
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.23725999999999914
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.23330199999999834
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.24191499999999522
+          }
+        ],
+        "baseline-b": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.23438700000000168
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.2386699999999955
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.23312800000000067
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.2344509999999964
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.2332319999999939
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.2374559999999981
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.2350029999999954
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.23719900000000393
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.23924500000000037
+          }
+        ],
+        "six-threads": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.17433000000000476
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.17736499999999822
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.17555900000000335
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.1750659999999975
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.1737739999999981
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.17464500000000172
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.1752480000000034
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.179149000000006
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.17706900000000303
+          }
+        ],
+        "one-thread": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.14896900000000102
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.14830200000000104
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.14705400000000068
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.15060199999999924
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.14695100000000494
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.1478879999999947
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.14794600000000102
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.14792799999999673
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.15039699999999456
+          }
+        ],
+        "jemalloc": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.2596740000000004
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.2588209999999975
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.2559139999999971
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.25575399999999604
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.26636099999999985
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.2639969999999998
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.2586960000000005
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.2527240000000006
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.2626780000000011
+          }
+        ],
+        "native-existing": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.23296499999999654
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.23838399999999993
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.23176300000000083
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.2385079999999995
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.2282839999999986
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.2370289999999997
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.23275600000000196
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.23343500000000006
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.23041499999999715
+          }
+        ]
+      },
+      "order": [
+        [
+          "six-threads",
+          "jemalloc",
+          "one-thread",
+          "native-existing",
+          "baseline-a",
+          "baseline-b"
+        ],
+        [
+          "baseline-b",
+          "six-threads",
+          "jemalloc",
+          "native-existing",
+          "one-thread",
+          "baseline-a"
+        ],
+        [
+          "six-threads",
+          "native-existing",
+          "one-thread",
+          "jemalloc",
+          "baseline-b",
+          "baseline-a"
+        ],
+        [
+          "native-existing",
+          "baseline-b",
+          "one-thread",
+          "six-threads",
+          "baseline-a",
+          "jemalloc"
+        ],
+        [
+          "six-threads",
+          "native-existing",
+          "baseline-b",
+          "one-thread",
+          "baseline-a",
+          "jemalloc"
+        ],
+        [
+          "native-existing",
+          "baseline-b",
+          "baseline-a",
+          "jemalloc",
+          "one-thread",
+          "six-threads"
+        ],
+        [
+          "native-existing",
+          "baseline-b",
+          "one-thread",
+          "six-threads",
+          "jemalloc",
+          "baseline-a"
+        ],
+        [
+          "native-existing",
+          "baseline-a",
+          "six-threads",
+          "one-thread",
+          "baseline-b",
+          "jemalloc"
+        ],
+        [
+          "baseline-a",
+          "baseline-b",
+          "jemalloc",
+          "six-threads",
+          "native-existing",
+          "one-thread"
+        ]
+      ],
+      "repetitions": 7,
+      "comparisons": {
+        "six-threads": {
+          "baseline_ms": 7.532245714285713,
+          "candidate_ms": 7.631437,
+          "elapsed_ratio": 1.0131688860768522,
+          "delta_ms": 0.09919128571428715,
+          "ratio_ci95": [
+            0.9695523731220621,
+            1.0273654409107449
+          ],
+          "delta_ci95_ms": [
+            -0.2348451428571412,
+            0.20537257142857257
+          ],
+          "verdict": "PASS"
+        },
+        "one-thread": {
+          "baseline_ms": 7.532245714285713,
+          "candidate_ms": 21.468632142857142,
+          "elapsed_ratio": 2.8502299257364343,
+          "delta_ms": 13.93638642857143,
+          "ratio_ci95": [
+            2.7834039619165183,
+            2.930284531697076
+          ],
+          "delta_ci95_ms": [
+            13.755537571428574,
+            14.150062642857144
+          ],
+          "verdict": "FAIL"
+        },
+        "jemalloc": {
+          "baseline_ms": 7.532245714285713,
+          "candidate_ms": 9.18314557142857,
+          "elapsed_ratio": 1.2191776423347087,
+          "delta_ms": 1.650899857142857,
+          "ratio_ci95": [
+            1.183461989017354,
+            1.2459660807625252
+          ],
+          "delta_ci95_ms": [
+            1.4036209999999993,
+            1.8510596428571429
+          ],
+          "verdict": "FAIL"
+        },
+        "native-existing": {
+          "baseline_ms": 7.532245714285713,
+          "candidate_ms": 7.371716857142856,
+          "elapsed_ratio": 0.9786877827367745,
+          "delta_ms": -0.16052885714285647,
+          "ratio_ci95": [
+            0.9445647911273614,
+            1.017087189745795
+          ],
+          "delta_ci95_ms": [
+            -0.4256379285714287,
+            0.12505378571428682
+          ],
+          "verdict": "PASS"
+        }
+      },
+      "controls": {
+        "baseline_ms": 7.539789999999999,
+        "candidate_ms": 7.4957205714285715,
+        "elapsed_ratio": 0.9941550854106775,
+        "delta_ms": -0.044069428571427594,
+        "ratio_ci95": [
+          0.940484542003969,
+          1.0208828997044817
+        ],
+        "delta_ci95_ms": [
+          -0.47826171428571396,
+          0.15566971428571375
+        ],
+        "verdict": "PASS"
+      }
+    },
+    {
+      "name": "kernel-literal",
+      "verification": {
+        "baseline-a": {
+          "exit": 0,
+          "stdout_sha256": "22aab311782b5329935f3596bd155bfd060c73cd6f09ef7986136bdd0a97cad7",
+          "normalized_bytes": 1291559,
+          "stderr_hex": ""
+        },
+        "baseline-b": {
+          "exit": 0,
+          "stdout_sha256": "22aab311782b5329935f3596bd155bfd060c73cd6f09ef7986136bdd0a97cad7",
+          "normalized_bytes": 1291559,
+          "stderr_hex": ""
+        },
+        "six-threads": {
+          "exit": 0,
+          "stdout_sha256": "22aab311782b5329935f3596bd155bfd060c73cd6f09ef7986136bdd0a97cad7",
+          "normalized_bytes": 1291559,
+          "stderr_hex": ""
+        },
+        "one-thread": {
+          "exit": 0,
+          "stdout_sha256": "22aab311782b5329935f3596bd155bfd060c73cd6f09ef7986136bdd0a97cad7",
+          "normalized_bytes": 1291559,
+          "stderr_hex": ""
+        },
+        "jemalloc": {
+          "exit": 0,
+          "stdout_sha256": "22aab311782b5329935f3596bd155bfd060c73cd6f09ef7986136bdd0a97cad7",
+          "normalized_bytes": 1291559,
+          "stderr_hex": ""
+        },
+        "native-existing": {
+          "exit": 0,
+          "stdout_sha256": "22aab311782b5329935f3596bd155bfd060c73cd6f09ef7986136bdd0a97cad7",
+          "normalized_bytes": 1291559,
+          "stderr_hex": ""
+        }
+      },
+      "commands": {
+        "baseline-a": [
+          "/usr/bin/rg",
+          "--no-config",
+          "pattern",
+          "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux"
+        ],
+        "baseline-b": [
+          "/usr/bin/rg",
+          "--no-config",
+          "pattern",
+          "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux"
+        ],
+        "six-threads": [
+          "/usr/bin/rg",
+          "-j6",
+          "--no-config",
+          "pattern",
+          "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux"
+        ],
+        "one-thread": [
+          "/usr/bin/rg",
+          "-j1",
+          "--no-config",
+          "pattern",
+          "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux"
+        ],
+        "jemalloc": [
+          "/usr/bin/rg",
+          "--no-config",
+          "pattern",
+          "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux"
+        ],
+        "native-existing": [
+          "/home/gardnmi/Projects/ripgrep/target/machine/rg-upstream-native",
+          "--no-config",
+          "pattern",
+          "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux"
+        ]
+      },
+      "timings_ms": {
+        "baseline-a": [
+          98.034065,
+          87.39134,
+          86.694778,
+          90.797434,
+          90.611902,
+          84.841241,
+          86.155817,
+          88.811536,
+          84.894332
+        ],
+        "baseline-b": [
+          87.700086,
+          88.673303,
+          90.777395,
+          86.151187,
+          85.533855,
+          86.939152,
+          86.767487,
+          90.798085,
+          84.781058
+        ],
+        "six-threads": [
+          124.842345,
+          121.165859,
+          121.380627,
+          121.366871,
+          123.552999,
+          123.002174,
+          121.248767,
+          121.829299,
+          123.915498
+        ],
+        "one-thread": [
+          674.76768,
+          664.307041,
+          669.284276,
+          668.320589,
+          663.619398,
+          682.169449,
+          675.032096,
+          667.196317,
+          667.73981
+        ],
+        "jemalloc": [
+          90.035808,
+          88.060971,
+          91.153919,
+          94.050596,
+          86.870823,
+          90.589019,
+          84.398201,
+          87.885769,
+          88.346393
+        ],
+        "native-existing": [
+          86.124006,
+          86.659922,
+          87.394477,
+          90.272598,
+          88.287461,
+          88.341203,
+          90.306842,
+          84.734369,
+          89.6519
+        ]
+      },
+      "resources": {
+        "baseline-a": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.944938999999998
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.9250800000000012
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.9232660000000052
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.9382190000000108
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.9224409999999921
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.9251469999999955
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.9220800000000011
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.9399720000000045
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.9232909999999848
+          }
+        ],
+        "baseline-b": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.9347350000000034
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.9367239999999981
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.9482180000000042
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.9346029999999956
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.9295979999999986
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.9185599999999923
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.9437760000000068
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.9442999999999913
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.9240870000000072
+          }
+        ],
+        "six-threads": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.7211540000000056
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.699463999999999
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.7017269999999982
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.7007189999999994
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.7020049999999998
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.7099520000000012
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.6963149999999914
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.6981830000000002
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.7110230000000044
+          }
+        ],
+        "one-thread": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.6718449999999976
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.6618159999999946
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.6660859999999929
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.6653060000000082
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.6612329999999957
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.6794899999999942
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.6717969999999909
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.6647069999999928
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.665366000000013
+          }
+        ],
+        "jemalloc": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.9342819999999996
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.9333490000000069
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.9389289999999875
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.950593000000012
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.9306450000000126
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.9360259999999982
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.9092480000000123
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.9388500000000093
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.9498879999999872
+          }
+        ],
+        "native-existing": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.9182910000000071
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.9349550000000093
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.9426990000000117
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.9192429999999945
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.941036000000004
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.9405099999999962
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.921937999999983
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.9143549999999934
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.9244200000000049
+          }
+        ]
+      },
+      "order": [
+        [
+          "one-thread",
+          "six-threads",
+          "jemalloc",
+          "baseline-a",
+          "native-existing",
+          "baseline-b"
+        ],
+        [
+          "native-existing",
+          "one-thread",
+          "baseline-a",
+          "jemalloc",
+          "baseline-b",
+          "six-threads"
+        ],
+        [
+          "one-thread",
+          "baseline-a",
+          "native-existing",
+          "six-threads",
+          "jemalloc",
+          "baseline-b"
+        ],
+        [
+          "native-existing",
+          "jemalloc",
+          "one-thread",
+          "baseline-b",
+          "baseline-a",
+          "six-threads"
+        ],
+        [
+          "baseline-b",
+          "baseline-a",
+          "native-existing",
+          "six-threads",
+          "one-thread",
+          "jemalloc"
+        ],
+        [
+          "baseline-b",
+          "native-existing",
+          "six-threads",
+          "jemalloc",
+          "one-thread",
+          "baseline-a"
+        ],
+        [
+          "one-thread",
+          "jemalloc",
+          "baseline-a",
+          "native-existing",
+          "six-threads",
+          "baseline-b"
+        ],
+        [
+          "six-threads",
+          "one-thread",
+          "baseline-b",
+          "native-existing",
+          "baseline-a",
+          "jemalloc"
+        ],
+        [
+          "native-existing",
+          "jemalloc",
+          "baseline-b",
+          "one-thread",
+          "baseline-a",
+          "six-threads"
+        ]
+      ],
+      "repetitions": 1,
+      "comparisons": {
+        "six-threads": {
+          "baseline_ms": 88.0728785,
+          "candidate_ms": 121.829299,
+          "elapsed_ratio": 1.383278269938685,
+          "delta_ms": 33.756420500000004,
+          "ratio_ci95": [
+            1.367883482217801,
+            1.432086303353608
+          ],
+          "delta_ci95_ms": [
+            32.644540500000005,
+            37.111977499999995
+          ],
+          "verdict": "FAIL"
+        },
+        "one-thread": {
+          "baseline_ms": 88.0728785,
+          "candidate_ms": 668.320589,
+          "elapsed_ratio": 7.5882678116396525,
+          "delta_ms": 580.2477105,
+          "ratio_ci95": [
+            7.513714201312189,
+            7.80730046656985
+          ],
+          "delta_ci95_ms": [
+            576.2747195000001,
+            588.5704440000001
+          ],
+          "verdict": "FAIL"
+        },
+        "jemalloc": {
+          "baseline_ms": 88.0728785,
+          "candidate_ms": 88.346393,
+          "elapsed_ratio": 1.0031055474132142,
+          "delta_ms": 0.27351450000000455,
+          "ratio_ci95": [
+            0.9863515815484559,
+            1.0477363883817532
+          ],
+          "delta_ci95_ms": [
+            -1.2020555000000002,
+            4.1273669999999925
+          ],
+          "verdict": "INCONCLUSIVE"
+        },
+        "native-existing": {
+          "baseline_ms": 88.0728785,
+          "candidate_ms": 88.287461,
+          "elapsed_ratio": 1.0024364197429971,
+          "delta_ms": 0.21458249999999168,
+          "ratio_ci95": [
+            0.9590132813653673,
+            1.036897837667964
+          ],
+          "delta_ci95_ms": [
+            -3.680804500000008,
+            3.190247999999997
+          ],
+          "verdict": "INCONCLUSIVE"
+        }
+      },
+      "controls": {
+        "baseline_ms": 87.39134,
+        "candidate_ms": 86.939152,
+        "elapsed_ratio": 0.9948257115636402,
+        "delta_ms": -0.4521879999999925,
+        "ratio_ci95": [
+          0.9507712022202116,
+          1.0240866492712375
+        ],
+        "delta_ci95_ms": [
+          -4.4607150000000075,
+          2.0448200000000014
+        ],
+        "verdict": "PASS"
+      }
+    },
+    {
+      "name": "kernel-files",
+      "verification": {
+        "baseline-a": {
+          "exit": 0,
+          "stdout_sha256": "e5e106fe75b8798ead396c801ef8c1fc8f2158123ad2a7460dda66c46fd1b900",
+          "normalized_bytes": 7802578,
+          "stderr_hex": ""
+        },
+        "baseline-b": {
+          "exit": 0,
+          "stdout_sha256": "e5e106fe75b8798ead396c801ef8c1fc8f2158123ad2a7460dda66c46fd1b900",
+          "normalized_bytes": 7802578,
+          "stderr_hex": ""
+        },
+        "six-threads": {
+          "exit": 0,
+          "stdout_sha256": "e5e106fe75b8798ead396c801ef8c1fc8f2158123ad2a7460dda66c46fd1b900",
+          "normalized_bytes": 7802578,
+          "stderr_hex": ""
+        },
+        "one-thread": {
+          "exit": 0,
+          "stdout_sha256": "e5e106fe75b8798ead396c801ef8c1fc8f2158123ad2a7460dda66c46fd1b900",
+          "normalized_bytes": 7802578,
+          "stderr_hex": ""
+        },
+        "jemalloc": {
+          "exit": 0,
+          "stdout_sha256": "e5e106fe75b8798ead396c801ef8c1fc8f2158123ad2a7460dda66c46fd1b900",
+          "normalized_bytes": 7802578,
+          "stderr_hex": ""
+        },
+        "native-existing": {
+          "exit": 0,
+          "stdout_sha256": "e5e106fe75b8798ead396c801ef8c1fc8f2158123ad2a7460dda66c46fd1b900",
+          "normalized_bytes": 7802578,
+          "stderr_hex": ""
+        }
+      },
+      "commands": {
+        "baseline-a": [
+          "/usr/bin/rg",
+          "--no-config",
+          "--files",
+          "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux"
+        ],
+        "baseline-b": [
+          "/usr/bin/rg",
+          "--no-config",
+          "--files",
+          "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux"
+        ],
+        "six-threads": [
+          "/usr/bin/rg",
+          "-j6",
+          "--no-config",
+          "--files",
+          "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux"
+        ],
+        "one-thread": [
+          "/usr/bin/rg",
+          "-j1",
+          "--no-config",
+          "--files",
+          "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux"
+        ],
+        "jemalloc": [
+          "/usr/bin/rg",
+          "--no-config",
+          "--files",
+          "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux"
+        ],
+        "native-existing": [
+          "/home/gardnmi/Projects/ripgrep/target/machine/rg-upstream-native",
+          "--no-config",
+          "--files",
+          "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux"
+        ]
+      },
+      "timings_ms": {
+        "baseline-a": [
+          25.3751505,
+          26.651127,
+          26.8472645,
+          27.9354995,
+          27.000736,
+          26.706968,
+          26.357495,
+          25.6598415,
+          25.883164999999998
+        ],
+        "baseline-b": [
+          26.652951,
+          26.38386,
+          24.8827115,
+          26.2585625,
+          26.8093325,
+          26.1684315,
+          26.5771625,
+          27.518272500000002,
+          26.023637
+        ],
+        "six-threads": [
+          30.201379,
+          29.051496999999998,
+          31.123544,
+          29.825756499999997,
+          29.8828845,
+          30.004175,
+          31.574735500000003,
+          30.3368065,
+          30.4499265
+        ],
+        "one-thread": [
+          143.778394,
+          146.303841,
+          146.13552199999998,
+          146.027998,
+          144.540696,
+          145.098324,
+          147.825043,
+          144.4061605,
+          144.26516800000002
+        ],
+        "jemalloc": [
+          25.227035,
+          25.1769745,
+          25.3236785,
+          26.1229705,
+          24.542395499999998,
+          24.725223,
+          25.313028000000003,
+          25.8311815,
+          25.963302
+        ],
+        "native-existing": [
+          25.2514865,
+          24.525228,
+          25.413283,
+          25.208785499999998,
+          25.4281965,
+          25.2696155,
+          24.684611,
+          26.6064925,
+          24.824451
+        ]
+      },
+      "resources": {
+        "baseline-a": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.45852800000000116
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.4750759999999943
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.46682100000000304
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.4644720000000149
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.47032099999999843
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.4674320000000023
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.45594300000000487
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.46101600000000076
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.4626750000000044
+          }
+        ],
+        "baseline-b": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.46591300000000757
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.46527900000000955
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.46192800000000034
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.45209300000000496
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.46277199999999397
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.4775899999999922
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.46980700000000297
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.4614210000000014
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.46370999999999185
+          }
+        ],
+        "six-threads": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.3318750000000037
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.32944200000000023
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.3248909999999938
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.32961599999999436
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.32735200000000475
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.33255499999999927
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.33247599999999977
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.33555300000000443
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.3247779999999949
+          }
+        ],
+        "one-thread": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.28614500000000476
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.29071900000000994
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.2907420000000087
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.2903959999999941
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.2875979999999956
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.28859500000001503
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.2939969999999903
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.2873479999999944
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.2870850000000047
+          }
+        ],
+        "jemalloc": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.42085599999999346
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.424744000000004
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.4182710000000043
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.42491199999999907
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.419620000000009
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.41223999999999705
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.4181199999999876
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.4198949999999968
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.4273029999999949
+          }
+        ],
+        "native-existing": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.44672800000000734
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.4375089999999986
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.4403559999999871
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.4412099999999981
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.4537419999999912
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.43168799999997987
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.45063499999999124
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.4405880000000053
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.4423880000000082
+          }
+        ]
+      },
+      "order": [
+        [
+          "baseline-a",
+          "native-existing",
+          "baseline-b",
+          "six-threads",
+          "jemalloc",
+          "one-thread"
+        ],
+        [
+          "six-threads",
+          "baseline-b",
+          "baseline-a",
+          "jemalloc",
+          "one-thread",
+          "native-existing"
+        ],
+        [
+          "one-thread",
+          "native-existing",
+          "baseline-a",
+          "baseline-b",
+          "six-threads",
+          "jemalloc"
+        ],
+        [
+          "baseline-a",
+          "one-thread",
+          "baseline-b",
+          "native-existing",
+          "six-threads",
+          "jemalloc"
+        ],
+        [
+          "jemalloc",
+          "native-existing",
+          "baseline-a",
+          "baseline-b",
+          "six-threads",
+          "one-thread"
+        ],
+        [
+          "six-threads",
+          "baseline-a",
+          "jemalloc",
+          "baseline-b",
+          "one-thread",
+          "native-existing"
+        ],
+        [
+          "baseline-b",
+          "one-thread",
+          "six-threads",
+          "jemalloc",
+          "baseline-a",
+          "native-existing"
+        ],
+        [
+          "one-thread",
+          "baseline-a",
+          "jemalloc",
+          "baseline-b",
+          "native-existing",
+          "six-threads"
+        ],
+        [
+          "baseline-b",
+          "one-thread",
+          "native-existing",
+          "baseline-a",
+          "jemalloc",
+          "six-threads"
+        ]
+      ],
+      "repetitions": 2,
+      "comparisons": {
+        "six-threads": {
+          "baseline_ms": 26.46732875,
+          "candidate_ms": 30.201379,
+          "elapsed_ratio": 1.1410814927819264,
+          "delta_ms": 3.7340502499999992,
+          "ratio_ci95": [
+            1.1106800393684688,
+            1.1759231274897735
+          ],
+          "delta_ci95_ms": [
+            2.9778502499999995,
+            4.656215249999999
+          ],
+          "verdict": "FAIL"
+        },
+        "one-thread": {
+          "baseline_ms": 26.46732875,
+          "candidate_ms": 145.098324,
+          "elapsed_ratio": 5.482167292760891,
+          "delta_ms": 118.63099524999998,
+          "ratio_ci95": [
+            5.42753436561784,
+            5.613427889541577
+          ],
+          "delta_ci95_ms": [
+            117.8171035,
+            120.01394725
+          ],
+          "verdict": "FAIL"
+        },
+        "jemalloc": {
+          "baseline_ms": 26.46732875,
+          "candidate_ms": 25.313028000000003,
+          "elapsed_ratio": 0.9563877125303022,
+          "delta_ms": -1.1543007499999973,
+          "ratio_ci95": [
+            0.9352259551249348,
+            0.9809566445197081
+          ],
+          "delta_ci95_ms": [
+            -1.7124767500000004,
+            -0.5040267500000013
+          ],
+          "verdict": "PASS"
+        },
+        "native-existing": {
+          "baseline_ms": 26.46732875,
+          "candidate_ms": 25.2514865,
+          "elapsed_ratio": 0.9540625251046537,
+          "delta_ms": -1.2158422500000015,
+          "ratio_ci95": [
+            0.9326445911168878,
+            0.9729548162107925
+          ],
+          "delta_ci95_ms": [
+            -1.7827177499999998,
+            -0.7019145000000009
+          ],
+          "verdict": "PASS"
+        }
+      },
+      "controls": {
+        "baseline_ms": 26.651127,
+        "candidate_ms": 26.38386,
+        "elapsed_ratio": 0.9899716436006627,
+        "delta_ms": -0.26726700000000037,
+        "ratio_ci95": [
+          0.974715003087186,
+          1.0387028696182712
+        ],
+        "delta_ci95_ms": [
+          -0.6788330000000009,
+          0.9931095000000028
+        ],
+        "verdict": "INCONCLUSIVE"
+      }
+    },
+    {
+      "name": "tiny-hit",
+      "verification": {
+        "baseline-a": {
+          "exit": 0,
+          "stdout_sha256": "c5d982dc040081e09cad25209fed928b334a21fb2ff34db5202178a7b1a8199b",
+          "normalized_bytes": 8,
+          "stderr_hex": ""
+        },
+        "baseline-b": {
+          "exit": 0,
+          "stdout_sha256": "c5d982dc040081e09cad25209fed928b334a21fb2ff34db5202178a7b1a8199b",
+          "normalized_bytes": 8,
+          "stderr_hex": ""
+        },
+        "six-threads": {
+          "exit": 0,
+          "stdout_sha256": "c5d982dc040081e09cad25209fed928b334a21fb2ff34db5202178a7b1a8199b",
+          "normalized_bytes": 8,
+          "stderr_hex": ""
+        },
+        "one-thread": {
+          "exit": 0,
+          "stdout_sha256": "c5d982dc040081e09cad25209fed928b334a21fb2ff34db5202178a7b1a8199b",
+          "normalized_bytes": 8,
+          "stderr_hex": ""
+        },
+        "jemalloc": {
+          "exit": 0,
+          "stdout_sha256": "c5d982dc040081e09cad25209fed928b334a21fb2ff34db5202178a7b1a8199b",
+          "normalized_bytes": 8,
+          "stderr_hex": ""
+        },
+        "native-existing": {
+          "exit": 0,
+          "stdout_sha256": "c5d982dc040081e09cad25209fed928b334a21fb2ff34db5202178a7b1a8199b",
+          "normalized_bytes": 8,
+          "stderr_hex": ""
+        }
+      },
+      "commands": {
+        "baseline-a": [
+          "/usr/bin/rg",
+          "--no-config",
+          "abc",
+          "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/tiny.txt"
+        ],
+        "baseline-b": [
+          "/usr/bin/rg",
+          "--no-config",
+          "abc",
+          "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/tiny.txt"
+        ],
+        "six-threads": [
+          "/usr/bin/rg",
+          "-j6",
+          "--no-config",
+          "abc",
+          "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/tiny.txt"
+        ],
+        "one-thread": [
+          "/usr/bin/rg",
+          "-j1",
+          "--no-config",
+          "abc",
+          "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/tiny.txt"
+        ],
+        "jemalloc": [
+          "/usr/bin/rg",
+          "--no-config",
+          "abc",
+          "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/tiny.txt"
+        ],
+        "native-existing": [
+          "/home/gardnmi/Projects/ripgrep/target/machine/rg-upstream-native",
+          "--no-config",
+          "abc",
+          "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/tiny.txt"
+        ]
+      },
+      "timings_ms": {
+        "baseline-a": [
+          1.4542443999999997,
+          1.3594354799999997,
+          1.39207952,
+          1.4115031999999998,
+          1.3809994399999996,
+          1.3720540000000003,
+          1.3948917600000001,
+          1.3969571600000001,
+          1.42566732
+        ],
+        "baseline-b": [
+          1.3828043600000002,
+          1.38972984,
+          1.3865086400000002,
+          1.42838936,
+          1.37812916,
+          1.4341686000000005,
+          1.3733135599999997,
+          1.39266356,
+          1.40288724
+        ],
+        "six-threads": [
+          1.39397588,
+          1.3931218800000003,
+          1.4032704,
+          1.3960903999999996,
+          1.36861704,
+          1.39617844,
+          1.3528759999999997,
+          1.4922444399999997,
+          1.40919656
+        ],
+        "one-thread": [
+          1.415463,
+          1.40162132,
+          1.4079324400000002,
+          1.3893174800000003,
+          1.3998345999999997,
+          1.3882346399999996,
+          1.39630392,
+          1.3804928799999998,
+          1.38600312
+        ],
+        "jemalloc": [
+          1.9917045599999996,
+          2.14929648,
+          2.0573828,
+          2.06953356,
+          2.05617116,
+          2.08415168,
+          2.1001980799999997,
+          2.0460673199999992,
+          2.05604744
+        ],
+        "native-existing": [
+          1.4726152,
+          1.46517168,
+          1.43898284,
+          1.4477122000000007,
+          1.4977333199999998,
+          1.4442537599999996,
+          1.44796976,
+          1.4620586800000004,
+          1.4403734400000006
+        ]
+      },
+      "resources": {
+        "baseline-a": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.032392999999984795
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.029902999999990243
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.030906000000001654
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.031303000000008296
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.030221999999994864
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.03005400000002112
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.03079599999999516
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.03085500000000252
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.031570000000002096
+          }
+        ],
+        "baseline-b": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.030496999999982677
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.030584999999987872
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.03042499999997972
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.030570000000011532
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.03035299999997676
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.03153899999998089
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.02980599999999356
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.030982000000008725
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.030865999999988958
+          }
+        ],
+        "six-threads": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.03079400000001442
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.030706000000009226
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.03108499999999026
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.030777999999997974
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.030148000000011166
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.030723000000008938
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.02982800000000907
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.0312539999999899
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.031189999999995166
+          }
+        ],
+        "one-thread": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.03119600000002265
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.0310089999999974
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.03102200000000721
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.03067900000000634
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.030991000000014424
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.030595000000005257
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.030800999999996748
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.030737999999985277
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.030713999999989028
+          }
+        ],
+        "jemalloc": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04522100000001217
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.0480620000000016
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.046807000000015364
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04545499999998981
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04716099999998846
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.047587999999990416
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.0481319999999954
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.046562999999991916
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.046914999999998486
+          }
+        ],
+        "native-existing": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.032432000000000016
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.031264000000007286
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.030979999999999563
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.030967000000003964
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.032164999999992006
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.032024000000006936
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.03204899999998645
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.03148699999999849
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.031070999999997184
+          }
+        ]
+      },
+      "order": [
+        [
+          "baseline-a",
+          "one-thread",
+          "native-existing",
+          "baseline-b",
+          "six-threads",
+          "jemalloc"
+        ],
+        [
+          "one-thread",
+          "six-threads",
+          "baseline-b",
+          "native-existing",
+          "baseline-a",
+          "jemalloc"
+        ],
+        [
+          "six-threads",
+          "baseline-a",
+          "native-existing",
+          "jemalloc",
+          "one-thread",
+          "baseline-b"
+        ],
+        [
+          "baseline-a",
+          "six-threads",
+          "jemalloc",
+          "baseline-b",
+          "one-thread",
+          "native-existing"
+        ],
+        [
+          "jemalloc",
+          "native-existing",
+          "one-thread",
+          "six-threads",
+          "baseline-a",
+          "baseline-b"
+        ],
+        [
+          "six-threads",
+          "jemalloc",
+          "one-thread",
+          "baseline-a",
+          "baseline-b",
+          "native-existing"
+        ],
+        [
+          "baseline-a",
+          "jemalloc",
+          "native-existing",
+          "one-thread",
+          "baseline-b",
+          "six-threads"
+        ],
+        [
+          "baseline-a",
+          "jemalloc",
+          "one-thread",
+          "baseline-b",
+          "native-existing",
+          "six-threads"
+        ],
+        [
+          "baseline-a",
+          "one-thread",
+          "native-existing",
+          "jemalloc",
+          "six-threads",
+          "baseline-b"
+        ]
+      ],
+      "repetitions": 25,
+      "comparisons": {
+        "six-threads": {
+          "baseline_ms": 1.3948103600000001,
+          "candidate_ms": 1.3960903999999996,
+          "elapsed_ratio": 1.0009177161546172,
+          "delta_ms": 0.0012800399999994827,
+          "ratio_ci95": [
+            0.9841849880648506,
+            1.0100600155152177
+          ],
+          "delta_ci95_ms": [
+            -0.02243398000000041,
+            0.013976320000000042
+          ],
+          "verdict": "PASS"
+        },
+        "one-thread": {
+          "baseline_ms": 1.3948103600000001,
+          "candidate_ms": 1.39630392,
+          "elapsed_ratio": 1.0010707978968552,
+          "delta_ms": 0.0014935599999998939,
+          "ratio_ci95": [
+            0.9815859023062292,
+            1.0146932622132945
+          ],
+          "delta_ci95_ms": [
+            -0.02604264000000045,
+            0.020270299999999963
+          ],
+          "verdict": "PASS"
+        },
+        "jemalloc": {
+          "baseline_ms": 1.3948103600000001,
+          "candidate_ms": 2.0573828,
+          "elapsed_ratio": 1.4750268989972226,
+          "delta_ms": 0.6625724399999999,
+          "ratio_ci95": [
+            1.4537795869845267,
+            1.5173716088371652
+          ],
+          "delta_ci95_ms": [
+            0.6417701599999999,
+            0.7160954199999998
+          ],
+          "verdict": "FAIL"
+        },
+        "native-existing": {
+          "baseline_ms": 1.3948103600000001,
+          "candidate_ms": 1.44796976,
+          "elapsed_ratio": 1.0381122778583318,
+          "delta_ms": 0.05315939999999997,
+          "ratio_ci95": [
+            1.0211956173120447,
+            1.0620539252864114
+          ],
+          "delta_ci95_ms": [
+            0.029976479999999528,
+            0.08560738000000034
+          ],
+          "verdict": "PASS"
+        }
+      },
+      "controls": {
+        "baseline_ms": 1.3948917600000001,
+        "candidate_ms": 1.38972984,
+        "elapsed_ratio": 0.9962994117909191,
+        "delta_ms": -0.005161920000000153,
+        "ratio_ci95": [
+          0.9796678888152718,
+          1.0158492461083115
+        ],
+        "delta_ci95_ms": [
+          -0.02869883999999967,
+          0.021887800000000457
+        ],
+        "verdict": "PASS"
+      }
+    },
+    {
+      "name": "log-lines",
+      "verification": {
+        "baseline-a": {
+          "exit": 0,
+          "stdout_sha256": "07d0354c8d52c00ac8fe664affa918213a1474b53db57246b92d84740569917f",
+          "normalized_bytes": 41548,
+          "stderr_hex": ""
+        },
+        "baseline-b": {
+          "exit": 0,
+          "stdout_sha256": "07d0354c8d52c00ac8fe664affa918213a1474b53db57246b92d84740569917f",
+          "normalized_bytes": 41548,
+          "stderr_hex": ""
+        },
+        "six-threads": {
+          "exit": 0,
+          "stdout_sha256": "07d0354c8d52c00ac8fe664affa918213a1474b53db57246b92d84740569917f",
+          "normalized_bytes": 41548,
+          "stderr_hex": ""
+        },
+        "one-thread": {
+          "exit": 0,
+          "stdout_sha256": "07d0354c8d52c00ac8fe664affa918213a1474b53db57246b92d84740569917f",
+          "normalized_bytes": 41548,
+          "stderr_hex": ""
+        },
+        "jemalloc": {
+          "exit": 0,
+          "stdout_sha256": "07d0354c8d52c00ac8fe664affa918213a1474b53db57246b92d84740569917f",
+          "normalized_bytes": 41548,
+          "stderr_hex": ""
+        },
+        "native-existing": {
+          "exit": 0,
+          "stdout_sha256": "07d0354c8d52c00ac8fe664affa918213a1474b53db57246b92d84740569917f",
+          "normalized_bytes": 41548,
+          "stderr_hex": ""
+        }
+      },
+      "commands": {
+        "baseline-a": [
+          "/usr/bin/rg",
+          "--no-config",
+          "-n",
+          "RARE_MARK",
+          "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt"
+        ],
+        "baseline-b": [
+          "/usr/bin/rg",
+          "--no-config",
+          "-n",
+          "RARE_MARK",
+          "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt"
+        ],
+        "six-threads": [
+          "/usr/bin/rg",
+          "-j6",
+          "--no-config",
+          "-n",
+          "RARE_MARK",
+          "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt"
+        ],
+        "one-thread": [
+          "/usr/bin/rg",
+          "-j1",
+          "--no-config",
+          "-n",
+          "RARE_MARK",
+          "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt"
+        ],
+        "jemalloc": [
+          "/usr/bin/rg",
+          "--no-config",
+          "-n",
+          "RARE_MARK",
+          "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt"
+        ],
+        "native-existing": [
+          "/home/gardnmi/Projects/ripgrep/target/machine/rg-upstream-native",
+          "--no-config",
+          "-n",
+          "RARE_MARK",
+          "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt"
+        ]
+      },
+      "timings_ms": {
+        "baseline-a": [
+          3.5488091428571438,
+          3.5782912857142857,
+          3.543154928571429,
+          3.521850857142858,
+          3.625547071428572,
+          3.5813394999999995,
+          3.7180225000000005,
+          3.5996636428571422,
+          3.592999285714286
+        ],
+        "baseline-b": [
+          3.594840571428571,
+          3.610521928571429,
+          3.6776105714285725,
+          3.5467538571428565,
+          3.6000127142857137,
+          3.501935928571428,
+          3.6172103571428567,
+          3.639360285714286,
+          3.6193121428571433
+        ],
+        "six-threads": [
+          3.5941929285714287,
+          3.5713639999999995,
+          3.563409071428572,
+          3.625386,
+          3.587956928571429,
+          3.5635242857142857,
+          3.634091,
+          3.593608,
+          3.602945428571428
+        ],
+        "one-thread": [
+          3.592551428571429,
+          3.612873,
+          3.5692492142857146,
+          3.515817214285714,
+          3.518841714285714,
+          3.697661357142857,
+          3.5578477857142863,
+          3.6009910000000005,
+          3.542172928571428
+        ],
+        "jemalloc": [
+          4.331707,
+          4.384901214285714,
+          4.372676071428571,
+          4.3000545,
+          4.390046142857143,
+          4.383071500000001,
+          4.323489,
+          4.341311071428572,
+          4.316208785714286
+        ],
+        "native-existing": [
+          3.527005571428571,
+          3.470998642857143,
+          3.5306940000000004,
+          3.4317482857142863,
+          3.374625642857143,
+          3.5454692857142858,
+          3.4850060000000007,
+          3.5372214285714283,
+          3.6868890000000003
+        ]
+      },
+      "resources": {
+        "baseline-a": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04657299999998088
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04670400000001962
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04626299999999617
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.046225000000021055
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.047333999999992216
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04687700000000916
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04891600000000551
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04703299999998478
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04730899999999849
+          }
+        ],
+        "baseline-b": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04696799999999257
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04730899999999849
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04827600000000132
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.046517999999991844
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04715500000000361
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.0458070000000248
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04738100000000145
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04747199999997065
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.047667000000018334
+          }
+        ],
+        "six-threads": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04700799999999106
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.046738999999988096
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04680099999998788
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.047592999999992
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.046978000000009956
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04691899999998839
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.047572999999999865
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04714800000000707
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04723899999999048
+          }
+        ],
+        "one-thread": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04728300000000729
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.047406000000009385
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.0468400000000031
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04621199999998282
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04584599999998318
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04828200000000038
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04680600000000368
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.047320999999982405
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04666499999999019
+          }
+        ],
+        "jemalloc": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05694499999999891
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.057835000000025616
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05812699999999893
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.056556000000000495
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.058078000000008956
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.058201999999994314
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05718300000000909
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05747100000002092
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05734499999998377
+          }
+        ],
+        "native-existing": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04609399999999653
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04546599999999046
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04630099999998549
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.044922000000013895
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04402199999998402
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04659300000000144
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.045744999999996594
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.04640600000000461
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.048052999999995905
+          }
+        ]
+      },
+      "order": [
+        [
+          "baseline-b",
+          "baseline-a",
+          "one-thread",
+          "native-existing",
+          "jemalloc",
+          "six-threads"
+        ],
+        [
+          "one-thread",
+          "baseline-a",
+          "baseline-b",
+          "jemalloc",
+          "six-threads",
+          "native-existing"
+        ],
+        [
+          "one-thread",
+          "baseline-b",
+          "baseline-a",
+          "jemalloc",
+          "six-threads",
+          "native-existing"
+        ],
+        [
+          "native-existing",
+          "baseline-b",
+          "one-thread",
+          "jemalloc",
+          "six-threads",
+          "baseline-a"
+        ],
+        [
+          "baseline-a",
+          "baseline-b",
+          "one-thread",
+          "six-threads",
+          "jemalloc",
+          "native-existing"
+        ],
+        [
+          "one-thread",
+          "baseline-b",
+          "jemalloc",
+          "six-threads",
+          "baseline-a",
+          "native-existing"
+        ],
+        [
+          "baseline-a",
+          "six-threads",
+          "one-thread",
+          "jemalloc",
+          "native-existing",
+          "baseline-b"
+        ],
+        [
+          "native-existing",
+          "baseline-a",
+          "six-threads",
+          "one-thread",
+          "jemalloc",
+          "baseline-b"
+        ],
+        [
+          "baseline-a",
+          "native-existing",
+          "six-threads",
+          "jemalloc",
+          "baseline-b",
+          "one-thread"
+        ]
+      ],
+      "repetitions": 14,
+      "comparisons": {
+        "six-threads": {
+          "baseline_ms": 3.6061557142857144,
+          "candidate_ms": 3.593608,
+          "elapsed_ratio": 0.9965204735236455,
+          "delta_ms": -0.012547714285714218,
+          "ratio_ci95": [
+            0.9891926278453438,
+            1.0130784733003264
+          ],
+          "delta_ci95_ms": [
+            -0.03901875000000121,
+            0.04631921428571495
+          ],
+          "verdict": "PASS"
+        },
+        "one-thread": {
+          "baseline_ms": 3.6061557142857144,
+          "candidate_ms": 3.5692492142857146,
+          "elapsed_ratio": 0.9897656942949536,
+          "delta_ms": -0.03690649999999973,
+          "ratio_ci95": [
+            0.9804563337984381,
+            1.008165613943477
+          ],
+          "delta_ci95_ms": [
+            -0.07060696428571456,
+            0.02916614285714303
+          ],
+          "verdict": "PASS"
+        },
+        "jemalloc": {
+          "baseline_ms": 3.6061557142857144,
+          "candidate_ms": 4.341311071428572,
+          "elapsed_ratio": 1.2038612348963618,
+          "delta_ms": 0.7351553571428573,
+          "ratio_ci95": [
+            1.19690028043318,
+            1.227123858336679
+          ],
+          "delta_ci95_ms": [
+            0.7107091071428577,
+            0.8112466428571432
+          ],
+          "verdict": "FAIL"
+        },
+        "native-existing": {
+          "baseline_ms": 3.6061557142857144,
+          "candidate_ms": 3.527005571428571,
+          "elapsed_ratio": 0.9780513796052701,
+          "delta_ms": -0.07915014285714328,
+          "ratio_ci95": [
+            0.9607556357694759,
+            0.990312114967723
+          ],
+          "delta_ci95_ms": [
+            -0.14178124999999975,
+            -0.03460342857142917
+          ],
+          "verdict": "PASS"
+        }
+      },
+      "controls": {
+        "baseline_ms": 3.5813394999999995,
+        "candidate_ms": 3.610521928571429,
+        "elapsed_ratio": 1.0081484675137415,
+        "delta_ms": 0.029182428571429497,
+        "ratio_ci95": [
+          0.9929571022966206,
+          1.0192744133404263
+        ],
+        "delta_ci95_ms": [
+          -0.025534357142858344,
+          0.06840121428571289
+        ],
+        "verdict": "PASS"
+      }
+    },
+    {
+      "name": "prose-absent",
+      "verification": {
+        "baseline-a": {
+          "exit": 1,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "normalized_bytes": 0,
+          "stderr_hex": ""
+        },
+        "baseline-b": {
+          "exit": 1,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "normalized_bytes": 0,
+          "stderr_hex": ""
+        },
+        "six-threads": {
+          "exit": 1,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "normalized_bytes": 0,
+          "stderr_hex": ""
+        },
+        "one-thread": {
+          "exit": 1,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "normalized_bytes": 0,
+          "stderr_hex": ""
+        },
+        "jemalloc": {
+          "exit": 1,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "normalized_bytes": 0,
+          "stderr_hex": ""
+        },
+        "native-existing": {
+          "exit": 1,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "normalized_bytes": 0,
+          "stderr_hex": ""
+        }
+      },
+      "commands": {
+        "baseline-a": [
+          "/usr/bin/rg",
+          "--no-config",
+          "NOT_PRESENT_XYZ_84921",
+          "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/subtitles.txt"
+        ],
+        "baseline-b": [
+          "/usr/bin/rg",
+          "--no-config",
+          "NOT_PRESENT_XYZ_84921",
+          "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/subtitles.txt"
+        ],
+        "six-threads": [
+          "/usr/bin/rg",
+          "-j6",
+          "--no-config",
+          "NOT_PRESENT_XYZ_84921",
+          "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/subtitles.txt"
+        ],
+        "one-thread": [
+          "/usr/bin/rg",
+          "-j1",
+          "--no-config",
+          "NOT_PRESENT_XYZ_84921",
+          "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/subtitles.txt"
+        ],
+        "jemalloc": [
+          "/usr/bin/rg",
+          "--no-config",
+          "NOT_PRESENT_XYZ_84921",
+          "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/subtitles.txt"
+        ],
+        "native-existing": [
+          "/home/gardnmi/Projects/ripgrep/target/machine/rg-upstream-native",
+          "--no-config",
+          "NOT_PRESENT_XYZ_84921",
+          "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/subtitles.txt"
+        ]
+      },
+      "timings_ms": {
+        "baseline-a": [
+          11.357058999999998,
+          11.146998,
+          11.519785600000002,
+          11.166027000000001,
+          13.1803108,
+          10.9546232,
+          11.0443536,
+          11.5477164,
+          11.78247
+        ],
+        "baseline-b": [
+          11.0817002,
+          11.2142116,
+          10.7907802,
+          11.0841372,
+          11.286001800000001,
+          11.677653199999998,
+          11.1791656,
+          11.651908200000001,
+          12.0837018
+        ],
+        "six-threads": [
+          11.188070399999999,
+          11.6466522,
+          11.4233686,
+          10.7524074,
+          11.1578928,
+          11.0158814,
+          11.45778,
+          11.3251144,
+          11.001197600000001
+        ],
+        "one-thread": [
+          11.4755918,
+          12.133530200000001,
+          11.0033556,
+          10.8767374,
+          11.773867800000001,
+          11.403459000000002,
+          11.282898,
+          11.158994799999999,
+          10.9717378
+        ],
+        "jemalloc": [
+          12.834748600000001,
+          12.131805,
+          12.100880400000001,
+          12.2286368,
+          12.1825272,
+          12.7347154,
+          12.778718999999999,
+          12.301194399999998,
+          12.0937108
+        ],
+        "native-existing": [
+          12.2244186,
+          11.9602374,
+          11.4178082,
+          12.1040482,
+          11.82985,
+          13.0337624,
+          11.6581878,
+          11.4179,
+          12.8158512
+        ]
+      },
+      "resources": {
+        "baseline-a": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05520900000000495
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05437099999998907
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05615499999998974
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.054400000000001114
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.06415199999999288
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05330200000000218
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.053773999999989996
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05629300000001081
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.057167999999990116
+          }
+        ],
+        "baseline-b": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.0538490000000138
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05465100000000689
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05248299999998096
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.053854999999998654
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05500500000000841
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05677399999999011
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.054403999999991015
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05677800000000843
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05893700000001445
+          }
+        ],
+        "six-threads": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05441700000001504
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.056685999999984915
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05566000000000315
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05217699999998615
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05433499999998048
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05363499999999988
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.055849999999992406
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.0551280000000105
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05335900000000038
+          }
+        ],
+        "one-thread": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05580799999998476
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05913700000000688
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05357099999999093
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.052680000000009386
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.057427000000004114
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05550599999999406
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.054857999999995855
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.054102000000000317
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.0532349999999866
+          }
+        ],
+        "jemalloc": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.06252100000001803
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.0591620000000006
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.058824999999998795
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05976800000000537
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05952700000000277
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.06213100000000793
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.06238199999999949
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.06000700000001302
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05893500000000529
+          }
+        ],
+        "native-existing": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05935300000000154
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05820699999998169
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05565999999998894
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05892400000001885
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.057724000000007436
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.06339699999999482
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.056746999999987224
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.05566399999999305
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "cpu_seconds": 0.062004000000001724
+          }
+        ]
+      },
+      "order": [
+        [
+          "jemalloc",
+          "native-existing",
+          "baseline-b",
+          "baseline-a",
+          "one-thread",
+          "six-threads"
+        ],
+        [
+          "one-thread",
+          "six-threads",
+          "jemalloc",
+          "native-existing",
+          "baseline-a",
+          "baseline-b"
+        ],
+        [
+          "baseline-a",
+          "one-thread",
+          "baseline-b",
+          "jemalloc",
+          "native-existing",
+          "six-threads"
+        ],
+        [
+          "jemalloc",
+          "one-thread",
+          "baseline-a",
+          "baseline-b",
+          "six-threads",
+          "native-existing"
+        ],
+        [
+          "baseline-a",
+          "baseline-b",
+          "six-threads",
+          "jemalloc",
+          "native-existing",
+          "one-thread"
+        ],
+        [
+          "jemalloc",
+          "six-threads",
+          "baseline-b",
+          "baseline-a",
+          "native-existing",
+          "one-thread"
+        ],
+        [
+          "jemalloc",
+          "six-threads",
+          "one-thread",
+          "baseline-a",
+          "baseline-b",
+          "native-existing"
+        ],
+        [
+          "baseline-b",
+          "baseline-a",
+          "native-existing",
+          "jemalloc",
+          "six-threads",
+          "one-thread"
+        ],
+        [
+          "baseline-b",
+          "one-thread",
+          "native-existing",
+          "baseline-a",
+          "jemalloc",
+          "six-threads"
+        ]
+      ],
+      "repetitions": 5,
+      "comparisons": {
+        "six-threads": {
+          "baseline_ms": 11.2193796,
+          "candidate_ms": 11.188070399999999,
+          "elapsed_ratio": 0.9972093644108448,
+          "delta_ms": -0.031309200000000814,
+          "ratio_ci95": [
+            0.9350383374010575,
+            1.0247907161515983
+          ],
+          "delta_ci95_ms": [
+            -0.7751930999999992,
+            0.2771751999999985
+          ],
+          "verdict": "PASS"
+        },
+        "one-thread": {
+          "baseline_ms": 11.2193796,
+          "candidate_ms": 11.282898,
+          "elapsed_ratio": 1.0056614895176557,
+          "delta_ms": 0.06351839999999953,
+          "ratio_ci95": [
+            0.9485804869446035,
+            1.0263838142280102
+          ],
+          "delta_ci95_ms": [
+            -0.5964566999999992,
+            0.294986999999999
+          ],
+          "verdict": "PASS"
+        },
+        "jemalloc": {
+          "baseline_ms": 11.2193796,
+          "candidate_ms": 12.2286368,
+          "elapsed_ratio": 1.0899565961739988,
+          "delta_ms": 1.0092572000000004,
+          "ratio_ci95": [
+            1.020903335657711,
+            1.1415860551595691
+          ],
+          "delta_ci95_ms": [
+            0.2494412999999991,
+            1.5794324999999994
+          ],
+          "verdict": "INCONCLUSIVE"
+        },
+        "native-existing": {
+          "baseline_ms": 11.2193796,
+          "candidate_ms": 11.9602374,
+          "elapsed_ratio": 1.066033758230268,
+          "delta_ms": 0.7408578000000006,
+          "ratio_ci95": [
+            1.0050324521199365,
+            1.0895806217306347
+          ],
+          "delta_ci95_ms": [
+            0.05837550000000036,
+            1.005039
+          ],
+          "verdict": "INCONCLUSIVE"
+        }
+      },
+      "controls": {
+        "baseline_ms": 11.357058999999998,
+        "candidate_ms": 11.2142116,
+        "elapsed_ratio": 0.9874221486390097,
+        "delta_ms": -0.1428473999999973,
+        "ratio_ci95": [
+          0.9619710457111283,
+          1.0435142419053796
+        ],
+        "delta_ci95_ms": [
+          -0.43808540000000207,
+          0.4858811999999997
+        ],
+        "verdict": "INCONCLUSIVE"
+      }
+    }
+  ],
+  "status": "complete"
+}

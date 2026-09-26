@@ -8,16 +8,21 @@ the `git` command line tool.
 */
 
 use std::{
+    cell::RefCell,
     fs::File,
     io::{BufRead, BufReader, Read},
     path::{Path, PathBuf},
-    sync::Arc,
 };
 
-use {
-    globset::{Candidate, GlobBuilder, GlobSet, GlobSetBuilder},
-    regex_automata::util::pool::Pool,
-};
+use globset::{Candidate, GlobBuilder, GlobSet, GlobSetBuilder};
+
+thread_local! {
+    // Matching does not call back into Gitignore, so one scratch vector can
+    // serve every matcher on this thread. No matches survive a call. This
+    // avoids acquiring a shared pool for every directory entry, and releases
+    // scratch storage when a traversal worker exits.
+    static MATCHES: RefCell<Vec<usize>> = const { RefCell::new(Vec::new()) };
+}
 
 use crate::{
     Error, Match, PartialErrorBuilder,
@@ -84,7 +89,6 @@ pub struct Gitignore {
     globs: Vec<Glob>,
     num_ignores: u64,
     num_whitelists: u64,
-    matches: Option<Arc<Pool<Vec<usize>>>>,
 }
 
 impl Gitignore {
@@ -155,7 +159,6 @@ impl Gitignore {
             globs: vec![],
             num_ignores: 0,
             num_whitelists: 0,
-            matches: None,
         }
     }
 
@@ -265,9 +268,29 @@ impl Gitignore {
             return Match::None;
         }
         let path = path.as_ref();
-        let mut matches = self.matches.as_ref().unwrap().get();
         let candidate = Candidate::new(path);
-        self.set.matches_candidate_into(&candidate, &mut *matches);
+        MATCHES
+            .try_with(|scratch| {
+                scratch.try_borrow_mut().ok().map(|mut matches| {
+                    self.matched_candidate(&candidate, is_dir, &mut matches)
+                })
+            })
+            .ok()
+            .flatten()
+            // A caller may match from another thread-local's destructor after
+            // our scratch was destroyed. Reentrant use also gets its own vec.
+            .unwrap_or_else(|| {
+                self.matched_candidate(&candidate, is_dir, &mut vec![])
+            })
+    }
+
+    fn matched_candidate(
+        &self,
+        candidate: &Candidate<'_>,
+        is_dir: bool,
+        matches: &mut Vec<usize>,
+    ) -> Match<&Glob> {
+        self.set.matches_candidate_into(candidate, matches);
         for &i in matches.iter().rev() {
             let glob = &self.globs[i];
             if !glob.is_only_dir() || is_dir {
@@ -359,9 +382,6 @@ impl GitignoreBuilder {
             globs: self.globs.clone(),
             num_ignores: nignore as u64,
             num_whitelists: nwhite as u64,
-            matches: Some(Arc::new(
-                Pool::with_available_parallelism_capacity(|| vec![]),
-            )),
         })
     }
 
@@ -713,6 +733,58 @@ mod tests {
         let mut builder = GitignoreBuilder::new(root);
         builder.add_str(None, s).unwrap();
         builder.build().unwrap()
+    }
+
+    #[test]
+    fn shared_matchers_keep_scratch_results_separate() {
+        let small = gi_from_str(".", "*.tmp\n!keep.tmp\nkeep.tmp/\n");
+        let large = gi_from_str(".", &"*.rs\n".repeat(128));
+        std::thread::scope(|scope| {
+            for _ in 0..24 {
+                let (small, large) = (&small, &large);
+                scope.spawn(move || {
+                    for _ in 0..100 {
+                        assert!(large.matched("lib.rs", false).is_ignore());
+                        assert!(
+                            small.matched("keep.tmp", false).is_whitelist()
+                        );
+                        assert!(small.matched("keep.tmp", true).is_ignore());
+                        assert!(large.matched("keep.tmp", false).is_none());
+                        assert!(small.matched("other.tmp", false).is_ignore());
+                        assert!(small.matched("lib.rs", false).is_none());
+                    }
+                });
+            }
+        });
+    }
+
+    #[test]
+    fn matching_during_thread_local_teardown() {
+        struct MatchOnDrop;
+        impl Drop for MatchOnDrop {
+            fn drop(&mut self) {
+                assert!(
+                    gi_from_str(".", "*.tmp")
+                        .matched("file.tmp", false)
+                        .is_ignore()
+                );
+            }
+        }
+        thread_local! {
+            static LATE: MatchOnDrop = const { MatchOnDrop };
+        }
+        std::thread::spawn(|| {
+            // Destructors run in reverse initialization order: MATCHES will
+            // have been destroyed when LATE's destructor performs its match.
+            LATE.with(|_| {});
+            assert!(
+                gi_from_str(".", "*.tmp")
+                    .matched("file.tmp", false)
+                    .is_ignore()
+            );
+        })
+        .join()
+        .unwrap();
     }
 
     macro_rules! ignored {

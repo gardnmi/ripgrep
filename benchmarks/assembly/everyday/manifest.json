@@ -1,0 +1,943 @@
+{
+  "cases": [
+    {
+      "name": "source-literal",
+      "category": "directory",
+      "path": "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep",
+      "arguments": [
+        "--no-config",
+        "-n",
+        "Searcher",
+        "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep"
+      ],
+      "directory": true,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "source-absent",
+      "category": "directory",
+      "path": "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep",
+      "arguments": [
+        "--no-config",
+        "NOT_PRESENT_XYZ_84921",
+        "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep"
+      ],
+      "directory": true,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "source-regex",
+      "category": "directory",
+      "path": "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep",
+      "arguments": [
+        "--no-config",
+        "-n",
+        "fn\\s+\\w+",
+        "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep"
+      ],
+      "directory": true,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "source-ignore-case",
+      "category": "directory",
+      "path": "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep",
+      "arguments": [
+        "--no-config",
+        "-i",
+        "-l",
+        "error",
+        "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep"
+      ],
+      "directory": true,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "source-glob",
+      "category": "directory",
+      "path": "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep",
+      "arguments": [
+        "--no-config",
+        "-g",
+        "*.rs",
+        "-n",
+        "TODO",
+        "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep"
+      ],
+      "directory": true,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "source-files",
+      "category": "directory",
+      "path": "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep",
+      "arguments": [
+        "--no-config",
+        "--files",
+        "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep"
+      ],
+      "directory": true,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "source-files-hidden",
+      "category": "directory",
+      "path": "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep",
+      "arguments": [
+        "--no-config",
+        "--hidden",
+        "-g",
+        "!.git",
+        "--files",
+        "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep"
+      ],
+      "directory": true,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "source-multi",
+      "category": "directory",
+      "path": "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep",
+      "arguments": [
+        "--no-config",
+        "-n",
+        "-e",
+        "TODO",
+        "-e",
+        "FIXME",
+        "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep"
+      ],
+      "directory": true,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "source-context",
+      "category": "directory",
+      "path": "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep",
+      "arguments": [
+        "--no-config",
+        "-C",
+        "2",
+        "Searcher",
+        "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep"
+      ],
+      "directory": true,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "source-sorted",
+      "category": "directory",
+      "path": "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep",
+      "arguments": [
+        "--no-config",
+        "--sort",
+        "path",
+        "-n",
+        "Searcher",
+        "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep"
+      ],
+      "directory": true,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "source-explicit-one-thread",
+      "category": "directory",
+      "path": "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep",
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "-n",
+        "Searcher",
+        "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep"
+      ],
+      "directory": true,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "tools-literal",
+      "category": "directory",
+      "path": "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux/tools",
+      "arguments": [
+        "--no-config",
+        "-n",
+        "TODO",
+        "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux/tools"
+      ],
+      "directory": true,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "tools-files-with-match",
+      "category": "directory",
+      "path": "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux/tools",
+      "arguments": [
+        "--no-config",
+        "-l",
+        "pthread_create",
+        "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux/tools"
+      ],
+      "directory": true,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "tools-glob",
+      "category": "directory",
+      "path": "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux/tools",
+      "arguments": [
+        "--no-config",
+        "-g",
+        "*.c",
+        "-n",
+        "epoll_ctl",
+        "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux/tools"
+      ],
+      "directory": true,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "tools-regex",
+      "category": "directory",
+      "path": "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux/tools",
+      "arguments": [
+        "--no-config",
+        "-n",
+        "pthread_(create|join)",
+        "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux/tools"
+      ],
+      "directory": true,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "tools-files",
+      "category": "directory",
+      "path": "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux/tools",
+      "arguments": [
+        "--no-config",
+        "--files",
+        "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux/tools"
+      ],
+      "directory": true,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "kernel-literal",
+      "category": "directory",
+      "path": "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux",
+      "arguments": [
+        "--no-config",
+        "pattern",
+        "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux"
+      ],
+      "directory": true,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "kernel-regex",
+      "category": "directory",
+      "path": "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux",
+      "arguments": [
+        "--no-config",
+        "-n",
+        "-w",
+        "[A-Z]+_SUSPEND",
+        "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux"
+      ],
+      "directory": true,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "kernel-files",
+      "category": "directory",
+      "path": "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux",
+      "arguments": [
+        "--no-config",
+        "--files",
+        "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux"
+      ],
+      "directory": true,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "tiny-hit",
+      "category": "single-file",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/tiny.txt",
+      "arguments": [
+        "--no-config",
+        "abc",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/tiny.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "tiny-miss",
+      "category": "single-file",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/tiny.txt",
+      "arguments": [
+        "--no-config",
+        "absent",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/tiny.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "small-regex",
+      "category": "single-file",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/small.txt",
+      "arguments": [
+        "--no-config",
+        "user=\\d+",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/small.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "log-lines",
+      "category": "single-file",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt",
+      "arguments": [
+        "--no-config",
+        "-n",
+        "RARE_MARK",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "log-context",
+      "category": "single-file",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt",
+      "arguments": [
+        "--no-config",
+        "-C",
+        "2",
+        "RARE_MARK",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "log-count",
+      "category": "single-file",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt",
+      "arguments": [
+        "--no-config",
+        "-c",
+        "status=500",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "log-multi",
+      "category": "single-file",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt",
+      "arguments": [
+        "--no-config",
+        "-c",
+        "-e",
+        "RARE_MARK",
+        "-e",
+        "status=500",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "log-ignore-case",
+      "category": "single-file",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt",
+      "arguments": [
+        "--no-config",
+        "-i",
+        "-c",
+        "NORMAL",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "log-json",
+      "category": "single-file",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/json.txt",
+      "arguments": [
+        "--no-config",
+        "--json",
+        "RARE_MARK",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/json.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cache": "warm",
+      "json_output": true
+    },
+    {
+      "name": "prose-absent",
+      "category": "single-file",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/subtitles.txt",
+      "arguments": [
+        "--no-config",
+        "NOT_PRESENT_XYZ_84921",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/subtitles.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "prose-count",
+      "category": "single-file",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/subtitles.txt",
+      "arguments": [
+        "--no-config",
+        "-c",
+        "the",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/subtitles.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "prose-regex",
+      "category": "single-file",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/subtitles.txt",
+      "arguments": [
+        "--no-config",
+        "-n",
+        "-w",
+        "Sherlock [A-Z]\\w+",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/subtitles.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "unicode-fold",
+      "category": "single-file",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/unicode.txt",
+      "arguments": [
+        "--no-config",
+        "-i",
+        "-c",
+        "caf\u00e9",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/unicode.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cache": "warm",
+      "json_output": false
+    }
+  ],
+  "inputs": {
+    "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/json.txt": {
+      "bytes": 131072,
+      "sha256": "95c0329de96f3745c11726c3ec86b283d066f108ca997d195c09e1db432ad5b4"
+    },
+    "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt": {
+      "bytes": 33554432,
+      "sha256": "e8072943da22fa6d024b7ce32fccc18a9d184a21f80fdced28252beefd9a36c2"
+    },
+    "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/small.txt": {
+      "bytes": 4096,
+      "sha256": "c1be39b3026db79aedb87ec586c5730c7a20768ee912aad05941cc7e6491989f"
+    },
+    "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/subtitles.txt": {
+      "bytes": 134217730,
+      "sha256": "7775ed536ec247067d6f5da47d2598e04415dca5e7cd45b47a2b1f0197c13d7a"
+    },
+    "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/tiny.txt": {
+      "bytes": 8,
+      "sha256": "c5d982dc040081e09cad25209fed928b334a21fb2ff34db5202178a7b1a8199b"
+    },
+    "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/unicode.txt": {
+      "bytes": 16777216,
+      "sha256": "3d4c3ec6153349277fa0327cbf35c54c9cbfb8a4081180bd4b1e36f77b9be56a"
+    }
+  },
+  "source_revision": "3fce3b5bb0236da2df6d99672afb8a719642eca7",
+  "source_archive_sha256": "d7997b44111000aa86d338f83710146840391451e1607b05c8759561eacfd518",
+  "kernel_revision": "84e57d292203a45c96dbcb2e6be9dd80961d981a",
+  "notes": "Logs and tiny inputs are synthetic; source and prose are real. Corpora were used in previous experiments, not newly held out."
+}

@@ -133,6 +133,12 @@ struct IgnoreInner {
     parent: Option<Arc<IgnoreInner>>,
     /// Whether this is an absolute parent matcher, as added by add_parent.
     is_absolute_parent: bool,
+    /// Whether any absolute parent has custom or .ignore rules. This lets
+    /// matching avoid constructing an absolute path when no rule can use it.
+    absolute_non_git_rules: bool,
+    /// Whether any absolute parent has .gitignore or git exclude rules.
+    /// A repository boundary can make these irrelevant to a child search.
+    absolute_git_rules: bool,
     /// The directory that gitignores should be interpreted relative to.
     ///
     /// Usually this is the directory containing the gitignore file. But in
@@ -238,6 +244,11 @@ impl Ignore {
             let (mut igtmp, err) = ig.add_child_path(parent);
             errs.maybe_push(err);
             igtmp.is_absolute_parent = true;
+            igtmp.absolute_non_git_rules |=
+                !igtmp.custom_ignore_matcher.is_empty()
+                    || !igtmp.ignore_matcher.is_empty();
+            igtmp.absolute_git_rules |= !igtmp.git_ignore_matcher.is_empty()
+                || !igtmp.git_exclude_matcher.is_empty();
             igtmp.has_git =
                 if self.inner.opts.require_git && self.inner.opts.git_ignore {
                     parent.join(".git").exists() || parent.join(".jj").exists()
@@ -446,6 +457,8 @@ impl Ignore {
             types: self.inner.types.clone(),
             parent: Some(self.inner.clone()),
             is_absolute_parent: false,
+            absolute_non_git_rules: self.inner.absolute_non_git_rules,
+            absolute_git_rules: self.inner.absolute_git_rules,
             global_gitignores_relative_to: self
                 .inner
                 .global_gitignores_relative_to
@@ -592,7 +605,10 @@ impl Ignore {
             }
             saw_git = saw_git || ig.inner.has_git;
         }
-        if self.inner.opts.parents {
+        if self.inner.opts.parents
+            && (self.inner.absolute_non_git_rules
+                || (any_git && !saw_git && self.inner.absolute_git_rules))
+        {
             if let Some(abs_parent_path) = self.absolute_base() {
                 // What we want to do here is take the absolute base path of
                 // this directory and join it with the path we're searching.
@@ -844,6 +860,8 @@ impl IgnoreBuilder {
                 types: self.types.clone(),
                 parent: None,
                 is_absolute_parent: true,
+                absolute_non_git_rules: false,
+                absolute_git_rules: false,
                 global_gitignores_relative_to,
                 explicit_ignores: Arc::new(self.explicit_ignores.clone()),
                 custom_ignore_filenames: Arc::new(
@@ -1425,6 +1443,29 @@ mod tests {
         assert!(ig2.matched("src/llvm", true).is_none());
         assert!(ig2.matched("foo", false).is_ignore());
         assert!(ig2.matched("src/foo", false).is_ignore());
+    }
+
+    #[test]
+    fn absolute_ignore_rules_cross_nested_repository_boundary() {
+        let td = tmpdir();
+        let nested = td.path().join("nested");
+        mkdirp(td.path().join(".git"));
+        mkdirp(nested.join(".git"));
+        wfile(td.path().join(".gitignore"), "git-only\n");
+        wfile(td.path().join(".ignore"), "plain-ignore\n");
+        wfile(td.path().join(".custom"), "custom-ignore\n");
+
+        let mut builder = IgnoreBuilder::new();
+        builder.add_custom_ignore_filename(".custom");
+        let (parents, err) = builder.build().add_parents(&nested);
+        assert!(err.is_none());
+        let (child, err) = parents.add_child(&nested);
+        assert!(err.is_none());
+        assert!(child.matched(nested.join("git-only"), false).is_none());
+        assert!(child.matched(nested.join("plain-ignore"), false).is_ignore());
+        assert!(
+            child.matched(nested.join("custom-ignore"), false).is_ignore()
+        );
     }
 
     #[test]

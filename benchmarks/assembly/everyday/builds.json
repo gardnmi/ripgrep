@@ -1,0 +1,46 @@
+{
+  "upstream_revision": "3fce3b5bb0236da2df6d99672afb8a719642eca7",
+  "compiler": "rustc 1.98.1 (48a229cea 2026-09-01) (Arch Linux rust 1:1.98.1-1)\nbinary: rustc\ncommit-hash: 48a229ceaefd4985c50990b14116b6d856af0985\ncommit-date: 2026-09-01\nhost: x86_64-unknown-linux-gnu\nrelease: 1.98.1\nLLVM version: 22.1.8\n",
+  "profile": "release-lto",
+  "features": [
+    "pcre2"
+  ],
+  "native_flags": "-C target-cpu=znver4",
+  "generic_flags": "",
+  "build_jobs": 2,
+  "memory_max": "4GiB",
+  "swap_max": 0,
+  "note": "Native wakeup prototype predates the TLS-teardown fallback; generic contains that correctness fix. Patches and build logs retained.",
+  "artifacts": {
+    "rg-baseline": {
+      "sha256": "9b24f9e51c62913f1991bfad6c94298fdf92f80daffb90e7ebca0c83f316e03c",
+      "bytes": 4199368,
+      "version": "ripgrep 15.2.0 (rev 3fce3b5bb0)\n\nfeatures:+pcre2\nsimd(compile):+SSE2,+SSSE3,+AVX2\nsimd(runtime):+SSE2,+SSSE3,+AVX2\n\nPCRE2 10.45 is available (JIT is available)\n"
+    },
+    "rg-tls": {
+      "sha256": "4ffc4fc510b3bfaa12e4aa33dff610264dcd121fa21f233e0a2b32205e0551cf",
+      "bytes": 4200088,
+      "version": "ripgrep 15.2.0 (rev dce038e071)\n\nfeatures:+pcre2\nsimd(compile):+SSE2,+SSSE3,+AVX2\nsimd(runtime):+SSE2,+SSSE3,+AVX2\n\nPCRE2 10.45 is available (JIT is available)\n"
+    },
+    "rg-poll50": {
+      "sha256": "b42e3539557d11f8f96496d3eba0a7160b9cbe782937d8c4ca583ea13640fab7",
+      "bytes": 4200088,
+      "version": "ripgrep 15.2.0 (rev dce038e071)\n\nfeatures:+pcre2\nsimd(compile):+SSE2,+SSSE3,+AVX2\nsimd(runtime):+SSE2,+SSSE3,+AVX2\n\nPCRE2 10.45 is available (JIT is available)\n"
+    },
+    "rg-wakeup": {
+      "sha256": "de2a2a561902c4de118be3e2fd58e1f5820e006424de5445103af32f0c745a3c",
+      "bytes": 4206240,
+      "version": "ripgrep 15.2.0 (rev dce038e071)\n\nfeatures:+pcre2\nsimd(compile):+SSE2,+SSSE3,+AVX2\nsimd(runtime):+SSE2,+SSSE3,+AVX2\n\nPCRE2 10.45 is available (JIT is available)\n"
+    },
+    "rg-generic": {
+      "sha256": "25e4f019e022b49395492977eda6942d8b6299f956ec89f4f7b174ed775a91ff",
+      "bytes": 4206968,
+      "version": "ripgrep 15.2.0 (rev dce038e071)\n\nfeatures:+pcre2\nsimd(compile):+SSE2,-SSSE3,-AVX2\nsimd(runtime):+SSE2,+SSSE3,+AVX2\n\nPCRE2 10.45 is available (JIT is available)\n"
+    },
+    "rg-baseline-generic": {
+      "sha256": "0cf034b3dac03059f6bb647ca980e8e1d14666cee184bb38021f56282df74768",
+      "bytes": 4199616,
+      "version": "ripgrep 15.2.0 (rev 3fce3b5bb0)\n\nfeatures:+pcre2\nsimd(compile):+SSE2,-SSSE3,-AVX2\nsimd(runtime):+SSE2,+SSSE3,+AVX2\n\nPCRE2 10.45 is available (JIT is available)\n"
+    }
+  }
+}

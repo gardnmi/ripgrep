@@ -1,0 +1,28 @@
+Running as unit: run-p2017699-i2017508.scope; invocation ID: de7ced47faa4470280e2a6432f10b21f
+   Compiling grep-searcher v0.1.17 (/home/gardnmi/Worktrees/ripgrep/experiment-everyday-search/crates/searcher)
+   Compiling grep-regex v0.1.14 (/home/gardnmi/Worktrees/ripgrep/experiment-everyday-search/crates/regex)
+error[E0407]: method `find_confirmed_line_with_count` is not a member of trait `Matcher`
+   --> crates/regex/src/matcher.rs:487:5
+    |
+487 | /     fn find_confirmed_line_with_count(
+488 | |         &self,
+489 | |         haystack: &[u8],
+490 | |     ) -> Option<(Option<usize>, u64)> {
+...   |
+502 | |     }
+    | |_____^ not a member of trait `Matcher`
+
+error[E0599]: no method named `find_confirmed_line_with_count` found for type parameter `M` in the current scope
+   --> crates/searcher/src/searcher/core.rs:492:30
+    |
+ 39 | impl<'s, M: Matcher, S: Sink> Core<'s, M, S> {
+    |          - method `find_confirmed_line_with_count` not found for this type parameter
+...
+492 |                 self.matcher.find_confirmed_line_with_count(&buf[pos..])
+    |                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ method not found in `M`
+
+For more information about this error, try `rustc --explain E0407`.
+error: could not compile `grep-regex` (lib) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+For more information about this error, try `rustc --explain E0599`.
+error: could not compile `grep-searcher` (lib) due to 1 previous error
