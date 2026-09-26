@@ -1,0 +1,53 @@
+{
+  "ffmpeg": "ffmpeg version n9.0.1 Copyright (c) 2000-2026 the FFmpeg developers",
+  "media": {
+    "my-grep-everyday.mp4": {
+      "sha256": "992a755b8c7ef86c94bd53a518bb9bf66378ce04f17acdc6f3903ab163d7e20a",
+      "metadata": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 1600,
+            "height": 900,
+            "r_frame_rate": "24/1",
+            "duration": "52.000000",
+            "nb_read_frames": "1248"
+          }
+        ],
+        "format": {
+          "duration": "52.000000",
+          "size": "2260547"
+        }
+      },
+      "full_decode_exit_code": 0,
+      "decode_errors": ""
+    },
+    "my-grep-everyday.gif": {
+      "sha256": "e5e5f3575e0c0755849213c05938086b9a61c4149f365845bb514f372fa1e74d",
+      "metadata": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "gif",
+            "codec_type": "video",
+            "width": 960,
+            "height": 540,
+            "r_frame_rate": "10/1",
+            "duration": "52.000000",
+            "nb_read_frames": "520"
+          }
+        ],
+        "format": {
+          "duration": "52.000000",
+          "size": "6084607"
+        }
+      },
+      "full_decode_exit_code": 0,
+      "decode_errors": ""
+    }
+  }
+}

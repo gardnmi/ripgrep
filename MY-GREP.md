@@ -1,84 +1,135 @@
-# my-grep: what made it faster?
+# my-grep: making everyday folder searches faster
 
-`my-grep` is an AI-assisted personal ripgrep experiment tuned for one machine:
-an AMD Ryzen 5 7600X (Zen 4) running Linux. It makes a narrow group of searches
-much faster. **The results do not establish a general speedup or zero regressions.**
-It is installed under its own name, leaving the system's `rg` available.
+Finding a name in a codebase. Searching a project for TODOs. Listing files.
+Those are the jobs this round of the personal ripgrep experiment focuses on.
 
-Think of the change as adding a specialist to ripgrep. For a question like
-“does this line contain 30 letters in a row?”, the specialist can use a simpler
-method than a general regular-expression engine.
+On my Ryzen 5 7600X, a new prototype made a small-repository word search take
+**40–41% less time**, a TODO search in Linux tools take **about 20% less time**,
+and a whole Linux source-tree file listing take **about 12% less time**.
+These gains repeated in two complete measurement sessions.
 
-- **Check 64 bytes together.** Rust code uses the CPU's AVX-512 vector
-  instructions to check a block of text at once. The result is a row of bits:
-  `1` for an allowed character, `0` otherwise. A few bit operations find runs
-  of consecutive matches. [Scanner source](crates/asm/src/class.rs).
-- **Make decisions once.** The pattern selects a specialized scanning routine
-  before scanning starts, avoiding repeated decisions inside the busiest loop.
-- **Keep ordinary searches on the upstream engine.** A tiny startup router,
-  written in assembly and C, sends eligible searches to a separate worker.
-  It recognizes supported ASCII character repetitions on one regular file of
-  at least 8 MiB, with limited flags. Other commands continue into the preserved
-  upstream executable. [Routing rules](scripts/assembly/entry_dispatch.c).
+**This is a separate, uninstalled prototype.** It has useful folder-search
+gains, but a remaining regression means it has not passed the requirement for
+replacing the installed `my-grep`. The system `rg` is also unchanged.
 
-Most of the program remains ripgrep's Rust code. The large gains come from
-specializing the matching algorithm; writing something in assembly alone does
-not guarantee it will be faster. Ripgrep already has many optimizations and
-supports a much wider range of searches and machines.
+[![Watch the everyday-search comparison](benchmarks/assembly/everyday-video/poster.png)](https://github.com/gardnmi/ripgrep/raw/refs/heads/experiment/assembly-hotpaths/benchmarks/assembly/everyday-video/my-grep-everyday.mp4)
 
-## What we measured
+[Watch the revised 52-second video](https://github.com/gardnmi/ripgrep/raw/refs/heads/experiment/assembly-hotpaths/benchmarks/assembly/everyday-video/my-grep-everyday.mp4)
+· [Animation, offline player and rendering instructions](benchmarks/assembly/everyday-video/README.md)
+· [Complete benchmark report][report]
 
-These are session A medians against the installed **ripgrep 15.2.0** package,
-using roughly 128 MiB of real subtitle text already in memory. The examples
-were deliberately selected to exercise the specialist; ordinary controls were
-also measured. Both sessions and all eight workloads are in the
-[full report and raw data](benchmarks/assembly/showcase/README.md).
+## What changes in everyday use?
 
-| Search | System `rg` | `my-grep` | Result |
-| --- | ---: | ---: | --- |
-| 30 letters in a row | 162.898 ms | 15.485 ms | 10.52× speedup |
-| Same, with line numbers | 166.532 ms | 18.023 ms | 9.24× speedup |
-| Count lines containing 17 hex digits | 162.912 ms | 15.374 ms | 10.60× speedup |
-| Count lines containing 8 digits | 15.852 ms | 13.966 ms | 1.14× speedup |
-| Ordinary absent-word search | 12.515 ms | 12.696 ms | **1.45% slower** |
+The benefit is shorter waits for the tested folder searches. Here are selected
+ordinary tasks, compared with installed **ripgrep 15.2.0**. Times include
+starting the program; lower is better.
 
-The repeat session's absent-word search was **5.05% slower**, with its 95%
-interval entirely on the slower side. Both sessions' overall verdict was
-**INCONCLUSIVE**.
+| Task | Session A: system → prototype | Less time | Session B: system → prototype | Less time |
+| --- | ---: | ---: | ---: | ---: |
+| Find `Searcher` in the ripgrep source tree | 4.363 → 2.615 ms | 40.07% | 4.602 → 2.697 ms | 41.39% |
+| Search that tree for an absent word | 4.160 → 2.580 ms | 37.98% | 4.330 → 2.700 ms | 37.64% |
+| Find files containing `error`, ignoring case | 4.725 → 2.750 ms | 41.79% | 4.816 → 2.854 ms | 40.73% |
+| List the small repository's files | 3.413 → 2.149 ms | 37.03% | 4.076 → 2.363 ms | 42.03% |
+| Find `TODO` in Linux tools | 11.594 → 9.329 ms | 19.53% | 11.600 → 9.260 ms | 20.17% |
+| List the whole Linux source tree | 26.535 → 23.475 ms | 11.53% | 26.199 → 23.021 ms | 12.13% |
 
-## Was anything fudged?
+For the small word search, that is **roughly two milliseconds saved per
+invocation**. The Linux file listing saves roughly three milliseconds. These
+are real but small absolute differences; this does not establish a noticeable
+change in editor responsiveness. Editor integration and drawing results in a
+terminal were not measured.
 
-There are no saved answers, hardcoded match counts, or benchmark-filename checks
-in the fast path. It searches the supplied input. Output, errors and exit
-status were compared before timing; directory output was sorted for comparison.
-Two sessions used warmups and 15 randomized paired rounds each. Timings include
-startup, routing and output processing, with both programs writing to
-`/dev/null`. The larger correctness run passed 1,236 tests and 4,457 CLI
-comparisons, including repeated fallback checks. Those checks are evidence,
-not a proof that every possible input is correct.
+Across the original everyday-directory set, **15 of 19 tasks** took at least
+5% less time in both sessions, with each per-case 95% interval below parity
+and quality checks passing. Sorted output, explicit single-thread searches
+and the two other whole-tree searches did not meet that repeated target.
+That gives us evidence for a useful class of everyday improvements, not a
+promise that every command is faster. [Every result, including uncertainty][results].
 
-The important caveats are public too:
+## How it works, in plain English
 
-- Earlier attempts introduced regressions. Some timings overlapped another
-  job. The [experiment history](benchmarks/assembly/dispatch/README.md) retains
-  failed attempts, corrections and the inconclusive acceptance result.
-- The installed-package comparison includes build differences. Earlier
-  comparisons against equally CPU-tuned upstream builds are documented
-  separately. This experimental build also lacks the system package's PCRE2
-  support.
-- The promotional animation illustrates recorded medians; it is not a live
-  race. The command was renamed from `rg-zen4` to `my-grep` afterward, without
-  changing the tested executable.
+A search does more than read text. It finds files, applies ignore rules and
+hands work to other CPU threads. For short searches, that coordination can
+take a meaningful part of the total time.
 
-This work stays in the personal fork. It is not an upstream contribution or
-an endorsement by ripgrep's maintainers.
+- **Wake workers sooner.** When another worker finds more work, notify a
+  waiting thread instead of routinely waiting for its next one-millisecond
+  check. Timed waiting remains as a fallback.
+- **Reuse temporary space.** Each thread keeps a scratch list for checking
+  ignore rules, avoiding repeated trips to a shared storage pool. That list
+  is working space; it does not cache search answers.
+- **Avoid irrelevant checks.** Remember whether parent folders have applicable
+  ignore rules, so empty or inapplicable rule sets do not cause extra path work.
+- **Do less setup.** When no file-type filter needs matching storage, do not
+  prepare it. Explicit type filters retain their normal matching behavior.
 
-## Everyday-search follow-up
+This prototype changes **four Rust files** on clean upstream ripgrep. Normal
+matching, flags and ignore rules are retained, and PCRE2 is included. The
+[source patch][patch] is public. The earlier assembly and vector-scanning
+specialist is a different experiment; its narrow 10× results do not describe
+ordinary folder searches or this prototype. [That earlier story is preserved here](MY-GREP-SPECIALIST.md).
 
-A separate [ordinary-search experiment](https://github.com/gardnmi/ripgrep/blob/experiment/everyday-isolated/MY-GREP.md)
-found repeatable folder-search gains, including 40–41% less time for a word
-search in the small source repository and about 20% less time in Linux tools.
-It also reproduced a 4–5% general-regex regression against an equally built
-upstream reference, so it failed the no-regressions gate. The installed
-`my-grep` described above is unchanged. All gains, losses and raw measurements
-are included in that experiment.
+## The tradeoffs
+
+The full test covers **117 workloads**, not just the examples above. Each
+session finished with **97 PASS, 19 INCONCLUSIVE and 1 FAIL**. PASS allows the
+predeclared practical margin; it does not mean exactly zero slowdown.
+
+The repeated failure was a general-regex count on one file. Against unchanged
+upstream built with the same compiler, features and profile, the prototype was
+**4.31% slower** in A (19.458 → 20.297 ms) and **4.55% slower** in B
+(19.558 → 20.447 ms). Against the packaged system `rg`, that same case was
+about 1% faster. Both comparisons matter: the remaining loss cannot be
+explained away by selecting the more favorable baseline. Its cause has not
+been isolated. **The overall no-regression gate failed.**
+
+Short parallel searches can use more CPU while finishing sooner. The small
+word search used **17–27% more CPU time**; the Linux tools word search used
+about 2–3% less. This is a latency result, not an energy-saving claim.
+Tiny absent-word searches also had slightly slower medians, around
+0.04–0.05 ms. [All CPU measurements][cpu].
+
+Ripgrep supports many machines and workloads. These results show a tradeoff
+worth exploring on this machine; they do not show that its maintainers missed
+a universally better setting.
+
+## Was the test honest?
+
+There is no index, saved answer, hardcoded match count, benchmark-filename
+dispatch or reduced search scope. Each invocation searches its supplied input.
+The candidate passed **1,233 workspace tests** and **3,556 CLI comparisons**.
+Those are useful correctness checks, not proof for every possible input.
+
+Two sessions used 15 randomized paired rounds each, including two identical
+system controls and a separately built upstream reference. Output, errors and
+exit status were checked before timing. Parallel directory output was sorted
+for comparison, and JSON timing fields were excluded. Separate sorted-output
+checks compare bytes exactly. No unfavorable case or measured outlier was
+discarded.
+
+The featured tasks use real source trees already in the filesystem cache,
+with output sent to `/dev/null` for both programs. The broader suite includes
+single files, synthetic edge cases and targeted cold-file cases. The corpora
+were used in earlier experiments, so they are not an entirely unseen test set.
+
+The source comparison uses upstream `3fce3b5`, Rust 1.98.1, `release-lto`,
+PCRE2 and the default CPU target for both builds. That source revision is newer
+than packaged 15.2.0. A forced Zen 4 compiler target did not consistently win.
+The regression rule was set before confirmation: more than 3% **and** more
+than 0.10 ms. Per-case intervals do not establish simultaneous confidence
+across the entire suite.
+
+Forcing fewer threads, changing the allocator and more aggressive polling
+did not produce a consistent overall win; polling also raised CPU costs.
+[Failed approaches and complete provenance remain documented][report].
+
+The video animates these saved medians slowly so the differences are visible.
+It is not a live race, and its longer animation time does not represent seconds
+saved by a search. Its offline player includes every workload and both sessions.
+
+AI-assisted work in a personal fork. No upstream contribution or endorsement.
+
+[report]: https://github.com/gardnmi/ripgrep/tree/55279a6c2e16c5bf8b441518d0f4d4f91c493060/benchmarks/assembly/everyday
+[results]: https://github.com/gardnmi/ripgrep/blob/55279a6c2e16c5bf8b441518d0f4d4f91c493060/benchmarks/assembly/everyday/FINAL-RESULTS.md
+[cpu]: https://github.com/gardnmi/ripgrep/blob/55279a6c2e16c5bf8b441518d0f4d4f91c493060/benchmarks/assembly/everyday/FINAL-CPU.md
+[patch]: https://github.com/gardnmi/ripgrep/blob/55279a6c2e16c5bf8b441518d0f4d4f91c493060/benchmarks/assembly/everyday/isolated.patch

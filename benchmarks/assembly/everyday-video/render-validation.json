@@ -1,0 +1,27 @@
+{
+  "browser": "152.0.7977.82",
+  "node": "v26.8.1",
+  "playwright": "1.63.0",
+  "sourceSha256": {
+    "final-session-a.json": "d7bb8f80821e067538425637d38fa98b9076083a24c92ab46f08f2a279272072",
+    "final-session-b.json": "698ca89920e87d415c70370994b4032e39fade698a737314ae47dcb6656d3f4a"
+  },
+  "pageErrors": [],
+  "clipping": [],
+  "verified": [
+    "Data equality with generated JSON",
+    "272 table rows across both sessions",
+    "Chapter navigation",
+    "Playback advances and pauses",
+    "No mobile page overflow",
+    "Text bounds for every scene in both sessions"
+  ],
+  "video": {
+    "frames": 1248,
+    "fps": 24,
+    "durationSeconds": 52,
+    "width": 1600,
+    "height": 900,
+    "audio": false
+  }
+}

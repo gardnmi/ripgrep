@@ -2,7 +2,7 @@
 
 The command is now `my-grep`. It is the same tested binary previously named `rg-zen4`; the original JSON and video retain their historical names.
 
-[Plain-English summary](../../../MY-GREP.md) · [CSV](results.csv) · [Benchmark runner](../../../scripts/assembly/audit_bench.py)
+[Specialist summary](../../../MY-GREP-SPECIALIST.md) · [Newer everyday-search article](../../../MY-GREP.md) · [CSV](results.csv) · [Benchmark runner](../../../scripts/assembly/audit_bench.py)
 
 Controlled measurements of the installed executables on this machine. The VHS video is a replay of saved measurements, not a live timing run. Encoding starts after all measurements finish.
 
