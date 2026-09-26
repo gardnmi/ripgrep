@@ -1,0 +1,46 @@
+{
+  "baseline_sha256": "bc5b2c5fa5e3fcb28fc38fd31ef24a1ee10bc4bf982c93f17010359f4cb45d84",
+  "compiler": "cc (GCC) 16.2.1 20260810",
+  "compile_command": [
+    "cc",
+    "-O3",
+    "-march=znver4",
+    "-fPIC",
+    "-shared",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-Wl,-z,relro,-z,now",
+    "-o",
+    "/home/gardnmi/Projects/ripgrep/target/dispatch-experiment/bundle/librg_class_dispatch.so",
+    "/home/gardnmi/Projects/ripgrep/scripts/assembly/class_dispatch.c"
+  ],
+  "dispatcher_source_sha256": "b2e83592cc7142635bbd7713c03ce5bb9946f64f5c46aa5bba16d3666094aa57",
+  "artifacts": {
+    "rg": "a9a747042fd77d6f6c9689f7b2648a7721cc60cd5300b1b928474b0f4f89f75d",
+    "librg_class_dispatch.so": "78977a7ebfee4203ce624189ee04fc6fb74bbc41b95a530c79fbfbcd70f7db42",
+    "rg-class-worker": "03101117059e0e6ec11d5252d931a1164a84aced617392a1508bf7a2dc9dc3f6"
+  },
+  "preserved_executable_sections": {
+    ".text": {
+      "address": 1187840,
+      "bytes": 2466640,
+      "sha256": "5f73dafba383ea7b0886e51e5200ead7dc0d10835df162a8852de2e0dcb505e7"
+    },
+    ".init": {
+      "address": 3654480,
+      "bytes": 27,
+      "sha256": "5c0759cab1a67c9e7c674fb238a6a10533f99c7aa44f75df27b6773decc823f7"
+    },
+    ".fini": {
+      "address": 3654508,
+      "bytes": 13,
+      "sha256": "6a4f3e5efc7c1f7ee7d6f21afd9ed040ba1d7f0b97bb12b016f5b176cc558bd8"
+    },
+    ".plt": {
+      "address": 3654528,
+      "bytes": 32,
+      "sha256": "77627f39fa8ca55d4aecc5a61d527c6b53ce9c13b279bf1ae97c15df73ed607e"
+    }
+  }
+}

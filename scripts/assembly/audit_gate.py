@@ -42,6 +42,8 @@ def main():
             problems.append('Baseline controls are not identical')
     if runs[0]['seed'] == runs[1]['seed'] or runs[0]['reverse'] == runs[1]['reverse']:
         problems.append('Sessions must use distinct seeds and opposite case order')
+    if runs[0].get('artifacts', {}) != runs[1].get('artifacts', {}):
+        problems.append('Companion artifacts differ between sessions')
     print(json.dumps({'validation_errors': problems,
                       'sessions': {str(path):dict(collections.Counter(c.get('verdict', 'INCOMPLETE') for c in run['cases']))
                                    for path,run in zip(args.sessions,runs)}}, indent=2))

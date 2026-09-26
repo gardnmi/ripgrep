@@ -16,6 +16,7 @@ def main():
     p.add_argument('--binary', action='append', required=True, help='label=path')
     p.add_argument('--output', type=Path, required=True)
     p.add_argument('--rounds', type=int, default=5)
+    p.add_argument('--case', action='append')
     args = p.parse_args()
     binaries = {label:Path(path).resolve() for label,path in (x.split('=',1) for x in args.binary)}
     env = {k:v for k,v in os.environ.items() if not k.startswith('RG_') and k != 'RIPGREP_CONFIG_PATH'}
@@ -24,7 +25,8 @@ def main():
     os.sched_setaffinity(0, {4})
     perf = ROOT/'target/machine/tools/usr/bin/perf'
     manifest = json.loads((ROOT/'benchmarks/assembly/audit/manifest.json').read_text())
-    names = ['literal-count', 'literal-only-offset', 'literal-dense', 'unicode-literal', 'subtitles-alpha30']
+    names = args.case or ['literal-count', 'literal-only-offset', 'literal-dense', 'unicode-literal', 'subtitles-alpha30']
+    assert set(names) <= {c['name'] for c in manifest['cases']}
     cases = [c for c in manifest['cases'] if c['name'] in names]
     result = {'purpose':'Counter diagnostic, not wall-time acceptance', 'cpu_affinity':[4],
               'seed':187421, 'rounds':args.rounds,

@@ -75,9 +75,10 @@ impl RegexMatcherBuilder {
         let regex = self.build_from_hir(chir)?;
         Ok(match run {
             None => AcceleratedMatcher::Standard(regex),
-            Some(run) => {
-                AcceleratedMatcher::Class(ClassMatcher { regex, run })
-            }
+            Some(run) => AcceleratedMatcher::Class(Box::new(ClassMatcher {
+                regex,
+                run,
+            })),
         })
     }
 
@@ -619,7 +620,7 @@ pub enum AcceleratedMatcher {
     /// The ordinary regex engine, with no class-scanner check in its hot loop.
     Standard(RegexMatcher),
     /// A pure ASCII repetition with a specialized line-candidate scanner.
-    Class(ClassMatcher),
+    Class(Box<ClassMatcher>),
 }
 
 /// A class scanner paired with the normal engine for full spans and captures.

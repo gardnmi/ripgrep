@@ -1,0 +1,8 @@
+{
+  "result": "PASS",
+  "command": "CARGO_BUILD_JOBS=2 CARGO_TARGET_DIR=target/audit-candidate RUSTFLAGS=\"-C target-cpu=znver4\" cargo test --locked --workspace --features experimental-class",
+  "passed": 1236,
+  "failed": 0,
+  "ignored": 3,
+  "groups": 27
+}

@@ -193,7 +193,7 @@ impl SearchResult {
 pub(crate) enum PatternMatcher {
     RustRegex(grep::regex::RegexMatcher),
     #[cfg(feature = "experimental-class")]
-    ClassRegex(grep::regex::ClassMatcher),
+    ClassRegex(Box<grep::regex::ClassMatcher>),
     #[cfg(feature = "pcre2")]
     PCRE2(grep::pcre2::RegexMatcher),
 }
@@ -348,7 +348,9 @@ impl<W: WriteColor> SearchWorker<W> {
         match self.matcher {
             RustRegex(ref m) => search_path(m, searcher, printer, path),
             #[cfg(feature = "experimental-class")]
-            ClassRegex(ref m) => search_path(m, searcher, printer, path),
+            ClassRegex(ref m) => {
+                search_path(m.as_ref(), searcher, printer, path)
+            }
             #[cfg(feature = "pcre2")]
             PCRE2(ref m) => search_path(m, searcher, printer, path),
         }
@@ -375,7 +377,7 @@ impl<W: WriteColor> SearchWorker<W> {
             RustRegex(ref m) => search_reader(m, searcher, printer, path, rdr),
             #[cfg(feature = "experimental-class")]
             ClassRegex(ref m) => {
-                search_reader(m, searcher, printer, path, rdr)
+                search_reader(m.as_ref(), searcher, printer, path, rdr)
             }
             #[cfg(feature = "pcre2")]
             PCRE2(ref m) => search_reader(m, searcher, printer, path, rdr),

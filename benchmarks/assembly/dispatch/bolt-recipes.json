@@ -1,0 +1,80 @@
+[
+  {
+    "recipe": "blocks",
+    "label": "upstream",
+    "command": [
+      "/home/gardnmi/Projects/ripgrep/target/dispatch-experiment/bolt-tools/usr/lib/llvm-22/bin/llvm-bolt",
+      "/home/gardnmi/Projects/ripgrep/target/dispatch-experiment/rg-upstream-relocs",
+      "-o",
+      "/home/gardnmi/Projects/ripgrep/target/dispatch-experiment/rg-upstream-bolt-blocks",
+      "-data=/home/gardnmi/Projects/ripgrep/target/dispatch-experiment/upstream.fdata",
+      "-reorder-blocks=ext-tsp"
+    ]
+  },
+  {
+    "recipe": "blocks",
+    "label": "dispatch",
+    "command": [
+      "/home/gardnmi/Projects/ripgrep/target/dispatch-experiment/bolt-tools/usr/lib/llvm-22/bin/llvm-bolt",
+      "/home/gardnmi/Projects/ripgrep/target/dispatch-experiment/rg-dispatch-relocs",
+      "-o",
+      "/home/gardnmi/Projects/ripgrep/target/dispatch-experiment/rg-dispatch-bolt-blocks",
+      "-data=/home/gardnmi/Projects/ripgrep/target/dispatch-experiment/dispatch.fdata",
+      "-reorder-blocks=ext-tsp"
+    ]
+  },
+  {
+    "recipe": "layout",
+    "label": "upstream",
+    "command": [
+      "/home/gardnmi/Projects/ripgrep/target/dispatch-experiment/bolt-tools/usr/lib/llvm-22/bin/llvm-bolt",
+      "/home/gardnmi/Projects/ripgrep/target/dispatch-experiment/rg-upstream-relocs",
+      "-o",
+      "/home/gardnmi/Projects/ripgrep/target/dispatch-experiment/rg-upstream-bolt-layout",
+      "-data=/home/gardnmi/Projects/ripgrep/target/dispatch-experiment/upstream.fdata",
+      "-reorder-blocks=ext-tsp",
+      "-reorder-functions=cdsort"
+    ]
+  },
+  {
+    "recipe": "layout",
+    "label": "dispatch",
+    "command": [
+      "/home/gardnmi/Projects/ripgrep/target/dispatch-experiment/bolt-tools/usr/lib/llvm-22/bin/llvm-bolt",
+      "/home/gardnmi/Projects/ripgrep/target/dispatch-experiment/rg-dispatch-relocs",
+      "-o",
+      "/home/gardnmi/Projects/ripgrep/target/dispatch-experiment/rg-dispatch-bolt-layout",
+      "-data=/home/gardnmi/Projects/ripgrep/target/dispatch-experiment/dispatch.fdata",
+      "-reorder-blocks=ext-tsp",
+      "-reorder-functions=cdsort"
+    ]
+  },
+  {
+    "recipe": "lite",
+    "label": "upstream",
+    "command": [
+      "/home/gardnmi/Projects/ripgrep/target/dispatch-experiment/bolt-tools/usr/lib/llvm-22/bin/llvm-bolt",
+      "/home/gardnmi/Projects/ripgrep/target/dispatch-experiment/rg-upstream-relocs",
+      "-o",
+      "/home/gardnmi/Projects/ripgrep/target/dispatch-experiment/rg-upstream-bolt-lite",
+      "-data=/home/gardnmi/Projects/ripgrep/target/dispatch-experiment/upstream.fdata",
+      "-reorder-blocks=ext-tsp",
+      "-reorder-functions=cdsort",
+      "-lite"
+    ]
+  },
+  {
+    "recipe": "lite",
+    "label": "dispatch",
+    "command": [
+      "/home/gardnmi/Projects/ripgrep/target/dispatch-experiment/bolt-tools/usr/lib/llvm-22/bin/llvm-bolt",
+      "/home/gardnmi/Projects/ripgrep/target/dispatch-experiment/rg-dispatch-relocs",
+      "-o",
+      "/home/gardnmi/Projects/ripgrep/target/dispatch-experiment/rg-dispatch-bolt-lite",
+      "-data=/home/gardnmi/Projects/ripgrep/target/dispatch-experiment/dispatch.fdata",
+      "-reorder-blocks=ext-tsp",
+      "-reorder-functions=cdsort",
+      "-lite"
+    ]
+  }
+]

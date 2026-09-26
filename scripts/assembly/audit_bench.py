@@ -76,6 +76,7 @@ def main():
     p.add_argument('--candidate', type=Path, required=True)
     p.add_argument('--diagnostic', type=Path)
     p.add_argument('--reference', type=Path, help='Additional baseline the candidate must also pass.')
+    p.add_argument('--artifact', type=Path, action='append', default=[], help='Hash and freeze companion binaries/libraries.')
     p.add_argument('--output', type=Path, required=True)
     p.add_argument('--samples', type=int, default=9)
     p.add_argument('--seed', type=int, default=916253)
@@ -119,6 +120,7 @@ def main():
         'kernel': os.uname().release, 'seed': args.seed, 'reverse': args.reverse,
         'samples': args.samples, 'subset': args.case, 'memory_limits': limits,
         'binaries': {m: {'path':str(binary), 'sha256':digest(binary)} for m,binary in modes.items()},
+        'artifacts': {str(path.resolve()):digest(path) for path in args.artifact},
         'control_rule': 'Inconclusive when either paired baseline-versus-baseline comparison FAILs; all intervals retained.',
         'cases': [], 'status': 'running',
     }
@@ -198,6 +200,7 @@ def main():
         save()
         print(case['name'], entry['verdict'], {m:round(c['elapsed_ratio'],4) for m,c in entry['comparisons'].items()},
               'warm_io='+str(entry['warm_io']), 'control_noise='+str(entry['unstable_controls']), flush=True)
+    assert all(digest(Path(path)) == sha for path,sha in result['artifacts'].items()), 'A companion artifact changed during timing'
     result['memory_events'] = (group/'memory.events').read_text()
     result['memory_peak_bytes'] = int((group/'memory.peak').read_text())
     result['status'] = 'complete'
