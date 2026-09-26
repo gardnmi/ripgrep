@@ -163,3 +163,9 @@ merely because benchmark collection completed successfully.
 
 The scripts, protocol, inputs and binaries have recorded hashes. Retain failed
 sessions when testing a future fix; rerun the entire matrix for the new binary.
+
+The exact collector used for these observations is preserved at
+[commit `d40bddd`](https://github.com/gardnmi/ripgrep/blob/d40bddd456f016e0e4fd3f0dcb906600b6508526/scripts/assembly/audit_bench.py).
+A subsequent classification fix makes any I/O-affected or unstable-control case
+inconclusive, including an apparent slowdown. This changes none of the recorded
+243 case decisions; the original samples and collector hashes remain intact.

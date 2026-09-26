@@ -1,10 +1,10 @@
 # Complete performance results
 
-Elapsed time per invocation, including startup; lower is better. 
-Positive percentages are slowdowns. Intervals are paired bootstrap 
-95% intervals for elapsed-time change. They are per-case intervals, 
-not simultaneous confidence across the whole suite. All observations 
-remain in the linked JSON files. PASS permits the predeclared practical 
+Elapsed time per invocation, including startup; lower is better.
+Positive percentages are slowdowns. Intervals are paired bootstrap
+95% intervals for elapsed-time change. They are per-case intervals,
+not simultaneous confidence across the whole suite. All observations
+remain in the linked JSON files. PASS permits the predeclared practical
 margin; it does not mean exactly zero slowdown.
 
 Session A: [session-a.json](session-a.json); seed 417225; 15 paired rounds; reverse order False. 57 PASS, 2 FAIL, 22 INCONCLUSIVE.
@@ -120,4 +120,3 @@ oom_kill 0
 oom_group_kill 0
 sock_throttled 0
 ```
-

@@ -183,7 +183,8 @@ def main():
         entry['warm_io'] = case['cache'] == 'warm' and any(c['input_blocks'] or c['major_faults'] for rows in entry['resources'].values() for c in rows)
         entry['unstable_controls'] = any(c['verdict'] == 'FAIL' for c in entry['controls'])
         entry['verdict'] = entry['comparisons']['candidate']['verdict']
-        if entry['verdict'] != 'FAIL' and (entry['warm_io'] or entry['unstable_controls']):
+        # Contamination prevents attributing even an apparent loss to the build.
+        if entry['warm_io'] or entry['unstable_controls']:
             entry['verdict'] = 'INCONCLUSIVE'
         save()
         print(case['name'], entry['verdict'], {m:round(c['elapsed_ratio'],4) for m,c in entry['comparisons'].items()},
