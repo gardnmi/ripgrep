@@ -38,6 +38,20 @@ def main():
             fields += [f"{c['baseline_ms']:.3f}", f"{c['candidate_ms']:.3f}",
                        f"{(c['elapsed_ratio']-1)*100:+.2f} [{low:+.2f}, {high:+.2f}]", case['verdict']]
         rows.append('| ' + ' | '.join(fields) + ' |')
+    if any('reference_comparison' in c for r in runs for c in r['cases']):
+        rows += ['', '## Additional native reference', '',
+                 'The candidate must also pass against this unmodified reference. ',
+                 'These comparisons use the same paired rounds.', '',
+                 '| Workload | A reference ms | A candidate change %, 95% interval | A verdict | B reference ms | B candidate change %, 95% interval | B verdict |',
+                 '| --- | ---: | --- | --- | ---: | --- | --- |']
+        for name in maps[0]:
+            fields = [name]
+            for cases in maps:
+                c = cases[name]['reference_comparison']
+                low,high = [(r-1)*100 for r in c['ratio_ci95']]
+                fields += [f"{c['baseline_ms']:.3f}",
+                           f"{(c['elapsed_ratio']-1)*100:+.2f} [{low:+.2f}, {high:+.2f}]", c['verdict']]
+            rows.append('| ' + ' | '.join(fields) + ' |')
     rows += ['', '## Measurement checks', '']
     for label, run in zip(['A','B'], runs):
         samples = sum(len(v) for c in run['cases'] for v in c['timings_ms'].values())

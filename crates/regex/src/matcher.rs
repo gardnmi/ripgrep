@@ -9,7 +9,11 @@ use {
     },
 };
 
-use crate::{config::Config, error::Error, literal::InnerLiterals};
+use crate::{
+    config::{Config, ConfiguredHIR},
+    error::Error,
+    literal::InnerLiterals,
+};
 
 /// A builder for constructing a `Matcher` using regular expressions.
 ///
@@ -54,6 +58,33 @@ impl RegexMatcherBuilder {
         &self,
         patterns: &[P],
     ) -> Result<RegexMatcher, Error> {
+        self.build_from_hir(self.configured_hir(patterns)?)
+    }
+
+    /// Select an experimental class matcher before entering a search loop.
+    ///
+    /// Ordinary patterns retain the standard matcher's data layout and methods.
+    /// Full match spans and captures still use the regular expression engine.
+    #[cfg(feature = "experimental-class")]
+    pub fn build_many_accelerated<P: AsRef<str>>(
+        &self,
+        patterns: &[P],
+    ) -> Result<AcceleratedMatcher, Error> {
+        let chir = self.configured_hir(patterns)?;
+        let run = class_run(chir.hir());
+        let regex = self.build_from_hir(chir)?;
+        Ok(match run {
+            None => AcceleratedMatcher::Standard(regex),
+            Some(run) => {
+                AcceleratedMatcher::Class(ClassMatcher { regex, run })
+            }
+        })
+    }
+
+    fn configured_hir<P: AsRef<str>>(
+        &self,
+        patterns: &[P],
+    ) -> Result<ConfiguredHIR, Error> {
         let mut chir = self.config.build_many(patterns)?;
         // 'whole_line' is a strict subset of 'word', so when it is enabled,
         // we don't need to both with any specific to word matching.
@@ -62,6 +93,13 @@ impl RegexMatcherBuilder {
         } else if chir.config().word {
             chir = chir.into_word();
         }
+        Ok(chir)
+    }
+
+    fn build_from_hir(
+        &self,
+        chir: ConfiguredHIR,
+    ) -> Result<RegexMatcher, Error> {
         let regex = chir.to_regex()?;
         log::trace!("final regex: {:?}", chir.hir().to_string());
 
@@ -85,10 +123,7 @@ impl RegexMatcherBuilder {
             _ => None,
         };
 
-        #[cfg(any(
-            feature = "experimental-asm",
-            feature = "experimental-class"
-        ))]
+        #[cfg(feature = "experimental-asm")]
         let class_run = class_run(chir.hir());
 
         // We override the line terminator in case the configured HIR doesn't
@@ -102,10 +137,7 @@ impl RegexMatcherBuilder {
             non_matching_bytes,
             #[cfg(feature = "experimental-asm")]
             asm_literal,
-            #[cfg(any(
-                feature = "experimental-asm",
-                feature = "experimental-class"
-            ))]
+            #[cfg(feature = "experimental-asm")]
             class_run,
             #[cfg(feature = "experimental-asm")]
             parallel_safe: parallel_safe(chir.hir()),
@@ -408,7 +440,7 @@ pub struct RegexMatcher {
     /// An opt-in exact-literal scanner, selected only after parsing all flags.
     #[cfg(feature = "experimental-asm")]
     asm_literal: Option<grep_asm::Literal>,
-    #[cfg(any(feature = "experimental-asm", feature = "experimental-class"))]
+    #[cfg(feature = "experimental-asm")]
     class_run: Option<grep_asm::ClassRun>,
     #[cfg(feature = "experimental-asm")]
     parallel_safe: bool,
@@ -537,10 +569,7 @@ impl Matcher for RegexMatcher {
         haystack: &[u8],
         at: usize,
     ) -> Result<Option<usize>, NoError> {
-        #[cfg(any(
-            feature = "experimental-asm",
-            feature = "experimental-class"
-        ))]
+        #[cfg(feature = "experimental-asm")]
         if let Some(ref run) = self.class_run {
             return Ok(run.shortest(&haystack[at..]).map(|end| at + end));
         }
@@ -580,6 +609,103 @@ impl Matcher for RegexMatcher {
                 self.shortest_match(haystack)?.map(LineMatchKind::Confirmed)
             }
         })
+    }
+}
+
+/// A matcher selected once after parsing all flags and pattern transformations.
+#[cfg(feature = "experimental-class")]
+#[derive(Clone, Debug)]
+pub enum AcceleratedMatcher {
+    /// The ordinary regex engine, with no class-scanner check in its hot loop.
+    Standard(RegexMatcher),
+    /// A pure ASCII repetition with a specialized line-candidate scanner.
+    Class(ClassMatcher),
+}
+
+/// A class scanner paired with the normal engine for full spans and captures.
+#[cfg(feature = "experimental-class")]
+#[derive(Clone, Debug)]
+pub struct ClassMatcher {
+    regex: RegexMatcher,
+    run: grep_asm::ClassRun,
+}
+
+#[cfg(feature = "experimental-class")]
+impl Matcher for ClassMatcher {
+    type Captures = RegexCaptures;
+    type Error = NoError;
+
+    #[inline]
+    fn find_at(
+        &self,
+        haystack: &[u8],
+        at: usize,
+    ) -> Result<Option<Match>, NoError> {
+        self.regex.find_at(haystack, at)
+    }
+
+    #[inline]
+    fn new_captures(&self) -> Result<RegexCaptures, NoError> {
+        self.regex.new_captures()
+    }
+
+    #[inline]
+    fn capture_count(&self) -> usize {
+        self.regex.capture_count()
+    }
+
+    #[inline]
+    fn capture_index(&self, name: &str) -> Option<usize> {
+        self.regex.capture_index(name)
+    }
+
+    #[inline]
+    fn captures_at(
+        &self,
+        haystack: &[u8],
+        at: usize,
+        caps: &mut RegexCaptures,
+    ) -> Result<bool, NoError> {
+        self.regex.captures_at(haystack, at, caps)
+    }
+
+    #[inline]
+    fn try_find_iter<F, E>(
+        &self,
+        haystack: &[u8],
+        matched: F,
+    ) -> Result<Result<(), E>, NoError>
+    where
+        F: FnMut(Match) -> Result<bool, E>,
+    {
+        self.regex.try_find_iter(haystack, matched)
+    }
+
+    #[inline]
+    fn shortest_match_at(
+        &self,
+        haystack: &[u8],
+        at: usize,
+    ) -> Result<Option<usize>, NoError> {
+        Ok(self.run.shortest(&haystack[at..]).map(|end| at + end))
+    }
+
+    #[inline]
+    fn non_matching_bytes(&self) -> Option<&ByteSet> {
+        self.regex.non_matching_bytes()
+    }
+
+    #[inline]
+    fn line_terminator(&self) -> Option<LineTerminator> {
+        self.regex.line_terminator()
+    }
+
+    #[inline]
+    fn find_candidate_line(
+        &self,
+        haystack: &[u8],
+    ) -> Result<Option<LineMatchKind>, NoError> {
+        Ok(self.run.shortest(haystack).map(LineMatchKind::Confirmed))
     }
 }
 
@@ -660,6 +786,46 @@ impl RegexCaptures {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[cfg(feature = "experimental-class")]
+    #[test]
+    fn accelerated_dispatch_preserves_spans_and_flags() {
+        let builder = RegexMatcherBuilder::new();
+        let selected =
+            builder.build_many_accelerated(&["[a-z]{3,8}"]).unwrap();
+        let AcceleratedMatcher::Class(m) = selected else {
+            // The feature remains usable when the CPU or environment declines it.
+            assert!(grep_asm::ClassRun::new(vec![(b'a', b'z')], 3).is_none());
+            return;
+        };
+        let haystack = b"!!abcdefghijk!";
+        assert_eq!(m.shortest_match(haystack).unwrap(), Some(5));
+        assert_eq!(m.find(haystack).unwrap(), Some(Match::new(2, 10)));
+        let mut caps = m.new_captures().unwrap();
+        assert!(m.captures(haystack, &mut caps).unwrap());
+        assert_eq!(caps.get(0), Some(Match::new(2, 10)));
+        let mut found = vec![];
+        m.find_iter(haystack, |matched| {
+            found.push(matched);
+            true
+        })
+        .unwrap();
+        assert_eq!(found, vec![Match::new(2, 10), Match::new(10, 13)]);
+
+        for pattern in ["normal", "^[a-z]{3}", "([a-z]{3})", "[a-zα-ω]{3}"] {
+            assert!(matches!(
+                builder.build_many_accelerated(&[pattern]).unwrap(),
+                AcceleratedMatcher::Standard(_)
+            ));
+        }
+        assert!(matches!(
+            RegexMatcherBuilder::new()
+                .word(true)
+                .build_many_accelerated(&["[a-z]{3}"])
+                .unwrap(),
+            AcceleratedMatcher::Standard(_)
+        ));
+    }
 
     // Test that enabling word matches does the right thing and demonstrate
     // the difference between it and surrounding the regex in `\b`.

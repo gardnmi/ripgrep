@@ -1,0 +1,1529 @@
+{
+  "purpose": "Counter diagnostic, not wall-time acceptance",
+  "cpu_affinity": [
+    4
+  ],
+  "seed": 187421,
+  "rounds": 5,
+  "binaries": {
+    "upstream": {
+      "path": "/home/gardnmi/Projects/ripgrep/target/machine/rg-upstream-native",
+      "sha256": "bc5b2c5fa5e3fcb28fc38fd31ef24a1ee10bc4bf982c93f17010359f4cb45d84"
+    },
+    "fork-default": {
+      "path": "/home/gardnmi/Projects/ripgrep/target/dispatch-experiment/rg-fork-default",
+      "sha256": "037289f2b6ccc9903eb390905eb8aa4d2743f017d3a3eb5e3c75d6df73f743ee"
+    },
+    "class-initial": {
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/rg-class-initial",
+      "sha256": "bc13dbd0537953239d04c8e304d8c7cce3afc9338c5f8c80fa78548369f923bd"
+    }
+  },
+  "cases": [
+    {
+      "name": "literal-dense",
+      "samples": {
+        "upstream": [
+          {
+            "cycles:u": {
+              "count": 98160400.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 358531453.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 70088811.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 89574.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 91113971.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 358534000.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 70088173.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 89549.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 90693333.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 358527326.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 70087514.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 89619.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 90713629.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 358531684.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 70088320.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 90286.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 90938854.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 358529705.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 70087771.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 89546.0,
+              "running_percent": 100.0
+            }
+          }
+        ],
+        "fork-default": [
+          {
+            "cycles:u": {
+              "count": 91818945.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 358529172.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 70088207.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 89720.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 103198614.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 358536747.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 70089084.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 89406.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 92497110.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 358526715.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 70087637.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 89915.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 90977036.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 358532104.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 70088791.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 89699.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 109769095.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 358525230.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 70087672.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 90991.0,
+              "running_percent": 100.0
+            }
+          }
+        ],
+        "class-initial": [
+          {
+            "cycles:u": {
+              "count": 100534446.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 360710744.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 70524441.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 91557.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 95712445.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 360709335.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 70523846.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 90116.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 96641410.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 360710941.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 70524323.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 90291.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 96110734.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 360705866.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 70523018.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 90108.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 97926713.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 360699335.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 70522127.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 89778.0,
+              "running_percent": 100.0
+            }
+          }
+        ]
+      },
+      "medians": {
+        "upstream": {
+          "cycles:u": 90938854.0,
+          "instructions:u": 358531453.0,
+          "branches:u": 70088173.0,
+          "branch-misses:u": 89574.0
+        },
+        "fork-default": {
+          "cycles:u": 92497110.0,
+          "instructions:u": 358529172.0,
+          "branches:u": 70088207.0,
+          "branch-misses:u": 89720.0
+        },
+        "class-initial": {
+          "cycles:u": 96641410.0,
+          "instructions:u": 360709335.0,
+          "branches:u": 70523846.0,
+          "branch-misses:u": 90116.0
+        }
+      }
+    },
+    {
+      "name": "literal-count",
+      "samples": {
+        "upstream": [
+          {
+            "cycles:u": {
+              "count": 55230125.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 239762853.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 46734366.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 43243.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 53496996.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 239762244.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 46734468.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 43428.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 52857041.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 239770330.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 46735648.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 43277.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 52475030.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 239763902.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 46734470.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 43680.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 52353897.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 239761885.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 46734508.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 43249.0,
+              "running_percent": 100.0
+            }
+          }
+        ],
+        "fork-default": [
+          {
+            "cycles:u": {
+              "count": 52804346.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 239759577.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 46734074.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 43398.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 52861694.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 239766662.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 46735088.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 43547.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 52512117.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 239773512.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 46736840.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 43379.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 52510843.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 239770334.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 46735276.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 43530.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 53067690.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 239764609.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 46734972.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 42916.0,
+              "running_percent": 100.0
+            }
+          }
+        ],
+        "class-initial": [
+          {
+            "cycles:u": {
+              "count": 57014268.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 243248239.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 47170280.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 43149.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 66369098.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 243244811.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 47169373.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 43816.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 56960810.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 243247787.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 47170340.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 43563.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 57831300.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 243245535.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 47169722.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 43860.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 56987609.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 243247656.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 47169949.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 43152.0,
+              "running_percent": 100.0
+            }
+          }
+        ]
+      },
+      "medians": {
+        "upstream": {
+          "cycles:u": 52857041.0,
+          "instructions:u": 239762853.0,
+          "branches:u": 46734470.0,
+          "branch-misses:u": 43277.0
+        },
+        "fork-default": {
+          "cycles:u": 52804346.0,
+          "instructions:u": 239766662.0,
+          "branches:u": 46735088.0,
+          "branch-misses:u": 43398.0
+        },
+        "class-initial": {
+          "cycles:u": 57014268.0,
+          "instructions:u": 243247656.0,
+          "branches:u": 47169949.0,
+          "branch-misses:u": 43563.0
+        }
+      }
+    },
+    {
+      "name": "literal-only-offset",
+      "samples": {
+        "upstream": [
+          {
+            "cycles:u": {
+              "count": 180508450.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 847885216.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 158743245.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 52263.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 179983492.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 847870614.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 158739440.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 52783.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 182500673.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 847872528.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 158740560.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 52678.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 182114007.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 847873009.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 158740416.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 52324.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 259492116.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 847874026.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 158740595.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 53304.0,
+              "running_percent": 100.0
+            }
+          }
+        ],
+        "fork-default": [
+          {
+            "cycles:u": {
+              "count": 182422523.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 847873876.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 158740994.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 52429.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 184087625.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 847867955.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 158739666.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 52767.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 181918234.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 847869376.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 158739589.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 52489.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 180059185.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 847875614.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 158741017.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 53077.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 238764590.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 847875268.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 158740284.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 53295.0,
+              "running_percent": 100.0
+            }
+          }
+        ],
+        "class-initial": [
+          {
+            "cycles:u": {
+              "count": 203325527.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 850050168.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 159176260.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 53779.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 202384089.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 850049097.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 159175651.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 53196.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 199758716.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 850047441.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 159175958.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 53062.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 204604186.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 850051975.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 159176430.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 53866.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 283445341.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 850044723.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 159175160.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 53140.0,
+              "running_percent": 100.0
+            }
+          }
+        ]
+      },
+      "medians": {
+        "upstream": {
+          "cycles:u": 182114007.0,
+          "instructions:u": 847873009.0,
+          "branches:u": 158740560.0,
+          "branch-misses:u": 52678.0
+        },
+        "fork-default": {
+          "cycles:u": 182422523.0,
+          "instructions:u": 847873876.0,
+          "branches:u": 158740284.0,
+          "branch-misses:u": 52767.0
+        },
+        "class-initial": {
+          "cycles:u": 203325527.0,
+          "instructions:u": 850049097.0,
+          "branches:u": 159175958.0,
+          "branch-misses:u": 53196.0
+        }
+      }
+    },
+    {
+      "name": "unicode-literal",
+      "samples": {
+        "upstream": [
+          {
+            "cycles:u": {
+              "count": 29655040.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 128242362.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 24431400.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 29047.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 29939796.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 128245726.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 24432748.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 29058.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 29531795.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 128254340.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 24434672.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 29070.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 29734358.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 128254901.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 24434314.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 28937.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 29427803.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 128250086.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 24433349.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 29238.0,
+              "running_percent": 100.0
+            }
+          }
+        ],
+        "fork-default": [
+          {
+            "cycles:u": {
+              "count": 30591365.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 128245123.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 24431959.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 28886.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 29505239.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 128251272.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 24433919.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 29075.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 30181761.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 128245399.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 24432216.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 29071.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 29404381.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 128244373.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 24432139.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 28994.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 30615512.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 128244903.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 24432545.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 29026.0,
+              "running_percent": 100.0
+            }
+          }
+        ],
+        "class-initial": [
+          {
+            "cycles:u": {
+              "count": 32291418.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 130010541.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 24652787.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 28961.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 31977938.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 130008824.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 24653002.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 28738.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 34428020.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 130011907.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 24652991.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 28734.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 32160849.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 130014424.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 24653520.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 28917.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 33682376.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 130015214.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 24653420.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 29160.0,
+              "running_percent": 100.0
+            }
+          }
+        ]
+      },
+      "medians": {
+        "upstream": {
+          "cycles:u": 29655040.0,
+          "instructions:u": 128250086.0,
+          "branches:u": 24433349.0,
+          "branch-misses:u": 29058.0
+        },
+        "fork-default": {
+          "cycles:u": 30181761.0,
+          "instructions:u": 128245123.0,
+          "branches:u": 24432216.0,
+          "branch-misses:u": 29026.0
+        },
+        "class-initial": {
+          "cycles:u": 32291418.0,
+          "instructions:u": 130011907.0,
+          "branches:u": 24653002.0,
+          "branch-misses:u": 28917.0
+        }
+      }
+    },
+    {
+      "name": "subtitles-alpha30",
+      "samples": {
+        "upstream": [
+          {
+            "cycles:u": {
+              "count": 827048716.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 1044840583.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 202295352.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 33336.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 827662896.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 1044836889.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 202294512.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 33782.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 827362558.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 1044846755.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 202296551.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 33199.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 827651653.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 1044836042.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 202293851.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 33441.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 827045496.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 1044843535.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 202295160.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 33427.0,
+              "running_percent": 100.0
+            }
+          }
+        ],
+        "fork-default": [
+          {
+            "cycles:u": {
+              "count": 827039998.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 1044832938.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 202293124.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 33154.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 827314331.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 1044842328.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 202295031.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 33679.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 826886851.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 1044842341.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 202295176.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 33557.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 827210526.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 1044834765.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 202293924.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 33281.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 827590493.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 1044833575.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 202293496.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 33387.0,
+              "running_percent": 100.0
+            }
+          }
+        ],
+        "class-initial": [
+          {
+            "cycles:u": {
+              "count": 36483450.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 205979567.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 26134041.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 32306.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 37022434.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 205984052.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 26134806.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 32797.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 40087025.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 205971927.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 26132481.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 32318.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 39510995.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 205983342.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 26134915.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 32494.0,
+              "running_percent": 100.0
+            }
+          },
+          {
+            "cycles:u": {
+              "count": 38344747.0,
+              "running_percent": 100.0
+            },
+            "instructions:u": {
+              "count": 205980274.0,
+              "running_percent": 100.0
+            },
+            "branches:u": {
+              "count": 26133722.0,
+              "running_percent": 100.0
+            },
+            "branch-misses:u": {
+              "count": 32420.0,
+              "running_percent": 100.0
+            }
+          }
+        ]
+      },
+      "medians": {
+        "upstream": {
+          "cycles:u": 827362558.0,
+          "instructions:u": 1044840583.0,
+          "branches:u": 202295160.0,
+          "branch-misses:u": 33427.0
+        },
+        "fork-default": {
+          "cycles:u": 827210526.0,
+          "instructions:u": 1044834765.0,
+          "branches:u": 202293924.0,
+          "branch-misses:u": 33387.0
+        },
+        "class-initial": {
+          "cycles:u": 38344747.0,
+          "instructions:u": 205980274.0,
+          "branches:u": 26134041.0,
+          "branch-misses:u": 32420.0
+        }
+      }
+    }
+  ]
+}

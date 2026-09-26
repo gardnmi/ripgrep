@@ -1,0 +1,27 @@
+{
+  "source": "https://apt.llvm.org/bookworm/",
+  "packages": [
+    {
+      "Package": "bolt-22",
+      "Version": "1:22.1.8~++20260714014842+ca7933e47d3a-1~exp1~20260714134950.86",
+      "Filename": "pool/main/l/llvm-toolchain-22/bolt-22_22.1.8~++20260714014842+ca7933e47d3a-1~exp1~20260714134950.86_amd64.deb",
+      "Size": "37015136",
+      "SHA256": "d692bf9ffc5d02973ca756c323a180daa51480443607885c7322efec0f148b23"
+    },
+    {
+      "Package": "libbolt-22-dev",
+      "Version": "1:22.1.8~++20260714014842+ca7933e47d3a-1~exp1~20260714134950.86",
+      "Filename": "pool/main/l/llvm-toolchain-22/libbolt-22-dev_22.1.8~++20260714014842+ca7933e47d3a-1~exp1~20260714134950.86_amd64.deb",
+      "Size": "68500",
+      "SHA256": "fa804ca7bfebbff7e773c088f1ff60d1216a2c1f444e4efb65675914c97c3f5e"
+    }
+  ],
+  "runtime_dependency": {
+    "source": "https://deb.debian.org/debian/",
+    "Package": "libz3-4",
+    "Version": "4.8.12-3.1",
+    "Filename": "pool/main/z/z3/libz3-4_4.8.12-3.1_amd64.deb",
+    "Size": "7216172",
+    "SHA256": "6221ca25ad5abcfbe1965801029d85a88b4775320384b4b716de8fab7a4d2f7a"
+  }
+}

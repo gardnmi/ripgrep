@@ -1,0 +1,153 @@
+{
+  "label": "dispatch",
+  "input_sha256": "e80171e1cd162eb193b8ed71adff06b8823df6c5fc80235a0d3e9c35eda6b8c4",
+  "output_sha256": "b6fa9bd67e0363f93a0cc1d3fb21ebda78e689f22eb37a257bcf32de9c24bfed",
+  "profile_sha256": "44d32815c5adb8357ec1a608a64e98786f05df6f464f24f0dce778596fcf9815",
+  "training_jobs": [
+    [
+      "text",
+      [
+        "[A-Za-z]{24}"
+      ]
+    ],
+    [
+      "text",
+      [
+        "[A-Fa-f0-9]{11}"
+      ]
+    ],
+    [
+      "text",
+      [
+        "[0-9]{6}"
+      ]
+    ],
+    [
+      "text",
+      [
+        "-n",
+        "Sherlock"
+      ]
+    ],
+    [
+      "text",
+      [
+        "-w",
+        "Sherlock [A-Z]\\w+"
+      ]
+    ],
+    [
+      "text",
+      [
+        "the"
+      ]
+    ],
+    [
+      "text",
+      [
+        "-c",
+        "the"
+      ]
+    ],
+    [
+      "text",
+      [
+        "-o",
+        "-b",
+        "the"
+      ]
+    ],
+    [
+      "text",
+      [
+        "-i",
+        "Sherlock"
+      ]
+    ],
+    [
+      "text",
+      [
+        "-c",
+        "\\w+"
+      ]
+    ],
+    [
+      "logs",
+      [
+        "-n",
+        "INFO"
+      ]
+    ],
+    [
+      "logs",
+      [
+        "-n",
+        "ERROR"
+      ]
+    ],
+    [
+      "logs",
+      [
+        "-c",
+        "INFO"
+      ]
+    ],
+    [
+      "logs",
+      [
+        "-o",
+        "-b",
+        "INFO"
+      ]
+    ],
+    [
+      "logs",
+      [
+        "-c",
+        "^[A-Za-z]+"
+      ]
+    ],
+    [
+      "logs",
+      [
+        "-C",
+        "2",
+        "ERROR"
+      ]
+    ]
+  ],
+  "training_inputs": {
+    "logs": {
+      "sha256": "4966044a3bf5486f681e37b388c283d28e1a33fd4b80dde70f54eb125544d2ed",
+      "bytes": 33554463
+    },
+    "text": {
+      "sha256": "809cbbd34af11da535de0b83803bad6941ccb3dd2c0760240908426c509e1ab2",
+      "bytes": 33554490
+    }
+  },
+  "instrument_command": [
+    "/home/gardnmi/Projects/ripgrep/target/dispatch-experiment/bolt-tools/usr/lib/llvm-22/bin/llvm-bolt",
+    "/home/gardnmi/Projects/ripgrep/target/dispatch-experiment/rg-dispatch-relocs",
+    "-instrument",
+    "-instrumentation-file=/home/gardnmi/Projects/ripgrep/target/dispatch-experiment/bolt-profile-dispatch/run",
+    "-instrumentation-file-append-pid",
+    "-runtime-instrumentation-lib=/home/gardnmi/Projects/ripgrep/target/dispatch-experiment/bolt-tools/usr/lib/llvm-22/lib/libbolt_rt_instr.a",
+    "-o",
+    "/home/gardnmi/Projects/ripgrep/target/dispatch-experiment/rg-dispatch-instrumented"
+  ],
+  "optimize_command": [
+    "/home/gardnmi/Projects/ripgrep/target/dispatch-experiment/bolt-tools/usr/lib/llvm-22/bin/llvm-bolt",
+    "/home/gardnmi/Projects/ripgrep/target/dispatch-experiment/rg-dispatch-relocs",
+    "-o",
+    "/home/gardnmi/Projects/ripgrep/target/dispatch-experiment/rg-dispatch-bolt",
+    "-data=/home/gardnmi/Projects/ripgrep/target/dispatch-experiment/dispatch.fdata",
+    "-reorder-blocks=ext-tsp",
+    "-reorder-functions=cdsort",
+    "-split-functions",
+    "-split-all-cold",
+    "-split-eh",
+    "-dyno-stats"
+  ],
+  "bolt_version": "Debian LLVM version 22.1.8\n  Optimized build.\nBOLT revision <unknown>\n\n  Registered Targets:\n    aarch64    - AArch64 (little endian)\n    aarch64_32 - AArch64 (little endian ILP32)\n    aarch64_be - AArch64 (big endian)\n    arm64      - ARM64 (little endian)\n    arm64_32   - ARM64 (little endian ILP32)\n    riscv32    - 32-bit RISC-V\n    riscv32be  - 32-bit big endian RISC-V\n    riscv64    - 64-bit RISC-V\n    riscv64be  - 64-bit big endian RISC-V\n    x86        - 32-bit X86: Pentium-Pro and above\n    x86-64     - 64-bit X86: EM64T and AMD64\n"
+}

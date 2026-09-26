@@ -71,9 +71,11 @@ def verify(command, env, case):
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--manifest', type=Path, default=ROOT/'benchmarks/assembly/audit/manifest.json')
+    p.add_argument('--protocol', type=Path, default=ROOT/'benchmarks/assembly/audit/PLAN.md')
     p.add_argument('--baseline', type=Path, default=ROOT/'target/machine/rg-upstream-native')
     p.add_argument('--candidate', type=Path, required=True)
     p.add_argument('--diagnostic', type=Path)
+    p.add_argument('--reference', type=Path, help='Additional baseline the candidate must also pass.')
     p.add_argument('--output', type=Path, required=True)
     p.add_argument('--samples', type=int, default=9)
     p.add_argument('--seed', type=int, default=916253)
@@ -92,6 +94,8 @@ def main():
              'candidate': args.candidate.resolve()}
     if args.diagnostic:
         modes['diagnostic'] = args.diagnostic.resolve()
+    if args.reference:
+        modes['reference'] = args.reference.resolve()
     manifest = json.loads(args.manifest.read_text())
     for file, expected in manifest['inputs'].items():
         assert digest(Path(file)) == expected['sha256'], file
@@ -106,7 +110,7 @@ def main():
     result = {
         'recorded_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
         'manifest_sha256': digest(args.manifest),
-        'protocol_sha256': digest(ROOT/'benchmarks/assembly/audit/PLAN.md'),
+        'protocol_sha256': digest(args.protocol),
         'runner_sha256': digest(Path(__file__)),
         'candidate_parent': subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
         'working_diff_sha256': hashlib.sha256(subprocess.check_output(['git','diff'],cwd=ROOT)).hexdigest(),
@@ -183,6 +187,11 @@ def main():
         entry['warm_io'] = case['cache'] == 'warm' and any(c['input_blocks'] or c['major_faults'] for rows in entry['resources'].values() for c in rows)
         entry['unstable_controls'] = any(c['verdict'] == 'FAIL' for c in entry['controls'])
         entry['verdict'] = entry['comparisons']['candidate']['verdict']
+        if 'reference' in times:
+            entry['reference_comparison'] = comparison(times['reference'], times['candidate'])
+            verdicts = [entry['verdict'], entry['reference_comparison']['verdict']]
+            entry['verdict'] = ('FAIL' if 'FAIL' in verdicts else
+                                'INCONCLUSIVE' if 'INCONCLUSIVE' in verdicts else 'PASS')
         # Contamination prevents attributing even an apparent loss to the build.
         if entry['warm_io'] or entry['unstable_controls']:
             entry['verdict'] = 'INCONCLUSIVE'

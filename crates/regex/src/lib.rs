@@ -8,6 +8,9 @@ pub use crate::{
     matcher::{RegexCaptures, RegexMatcher, RegexMatcherBuilder},
 };
 
+#[cfg(feature = "experimental-class")]
+pub use crate::matcher::{AcceleratedMatcher, ClassMatcher};
+
 mod ast;
 mod ban;
 mod config;

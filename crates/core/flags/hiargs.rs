@@ -515,12 +515,27 @@ impl HiArgs {
         if !self.binary.is_none() {
             builder.ban_byte(Some(b'\x00'));
         }
-        let m = match builder.build_many(&self.patterns.patterns) {
+        #[cfg(feature = "experimental-class")]
+        let result = builder.build_many_accelerated(&self.patterns.patterns);
+        #[cfg(not(feature = "experimental-class"))]
+        let result = builder.build_many(&self.patterns.patterns);
+        let m = match result {
             Ok(m) => m,
             Err(err) => {
                 anyhow::bail!(suggest_text(suggest_multiline(err.to_string())))
             }
         };
+        #[cfg(feature = "experimental-class")]
+        {
+            use grep::regex::AcceleratedMatcher;
+            Ok(match m {
+                AcceleratedMatcher::Standard(m) => {
+                    PatternMatcher::RustRegex(m)
+                }
+                AcceleratedMatcher::Class(m) => PatternMatcher::ClassRegex(m),
+            })
+        }
+        #[cfg(not(feature = "experimental-class"))]
         Ok(PatternMatcher::RustRegex(m))
     }
 

@@ -13,6 +13,7 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('sessions', type=Path, nargs=2)
     p.add_argument('--manifest', type=Path, default=ROOT/'benchmarks/assembly/audit/manifest.json')
+    p.add_argument('--protocol', type=Path, default=ROOT/'benchmarks/assembly/audit/PLAN.md')
     args = p.parse_args()
     expected_names = {c['name'] for c in json.loads(args.manifest.read_text())['cases']}
     runs = [json.loads(path.read_text()) for path in args.sessions]
@@ -25,13 +26,15 @@ def main():
             problems.append(f'{path}: workload set differs')
         if run['manifest_sha256'] != digest(args.manifest):
             problems.append(f'{path}: input manifest differs')
-        if run['protocol_sha256'] != digest(ROOT/'benchmarks/assembly/audit/PLAN.md'):
+        if run['protocol_sha256'] != digest(args.protocol):
             problems.append(f'{path}: protocol differs')
         for case in run['cases']:
-            for mode in ['baseline-a', 'baseline-b', 'candidate']:
+            for mode in run['binaries']:
                 if len(case['timings_ms'][mode]) != run['samples'] or len(case['resources'][mode]) != run['samples']:
                     problems.append(f"{path}: {case['name']} has missing samples")
-    for mode in ['baseline-a', 'baseline-b', 'candidate']:
+    if runs[0]['binaries'].keys() != runs[1]['binaries'].keys():
+        problems.append('Binary comparison sets differ between sessions')
+    for mode in runs[0]['binaries'].keys() & runs[1]['binaries'].keys():
         if runs[0]['binaries'][mode]['sha256'] != runs[1]['binaries'][mode]['sha256']:
             problems.append(f'{mode}: binaries differ between sessions')
     for run in runs:
