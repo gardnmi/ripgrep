@@ -1,0 +1,15 @@
+{
+  "validation_errors": [],
+  "sessions": {
+    "benchmarks/assembly/dispatch/bundle-v2-session-a.json": {
+      "PASS": 64,
+      "INCONCLUSIVE": 16,
+      "FAIL": 1
+    },
+    "benchmarks/assembly/dispatch/bundle-v2-session-b.json": {
+      "PASS": 61,
+      "INCONCLUSIVE": 20
+    }
+  }
+}
+REJECT: measured regressions; do not promote this binary.

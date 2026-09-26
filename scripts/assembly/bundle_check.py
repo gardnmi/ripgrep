@@ -16,6 +16,7 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--bundle', type=Path, default=ROOT/'target/dispatch-experiment/bundle')
     p.add_argument('--baseline', type=Path, default=ROOT/'target/machine/rg-upstream-native')
+    p.add_argument('--without-library', action='store_true', help='The entry-stub bundle has only a launcher and worker.')
     p.add_argument('--output', type=Path, required=True)
     args = p.parse_args()
     env = {k:v for k,v in os.environ.items() if not k.startswith('RG_') and k != 'RIPGREP_CONFIG_PATH'}
@@ -25,7 +26,8 @@ def main():
         root = Path(tmp)
         launcher = root/'rg'
         shutil.copy2(args.bundle/'rg', launcher)
-        shutil.copy2(args.bundle/'librg_class_dispatch.so', root/'librg_class_dispatch.so')
+        if not args.without_library:
+            shutil.copy2(args.bundle/'librg_class_dispatch.so', root/'librg_class_dispatch.so')
         # A distinct exit proves execve was reached. This is only a test helper,
         # never the measured worker, and the real worker is restored below.
         source = root/'marker.c'
@@ -63,6 +65,9 @@ def main():
         base = ['--no-config','-c','[A-Za-z]{30}',str(text)]
         for extra in [{'RG_BUNDLE':'0'}, {'RG_CLASS':'0'}, {'RG_ASM':'0'}, {'RG_ASM':'rust'}]:
             route('disabled '+str(extra), base, False, extra)
+        if args.without_library:
+            for name in ['LD_PRELOAD','LD_AUDIT']:
+                route('loader control '+name,base,False,{name:str(root/'missing-loader.so')})
         route('config',base[1:],False,{'RIPGREP_CONFIG_PATH':str(config)})
         route('config explicitly ignored',base,True,{'RIPGREP_CONFIG_PATH':str(config)})
         route('combined short flags',['--no-config','-nc','[A-Za-z]{30}',str(text)],True)
@@ -103,6 +108,9 @@ def main():
         compare(base,{'RIPGREP_CONFIG_PATH':str(config)})
         for extra in [{'RG_BUNDLE':'0'},{'RG_CLASS':'0'},{'RG_ASM':'rust'}]:
             compare(base,extra)
+        if args.without_library:
+            for name in ['LD_PRELOAD','LD_AUDIT']:
+                compare(base,{name:str(root/'missing-loader.so')})
         # Actual FIFO producer/consumer output must agree with upstream. Use
         # a new writer for each invocation; bound the child timeout and join.
         fifo_checks = 0
@@ -127,10 +135,13 @@ def main():
             assert results[0] == results[1],results
             comparisons += 1
             fifo_checks += 1
+    artifacts = ['rg','rg-class-worker']
+    if not args.without_library:
+        artifacts.append('librg_class_dispatch.so')
     result = {'result':'PASS','route_checks':routes,'exact_comparisons':comparisons,
               'fifo_comparisons':fifo_checks,
               'baseline_sha256':digest(args.baseline),
-              'artifacts':{name:digest(args.bundle/name) for name in ['rg','librg_class_dispatch.so','rg-class-worker']}}
+              'artifacts':{name:digest(args.bundle/name) for name in artifacts}}
     args.output.write_text(json.dumps(result,indent=2)+'\n')
     print(f'PASS: {len(routes)} routing assertions, {comparisons} exact CLI comparisons')
 

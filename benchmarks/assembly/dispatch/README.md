@@ -1,9 +1,10 @@
 # Zen 4 follow-up: specialization, BOLT and a preserved-upstream bundle
 
 Experimental follow-up to the [failed acceptance audit](../audit/README.md).
-Native and BOLT integration attempts below are not approved as replacements.
-Bundle performance verification is in progress. The installed ripgrep is
-unchanged; this work remains in the personal fork, with no upstream PR.
+Native, BOLT and shared-library bundle attempts below are rejected or
+inconclusive. A new assembly-entry candidate has passed correctness checks and
+awaits performance measurement. The installed ripgrep is unchanged; this work
+remains in the personal fork, with no upstream PR.
 
 ## What changed and why
 
@@ -24,7 +25,8 @@ runtime branch alone did not meet the performance acceptance criterion.
 The class kernel now selects a function once per pattern, with the range count,
 case-folding mask and run-intersection depth fixed at compile time. AVX-512
 compares 64 input bytes at once, then integer bit operations find sufficiently
-long runs. Paired upper/lower ASCII intervals can share a comparison after
+long runs. It is written using Rust SIMD intrinsics, which the compiler lowers
+to vector instructions. Paired upper/lower ASCII intervals can share a comparison after
 OR-ing bit 0x20. Unpaired intervals still use original bytes; folding digits
 would incorrectly accept some control characters. There are 56 specialized
 kernel variants, with scalar differential tests covering boundary lengths,
@@ -34,7 +36,9 @@ On the eleven-case [specialized-kernel diagnostic](specialized-subset.json),
 the alpha/hex/digit workloads took approximately 16%, 21% and 18% less time
 than the preceding class implementation measured in the same rounds. Those
 are improvements to an already specialized experiment, not a general ripgrep
-speedup. The integrated binary still did not establish the regression bound.
+speedup. These three cases use a fixed **128 MiB subtitle holdout**, not the
+entire 13 GB README corpus. The integrated binary still did not establish the
+regression bound.
 
 ## Attempts that did not meet the gate
 
@@ -121,6 +125,51 @@ The broader CLI comparisons were repeated after this library change. V1's
 [general](bundle-cli-correctness.json), [machine](bundle-machine-correctness.json)
 and [routing](bundle-v1-correctness.json) check results are also retained.
 
+The repaired library bundle **fails acceptance**. Two complete 45-round sessions
+produced 64 PASS / 1 FAIL / 16 INCONCLUSIVE and 61 PASS / 0 FAIL / 20 INCONCLUSIVE.
+The captures/output case is +4.85% in session A, with its whole 95% interval
+above the margin (+4.39% to +5.27%). Session B's +3.83% median has an inconclusive
+interval. An offset-output case also has a +7.30% median in A, but its warm-cache
+major fault prevents attributing that result cleanly. These observations are
+retained, not discarded as outliers. See the [full two-session table](BUNDLE-RESULTS.md)
+and [gate output](bundle-gate.txt). Isolated major faults occurred even without
+recorded input blocks; the predeclared rule still marks them inconclusive.
+
+## Assembly entry prototype
+
+The next experiment is a 1,553-byte startup payload, including a small handwritten
+x86-64 entry routine and a freestanding C router. It needs no extra dynamic
+library or allocator calls. A build-time patch places it in an unused virtual
+address page before upstream's code. If the command is eligible, it probes the
+file with direct Linux syscalls and execs the same specialized worker. Otherwise
+it restores the original stack, flags and loader finalizer register, then jumps
+to upstream's original entry point. Loader-injected processes (`LD_PRELOAD` or
+`LD_AUDIT`) stay with upstream to avoid duplicated loader effects.
+
+The previous library patch changed dynamic metadata and added mappings beyond
+upstream's highest mapping. Those are plausible performance influences, not a
+proven sole cause of the observed regressions. The entry prototype preserves
+every original LOAD mapping, dynamic dependency, TLS/GOT/data location and
+highest mapped address. It asserts that every old file byte is unchanged except
+the ELF entry field and program-header table. This adds a stronger control over
+layout; timing still determines whether it works.
+
+The patch reuses a NOTE program-header slot for the added RX mapping. GNU ABI
+and build-id note bytes remain in their original sections. This is specific to
+the inspected ELF layout; the builder rejects incompatible layouts. Version
+and build-id strings still identify the embedded upstream executable, so use
+the [manifest and artifact hashes](entry-build.json) to identify this experiment.
+The startup payload's linked ELF, raw bytes and object files remain in
+`target/entry-experiment/bundle` for inspection.
+
+[Routing and output checks](entry-correctness.json) pass 46 routing assertions
+and 41 exact comparisons, including FIFO producers and loader-environment
+fallback. The [general](entry-cli-correctness.json) and
+[expanded](entry-machine-correctness.json) CLI suites pass 3,204 and 1,212
+comparisons. There are no unresolved symbols or relocations in the linked
+startup payload. The [entry experiment protocol](ENTRY-PLAN.md) fixes the
+discovery and confirmation schedule before its first timing.
+
 The frozen audit compares the same latest upstream revision used in the prior
 audit (`3fce3b5bb0236da2df6d99672afb8a719642eca7`) with the same Rust compiler,
 `release-lto` and `-C target-cpu=znver4`. The machine is a Ryzen 5 7600X, not
@@ -137,6 +186,42 @@ confidence across all workloads. This finite suite cannot prove that no other
 input ever regresses. The routing probe can also change behavior if a file is
 concurrently replaced while the command starts; concurrent modification is
 outside the audit's fixed-input scope.
+
+## Reproduction
+
+The [original audit instructions](../audit/README.md#reproduction) describe input
+preparation and the identical native upstream build. Reuse the registered clean
+upstream worktree, or create one only under `~/Worktrees/ripgrep/`. Do not use
+`/dev/shm` for these corpora. Leave the recorded artifacts and failed results in
+place; use a new output directory for another experiment.
+
+Build the specialized worker from this fork with:
+
+```sh
+systemd-run --user --scope --collect -p MemoryMax=8G -p MemorySwapMax=0 -p OOMPolicy=kill env -u CARGO_ENCODED_RUSTFLAGS CARGO_BUILD_JOBS=2 CARGO_TARGET_DIR=target/audit-candidate RUSTFLAGS='-C target-cpu=znver4' cargo build --locked --profile release-lto --features experimental-class
+python3 scripts/assembly/class_bundle.py --worker target/audit-candidate/release-lto/rg --output target/dispatch-experiment/new-bundle
+```
+
+The builder requires the local patchelf location recorded above and writes its
+manifest beside the files and to `bundle-build.json` in this report directory.
+A new build can have a different hash because ripgrep embeds the Git revision.
+The recorded worker was compiled at parent `6f693c9` plus the Rust changes
+committed as `5de483b`; `ff546bb` changes only the library and its checks.
+
+Run correctness before timing, and keep compilation/testing separate from the
+timed sessions. The recorded bundle lives at `target/dispatch-experiment/bundle`.
+For another build, substitute its three paths and use new result filenames:
+
+```sh
+python3 scripts/assembly/bundle_check.py --output target/dispatch-experiment/new-correctness.json
+systemd-run --user --scope --collect -p MemoryMax=8G -p MemorySwapMax=0 -p OOMPolicy=kill python3 scripts/assembly/audit_bench.py --protocol benchmarks/assembly/dispatch/BUNDLE-PLAN.md --candidate target/dispatch-experiment/bundle/rg --artifact target/dispatch-experiment/bundle/librg_class_dispatch.so --artifact target/dispatch-experiment/bundle/rg-class-worker --output target/dispatch-experiment/new-session-a.json --samples 45 --seed 929711
+systemd-run --user --scope --collect -p MemoryMax=8G -p MemorySwapMax=0 -p OOMPolicy=kill python3 scripts/assembly/audit_bench.py --protocol benchmarks/assembly/dispatch/BUNDLE-PLAN.md --candidate target/dispatch-experiment/bundle/rg --artifact target/dispatch-experiment/bundle/librg_class_dispatch.so --artifact target/dispatch-experiment/bundle/rg-class-worker --output target/dispatch-experiment/new-session-b.json --samples 45 --seed 929719 --reverse
+python3 scripts/assembly/audit_gate.py --protocol benchmarks/assembly/dispatch/BUNDLE-PLAN.md target/dispatch-experiment/new-session-a.json target/dispatch-experiment/new-session-b.json
+```
+
+Benchmark collection returns normally even when the experiment fails. The
+separate gate's exit status decides acceptance. Include all companion artifact
+arguments in both runs; a launcher hash alone does not identify this candidate.
 
 ## Research references
 

@@ -1,0 +1,196 @@
+{
+  "result": "PASS",
+  "route_checks": [
+    {
+      "name": "[A-Za-z]{30}",
+      "specialist": true
+    },
+    {
+      "name": "[A-Fa-f0-9]{17}",
+      "specialist": true
+    },
+    {
+      "name": "[0-9]{8}",
+      "specialist": true
+    },
+    {
+      "name": "[A-Za-z]{2,65}",
+      "specialist": true
+    },
+    {
+      "name": "[A-Za-z]{2,}",
+      "specialist": true
+    },
+    {
+      "name": "[A-Za-z]{30}?",
+      "specialist": true
+    },
+    {
+      "name": "[a-zA-Z_0-9]{30}",
+      "specialist": true
+    },
+    {
+      "name": "[A-FP-Za-fp-z]{30}",
+      "specialist": true
+    },
+    {
+      "name": "fallback ordinary",
+      "specialist": false
+    },
+    {
+      "name": "fallback [A-Za-z]+",
+      "specialist": false
+    },
+    {
+      "name": "fallback [A-Za-z]{0,5}",
+      "specialist": false
+    },
+    {
+      "name": "fallback [A-Za-z]{1}",
+      "specialist": false
+    },
+    {
+      "name": "fallback [ABC]{3}",
+      "specialist": false
+    },
+    {
+      "name": "fallback [A-Z&&a-z]{3}",
+      "specialist": false
+    },
+    {
+      "name": "fallback [A-Z~~a-z]{3}",
+      "specialist": false
+    },
+    {
+      "name": "fallback [A-Z]{3}|foo",
+      "specialist": false
+    },
+    {
+      "name": "fallback [A-Z]{3}x",
+      "specialist": false
+    },
+    {
+      "name": "fallback [^A-Z]{3}",
+      "specialist": false
+    },
+    {
+      "name": "fallback [A-Z]{42949672960}",
+      "specialist": false
+    },
+    {
+      "name": "fallback [A-Z]{4,2}",
+      "specialist": false
+    },
+    {
+      "name": "fallback [A-Z]{",
+      "specialist": false
+    },
+    {
+      "name": "fallback [A-Z]",
+      "specialist": false
+    },
+    {
+      "name": "fallback [",
+      "specialist": false
+    },
+    {
+      "name": "fallback ",
+      "specialist": false
+    },
+    {
+      "name": "fallback [\u00e9-\u00ff]{3}",
+      "specialist": false
+    },
+    {
+      "name": "disabled {'RG_BUNDLE': '0'}",
+      "specialist": false
+    },
+    {
+      "name": "disabled {'RG_CLASS': '0'}",
+      "specialist": false
+    },
+    {
+      "name": "disabled {'RG_ASM': '0'}",
+      "specialist": false
+    },
+    {
+      "name": "disabled {'RG_ASM': 'rust'}",
+      "specialist": false
+    },
+    {
+      "name": "loader control LD_PRELOAD",
+      "specialist": false
+    },
+    {
+      "name": "loader control LD_AUDIT",
+      "specialist": false
+    },
+    {
+      "name": "config",
+      "specialist": false
+    },
+    {
+      "name": "config explicitly ignored",
+      "specialist": true
+    },
+    {
+      "name": "combined short flags",
+      "specialist": true
+    },
+    {
+      "name": "end of options",
+      "specialist": true
+    },
+    {
+      "name": "input small",
+      "specialist": false
+    },
+    {
+      "name": "input long",
+      "specialist": false
+    },
+    {
+      "name": "input binary",
+      "specialist": false
+    },
+    {
+      "name": "input bundle-check-on208pw3",
+      "specialist": false
+    },
+    {
+      "name": "input missing",
+      "specialist": false
+    },
+    {
+      "name": "option -i",
+      "specialist": false
+    },
+    {
+      "name": "option -o",
+      "specialist": false
+    },
+    {
+      "name": "option -v",
+      "specialist": false
+    },
+    {
+      "name": "option --mmap",
+      "specialist": false
+    },
+    {
+      "name": "option --no-mmap",
+      "specialist": false
+    },
+    {
+      "name": "option --stats",
+      "specialist": false
+    }
+  ],
+  "exact_comparisons": 41,
+  "fifo_comparisons": 3,
+  "baseline_sha256": "bc5b2c5fa5e3fcb28fc38fd31ef24a1ee10bc4bf982c93f17010359f4cb45d84",
+  "artifacts": {
+    "rg": "a7be65f27f713b0db1761a780a0ac15d92dc2cba39a3555f0d57c12ec6e43422",
+    "rg-class-worker": "03101117059e0e6ec11d5252d931a1164a84aced617392a1508bf7a2dc9dc3f6"
+  }
+}

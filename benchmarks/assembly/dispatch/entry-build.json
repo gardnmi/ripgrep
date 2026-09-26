@@ -1,0 +1,83 @@
+{
+  "baseline_sha256": "bc5b2c5fa5e3fcb28fc38fd31ef24a1ee10bc4bf982c93f17010359f4cb45d84",
+  "artifacts": {
+    "rg": "a7be65f27f713b0db1761a780a0ac15d92dc2cba39a3555f0d57c12ec6e43422",
+    "rg-class-worker": "03101117059e0e6ec11d5252d931a1164a84aced617392a1508bf7a2dc9dc3f6"
+  },
+  "tool_versions": {
+    "cc": "cc (GCC) 16.2.1 20260810",
+    "ld": "GNU ld (GNU Binutils) 2.47",
+    "objcopy": "GNU objcopy (GNU Binutils) 2.47"
+  },
+  "source_sha256": {
+    "scripts/assembly/entry_start.S": "544fdc3fbe0b60ac6487bcae33940468aa08a2aafd4cabd97260bfa25bea5e6e",
+    "scripts/assembly/entry_dispatch.c": "0917682f4a70bcb09f44882f86ed0a334f3b844ea7a10016fc144776c491bdbd"
+  },
+  "commands": [
+    [
+      "cc",
+      "-Os",
+      "-march=znver4",
+      "-fpie",
+      "-ffreestanding",
+      "-fno-builtin",
+      "-fno-stack-protector",
+      "-fno-asynchronous-unwind-tables",
+      "-fno-unwind-tables",
+      "-fno-ident",
+      "-mno-red-zone",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "/home/gardnmi/Projects/ripgrep/scripts/assembly/entry_start.S",
+      "-o",
+      "/home/gardnmi/Projects/ripgrep/target/entry-experiment/bundle/entry_start.o"
+    ],
+    [
+      "cc",
+      "-Os",
+      "-march=znver4",
+      "-fpie",
+      "-ffreestanding",
+      "-fno-builtin",
+      "-fno-stack-protector",
+      "-fno-asynchronous-unwind-tables",
+      "-fno-unwind-tables",
+      "-fno-ident",
+      "-mno-red-zone",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "/home/gardnmi/Projects/ripgrep/scripts/assembly/entry_dispatch.c",
+      "-o",
+      "/home/gardnmi/Projects/ripgrep/target/entry-experiment/bundle/entry_dispatch.o"
+    ],
+    [
+      "ld",
+      "--no-undefined",
+      "-T",
+      "/home/gardnmi/Projects/ripgrep/target/entry-experiment/bundle/payload.ld",
+      "-o",
+      "/home/gardnmi/Projects/ripgrep/target/entry-experiment/bundle/payload.elf",
+      "/home/gardnmi/Projects/ripgrep/target/entry-experiment/bundle/entry_start.o",
+      "/home/gardnmi/Projects/ripgrep/target/entry-experiment/bundle/entry_dispatch.o"
+    ],
+    [
+      "objcopy",
+      "-O",
+      "binary",
+      "--only-section=.payload",
+      "/home/gardnmi/Projects/ripgrep/target/entry-experiment/bundle/payload.elf",
+      "/home/gardnmi/Projects/ripgrep/target/entry-experiment/bundle/payload.bin"
+    ]
+  ],
+  "original_entry": 1187840,
+  "new_entry": 1183744,
+  "payload_bytes": 1553,
+  "payload_sha256": "b950a9d055b3c0d62457f4d3b3a675693665cb8a24c792c6eda4cbd3498d2028",
+  "payload_file_offset": 3878912,
+  "preserved": "Every original byte except e_entry and program-header table; all original LOAD mappings unchanged.",
+  "note_header": "GNU ABI-tag/build-id remain as section data; their NOTE program-header slot becomes the extra RX LOAD."
+}
