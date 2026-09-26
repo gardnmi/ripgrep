@@ -15,10 +15,10 @@
     "/home/gardnmi/Projects/ripgrep/target/dispatch-experiment/bundle/librg_class_dispatch.so",
     "/home/gardnmi/Projects/ripgrep/scripts/assembly/class_dispatch.c"
   ],
-  "dispatcher_source_sha256": "189a04e61c98e302e3f2c54500db5d19363117ed8ecebc5acde0defbbce5f158",
+  "dispatcher_source_sha256": "b2e83592cc7142635bbd7713c03ce5bb9946f64f5c46aa5bba16d3666094aa57",
   "artifacts": {
     "rg": "a9a747042fd77d6f6c9689f7b2648a7721cc60cd5300b1b928474b0f4f89f75d",
-    "librg_class_dispatch.so": "7aed6091272339ab03bf2df669f1e42267713f3f2e7a8610bd7f90fee368fe52",
+    "librg_class_dispatch.so": "78977a7ebfee4203ce624189ee04fc6fb74bbc41b95a530c79fbfbcd70f7db42",
     "rg-class-worker": "03101117059e0e6ec11d5252d931a1164a84aced617392a1508bf7a2dc9dc3f6"
   },
   "preserved_executable_sections": {

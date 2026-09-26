@@ -146,7 +146,7 @@
       "specialist": false
     },
     {
-      "name": "input bundle-check-undws_iu",
+      "name": "input bundle-check-cjc2omtf",
       "specialist": false
     },
     {
@@ -178,12 +178,11 @@
       "specialist": false
     }
   ],
-  "exact_comparisons": 39,
-  "fifo_comparisons": 3,
+  "exact_comparisons": 36,
   "baseline_sha256": "bc5b2c5fa5e3fcb28fc38fd31ef24a1ee10bc4bf982c93f17010359f4cb45d84",
   "artifacts": {
     "rg": "a9a747042fd77d6f6c9689f7b2648a7721cc60cd5300b1b928474b0f4f89f75d",
-    "librg_class_dispatch.so": "7aed6091272339ab03bf2df669f1e42267713f3f2e7a8610bd7f90fee368fe52",
+    "librg_class_dispatch.so": "78977a7ebfee4203ce624189ee04fc6fb74bbc41b95a530c79fbfbcd70f7db42",
     "rg-class-worker": "03101117059e0e6ec11d5252d931a1164a84aced617392a1508bf7a2dc9dc3f6"
   }
 }

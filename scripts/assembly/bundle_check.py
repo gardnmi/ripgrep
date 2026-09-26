@@ -7,6 +7,7 @@ from pathlib import Path
 import shutil
 import subprocess
 import tempfile
+import threading
 
 from bench import ROOT, digest
 
@@ -40,6 +41,7 @@ def main():
         long = root/'long'; long.write_bytes(b'.'*(9*1024**2)+b'A'*40+b'\n')
         binary = root/'binary'; binary.write_bytes(b'\0'+data)
         config = root/'config'; config.write_text('--ignore-case\n')
+        fifo = root/'fifo'; os.mkfifo(fifo)
 
         def route(name, command, expected, extra=None):
             got = subprocess.run([str(launcher), *command], env=env | (extra or {}),
@@ -101,7 +103,32 @@ def main():
         compare(base,{'RIPGREP_CONFIG_PATH':str(config)})
         for extra in [{'RG_BUNDLE':'0'},{'RG_CLASS':'0'},{'RG_ASM':'rust'}]:
             compare(base,extra)
+        # Actual FIFO producer/consumer output must agree with upstream. Use
+        # a new writer for each invocation; bound the child timeout and join.
+        fifo_checks = 0
+        for size in [40, 4096, 65536]:
+            results = []
+            payload = b'A'*size+b'\n'
+            for executable in [args.baseline, launcher]:
+                errors = []
+                def produce():
+                    try:
+                        with fifo.open('wb') as out:
+                            out.write(payload)
+                    except Exception as error:
+                        errors.append(repr(error))
+                writer = threading.Thread(target=produce, daemon=True)
+                writer.start()
+                proc = subprocess.run([str(executable),'--no-config','-c','[A-Za-z]{30}',str(fifo)],
+                                      env=env,capture_output=True,timeout=30)
+                writer.join(timeout=5)
+                assert not writer.is_alive() and not errors, errors
+                results.append((proc.returncode,proc.stdout,proc.stderr))
+            assert results[0] == results[1],results
+            comparisons += 1
+            fifo_checks += 1
     result = {'result':'PASS','route_checks':routes,'exact_comparisons':comparisons,
+              'fifo_comparisons':fifo_checks,
               'baseline_sha256':digest(args.baseline),
               'artifacts':{name:digest(args.bundle/name) for name in ['rg','librg_class_dispatch.so','rg-class-worker']}}
     args.output.write_text(json.dumps(result,indent=2)+'\n')

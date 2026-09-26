@@ -112,9 +112,14 @@ static void try_specialist(int argc, char **argv, char **envp) {
      * keep upstream. The probe affects routing only, never search results.
      * NONBLOCK plus a second type check avoids blocking if a path changes.
      */
+    struct stat info;
+    /* Do not even open a stable FIFO/device: opening a FIFO transiently can
+     * unblock a writer before upstream has begun reading it. Recheck the
+     * opened descriptor below in case the path changed after stat. */
+    if (stat(path, &info) != 0 || !S_ISREG(info.st_mode)
+        || info.st_size < 8 * 1024 * 1024) return;
     int fd = open(path, O_RDONLY | O_CLOEXEC | O_NONBLOCK);
     if (fd < 0) return;
-    struct stat info;
     char probe[4096];
     ssize_t got = -1;
     if (fstat(fd, &info) == 0 && S_ISREG(info.st_mode)

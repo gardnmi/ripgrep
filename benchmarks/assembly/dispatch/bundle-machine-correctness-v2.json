@@ -1,0 +1,9 @@
+{
+  "result": "PASS",
+  "comparisons": 1212,
+  "case_sha256": "0113e847b790b2a22aad80f036db3be0c04ea60b6d9406fbd949440294a83ec5",
+  "broken_pipe_exit": 1,
+  "comparison": "Exact exit status, stderr and stdout; JSON elapsed/elapsed_total fields excluded.",
+  "baseline_sha256": "bc5b2c5fa5e3fcb28fc38fd31ef24a1ee10bc4bf982c93f17010359f4cb45d84",
+  "candidate_sha256": "a9a747042fd77d6f6c9689f7b2648a7721cc60cd5300b1b928474b0f4f89f75d"
+}
