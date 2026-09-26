@@ -1,5 +1,10 @@
 # ripgrep assembly experiment
 
+The latest [Zen 4 machine-specific experiments](machine/README.md) add a SIMD
+character-class scanner, bounded single-file parallelism, fused scanning and
+PGO comparisons. That report records substantially larger gains on selected
+workloads and the cases where these approaches regress.
+
 This fork adds two handwritten Linux x86-64 AVX-512 kernels behind the
 `experimental-asm` feature. It is a hybrid Rust/assembly experiment, not a full
 assembly port. On the tested Ryzen 5 7600X, sparse log searches with line numbers

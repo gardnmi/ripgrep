@@ -432,6 +432,8 @@ dependencies = [
  "ignore",
  "lexopt",
  "log",
+ "memchr",
+ "memmap2",
  "serde",
  "serde_derive",
  "serde_json",

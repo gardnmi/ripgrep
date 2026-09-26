@@ -15,6 +15,8 @@ mod flags;
 mod haystack;
 mod index;
 mod logger;
+#[cfg(feature = "experimental-asm")]
+mod machine;
 mod search;
 
 // Since Rust no longer uses jemalloc by default, ripgrep will, by default,
@@ -111,6 +113,21 @@ fn run(result: crate::flags::ParseResult<HiArgs>) -> anyhow::Result<ExitCode> {
 /// This recursively steps through the file list (current directory by default)
 /// and searches each file sequentially.
 fn search(args: &HiArgs, mode: SearchMode) -> anyhow::Result<bool> {
+    #[cfg(feature = "experimental-asm")]
+    match machine::try_parallel(args) {
+        Ok(Some(matched)) => return Ok(matched),
+        Ok(None) => {}
+        // Match the ordinary single-file search path's exit status when its
+        // sink closes before the file search has completed.
+        Err(err)
+            if err.downcast_ref::<std::io::Error>().is_some_and(|e| {
+                e.kind() == std::io::ErrorKind::BrokenPipe
+            }) =>
+        {
+            return Ok(false);
+        }
+        Err(err) => return Err(err),
+    }
     let started_at = std::time::Instant::now();
     let haystack_builder = args.haystack_builder();
     let unsorted = args

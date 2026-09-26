@@ -1,0 +1,17 @@
+{
+  "compiler": "rustc 1.98.1 (48a229cea 2026-09-01) (Arch Linux rust 1:1.98.1-1)\nbinary: rustc\ncommit-hash: 48a229ceaefd4985c50990b14116b6d856af0985\ncommit-date: 2026-09-01\nhost: x86_64-unknown-linux-gnu\nrelease: 1.98.1\nLLVM version: 22.1.8\n",
+  "kernel": "7.2.5-3-omarchy",
+  "flags": "-C target-cpu=znver4; release-lto; PGO uses profile-generate/profile-use as appropriate",
+  "base": "3fce3b5bb0236da2df6d99672afb8a719642eca7",
+  "candidate_parent": "fee29071cb41171ce13b5c5196a784ae7b2a7f61",
+  "profiles": {
+    "upstream": "185265f6315789fc1c9ab30373b87e50b0ba7f3e30d8d1fdbe952d75f938df75",
+    "candidate": "848f2e33adf6caac3e6e8718a3f57fe8ea0ac84910f3e8742c17f0402fab1189"
+  },
+  "binary_sizes": {
+    "rg-upstream-native": 3878064,
+    "rg-candidate-native": 3953216,
+    "rg-upstream-pgo": 3603464,
+    "rg-candidate-pgo": 3657440
+  }
+}

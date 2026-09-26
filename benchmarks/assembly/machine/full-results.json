@@ -1,0 +1,610 @@
+{
+  "recorded_utc": "2026-09-26T04:31:55.331595+00:00",
+  "base_commit": "3fce3b5bb0236da2df6d99672afb8a719642eca7",
+  "candidate_parent": "fee29071cb41171ce13b5c5196a784ae7b2a7f61",
+  "cpu": "AMD Ryzen 5 7600X 6-Core Processor",
+  "affinity_all_modes": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "seed": 754319,
+  "memory_limits": {
+    "memory.max": "17179869184",
+    "memory.swap.max": "0",
+    "memory.oom.group": "1"
+  },
+  "full_subtitle_file": true,
+  "method": "Exact output verification; one untimed command warmup; disk-backed mmap pages touched before every trial; randomized interleaved rounds; output=/dev/null; per-child resource counters. IO-affected samples are retained and labeled.",
+  "inputs": {
+    "/home/gardnmi/Projects/ripgrep/target/assembly-readme/en.txt": {
+      "bytes": 13113340782,
+      "sha256": "f49f5fb56139a5de9e74a5d71336c8238093262974671fbbb84dd0b8a2b05fd7"
+    }
+  },
+  "binaries": {
+    "upstream-native": {
+      "path": "/home/gardnmi/Projects/ripgrep/target/machine/rg-upstream-native",
+      "sha256": "bc5b2c5fa5e3fcb28fc38fd31ef24a1ee10bc4bf982c93f17010359f4cb45d84",
+      "environment": {}
+    },
+    "upstream-pgo": {
+      "path": "/home/gardnmi/Projects/ripgrep/target/machine/rg-upstream-pgo",
+      "sha256": "ce1389e1919138b44d9fc917f533af0af08fd9087f325a60f35c95856f09a9b1",
+      "environment": {}
+    },
+    "class-pgo": {
+      "path": "/home/gardnmi/Projects/ripgrep/target/machine/rg-candidate-pgo",
+      "sha256": "2fd6099be86d551e207bff8e4a0caee0f3fcd5d2b67f8c7189fa9c0c88f4c80e",
+      "environment": {}
+    },
+    "parallel4": {
+      "path": "/home/gardnmi/Projects/ripgrep/target/machine/rg-candidate-native",
+      "sha256": "7e6cdd572020d0e69ba4ca657cfbcc6f8b56368f6c6e5664304ef4eeb91fc8f2",
+      "environment": {
+        "RG_CLASS": "0",
+        "RG_PARALLEL": "4"
+      }
+    },
+    "parallel6": {
+      "path": "/home/gardnmi/Projects/ripgrep/target/machine/rg-candidate-native",
+      "sha256": "7e6cdd572020d0e69ba4ca657cfbcc6f8b56368f6c6e5664304ef4eeb91fc8f2",
+      "environment": {
+        "RG_CLASS": "0",
+        "RG_PARALLEL": "6"
+      }
+    }
+  },
+  "cases": [
+    {
+      "name": "alpha30",
+      "arguments": [
+        "[A-Za-z]{30}",
+        "/home/gardnmi/Projects/ripgrep/target/assembly-readme/en.txt"
+      ],
+      "verification": {
+        "upstream-native": {
+          "exit_code": 0,
+          "lines": 6749,
+          "output_bytes": 428236,
+          "stdout_sha256": "54ebba9abb7c66c4ddd354a3fde1a358d46c5f8247250d4cc176255ca13f0b1d",
+          "order_normalized": false
+        },
+        "upstream-pgo": {
+          "exit_code": 0,
+          "lines": 6749,
+          "output_bytes": 428236,
+          "stdout_sha256": "54ebba9abb7c66c4ddd354a3fde1a358d46c5f8247250d4cc176255ca13f0b1d",
+          "order_normalized": false
+        },
+        "class-pgo": {
+          "exit_code": 0,
+          "lines": 6749,
+          "output_bytes": 428236,
+          "stdout_sha256": "54ebba9abb7c66c4ddd354a3fde1a358d46c5f8247250d4cc176255ca13f0b1d",
+          "order_normalized": false
+        },
+        "parallel4": {
+          "exit_code": 0,
+          "lines": 6749,
+          "output_bytes": 428236,
+          "stdout_sha256": "54ebba9abb7c66c4ddd354a3fde1a358d46c5f8247250d4cc176255ca13f0b1d",
+          "order_normalized": false
+        },
+        "parallel6": {
+          "exit_code": 0,
+          "lines": 6749,
+          "output_bytes": 428236,
+          "stdout_sha256": "54ebba9abb7c66c4ddd354a3fde1a358d46c5f8247250d4cc176255ca13f0b1d",
+          "order_normalized": false
+        }
+      },
+      "timings_ms": {
+        "upstream-native": [
+          15824.501724,
+          15576.708786,
+          15688.639279
+        ],
+        "upstream-pgo": [
+          15655.123838,
+          15607.65193,
+          15662.035941
+        ],
+        "class-pgo": [
+          1163.303145,
+          1164.181541,
+          1251.598805
+        ],
+        "parallel4": [
+          4767.372982,
+          4668.724126,
+          4724.365793
+        ],
+        "parallel6": [
+          3525.479024,
+          3541.785648,
+          3546.525318
+        ]
+      },
+      "resources": {
+        "upstream-native": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "user_seconds": 15.105732999999987,
+            "system_seconds": 0.6447889999999994
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "user_seconds": 15.011409000000015,
+            "system_seconds": 0.5068240000000017
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "user_seconds": 15.059933999999998,
+            "system_seconds": 0.5678720000000013
+          }
+        ],
+        "upstream-pgo": [
+          {
+            "major_faults": 1,
+            "input_blocks": 40,
+            "user_seconds": 15.021411,
+            "system_seconds": 0.5524070000000005
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "user_seconds": 14.998324999999994,
+            "system_seconds": 0.5555699999999995
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "user_seconds": 15.027104000000008,
+            "system_seconds": 0.5752980000000001
+          }
+        ],
+        "class-pgo": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "user_seconds": 0.7132330000000024,
+            "system_seconds": 0.44474899999999806
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "user_seconds": 0.6608209999999985,
+            "system_seconds": 0.4979180000000021
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "user_seconds": 0.7470930000000067,
+            "system_seconds": 0.49626300000000256
+          }
+        ],
+        "parallel4": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "user_seconds": 15.524221000000011,
+            "system_seconds": 0.5095679999999998
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "user_seconds": 15.463204999999988,
+            "system_seconds": 0.46495399999999876
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "user_seconds": 15.426084000000003,
+            "system_seconds": 0.49465299999999957
+          }
+        ],
+        "parallel6": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "user_seconds": 15.656508000000002,
+            "system_seconds": 0.5437570000000012
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "user_seconds": 15.68814900000001,
+            "system_seconds": 0.5307889999999986
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "user_seconds": 15.745551999999975,
+            "system_seconds": 0.5157169999999986
+          }
+        ]
+      },
+      "residency_after": {
+        "resident_pages": 3201500,
+        "total_pages": 3201500,
+        "fraction": 1.0
+      },
+      "stats": {
+        "upstream-native": {
+          "median_ms": 15688.639279,
+          "min_ms": 15576.708786,
+          "p10_ms": 15576.708786,
+          "p90_ms": 15688.639279,
+          "samples_ms": [
+            15824.501724,
+            15576.708786,
+            15688.639279
+          ]
+        },
+        "upstream-pgo": {
+          "median_ms": 15655.123838,
+          "min_ms": 15607.65193,
+          "p10_ms": 15607.65193,
+          "p90_ms": 15655.123838,
+          "samples_ms": [
+            15655.123838,
+            15607.65193,
+            15662.035941
+          ]
+        },
+        "class-pgo": {
+          "median_ms": 1164.181541,
+          "min_ms": 1163.303145,
+          "p10_ms": 1163.303145,
+          "p90_ms": 1164.181541,
+          "samples_ms": [
+            1163.303145,
+            1164.181541,
+            1251.598805
+          ]
+        },
+        "parallel4": {
+          "median_ms": 4724.365793,
+          "min_ms": 4668.724126,
+          "p10_ms": 4668.724126,
+          "p90_ms": 4724.365793,
+          "samples_ms": [
+            4767.372982,
+            4668.724126,
+            4724.365793
+          ]
+        },
+        "parallel6": {
+          "median_ms": 3541.785648,
+          "min_ms": 3525.479024,
+          "p10_ms": 3525.479024,
+          "p90_ms": 3541.785648,
+          "samples_ms": [
+            3525.479024,
+            3541.785648,
+            3546.525318
+          ]
+        }
+      },
+      "speedups": {
+        "upstream-native": {
+          "ratio": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ]
+        },
+        "upstream-pgo": {
+          "ratio": 1.0021408608035822,
+          "ci95": [
+            0.9980174375915878,
+            1.010819325848376
+          ]
+        },
+        "class-pgo": {
+          "ratio": 13.476110663568752,
+          "ci95": [
+            12.534878761729082,
+            13.603076542873096
+          ]
+        },
+        "parallel4": {
+          "ratio": 3.32079266644542,
+          "ci95": [
+            3.319333684137576,
+            3.3363952046885195
+          ]
+        },
+        "parallel6": {
+          "ratio": 4.429584632785208,
+          "ci95": [
+            4.3979817905682586,
+            4.488610375008148
+          ]
+        }
+      }
+    },
+    {
+      "name": "frequent",
+      "arguments": [
+        "the",
+        "/home/gardnmi/Projects/ripgrep/target/assembly-readme/en.txt"
+      ],
+      "verification": {
+        "upstream-native": {
+          "exit_code": 0,
+          "lines": 83499915,
+          "output_bytes": 4316566304,
+          "stdout_sha256": "0f50738ffb2eb749330d98d1d44cfa95d6fd60f7ea08282f23c2786627b6c6e9",
+          "order_normalized": false
+        },
+        "upstream-pgo": {
+          "exit_code": 0,
+          "lines": 83499915,
+          "output_bytes": 4316566304,
+          "stdout_sha256": "0f50738ffb2eb749330d98d1d44cfa95d6fd60f7ea08282f23c2786627b6c6e9",
+          "order_normalized": false
+        },
+        "class-pgo": {
+          "exit_code": 0,
+          "lines": 83499915,
+          "output_bytes": 4316566304,
+          "stdout_sha256": "0f50738ffb2eb749330d98d1d44cfa95d6fd60f7ea08282f23c2786627b6c6e9",
+          "order_normalized": false
+        },
+        "parallel4": {
+          "exit_code": 0,
+          "lines": 83499915,
+          "output_bytes": 4316566304,
+          "stdout_sha256": "0f50738ffb2eb749330d98d1d44cfa95d6fd60f7ea08282f23c2786627b6c6e9",
+          "order_normalized": false
+        },
+        "parallel6": {
+          "exit_code": 0,
+          "lines": 83499915,
+          "output_bytes": 4316566304,
+          "stdout_sha256": "0f50738ffb2eb749330d98d1d44cfa95d6fd60f7ea08282f23c2786627b6c6e9",
+          "order_normalized": false
+        }
+      },
+      "timings_ms": {
+        "upstream-native": [
+          6000.472362,
+          5817.860451,
+          5849.279425
+        ],
+        "upstream-pgo": [
+          4988.489569,
+          4952.768343,
+          4941.667454
+        ],
+        "class-pgo": [
+          4745.459792,
+          4709.20487,
+          4677.074703
+        ],
+        "parallel4": [
+          1761.474626,
+          1696.402199,
+          1681.968222
+        ],
+        "parallel6": [
+          1752.550423,
+          1845.742672,
+          1772.312995
+        ]
+      },
+      "resources": {
+        "upstream-native": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "user_seconds": 5.385167000000024,
+            "system_seconds": 0.5848370000000003
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "user_seconds": 5.244685000000004,
+            "system_seconds": 0.5463489999999993
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "user_seconds": 5.285110999999972,
+            "system_seconds": 0.5434240000000017
+          }
+        ],
+        "upstream-pgo": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "user_seconds": 4.388075000000015,
+            "system_seconds": 0.5814300000000046
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "user_seconds": 4.394737999999961,
+            "system_seconds": 0.5394259999999989
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "user_seconds": 4.370954999999981,
+            "system_seconds": 0.5527569999999997
+          }
+        ],
+        "class-pgo": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "user_seconds": 4.183213999999964,
+            "system_seconds": 0.5443119999999979
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "user_seconds": 4.110969000000011,
+            "system_seconds": 0.5808699999999973
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "user_seconds": 4.12967500000002,
+            "system_seconds": 0.5301049999999989
+          }
+        ],
+        "parallel4": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "user_seconds": 3.9288179999999784,
+            "system_seconds": 0.5108899999999963
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "user_seconds": 3.7746239999999602,
+            "system_seconds": 0.5148979999999952
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "user_seconds": 3.8038630000000353,
+            "system_seconds": 0.4864389999999972
+          }
+        ],
+        "parallel6": [
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "user_seconds": 4.030114000000026,
+            "system_seconds": 0.521016000000003
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "user_seconds": 4.108007000000043,
+            "system_seconds": 0.5381040000000041
+          },
+          {
+            "major_faults": 0,
+            "input_blocks": 0,
+            "user_seconds": 4.040798999999993,
+            "system_seconds": 0.5120490000000046
+          }
+        ]
+      },
+      "residency_after": {
+        "resident_pages": 3201500,
+        "total_pages": 3201500,
+        "fraction": 1.0
+      },
+      "stats": {
+        "upstream-native": {
+          "median_ms": 5849.279425,
+          "min_ms": 5817.860451,
+          "p10_ms": 5817.860451,
+          "p90_ms": 5849.279425,
+          "samples_ms": [
+            6000.472362,
+            5817.860451,
+            5849.279425
+          ]
+        },
+        "upstream-pgo": {
+          "median_ms": 4952.768343,
+          "min_ms": 4941.667454,
+          "p10_ms": 4941.667454,
+          "p90_ms": 4952.768343,
+          "samples_ms": [
+            4988.489569,
+            4952.768343,
+            4941.667454
+          ]
+        },
+        "class-pgo": {
+          "median_ms": 4709.20487,
+          "min_ms": 4677.074703,
+          "p10_ms": 4677.074703,
+          "p90_ms": 4709.20487,
+          "samples_ms": [
+            4745.459792,
+            4709.20487,
+            4677.074703
+          ]
+        },
+        "parallel4": {
+          "median_ms": 1696.402199,
+          "min_ms": 1681.968222,
+          "p10_ms": 1681.968222,
+          "p90_ms": 1696.402199,
+          "samples_ms": [
+            1761.474626,
+            1696.402199,
+            1681.968222
+          ]
+        },
+        "parallel6": {
+          "median_ms": 1772.312995,
+          "min_ms": 1752.550423,
+          "p10_ms": 1752.550423,
+          "p90_ms": 1772.312995,
+          "samples_ms": [
+            1752.550423,
+            1845.742672,
+            1772.312995
+          ]
+        }
+      },
+      "speedups": {
+        "upstream-native": {
+          "ratio": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ]
+        },
+        "upstream-pgo": {
+          "ratio": 1.1810121168431156,
+          "ci95": [
+            1.1746683971647247,
+            1.2028635680204225
+          ]
+        },
+        "class-pgo": {
+          "ratio": 1.242094915484108,
+          "ci95": [
+            1.235423094047722,
+            1.2644659579912
+          ]
+        },
+        "parallel4": {
+          "ratio": 3.4480498955071206,
+          "ci95": [
+            3.406505136906809,
+            3.4776396774278653
+          ]
+        },
+        "parallel6": {
+          "ratio": 3.300364800970158,
+          "ci95": [
+            3.1520430985625496,
+            3.423851481390445
+          ]
+        }
+      }
+    }
+  ],
+  "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+  "memory_peak_bytes": 12830887936,
+  "status": "complete"
+}

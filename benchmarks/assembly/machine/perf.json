@@ -1,0 +1,38 @@
+{
+  "affinity": [
+    4
+  ],
+  "workload": "alpha30 heldout.txt, one diagnostic sample per binary",
+  "binaries": {
+    "upstream-native": {
+      "sha256": "bc5b2c5fa5e3fcb28fc38fd31ef24a1ee10bc4bf982c93f17010359f4cb45d84",
+      "counters": {
+        "cycles:u": 3297820833,
+        "instructions:u": 4165539022,
+        "branches:u": 806304551,
+        "branch-misses:u": 38399,
+        "cache-misses:u": 74776
+      }
+    },
+    "candidate-native": {
+      "sha256": "7e6cdd572020d0e69ba4ca657cfbcc6f8b56368f6c6e5664304ef4eeb91fc8f2",
+      "counters": {
+        "cycles:u": 141748912,
+        "instructions:u": 810092824,
+        "branches:u": 101658495,
+        "branch-misses:u": 34682,
+        "cache-misses:u": 62231
+      }
+    },
+    "candidate-pgo": {
+      "sha256": "2fd6099be86d551e207bff8e4a0caee0f3fcd5d2b67f8c7189fa9c0c88f4c80e",
+      "counters": {
+        "cycles:u": 116849928,
+        "instructions:u": 650568473,
+        "branches:u": 118413461,
+        "branch-misses:u": 33092,
+        "cache-misses:u": 47105
+      }
+    }
+  }
+}

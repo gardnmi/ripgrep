@@ -485,7 +485,24 @@ impl<'s, M: Matcher, S: Sink> Core<'s, M, S> {
             if self.has_exceeded_match_limit() {
                 return Ok(None);
             }
-            match self.matcher.find_candidate_line(&buf[pos..]) {
+            let fused = if self.line_number.is_some()
+                && !self.config.invert_match
+                && self.config.max_context() == 0
+            {
+                self.matcher.find_confirmed_line_with_count(&buf[pos..])
+            } else {
+                None
+            };
+            let found = if let Some((offset, count)) = fused {
+                self.count_lines(buf, pos);
+                *self.line_number.as_mut().unwrap() += count;
+                self.last_line_counted =
+                    pos + offset.unwrap_or(buf.len() - pos);
+                Ok(offset.map(LineMatchKind::Confirmed))
+            } else {
+                self.matcher.find_candidate_line(&buf[pos..])
+            };
+            match found {
                 Err(err) => return Err(S::Error::error_message(err)),
                 Ok(None) => return Ok(None),
                 Ok(Some(LineMatchKind::Confirmed(i))) => {

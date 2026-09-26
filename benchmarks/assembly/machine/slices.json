@@ -1,0 +1,20 @@
+[
+  {
+    "name": "train",
+    "source_start": 0,
+    "bytes": 268435461,
+    "sha256": "a046113fbd761f1438d0aa5377ab3da10244065fadc348ce69aa568316a2b489"
+  },
+  {
+    "name": "heldout",
+    "source_start": 4294967324,
+    "bytes": 536870945,
+    "sha256": "9501ac317112a5cc6bfd7e79a4375580616252eceecac2cfa7bc6a0f14876650"
+  },
+  {
+    "name": "heldout2",
+    "source_start": 8589934599,
+    "bytes": 268435480,
+    "sha256": "145457bfa76d1b6d8dad58b3b0b14752a6ed66bac4492327fb03f63ffe3a6f18"
+  }
+]

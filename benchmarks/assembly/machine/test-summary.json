@@ -1,0 +1,10 @@
+{
+  "command": "cargo test --workspace --features experimental-asm",
+  "passed": 1235,
+  "failed": 0,
+  "ignored": 3,
+  "post_change_checks": [
+    "cargo check --locked",
+    "cargo test -p grep-asm --lib"
+  ]
+}

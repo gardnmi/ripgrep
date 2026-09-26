@@ -85,6 +85,9 @@ impl RegexMatcherBuilder {
             _ => None,
         };
 
+        #[cfg(feature = "experimental-asm")]
+        let class_run = class_run(chir.hir());
+
         // We override the line terminator in case the configured HIR doesn't
         // support it.
         let mut config = self.config.clone();
@@ -96,6 +99,10 @@ impl RegexMatcherBuilder {
             non_matching_bytes,
             #[cfg(feature = "experimental-asm")]
             asm_literal,
+            #[cfg(feature = "experimental-asm")]
+            class_run,
+            #[cfg(feature = "experimental-asm")]
+            parallel_safe: parallel_safe(chir.hir()),
         })
     }
 
@@ -395,9 +402,18 @@ pub struct RegexMatcher {
     /// An opt-in exact-literal scanner, selected only after parsing all flags.
     #[cfg(feature = "experimental-asm")]
     asm_literal: Option<grep_asm::Literal>,
+    #[cfg(feature = "experimental-asm")]
+    class_run: Option<grep_asm::ClassRun>,
+    #[cfg(feature = "experimental-asm")]
+    parallel_safe: bool,
 }
 
 impl RegexMatcher {
+    /// Whether newline-aligned partitioning preserves this pattern's anchors.
+    #[cfg(feature = "experimental-asm")]
+    pub fn parallel_safe(&self) -> bool {
+        self.parallel_safe
+    }
     /// Create a new matcher from the given pattern using the default
     /// configuration.
     pub fn new(pattern: &str) -> Result<RegexMatcher, Error> {
@@ -427,6 +443,24 @@ impl RegexMatcher {
 impl Matcher for RegexMatcher {
     type Captures = RegexCaptures;
     type Error = NoError;
+
+    #[inline]
+    fn find_confirmed_line_with_count(
+        &self,
+        haystack: &[u8],
+    ) -> Option<(Option<usize>, u64)> {
+        #[cfg(feature = "experimental-asm")]
+        {
+            self.asm_literal
+                .as_ref()?
+                .find_counted(haystack, self.config.line_terminator?.as_byte())
+        }
+        #[cfg(not(feature = "experimental-asm"))]
+        {
+            let _ = haystack;
+            None
+        }
+    }
 
     #[inline]
     fn find_at(
@@ -498,6 +532,10 @@ impl Matcher for RegexMatcher {
         at: usize,
     ) -> Result<Option<usize>, NoError> {
         #[cfg(feature = "experimental-asm")]
+        if let Some(ref run) = self.class_run {
+            return Ok(run.shortest(&haystack[at..]).map(|end| at + end));
+        }
+        #[cfg(feature = "experimental-asm")]
         if let Some(ref literal) = self.asm_literal {
             return Ok(literal
                 .find(&haystack[at..])
@@ -534,6 +572,36 @@ impl Matcher for RegexMatcher {
             }
         })
     }
+}
+
+#[cfg(feature = "experimental-asm")]
+fn class_run(hir: &regex_syntax::hir::Hir) -> Option<grep_asm::ClassRun> {
+    use regex_syntax::hir::{Class, HirKind};
+    let HirKind::Repetition(rep) = hir.kind() else {
+        return None;
+    };
+    let HirKind::Class(class) = rep.sub.kind() else {
+        return None;
+    };
+    let ranges = match class {
+        Class::Bytes(class) => {
+            class.iter().map(|r| (r.start(), r.end())).collect()
+        }
+        Class::Unicode(class) => {
+            if class.iter().any(|r| r.end() as u32 >= 128) {
+                return None;
+            }
+            class.iter().map(|r| (r.start() as u8, r.end() as u8)).collect()
+        }
+    };
+    grep_asm::ClassRun::new(ranges, rep.min as usize)
+}
+
+#[cfg(feature = "experimental-asm")]
+fn parallel_safe(hir: &regex_syntax::hir::Hir) -> bool {
+    use regex_syntax::hir::{HirKind, Look};
+    !matches!(hir.kind(), HirKind::Look(Look::Start | Look::End))
+        && hir.kind().subs().iter().all(parallel_safe)
 }
 
 /// Represents the match offsets of each capturing group in a match.

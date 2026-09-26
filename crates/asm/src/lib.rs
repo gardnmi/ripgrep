@@ -3,6 +3,9 @@
 
 use memchr::{arch::all::packedpair::Pair, memmem};
 
+mod class;
+pub use class::ClassRun;
+
 #[derive(Clone, Copy)]
 enum Mode {
     Disabled,
@@ -87,9 +90,101 @@ pub struct Literal {
     #[cfg(all(target_arch = "x86_64", target_os = "linux"))]
     bytes: u32,
     use_assembly: bool,
+    fuse: bool,
 }
 
 impl Literal {
+    /// Experimentally fuse literal candidate scanning with newline counting.
+    /// The count covers bytes before the returned match, or the whole slice.
+    pub fn find_counted(
+        &self,
+        haystack: &[u8],
+        byte: u8,
+    ) -> Option<(Option<usize>, u64)> {
+        if !self.fuse || haystack.len() < 256 || self.needle.contains(&byte) {
+            return None;
+        }
+        #[cfg(all(target_arch = "x86_64", target_os = "linux"))]
+        // SAFETY: Literal construction checked CPU/OS AVX-512 support.
+        unsafe {
+            return Some(self.scan_counted(haystack, byte));
+        }
+        #[cfg(not(all(target_arch = "x86_64", target_os = "linux")))]
+        {
+            None
+        }
+    }
+
+    #[cfg(all(target_arch = "x86_64", target_os = "linux"))]
+    #[target_feature(enable = "avx512f,avx512bw")]
+    unsafe fn scan_counted(
+        &self,
+        haystack: &[u8],
+        byte: u8,
+    ) -> (Option<usize>, u64) {
+        use std::arch::x86_64::*;
+        let mut offset = 0;
+        let mut count = 0;
+        let mut rejected = 0;
+        let positions = haystack.len() - self.needle.len() + 1;
+        let first = _mm512_set1_epi8(self.needle[self.offset1] as i8);
+        let second = _mm512_set1_epi8(self.needle[self.offset2] as i8);
+        let newline = _mm512_set1_epi8(byte as i8);
+        while offset + 64 <= positions {
+            // SAFETY: all 64 candidate starts and their needle bytes fit.
+            let (a, b, line) = unsafe {
+                (
+                    _mm512_loadu_si512(
+                        haystack.as_ptr().add(offset + self.offset1).cast(),
+                    ),
+                    _mm512_loadu_si512(
+                        haystack.as_ptr().add(offset + self.offset2).cast(),
+                    ),
+                    _mm512_loadu_si512(haystack.as_ptr().add(offset).cast()),
+                )
+            };
+            let mut candidates = _mm512_cmpeq_epi8_mask(a, first)
+                & _mm512_cmpeq_epi8_mask(b, second);
+            let newlines = _mm512_cmpeq_epi8_mask(line, newline);
+            while candidates != 0 {
+                let bit = candidates.trailing_zeros() as usize;
+                let at = offset + bit;
+                if haystack[at..at + self.needle.len()] == *self.needle {
+                    return (
+                        Some(at),
+                        count
+                            + (newlines & ((1u64 << bit) - 1)).count_ones()
+                                as u64,
+                    );
+                }
+                candidates &= candidates - 1;
+                rejected += 1;
+                if rejected == 16 {
+                    let found = self
+                        .fallback
+                        .find(&haystack[offset..])
+                        .map(|i| offset + i);
+                    count += memchr::memchr_iter(
+                        byte,
+                        &haystack[offset..found.unwrap_or(haystack.len())],
+                    )
+                    .count() as u64;
+                    return (found, count);
+                }
+            }
+            count += newlines.count_ones() as u64;
+            offset += 64;
+        }
+        let found =
+            self.fallback.find(&haystack[offset..]).map(|i| offset + i);
+        count += memchr::memchr_iter(
+            byte,
+            &haystack[offset..found.unwrap_or(haystack.len())],
+        )
+        .count() as u64;
+        (found, count)
+    }
+
     /// Build a scanner for a literal of 2 through 64 bytes.
     pub fn new(needle: &[u8]) -> Option<Literal> {
         let mode = mode();
@@ -115,6 +210,8 @@ impl Literal {
             bytes: u32::from(needle[offset1])
                 | (u32::from(needle[offset2]) << 8),
             use_assembly: matches!(mode, Mode::Assembly),
+            fuse: matches!(mode, Mode::Assembly)
+                && std::env::var_os("RG_FUSED").is_some_and(|v| v == "1"),
         })
     }
 

@@ -1128,11 +1128,31 @@ pub trait Matcher {
     ) -> Result<Option<LineMatchKind>, Self::Error> {
         Ok(self.shortest_match(haystack)?.map(LineMatchKind::Confirmed))
     }
+
+    /// Optional fused confirmed-line search and line-terminator count.
+    /// The outer `None` declines the optimization. Otherwise the count covers
+    /// bytes preceding the returned position, or all bytes if no match exists.
+    /// Only valid for a line-oriented matcher with a declared line terminator.
+    #[inline]
+    fn find_confirmed_line_with_count(
+        &self,
+        _haystack: &[u8],
+    ) -> Option<(Option<usize>, u64)> {
+        None
+    }
 }
 
 impl<'a, M: Matcher> Matcher for &'a M {
     type Captures = M::Captures;
     type Error = M::Error;
+
+    #[inline]
+    fn find_confirmed_line_with_count(
+        &self,
+        haystack: &[u8],
+    ) -> Option<(Option<usize>, u64)> {
+        (*self).find_confirmed_line_with_count(haystack)
+    }
 
     #[inline]
     fn find_at(
