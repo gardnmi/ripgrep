@@ -1,0 +1,2 @@
+1/8 digits8-count verifying
+STOP: competing work detected; observations retained, no acceptance. [{'pid': 1916981, 'name': 'bash', 'cwd': '/home/gardnmi/Projects/ttfx', 'exe': '/usr/bin/bash', 'state': 'S', 'process_group': 1916981, 'start_ticks': 3579015}]

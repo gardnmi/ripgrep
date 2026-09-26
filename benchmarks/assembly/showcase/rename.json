@@ -1,0 +1,10 @@
+{
+  "recorded_utc": "2026-09-26T13:51:07.461816+00:00",
+  "command": "my-grep",
+  "previous_command": "rg-zen4",
+  "installed_path": "/home/gardnmi/.local/bin/my-grep",
+  "binary": "/home/gardnmi/.local/lib/ripgrep-zen4/a7be65f27f71/rg",
+  "binary_sha256": "a7be65f27f713b0db1761a780a0ac15d92dc2cba39a3555f0d57c12ec6e43422",
+  "system_rg_sha256": "d006acfe51619144af4709e85945fe3b5a6f05038d356c4d8f752a33b4ecae42",
+  "change": "Only the user-local command name changed. Original benchmark JSON files preserved."
+}

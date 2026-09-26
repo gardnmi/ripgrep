@@ -1,0 +1,17 @@
+1/8 digits8-count verifying
+digits8-count PASS {'candidate': 0.877} warm_io=False control_noise=False
+2/8 hex17-count verifying
+hex17-count PASS {'candidate': 0.0896} warm_io=False control_noise=False
+3/8 alpha30-line-numbers verifying
+alpha30-line-numbers PASS {'candidate': 0.1046} warm_io=False control_noise=False
+4/8 alpha30 verifying
+alpha30 PASS {'candidate': 0.094} warm_io=False control_noise=False
+5/8 literal-frequent-count verifying
+literal-frequent-count PASS {'candidate': 0.9413} warm_io=False control_noise=False
+6/8 literal-absent verifying
+literal-absent INCONCLUSIVE {'candidate': 1.0505} warm_io=False control_noise=False
+7/8 directory-kernel verifying
+directory-kernel PASS {'candidate': 0.9871} warm_io=False control_noise=False
+8/8 directory-headers verifying
+directory-headers PASS {'candidate': 1.0184} warm_io=False control_noise=False
+AUDIT INCONCLUSIVE

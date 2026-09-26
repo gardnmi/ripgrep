@@ -1,0 +1,186 @@
+{
+  "started_utc": "2026-09-26T13:02:29.584565+00:00",
+  "manifest_sha256": "3cac837d98cfd527a3777f5fd6d363837252bba962f8481c0b524a4c37e22741",
+  "binaries": {
+    "/usr/bin/rg": "d006acfe51619144af4709e85945fe3b5a6f05038d356c4d8f752a33b4ecae42",
+    "/home/gardnmi/.local/bin/rg-zen4": "a7be65f27f713b0db1761a780a0ac15d92dc2cba39a3555f0d57c12ec6e43422",
+    "/home/gardnmi/.local/lib/ripgrep-zen4/a7be65f27f71/rg-class-worker": "03101117059e0e6ec11d5252d931a1164a84aced617392a1508bf7a2dc9dc3f6"
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "session": "a",
+      "command": [
+        "/usr/bin/python3",
+        "/home/gardnmi/Projects/ripgrep/scripts/assembly/audit_bench.py",
+        "--manifest",
+        "/home/gardnmi/Projects/ripgrep/target/installed-rg-showcase/manifest.json",
+        "--baseline",
+        "/usr/bin/rg",
+        "--candidate",
+        "/home/gardnmi/.local/bin/rg-zen4",
+        "--artifact",
+        "/home/gardnmi/.local/lib/ripgrep-zen4/a7be65f27f71/rg-class-worker",
+        "--output",
+        "/home/gardnmi/Videos/ripgrep-comparison-2026-09-26/attempt-01.json",
+        "--samples",
+        "15",
+        "--seed",
+        "916253",
+        "--watch-cwd",
+        "/home/gardnmi/Projects/ttfx",
+        "--watch-cwd",
+        "/home/gardnmi/Worktrees/ttfx"
+      ],
+      "directory_before": {
+        "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux": {
+          "entries": 94809,
+          "metadata_sha256": "ae3c81ef5d186c4aaf60b6a6215887b5f0b3c33f7aa951228bc9d990b0af6759"
+        },
+        "/usr/include": {
+          "entries": 35700,
+          "metadata_sha256": "3295ca15ce0d0aedede8470ff3b37bcffaf61ce6412ec8c0fbead305e2225b91"
+        }
+      },
+      "exit": 2,
+      "status": "interrupted-external-work"
+    },
+    {
+      "attempt": 2,
+      "session": "a",
+      "command": [
+        "/usr/bin/python3",
+        "/home/gardnmi/Projects/ripgrep/scripts/assembly/audit_bench.py",
+        "--manifest",
+        "/home/gardnmi/Projects/ripgrep/target/installed-rg-showcase/manifest.json",
+        "--baseline",
+        "/usr/bin/rg",
+        "--candidate",
+        "/home/gardnmi/.local/bin/rg-zen4",
+        "--artifact",
+        "/home/gardnmi/.local/lib/ripgrep-zen4/a7be65f27f71/rg-class-worker",
+        "--output",
+        "/home/gardnmi/Videos/ripgrep-comparison-2026-09-26/attempt-02.json",
+        "--samples",
+        "15",
+        "--seed",
+        "916253",
+        "--watch-cwd",
+        "/home/gardnmi/Projects/ttfx",
+        "--watch-cwd",
+        "/home/gardnmi/Worktrees/ttfx"
+      ],
+      "directory_before": {
+        "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux": {
+          "entries": 94809,
+          "metadata_sha256": "ae3c81ef5d186c4aaf60b6a6215887b5f0b3c33f7aa951228bc9d990b0af6759"
+        },
+        "/usr/include": {
+          "entries": 35700,
+          "metadata_sha256": "3295ca15ce0d0aedede8470ff3b37bcffaf61ce6412ec8c0fbead305e2225b91"
+        }
+      },
+      "exit": 0,
+      "status": "complete",
+      "directory_after": {
+        "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux": {
+          "entries": 94809,
+          "metadata_sha256": "ae3c81ef5d186c4aaf60b6a6215887b5f0b3c33f7aa951228bc9d990b0af6759"
+        },
+        "/usr/include": {
+          "entries": 35700,
+          "metadata_sha256": "3295ca15ce0d0aedede8470ff3b37bcffaf61ce6412ec8c0fbead305e2225b91"
+        }
+      }
+    },
+    {
+      "attempt": 3,
+      "session": "b",
+      "command": [
+        "/usr/bin/python3",
+        "/home/gardnmi/Projects/ripgrep/scripts/assembly/audit_bench.py",
+        "--manifest",
+        "/home/gardnmi/Projects/ripgrep/target/installed-rg-showcase/manifest.json",
+        "--baseline",
+        "/usr/bin/rg",
+        "--candidate",
+        "/home/gardnmi/.local/bin/rg-zen4",
+        "--artifact",
+        "/home/gardnmi/.local/lib/ripgrep-zen4/a7be65f27f71/rg-class-worker",
+        "--output",
+        "/home/gardnmi/Videos/ripgrep-comparison-2026-09-26/attempt-03.json",
+        "--samples",
+        "15",
+        "--seed",
+        "2610926",
+        "--reverse",
+        "--watch-cwd",
+        "/home/gardnmi/Projects/ttfx",
+        "--watch-cwd",
+        "/home/gardnmi/Worktrees/ttfx"
+      ],
+      "directory_before": {
+        "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux": {
+          "entries": 94809,
+          "metadata_sha256": "ae3c81ef5d186c4aaf60b6a6215887b5f0b3c33f7aa951228bc9d990b0af6759"
+        },
+        "/usr/include": {
+          "entries": 35700,
+          "metadata_sha256": "3295ca15ce0d0aedede8470ff3b37bcffaf61ce6412ec8c0fbead305e2225b91"
+        }
+      },
+      "exit": 2,
+      "status": "interrupted-external-work"
+    },
+    {
+      "attempt": 4,
+      "session": "b",
+      "command": [
+        "/usr/bin/python3",
+        "/home/gardnmi/Projects/ripgrep/scripts/assembly/audit_bench.py",
+        "--manifest",
+        "/home/gardnmi/Projects/ripgrep/target/installed-rg-showcase/manifest.json",
+        "--baseline",
+        "/usr/bin/rg",
+        "--candidate",
+        "/home/gardnmi/.local/bin/rg-zen4",
+        "--artifact",
+        "/home/gardnmi/.local/lib/ripgrep-zen4/a7be65f27f71/rg-class-worker",
+        "--output",
+        "/home/gardnmi/Videos/ripgrep-comparison-2026-09-26/attempt-04.json",
+        "--samples",
+        "15",
+        "--seed",
+        "2610926",
+        "--reverse",
+        "--watch-cwd",
+        "/home/gardnmi/Projects/ttfx",
+        "--watch-cwd",
+        "/home/gardnmi/Worktrees/ttfx"
+      ],
+      "directory_before": {
+        "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux": {
+          "entries": 94809,
+          "metadata_sha256": "ae3c81ef5d186c4aaf60b6a6215887b5f0b3c33f7aa951228bc9d990b0af6759"
+        },
+        "/usr/include": {
+          "entries": 35700,
+          "metadata_sha256": "3295ca15ce0d0aedede8470ff3b37bcffaf61ce6412ec8c0fbead305e2225b91"
+        }
+      },
+      "exit": 0,
+      "status": "complete",
+      "directory_after": {
+        "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux": {
+          "entries": 94809,
+          "metadata_sha256": "ae3c81ef5d186c4aaf60b6a6215887b5f0b3c33f7aa951228bc9d990b0af6759"
+        },
+        "/usr/include": {
+          "entries": 35700,
+          "metadata_sha256": "3295ca15ce0d0aedede8470ff3b37bcffaf61ce6412ec8c0fbead305e2225b91"
+        }
+      }
+    }
+  ],
+  "status": "complete"
+}

@@ -1,5 +1,8 @@
 ripgrep (rg)
 ------------
+**Personal fork:** [How `my-grep` gets its speedups](MY-GREP.md) — a short,
+plain-English explanation, including the slower results and limitations.
+
 This fork's `experiment/assembly-hotpaths` branch contains an opt-in Linux
 x86-64 assembly experiment. See the [experiment report](benchmarks/assembly/README.md)
 for measurements, limitations, and build instructions. The default build keeps

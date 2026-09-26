@@ -1,0 +1,6 @@
+1/8 directory-headers verifying
+directory-headers INCONCLUSIVE {'candidate': 1.0101} warm_io=False control_noise=False
+2/8 directory-kernel verifying
+directory-kernel INCONCLUSIVE {'candidate': 0.9867} warm_io=False control_noise=False
+3/8 literal-absent verifying
+STOP: competing work detected; observations retained, no acceptance. [{'pid': 1912113, 'name': 'bash', 'cwd': '/home/gardnmi/Projects/ttfx', 'exe': '/usr/bin/bash', 'state': 'S', 'process_group': 1912113, 'start_ticks': 3569496}, {'pid': 1912120, 'name': 'python3', 'cwd': '/home/gardnmi/Projects/ttfx', 'exe': '/usr/bin/python3.14', 'state': 'S', 'process_group': 1912113, 'start_ticks': 3569497}, {'pid': 1912136, 'name': 'pr35-badde3d', 'cwd': '/home/gardnmi/Projects/ttfx', 'exe': '/home/gardnmi/Projects/ttfx/target/refresh/pass5/pr35-badde3d', 'state': 'R', 'process_group': 1912113, 'start_ticks': 3569503}]
