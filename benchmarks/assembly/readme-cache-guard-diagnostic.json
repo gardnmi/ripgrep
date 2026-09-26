@@ -1,0 +1,1472 @@
+{
+  "recorded_utc": "2026-09-26T03:32:52.100456+00:00",
+  "base_commit": "3fce3b5bb0236da2df6d99672afb8a719642eca7",
+  "fetched_upstream_master": "3fce3b5bb0236da2df6d99672afb8a719642eca7",
+  "upstream_verification": {
+    "upstream_verified_utc": "2026-09-26T03:18:23.784784+00:00",
+    "upstream_master": "3fce3b5bb0236da2df6d99672afb8a719642eca7",
+    "latest_release": {
+      "published_at": "2026-07-15T16:26:10Z",
+      "tag_name": "15.2.0"
+    }
+  },
+  "candidate_source_commit": "051d70ab91153bb961cceb4ecea547b890248d75",
+  "readme": "https://github.com/BurntSushi/ripgrep/blob/3fce3b5bb0236da2df6d99672afb8a719642eca7/README.md#quick-examples-comparing-tools",
+  "platform": "Linux-7.2.5-3-omarchy-x86_64-with-glibc2.44",
+  "cpu": "AMD Ryzen 5 7600X 6-Core Processor",
+  "single_file_affinity": [
+    4
+  ],
+  "directory_affinity": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "seed": 62184,
+  "cgroup": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/ripgrep-readme-bench.scope",
+  "memory_limits": {
+    "memory.max": "17179869184",
+    "memory.swap.max": "0",
+    "memory.oom.group": "1"
+  },
+  "corpus_filesystem": "btrfs",
+  "require_cached_subtitles": true,
+  "method": "README arguments plus --no-config; default thread selection; warm cache; one explicit warmup after output verification; randomized paired rounds; wall time includes startup and IO; timed output=/dev/null; directory output sorted only for untimed correctness comparison",
+  "kernel": {
+    "revision": "84e57d292203a45c96dbcb2e6be9dd80961d981a",
+    "config_sha256": "9e2a62aed18ea1123bd955291522f478323f933bdedcfd35b198c4738fdee2fa",
+    "vmlinux_bytes": 82165024,
+    "build": "make defconfig; make -j8 CC='gcc -std=gnu11' HOSTCC='gcc -std=gnu11' KCFLAGS=-Wno-error",
+    "compiler": "gcc (GCC) 16.2.1 20260810"
+  },
+  "subtitles": {
+    "url": "https://object.pouta.csc.fi/OPUS-OpenSubtitles/v2018/mono/en.txt.gz",
+    "path": "/home/gardnmi/Projects/ripgrep/target/assembly-readme/en.txt",
+    "bytes": 13113340782,
+    "sha256": "f49f5fb56139a5de9e74a5d71336c8238093262974671fbbb84dd0b8a2b05fd7"
+  },
+  "binaries": {
+    "baseline": {
+      "path": "/home/gardnmi/Projects/ripgrep/target/rg-original-lto",
+      "sha256": "be54e721c7da283cd0537ddeb7ba0b5d285bd3bd21b720857f474ed29b3e5cfc",
+      "bytes": 3865768,
+      "RG_ASM": null
+    },
+    "assembly": {
+      "path": "/home/gardnmi/Projects/ripgrep/target/rg-assembly-lto",
+      "sha256": "31ed0223072a764073cf782414c6dd60557794d57636a2979a6865ad1eb66fbf",
+      "bytes": 3879928,
+      "RG_ASM": null
+    },
+    "rust-control": {
+      "path": "/home/gardnmi/Projects/ripgrep/target/rg-assembly-lto",
+      "sha256": "31ed0223072a764073cf782414c6dd60557794d57636a2979a6865ad1eb66fbf",
+      "bytes": 3879928,
+      "RG_ASM": "rust"
+    }
+  },
+  "meminfo_before": "MemTotal:       31943836 kB\nMemFree:         1699276 kB\nMemAvailable:   26393388 kB\nBuffers:            3704 kB\nCached:         26110656 kB\nSwapCached:            0 kB\nActive:          2312864 kB\nInactive:       26051896 kB\nActive(anon):    2312864 kB\nInactive(anon):        0 kB\nActive(file):          0 kB\nInactive(file): 26051896 kB\nUnevictable:           0 kB\nMlocked:               0 kB\nSwapTotal:      31943676 kB\nSwapFree:       31943676 kB\nZswap:                 0 kB\nZswapped:              0 kB\nDirty:              2432 kB\nWriteback:             0 kB\nAnonPages:       1925356 kB\nMapped:           851292 kB\nShmem:             62460 kB\nKReclaimable:     216868 kB\nSlab:             415820 kB\nSReclaimable:     216868 kB\nSUnreclaim:       198952 kB\nKernelStack:       12876 kB\nPageTables:        26312 kB\nSecPageTables:      3676 kB\nNFS_Unstable:          0 kB\nBounce:                0 kB\nWritebackTmp:          0 kB\nCommitLimit:    47915592 kB\nCommitted_AS:    5312140 kB\nVmallocTotal:   34359738367 kB\nVmallocUsed:      263972 kB\nVmallocChunk:          0 kB\nPercpu:            12544 kB\nHardwareCorrupted:     0 kB\nAnonHugePages:    851968 kB\nShmemHugePages:        0 kB\nShmemPmdMapped:        0 kB\nFileHugePages:         0 kB\nFilePmdMapped:         0 kB\nCmaTotal:              0 kB\nCmaFree:               0 kB\nUnaccepted:            0 kB\nBalloon:               0 kB\nGPUActive:         84824 kB\nGPUReclaim:        52164 kB\nHugePages_Total:       0\nHugePages_Free:        0\nHugePages_Rsvd:        0\nHugePages_Surp:        0\nHugepagesize:       2048 kB\nHugetlb:               0 kB\nDirectMap4k:      668964 kB\nDirectMap2M:     8892416 kB\nDirectMap1G:    24117248 kB\n",
+  "cases": [
+    {
+      "name": "linux-default",
+      "cwd": "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux",
+      "arguments": [
+        "--no-config",
+        "-n",
+        "-w",
+        "[A-Z]+_SUSPEND"
+      ],
+      "expected_readme_lines": 536,
+      "verification": {
+        "baseline": {
+          "exit_code": 0,
+          "lines": 538,
+          "output_bytes": 39911,
+          "stdout_sha256": "3cd0585241a4d7b11db82af26976d63cef5bbad6fa85910d859d777ed562e834",
+          "order_normalized": true
+        },
+        "assembly": {
+          "exit_code": 0,
+          "lines": 538,
+          "output_bytes": 39911,
+          "stdout_sha256": "3cd0585241a4d7b11db82af26976d63cef5bbad6fa85910d859d777ed562e834",
+          "order_normalized": true
+        },
+        "rust-control": {
+          "exit_code": 0,
+          "lines": 538,
+          "output_bytes": 39911,
+          "stdout_sha256": "3cd0585241a4d7b11db82af26976d63cef5bbad6fa85910d859d777ed562e834",
+          "order_normalized": true
+        }
+      },
+      "matches_readme_count": false,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "samples": 7,
+      "residency_before": null,
+      "resources": {
+        "baseline": [
+          {
+            "major_faults": 0,
+            "user_seconds": 0.3350719999999998,
+            "system_seconds": 0.47995499999999947,
+            "input_blocks": 0,
+            "involuntary_context_switches": 124
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.39284300000000005,
+            "system_seconds": 0.42669200000000007,
+            "input_blocks": 0,
+            "involuntary_context_switches": 135
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.39166900000000027,
+            "system_seconds": 0.4320839999999997,
+            "input_blocks": 0,
+            "involuntary_context_switches": 115
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.3641129999999997,
+            "system_seconds": 0.4811740000000011,
+            "input_blocks": 0,
+            "involuntary_context_switches": 124
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.375502,
+            "system_seconds": 0.4260439999999992,
+            "input_blocks": 0,
+            "involuntary_context_switches": 117
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.3537020000000002,
+            "system_seconds": 0.48985000000000056,
+            "input_blocks": 0,
+            "involuntary_context_switches": 204
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.38625799999999977,
+            "system_seconds": 0.453342000000001,
+            "input_blocks": 0,
+            "involuntary_context_switches": 159
+          }
+        ],
+        "assembly": [
+          {
+            "major_faults": 0,
+            "user_seconds": 0.35059299999999993,
+            "system_seconds": 0.4711540000000003,
+            "input_blocks": 0,
+            "involuntary_context_switches": 141
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.35455799999999993,
+            "system_seconds": 0.4706350000000006,
+            "input_blocks": 0,
+            "involuntary_context_switches": 214
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.36944,
+            "system_seconds": 0.43787299999999973,
+            "input_blocks": 0,
+            "involuntary_context_switches": 111
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.3525929999999997,
+            "system_seconds": 0.4534349999999989,
+            "input_blocks": 0,
+            "involuntary_context_switches": 134
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.36562800000000006,
+            "system_seconds": 0.4483379999999997,
+            "input_blocks": 0,
+            "involuntary_context_switches": 116
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.3355099999999993,
+            "system_seconds": 0.44567200000000007,
+            "input_blocks": 0,
+            "involuntary_context_switches": 138
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.34629300000000107,
+            "system_seconds": 0.4673109999999987,
+            "input_blocks": 0,
+            "involuntary_context_switches": 157
+          }
+        ],
+        "rust-control": [
+          {
+            "major_faults": 0,
+            "user_seconds": 0.3714550000000001,
+            "system_seconds": 0.4606830000000004,
+            "input_blocks": 0,
+            "involuntary_context_switches": 121
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.362428,
+            "system_seconds": 0.451009,
+            "input_blocks": 0,
+            "involuntary_context_switches": 143
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.3613419999999996,
+            "system_seconds": 0.4773820000000004,
+            "input_blocks": 0,
+            "involuntary_context_switches": 126
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.3970330000000004,
+            "system_seconds": 0.4423580000000005,
+            "input_blocks": 0,
+            "involuntary_context_switches": 129
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.3569110000000002,
+            "system_seconds": 0.48531100000000116,
+            "input_blocks": 0,
+            "involuntary_context_switches": 169
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.368131,
+            "system_seconds": 0.45271799999999907,
+            "input_blocks": 0,
+            "involuntary_context_switches": 95
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.38306299999999993,
+            "system_seconds": 0.4453870000000002,
+            "input_blocks": 0,
+            "involuntary_context_switches": 178
+          }
+        ]
+      },
+      "stats": {
+        "baseline": {
+          "median_ms": 78.303537,
+          "min_ms": 77.357688,
+          "p10_ms": 77.357688,
+          "p90_ms": 80.450677,
+          "samples_ms": [
+            80.450677,
+            78.870019,
+            81.716666,
+            78.303537,
+            77.895701,
+            77.357688,
+            77.805844
+          ]
+        },
+        "assembly": {
+          "median_ms": 76.927721,
+          "min_ms": 76.044709,
+          "p10_ms": 76.044709,
+          "p90_ms": 77.378763,
+          "samples_ms": [
+            76.677602,
+            76.044709,
+            77.105789,
+            76.927721,
+            76.802543,
+            80.40366,
+            77.378763
+          ]
+        },
+        "rust-control": {
+          "median_ms": 79.303716,
+          "min_ms": 76.673607,
+          "p10_ms": 76.673607,
+          "p90_ms": 80.583752,
+          "samples_ms": [
+            79.303716,
+            79.797074,
+            83.572955,
+            77.753962,
+            77.993858,
+            80.583752,
+            76.673607
+          ]
+        }
+      },
+      "residency_after": null,
+      "speedup": 1.0178845282573756,
+      "speedup_ci95": [
+        1.0055193567775178,
+        1.0492070031089393
+      ]
+    },
+    {
+      "name": "linux-c-types",
+      "cwd": "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux",
+      "arguments": [
+        "--no-config",
+        "-uuu",
+        "-tc",
+        "-n",
+        "-w",
+        "[A-Z]+_SUSPEND"
+      ],
+      "expected_readme_lines": 447,
+      "verification": {
+        "baseline": {
+          "exit_code": 0,
+          "lines": 451,
+          "output_bytes": 32806,
+          "stdout_sha256": "0b2228f334580cd815462e0cf258c8b869195bacb98041e21f44e23cc699d501",
+          "order_normalized": true
+        },
+        "assembly": {
+          "exit_code": 0,
+          "lines": 451,
+          "output_bytes": 32806,
+          "stdout_sha256": "0b2228f334580cd815462e0cf258c8b869195bacb98041e21f44e23cc699d501",
+          "order_normalized": true
+        },
+        "rust-control": {
+          "exit_code": 0,
+          "lines": 451,
+          "output_bytes": 32806,
+          "stdout_sha256": "0b2228f334580cd815462e0cf258c8b869195bacb98041e21f44e23cc699d501",
+          "order_normalized": true
+        }
+      },
+      "matches_readme_count": false,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "samples": 7,
+      "residency_before": null,
+      "resources": {
+        "baseline": [
+          {
+            "major_faults": 0,
+            "user_seconds": 0.20097900000000024,
+            "system_seconds": 0.3786440000000013,
+            "input_blocks": 0,
+            "involuntary_context_switches": 102
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.20973099999999967,
+            "system_seconds": 0.40656900000000107,
+            "input_blocks": 0,
+            "involuntary_context_switches": 107
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.25126900000000063,
+            "system_seconds": 0.3637110000000021,
+            "input_blocks": 0,
+            "involuntary_context_switches": 109
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.2361740000000001,
+            "system_seconds": 0.35565099999999816,
+            "input_blocks": 0,
+            "involuntary_context_switches": 112
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.2239520000000006,
+            "system_seconds": 0.3654060000000001,
+            "input_blocks": 0,
+            "involuntary_context_switches": 84
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.22798499999999855,
+            "system_seconds": 0.3746159999999996,
+            "input_blocks": 0,
+            "involuntary_context_switches": 99
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.23171100000000067,
+            "system_seconds": 0.3770750000000014,
+            "input_blocks": 0,
+            "involuntary_context_switches": 1572
+          }
+        ],
+        "assembly": [
+          {
+            "major_faults": 0,
+            "user_seconds": 0.19224599999999903,
+            "system_seconds": 0.39547899999999814,
+            "input_blocks": 0,
+            "involuntary_context_switches": 110
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.21254599999999968,
+            "system_seconds": 0.36656899999999837,
+            "input_blocks": 0,
+            "involuntary_context_switches": 122
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.2005479999999995,
+            "system_seconds": 0.381257999999999,
+            "input_blocks": 0,
+            "involuntary_context_switches": 86
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.19951900000000045,
+            "system_seconds": 0.3708980000000004,
+            "input_blocks": 0,
+            "involuntary_context_switches": 89
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.18989099999999937,
+            "system_seconds": 0.3835240000000013,
+            "input_blocks": 0,
+            "involuntary_context_switches": 106
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.20115200000000044,
+            "system_seconds": 0.3864850000000004,
+            "input_blocks": 0,
+            "involuntary_context_switches": 101
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.21953599999999973,
+            "system_seconds": 0.3520079999999979,
+            "input_blocks": 0,
+            "involuntary_context_switches": 111
+          }
+        ],
+        "rust-control": [
+          {
+            "major_faults": 0,
+            "user_seconds": 0.22519100000000059,
+            "system_seconds": 0.3638860000000008,
+            "input_blocks": 0,
+            "involuntary_context_switches": 95
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.21667000000000058,
+            "system_seconds": 0.3835090000000001,
+            "input_blocks": 0,
+            "involuntary_context_switches": 108
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.2384719999999998,
+            "system_seconds": 0.3563660000000013,
+            "input_blocks": 0,
+            "involuntary_context_switches": 97
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.20872899999999994,
+            "system_seconds": 0.38600299999999876,
+            "input_blocks": 0,
+            "involuntary_context_switches": 92
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.2092299999999998,
+            "system_seconds": 0.37428099999999986,
+            "input_blocks": 0,
+            "involuntary_context_switches": 85
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.23216900000000074,
+            "system_seconds": 0.3584700000000005,
+            "input_blocks": 0,
+            "involuntary_context_switches": 101
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.22785299999999964,
+            "system_seconds": 0.3636890000000008,
+            "input_blocks": 0,
+            "involuntary_context_switches": 150
+          }
+        ]
+      },
+      "stats": {
+        "baseline": {
+          "median_ms": 57.676881,
+          "min_ms": 54.84559,
+          "p10_ms": 54.84559,
+          "p90_ms": 59.611538,
+          "samples_ms": [
+            59.611538,
+            58.515495,
+            57.667462,
+            54.84559,
+            57.676881,
+            57.461933,
+            59.698734
+          ]
+        },
+        "assembly": {
+          "median_ms": 55.873944,
+          "min_ms": 54.088128,
+          "p10_ms": 54.088128,
+          "p90_ms": 57.132136,
+          "samples_ms": [
+            54.818416,
+            54.807195,
+            54.088128,
+            57.296839,
+            57.132136,
+            56.359828,
+            55.873944
+          ]
+        },
+        "rust-control": {
+          "median_ms": 56.100094,
+          "min_ms": 54.609339,
+          "p10_ms": 54.609339,
+          "p90_ms": 58.058657,
+          "samples_ms": [
+            54.609339,
+            56.100094,
+            55.595948,
+            56.292961,
+            58.058657,
+            55.021735,
+            58.94922
+          ]
+        }
+      },
+      "residency_after": null,
+      "speedup": 1.0322679387014455,
+      "speedup_ci95": [
+        1.0057725305421803,
+        1.0874363462089092
+      ]
+    },
+    {
+      "name": "subtitles-sherlock",
+      "cwd": "/home/gardnmi/Projects/ripgrep/target/assembly-readme",
+      "arguments": [
+        "--no-config",
+        "-w",
+        "Sherlock [A-Z]\\w+",
+        "en.txt"
+      ],
+      "expected_readme_lines": 7882,
+      "verification": {
+        "baseline": {
+          "exit_code": 0,
+          "lines": 7882,
+          "output_bytes": 395321,
+          "stdout_sha256": "1066954de11a7d06d3e871a4b911193c21f1aea6957ed0c938b01bc15ca7b822",
+          "order_normalized": false
+        },
+        "assembly": {
+          "exit_code": 0,
+          "lines": 7882,
+          "output_bytes": 395321,
+          "stdout_sha256": "1066954de11a7d06d3e871a4b911193c21f1aea6957ed0c938b01bc15ca7b822",
+          "order_normalized": false
+        },
+        "rust-control": {
+          "exit_code": 0,
+          "lines": 7882,
+          "output_bytes": 395321,
+          "stdout_sha256": "1066954de11a7d06d3e871a4b911193c21f1aea6957ed0c938b01bc15ca7b822",
+          "order_normalized": false
+        }
+      },
+      "matches_readme_count": true,
+      "affinity": [
+        4
+      ],
+      "samples": 7,
+      "residency_before": {
+        "resident_pages": 3201500,
+        "total_pages": 3201500,
+        "fraction": 1.0
+      },
+      "resources": {
+        "baseline": [
+          {
+            "major_faults": 0,
+            "user_seconds": 0.4141680000000001,
+            "system_seconds": 0.33880200000000116,
+            "input_blocks": 0,
+            "involuntary_context_switches": 17
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.4189969999999974,
+            "system_seconds": 0.32384799999999814,
+            "input_blocks": 0,
+            "involuntary_context_switches": 14
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.4419210000000007,
+            "system_seconds": 0.2977589999999992,
+            "input_blocks": 0,
+            "involuntary_context_switches": 21
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.43745899999999693,
+            "system_seconds": 0.30467200000000005,
+            "input_blocks": 0,
+            "involuntary_context_switches": 45
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.4229839999999996,
+            "system_seconds": 0.3176850000000009,
+            "input_blocks": 0,
+            "involuntary_context_switches": 15
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.42679399999999745,
+            "system_seconds": 0.31438699999999997,
+            "input_blocks": 0,
+            "involuntary_context_switches": 12
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.41395299999999935,
+            "system_seconds": 0.328789000000004,
+            "input_blocks": 0,
+            "involuntary_context_switches": 16
+          }
+        ],
+        "assembly": [
+          {
+            "major_faults": 0,
+            "user_seconds": 0.43158499999999833,
+            "system_seconds": 0.31552099999999683,
+            "input_blocks": 0,
+            "involuntary_context_switches": 18
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.42904800000000165,
+            "system_seconds": 0.3259229999999995,
+            "input_blocks": 0,
+            "involuntary_context_switches": 12
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.41821900000000056,
+            "system_seconds": 0.3250060000000019,
+            "input_blocks": 0,
+            "involuntary_context_switches": 35
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.41728000000000165,
+            "system_seconds": 0.32339899999999844,
+            "input_blocks": 0,
+            "involuntary_context_switches": 53
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.386101,
+            "system_seconds": 0.3545189999999998,
+            "input_blocks": 0,
+            "involuntary_context_switches": 18
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.41698700000000244,
+            "system_seconds": 0.3239049999999999,
+            "input_blocks": 0,
+            "involuntary_context_switches": 16
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.42697499999999877,
+            "system_seconds": 0.3139369999999957,
+            "input_blocks": 0,
+            "involuntary_context_switches": 27
+          }
+        ],
+        "rust-control": [
+          {
+            "major_faults": 0,
+            "user_seconds": 0.41721800000000187,
+            "system_seconds": 0.32366500000000187,
+            "input_blocks": 0,
+            "involuntary_context_switches": 11
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.4190719999999999,
+            "system_seconds": 0.32389000000000223,
+            "input_blocks": 0,
+            "involuntary_context_switches": 16
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.4298150000000014,
+            "system_seconds": 0.3116120000000002,
+            "input_blocks": 0,
+            "involuntary_context_switches": 20
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.4398440000000008,
+            "system_seconds": 0.3155600000000014,
+            "input_blocks": 0,
+            "involuntary_context_switches": 53
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.43085800000000063,
+            "system_seconds": 0.31787299999999874,
+            "input_blocks": 0,
+            "involuntary_context_switches": 42
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.4294489999999982,
+            "system_seconds": 0.3103240000000014,
+            "input_blocks": 0,
+            "involuntary_context_switches": 9
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.4164120000000011,
+            "system_seconds": 0.3262149999999977,
+            "input_blocks": 0,
+            "involuntary_context_switches": 10
+          }
+        ]
+      },
+      "stats": {
+        "baseline": {
+          "median_ms": 746.431596,
+          "min_ms": 743.843957,
+          "p10_ms": 743.843957,
+          "p90_ms": 747.052003,
+          "samples_ms": [
+            757.174507,
+            747.052003,
+            743.843957,
+            746.431596,
+            744.889138,
+            745.053214,
+            746.887697
+          ]
+        },
+        "assembly": {
+          "median_ms": 745.411011,
+          "min_ms": 744.810075,
+          "p10_ms": 744.810075,
+          "p90_ms": 751.30722,
+          "samples_ms": [
+            751.30722,
+            759.083579,
+            747.396111,
+            745.112728,
+            744.991269,
+            744.810075,
+            745.411011
+          ]
+        },
+        "rust-control": {
+          "median_ms": 746.73654,
+          "min_ms": 743.56532,
+          "p10_ms": 743.56532,
+          "p90_ms": 753.047304,
+          "samples_ms": [
+            743.56532,
+            747.232908,
+            745.877264,
+            760.025954,
+            753.047304,
+            743.742084,
+            746.73654
+          ]
+        }
+      },
+      "residency_after": {
+        "resident_pages": 3201500,
+        "total_pages": 3201500,
+        "fraction": 1.0
+      },
+      "speedup": 1.0013691573976493,
+      "speedup_ci95": [
+        0.9943362490247332,
+        1.0019810359361594
+      ]
+    },
+    {
+      "name": "subtitles-sherlock-lines",
+      "cwd": "/home/gardnmi/Projects/ripgrep/target/assembly-readme",
+      "arguments": [
+        "--no-config",
+        "-n",
+        "-w",
+        "Sherlock [A-Z]\\w+",
+        "en.txt"
+      ],
+      "expected_readme_lines": 7882,
+      "verification": {
+        "baseline": {
+          "exit_code": 0,
+          "lines": 7882,
+          "output_bytes": 472513,
+          "stdout_sha256": "416edb08ccbe4f840b27abf864b8c319298ce3336e3ebe4532c324570dbadd49",
+          "order_normalized": false
+        },
+        "assembly": {
+          "exit_code": 0,
+          "lines": 7882,
+          "output_bytes": 472513,
+          "stdout_sha256": "416edb08ccbe4f840b27abf864b8c319298ce3336e3ebe4532c324570dbadd49",
+          "order_normalized": false
+        },
+        "rust-control": {
+          "exit_code": 0,
+          "lines": 7882,
+          "output_bytes": 472513,
+          "stdout_sha256": "416edb08ccbe4f840b27abf864b8c319298ce3336e3ebe4532c324570dbadd49",
+          "order_normalized": false
+        }
+      },
+      "matches_readme_count": true,
+      "affinity": [
+        4
+      ],
+      "samples": 7,
+      "residency_before": {
+        "resident_pages": 3201500,
+        "total_pages": 3201500,
+        "fraction": 1.0
+      },
+      "resources": {
+        "baseline": [
+          {
+            "major_faults": 0,
+            "user_seconds": 0.657038,
+            "system_seconds": 0.3567830000000001,
+            "input_blocks": 0,
+            "involuntary_context_switches": 42
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.654676000000002,
+            "system_seconds": 0.3624939999999981,
+            "input_blocks": 0,
+            "involuntary_context_switches": 60
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.6312809999999942,
+            "system_seconds": 0.38076699999999875,
+            "input_blocks": 0,
+            "involuntary_context_switches": 17
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.6572540000000018,
+            "system_seconds": 0.35870699999999545,
+            "input_blocks": 0,
+            "involuntary_context_switches": 18
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.6513630000000035,
+            "system_seconds": 0.35980200000000195,
+            "input_blocks": 0,
+            "involuntary_context_switches": 13
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.667264000000003,
+            "system_seconds": 0.3474290000000053,
+            "input_blocks": 0,
+            "involuntary_context_switches": 17
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.6529799999999994,
+            "system_seconds": 0.3625629999999944,
+            "input_blocks": 0,
+            "involuntary_context_switches": 21
+          }
+        ],
+        "assembly": [
+          {
+            "major_faults": 0,
+            "user_seconds": 0.5996190000000006,
+            "system_seconds": 0.36487000000000336,
+            "input_blocks": 0,
+            "involuntary_context_switches": 26
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.6119460000000032,
+            "system_seconds": 0.3506810000000016,
+            "input_blocks": 0,
+            "involuntary_context_switches": 17
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.5909869999999984,
+            "system_seconds": 0.3644829999999999,
+            "input_blocks": 0,
+            "involuntary_context_switches": 33
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.6000019999999964,
+            "system_seconds": 0.36222500000000224,
+            "input_blocks": 0,
+            "involuntary_context_switches": 37
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.5957910000000055,
+            "system_seconds": 0.36345500000000186,
+            "input_blocks": 0,
+            "involuntary_context_switches": 21
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.5994379999999992,
+            "system_seconds": 0.3588409999999982,
+            "input_blocks": 0,
+            "involuntary_context_switches": 20
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.6064140000000009,
+            "system_seconds": 0.3526650000000018,
+            "input_blocks": 0,
+            "involuntary_context_switches": 20
+          }
+        ],
+        "rust-control": [
+          {
+            "major_faults": 0,
+            "user_seconds": 0.6603239999999992,
+            "system_seconds": 0.3507889999999989,
+            "input_blocks": 0,
+            "involuntary_context_switches": 76
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.6687379999999976,
+            "system_seconds": 0.36214499999999816,
+            "input_blocks": 0,
+            "involuntary_context_switches": 48
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.6240350000000063,
+            "system_seconds": 0.3846249999999998,
+            "input_blocks": 0,
+            "involuntary_context_switches": 18
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.6541309999999996,
+            "system_seconds": 0.35730000000000217,
+            "input_blocks": 0,
+            "involuntary_context_switches": 24
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.6319479999999942,
+            "system_seconds": 0.37971100000000035,
+            "input_blocks": 0,
+            "involuntary_context_switches": 44
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.6590709999999973,
+            "system_seconds": 0.3557169999999985,
+            "input_blocks": 0,
+            "involuntary_context_switches": 19
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.6409199999999942,
+            "system_seconds": 0.3803880000000035,
+            "input_blocks": 0,
+            "involuntary_context_switches": 16
+          }
+        ]
+      },
+      "stats": {
+        "baseline": {
+          "median_ms": 1019.834004,
+          "min_ms": 1016.325211,
+          "p10_ms": 1016.325211,
+          "p90_ms": 1021.211987,
+          "samples_ms": [
+            1019.12496,
+            1022.65217,
+            1017.195595,
+            1021.211987,
+            1016.325211,
+            1019.834004,
+            1020.764855
+          ]
+        },
+        "assembly": {
+          "median_ms": 964.522481,
+          "min_ms": 960.725165,
+          "p10_ms": 960.725165,
+          "p90_ms": 967.700978,
+          "samples_ms": [
+            969.594478,
+            967.700978,
+            960.725165,
+            967.680848,
+            964.522481,
+            963.378527,
+            964.248623
+          ]
+        },
+        "rust-control": {
+          "median_ms": 1017.992563,
+          "min_ms": 1013.683161,
+          "p10_ms": 1013.683161,
+          "p90_ms": 1026.597375,
+          "samples_ms": [
+            1015.236624,
+            1036.517453,
+            1013.683161,
+            1016.744646,
+            1017.992563,
+            1020.145098,
+            1026.597375
+          ]
+        }
+      },
+      "residency_after": {
+        "resident_pages": 3201500,
+        "total_pages": 3201500,
+        "fraction": 1.0
+      },
+      "speedup": 1.0573460174226879,
+      "speedup_ci95": [
+        1.0531403637787788,
+        1.0586116802782306
+      ]
+    },
+    {
+      "name": "subtitles-surrounding",
+      "cwd": "/home/gardnmi/Projects/ripgrep/target/assembly-readme",
+      "arguments": [
+        "--no-config",
+        "-w",
+        "[A-Z]\\w+ Sherlock [A-Z]\\w+",
+        "en.txt"
+      ],
+      "expected_readme_lines": 485,
+      "verification": {
+        "baseline": {
+          "exit_code": 0,
+          "lines": 485,
+          "output_bytes": 22522,
+          "stdout_sha256": "9281d9913033b7aba2b9459d7677e1eac5fc91333e2950b17de73e85470aea52",
+          "order_normalized": false
+        },
+        "assembly": {
+          "exit_code": 0,
+          "lines": 485,
+          "output_bytes": 22522,
+          "stdout_sha256": "9281d9913033b7aba2b9459d7677e1eac5fc91333e2950b17de73e85470aea52",
+          "order_normalized": false
+        },
+        "rust-control": {
+          "exit_code": 0,
+          "lines": 485,
+          "output_bytes": 22522,
+          "stdout_sha256": "9281d9913033b7aba2b9459d7677e1eac5fc91333e2950b17de73e85470aea52",
+          "order_normalized": false
+        }
+      },
+      "matches_readme_count": true,
+      "affinity": [
+        4
+      ],
+      "samples": 7,
+      "residency_before": {
+        "resident_pages": 3201500,
+        "total_pages": 3201500,
+        "fraction": 1.0
+      },
+      "resources": {
+        "baseline": [
+          {
+            "major_faults": 0,
+            "user_seconds": 0.4185910000000064,
+            "system_seconds": 0.3204009999999968,
+            "input_blocks": 0,
+            "involuntary_context_switches": 13
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.40418099999999413,
+            "system_seconds": 0.34389299999999423,
+            "input_blocks": 0,
+            "involuntary_context_switches": 24
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.4099509999999995,
+            "system_seconds": 0.33274899999999974,
+            "input_blocks": 0,
+            "involuntary_context_switches": 15
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.40353300000000303,
+            "system_seconds": 0.3395280000000014,
+            "input_blocks": 0,
+            "involuntary_context_switches": 24
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.39442900000000236,
+            "system_seconds": 0.3439290000000028,
+            "input_blocks": 0,
+            "involuntary_context_switches": 14
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.4007089999999991,
+            "system_seconds": 0.3395310000000009,
+            "input_blocks": 0,
+            "involuntary_context_switches": 12
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.3979580000000027,
+            "system_seconds": 0.33868799999999766,
+            "input_blocks": 0,
+            "involuntary_context_switches": 11
+          }
+        ],
+        "assembly": [
+          {
+            "major_faults": 0,
+            "user_seconds": 0.425651000000002,
+            "system_seconds": 0.3211810000000028,
+            "input_blocks": 0,
+            "involuntary_context_switches": 115
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.4122080000000068,
+            "system_seconds": 0.3319930000000042,
+            "input_blocks": 0,
+            "involuntary_context_switches": 15
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.4080189999999959,
+            "system_seconds": 0.3368469999999988,
+            "input_blocks": 0,
+            "involuntary_context_switches": 19
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.4126929999999973,
+            "system_seconds": 0.3303989999999999,
+            "input_blocks": 0,
+            "involuntary_context_switches": 13
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.41492600000000124,
+            "system_seconds": 0.3206649999999982,
+            "input_blocks": 0,
+            "involuntary_context_switches": 21
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.403018000000003,
+            "system_seconds": 0.33384799999999615,
+            "input_blocks": 0,
+            "involuntary_context_switches": 14
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.40997600000000034,
+            "system_seconds": 0.3288909999999987,
+            "input_blocks": 0,
+            "involuntary_context_switches": 22
+          }
+        ],
+        "rust-control": [
+          {
+            "major_faults": 0,
+            "user_seconds": 0.3838099999999969,
+            "system_seconds": 0.35555800000000204,
+            "input_blocks": 0,
+            "involuntary_context_switches": 23
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.3984179999999995,
+            "system_seconds": 0.34814200000000284,
+            "input_blocks": 0,
+            "involuntary_context_switches": 14
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.40601999999999805,
+            "system_seconds": 0.33687400000000167,
+            "input_blocks": 0,
+            "involuntary_context_switches": 10
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.41403600000000296,
+            "system_seconds": 0.3298729999999992,
+            "input_blocks": 0,
+            "involuntary_context_switches": 13
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.4251639999999952,
+            "system_seconds": 0.3200909999999979,
+            "input_blocks": 0,
+            "involuntary_context_switches": 13
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.4142450000000011,
+            "system_seconds": 0.3229390000000052,
+            "input_blocks": 0,
+            "involuntary_context_switches": 14
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 0.40949699999999467,
+            "system_seconds": 0.33013400000000104,
+            "input_blocks": 0,
+            "involuntary_context_switches": 19
+          }
+        ]
+      },
+      "stats": {
+        "baseline": {
+          "median_ms": 744.010703,
+          "min_ms": 740.435583,
+          "p10_ms": 740.435583,
+          "p90_ms": 747.281293,
+          "samples_ms": [
+            743.122688,
+            752.221719,
+            746.952011,
+            747.281293,
+            742.405561,
+            744.010703,
+            740.435583
+          ]
+        },
+        "assembly": {
+          "median_ms": 747.132047,
+          "min_ms": 739.666589,
+          "p10_ms": 739.666589,
+          "p90_ms": 749.089331,
+          "samples_ms": [
+            750.624974,
+            748.454267,
+            749.089331,
+            747.132047,
+            739.666589,
+            740.998143,
+            743.200239
+          ]
+        },
+        "rust-control": {
+          "median_ms": 747.064068,
+          "min_ms": 740.949546,
+          "p10_ms": 740.949546,
+          "p90_ms": 749.295142,
+          "samples_ms": [
+            743.496982,
+            750.511177,
+            747.064068,
+            747.939492,
+            749.295142,
+            740.949546,
+            743.601822
+          ]
+        }
+      },
+      "residency_after": {
+        "resident_pages": 3201500,
+        "total_pages": 3201500,
+        "fraction": 1.0
+      },
+      "speedup": 0.9958222324788059,
+      "speedup_ci95": [
+        0.9920348044577877,
+        1.0040655432519754
+      ]
+    },
+    {
+      "name": "subtitles-no-literal",
+      "cwd": "/home/gardnmi/Projects/ripgrep/target/assembly-readme",
+      "arguments": [
+        "--no-config",
+        "[A-Za-z]{30}",
+        "en.txt"
+      ],
+      "expected_readme_lines": 6749,
+      "verification": {
+        "baseline": {
+          "exit_code": 0,
+          "lines": 6749,
+          "output_bytes": 428236,
+          "stdout_sha256": "54ebba9abb7c66c4ddd354a3fde1a358d46c5f8247250d4cc176255ca13f0b1d",
+          "order_normalized": false
+        },
+        "assembly": {
+          "exit_code": 0,
+          "lines": 6749,
+          "output_bytes": 428236,
+          "stdout_sha256": "54ebba9abb7c66c4ddd354a3fde1a358d46c5f8247250d4cc176255ca13f0b1d",
+          "order_normalized": false
+        },
+        "rust-control": {
+          "exit_code": 0,
+          "lines": 6749,
+          "output_bytes": 428236,
+          "stdout_sha256": "54ebba9abb7c66c4ddd354a3fde1a358d46c5f8247250d4cc176255ca13f0b1d",
+          "order_normalized": false
+        }
+      },
+      "matches_readme_count": true,
+      "affinity": [
+        4
+      ],
+      "samples": 5,
+      "residency_before": {
+        "resident_pages": 3201500,
+        "total_pages": 3201500,
+        "fraction": 1.0
+      },
+      "resources": {
+        "baseline": [
+          {
+            "major_faults": 0,
+            "user_seconds": 14.840159,
+            "system_seconds": 0.3958760000000012,
+            "input_blocks": 0,
+            "involuntary_context_switches": 389
+          }
+        ],
+        "assembly": [
+          {
+            "major_faults": 0,
+            "user_seconds": 14.922135999999995,
+            "system_seconds": 0.3760559999999984,
+            "input_blocks": 0,
+            "involuntary_context_switches": 312
+          }
+        ],
+        "rust-control": [
+          {
+            "major_faults": 55,
+            "user_seconds": 14.859488999999996,
+            "system_seconds": 0.40133700000000516,
+            "input_blocks": 122768,
+            "involuntary_context_switches": 1698
+          }
+        ]
+      },
+      "stats": {
+        "baseline": {
+          "median_ms": 15277.881513,
+          "min_ms": 15277.881513,
+          "p10_ms": 15277.881513,
+          "p90_ms": 15277.881513,
+          "samples_ms": [
+            15277.881513
+          ]
+        },
+        "assembly": {
+          "median_ms": 15341.95404,
+          "min_ms": 15341.95404,
+          "p10_ms": 15341.95404,
+          "p90_ms": 15341.95404,
+          "samples_ms": [
+            15341.95404
+          ]
+        },
+        "rust-control": {
+          "median_ms": 15411.090145,
+          "min_ms": 15411.090145,
+          "p10_ms": 15411.090145,
+          "p90_ms": 15411.090145,
+          "samples_ms": [
+            15411.090145
+          ]
+        }
+      }
+    }
+  ],
+  "status": "stopped by cache guard during no-literal case",
+  "stop_reason": "The first Rust-control timing in the slow case incurred 55 major faults and 122768 input blocks after 100% residency at case start. A complete rerun keeps the source mmap open and touches its pages before every timed process."
+}

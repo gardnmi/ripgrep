@@ -1,0 +1,506 @@
+{
+  "recorded_utc": "2026-09-26T03:51:52.120396+00:00",
+  "base_commit": "3fce3b5bb0236da2df6d99672afb8a719642eca7",
+  "fetched_upstream_master": "3fce3b5bb0236da2df6d99672afb8a719642eca7",
+  "upstream_verification": {
+    "upstream_verified_utc": "2026-09-26T03:18:23.784784+00:00",
+    "upstream_master": "3fce3b5bb0236da2df6d99672afb8a719642eca7",
+    "latest_release": {
+      "published_at": "2026-07-15T16:26:10Z",
+      "tag_name": "15.2.0"
+    }
+  },
+  "candidate_source_commit": "051d70ab91153bb961cceb4ecea547b890248d75",
+  "readme": "https://github.com/BurntSushi/ripgrep/blob/3fce3b5bb0236da2df6d99672afb8a719642eca7/README.md#quick-examples-comparing-tools",
+  "platform": "Linux-7.2.5-3-omarchy-x86_64-with-glibc2.44",
+  "cpu": "AMD Ryzen 5 7600X 6-Core Processor",
+  "single_file_affinity": [
+    4
+  ],
+  "directory_affinity": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "seed": 62184,
+  "cgroup": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/ripgrep-readme-bench.scope",
+  "memory_limits": {
+    "memory.max": "17179869184",
+    "memory.swap.max": "0",
+    "memory.oom.group": "1"
+  },
+  "corpus_filesystem": "btrfs",
+  "require_cached_subtitles": false,
+  "method": "README arguments plus --no-config; default thread selection; warm cache; one explicit warmup after output verification; randomized paired rounds; wall time includes startup and IO; timed output=/dev/null; directory output sorted only for untimed correctness comparison; subtitle source mmap held open and pages touched before every timed process; MADV_DONTFORK avoids inheriting the warmup mapping into child processes",
+  "kernel": {
+    "revision": "84e57d292203a45c96dbcb2e6be9dd80961d981a",
+    "config_sha256": "9e2a62aed18ea1123bd955291522f478323f933bdedcfd35b198c4738fdee2fa",
+    "vmlinux_bytes": 82165024,
+    "build": "make defconfig; make -j8 CC='gcc -std=gnu11' HOSTCC='gcc -std=gnu11' KCFLAGS=-Wno-error",
+    "compiler": "gcc (GCC) 16.2.1 20260810"
+  },
+  "subtitles": {
+    "url": "https://object.pouta.csc.fi/OPUS-OpenSubtitles/v2018/mono/en.txt.gz",
+    "path": "/home/gardnmi/Projects/ripgrep/target/assembly-readme/en.txt",
+    "bytes": 13113340782,
+    "sha256": "f49f5fb56139a5de9e74a5d71336c8238093262974671fbbb84dd0b8a2b05fd7"
+  },
+  "binaries": {
+    "baseline": {
+      "path": "/home/gardnmi/Projects/ripgrep/target/rg-original-lto",
+      "sha256": "be54e721c7da283cd0537ddeb7ba0b5d285bd3bd21b720857f474ed29b3e5cfc",
+      "bytes": 3865768,
+      "RG_ASM": null
+    },
+    "assembly": {
+      "path": "/home/gardnmi/Projects/ripgrep/target/rg-assembly-lto",
+      "sha256": "31ed0223072a764073cf782414c6dd60557794d57636a2979a6865ad1eb66fbf",
+      "bytes": 3879928,
+      "RG_ASM": null
+    },
+    "rust-control": {
+      "path": "/home/gardnmi/Projects/ripgrep/target/rg-assembly-lto",
+      "sha256": "31ed0223072a764073cf782414c6dd60557794d57636a2979a6865ad1eb66fbf",
+      "bytes": 3879928,
+      "RG_ASM": "rust"
+    }
+  },
+  "meminfo_before": "MemTotal:       31943836 kB\nMemFree:          734380 kB\nMemAvailable:   21606348 kB\nBuffers:             248 kB\nCached:         22560000 kB\nSwapCached:            0 kB\nActive:         15863000 kB\nInactive:       13251428 kB\nActive(anon):    5757432 kB\nInactive(anon):  1162620 kB\nActive(file):   10105568 kB\nInactive(file): 12088808 kB\nUnevictable:         168 kB\nMlocked:             168 kB\nSwapTotal:      31943676 kB\nSwapFree:       31864628 kB\nZswap:                 0 kB\nZswapped:              0 kB\nDirty:              6156 kB\nWriteback:             0 kB\nAnonPages:       5970380 kB\nMapped:          1293164 kB\nShmem:            365960 kB\nKReclaimable:     287620 kB\nSlab:             521200 kB\nSReclaimable:     287620 kB\nSUnreclaim:       233580 kB\nKernelStack:       23504 kB\nPageTables:        87044 kB\nSecPageTables:      3700 kB\nNFS_Unstable:          0 kB\nBounce:                0 kB\nWritebackTmp:          0 kB\nCommitLimit:    47915592 kB\nCommitted_AS:   32821692 kB\nVmallocTotal:   34359738367 kB\nVmallocUsed:      275052 kB\nVmallocChunk:          0 kB\nPercpu:            12736 kB\nHardwareCorrupted:     0 kB\nAnonHugePages:    897024 kB\nShmemHugePages:        0 kB\nShmemPmdMapped:        0 kB\nFileHugePages:         0 kB\nFilePmdMapped:         0 kB\nCmaTotal:              0 kB\nCmaFree:               0 kB\nUnaccepted:            0 kB\nBalloon:               0 kB\nGPUActive:        230380 kB\nGPUReclaim:       128536 kB\nHugePages_Total:       0\nHugePages_Free:        0\nHugePages_Rsvd:        0\nHugePages_Surp:        0\nHugepagesize:       2048 kB\nHugetlb:               0 kB\nDirectMap4k:     1336612 kB\nDirectMap2M:    29196288 kB\nDirectMap1G:     3145728 kB\n",
+  "cases": [
+    {
+      "name": "subtitles-no-literal",
+      "cwd": "/home/gardnmi/Projects/ripgrep/target/assembly-readme",
+      "arguments": [
+        "--no-config",
+        "[A-Za-z]{30}",
+        "en.txt"
+      ],
+      "expected_readme_lines": 6749,
+      "verification": {
+        "baseline": {
+          "exit_code": 0,
+          "lines": 6749,
+          "output_bytes": 428236,
+          "stdout_sha256": "54ebba9abb7c66c4ddd354a3fde1a358d46c5f8247250d4cc176255ca13f0b1d",
+          "order_normalized": false
+        },
+        "assembly": {
+          "exit_code": 0,
+          "lines": 6749,
+          "output_bytes": 428236,
+          "stdout_sha256": "54ebba9abb7c66c4ddd354a3fde1a358d46c5f8247250d4cc176255ca13f0b1d",
+          "order_normalized": false
+        },
+        "rust-control": {
+          "exit_code": 0,
+          "lines": 6749,
+          "output_bytes": 428236,
+          "stdout_sha256": "54ebba9abb7c66c4ddd354a3fde1a358d46c5f8247250d4cc176255ca13f0b1d",
+          "order_normalized": false
+        }
+      },
+      "matches_readme_count": true,
+      "affinity": [
+        4
+      ],
+      "samples": 5,
+      "residency_before": {
+        "resident_pages": 3201500,
+        "total_pages": 3201500,
+        "fraction": 1.0
+      },
+      "resources": {
+        "baseline": [
+          {
+            "major_faults": 0,
+            "user_seconds": 14.838883999999993,
+            "system_seconds": 0.34999199999999986,
+            "input_blocks": 0,
+            "involuntary_context_switches": 504
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 14.970747000000017,
+            "system_seconds": 0.3351900000000003,
+            "input_blocks": 0,
+            "involuntary_context_switches": 587
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 14.86229800000001,
+            "system_seconds": 0.3779439999999994,
+            "input_blocks": 0,
+            "involuntary_context_switches": 932
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 14.916638999999998,
+            "system_seconds": 0.4237119999999999,
+            "input_blocks": 0,
+            "involuntary_context_switches": 610
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 14.866005000000001,
+            "system_seconds": 0.376981,
+            "input_blocks": 0,
+            "involuntary_context_switches": 522
+          }
+        ],
+        "assembly": [
+          {
+            "major_faults": 0,
+            "user_seconds": 14.853711000000004,
+            "system_seconds": 0.3252250000000001,
+            "input_blocks": 0,
+            "involuntary_context_switches": 596
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 14.865918999999991,
+            "system_seconds": 0.37287500000000007,
+            "input_blocks": 0,
+            "involuntary_context_switches": 488
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 14.844415999999995,
+            "system_seconds": 0.389926,
+            "input_blocks": 0,
+            "involuntary_context_switches": 472
+          },
+          {
+            "major_faults": 137,
+            "user_seconds": 14.93250599999999,
+            "system_seconds": 0.4949829999999995,
+            "input_blocks": 298640,
+            "involuntary_context_switches": 996
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 14.870838000000003,
+            "system_seconds": 0.37081300000000006,
+            "input_blocks": 0,
+            "involuntary_context_switches": 656
+          }
+        ],
+        "rust-control": [
+          {
+            "major_faults": 0,
+            "user_seconds": 14.897328000000002,
+            "system_seconds": 0.2961480000000001,
+            "input_blocks": 0,
+            "involuntary_context_switches": 467
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 14.864125999999999,
+            "system_seconds": 0.383823,
+            "input_blocks": 0,
+            "involuntary_context_switches": 954
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 14.869574,
+            "system_seconds": 0.3781030000000003,
+            "input_blocks": 0,
+            "involuntary_context_switches": 656
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 14.86074099999999,
+            "system_seconds": 0.3929640000000001,
+            "input_blocks": 0,
+            "involuntary_context_switches": 338
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 14.909019999999998,
+            "system_seconds": 0.3540920000000001,
+            "input_blocks": 0,
+            "involuntary_context_switches": 515
+          }
+        ]
+      },
+      "stats": {
+        "baseline": {
+          "median_ms": 15289.786224,
+          "min_ms": 15230.878698,
+          "p10_ms": 15230.878698,
+          "p90_ms": 15356.174803,
+          "samples_ms": [
+            15230.878698,
+            15356.174803,
+            15289.786224,
+            15390.461841,
+            15288.765225
+          ]
+        },
+        "assembly": {
+          "median_ms": 15288.544831,
+          "min_ms": 15221.998917,
+          "p10_ms": 15221.998917,
+          "p90_ms": 15289.65095,
+          "samples_ms": [
+            15221.998917,
+            15288.544831,
+            15279.403498,
+            16558.053916,
+            15289.65095
+          ]
+        },
+        "rust-control": {
+          "median_ms": 15299.56757,
+          "min_ms": 15235.285371,
+          "p10_ms": 15235.285371,
+          "p90_ms": 15301.683047,
+          "samples_ms": [
+            15235.285371,
+            15301.683047,
+            15294.130219,
+            15299.56757,
+            15308.541808
+          ]
+        }
+      },
+      "residency_at_resume": {
+        "resident_pages": 3201500,
+        "total_pages": 3201500,
+        "fraction": 1.0
+      },
+      "residency_after": {
+        "resident_pages": 3201500,
+        "total_pages": 3201500,
+        "fraction": 1.0
+      },
+      "speedup": 1.0000811975903345,
+      "speedup_ci95": [
+        0.9294849454577655,
+        1.004423571552923
+      ]
+    },
+    {
+      "name": "subtitles-frequent",
+      "cwd": "/home/gardnmi/Projects/ripgrep/target/assembly-readme",
+      "arguments": [
+        "--no-config",
+        "the",
+        "en.txt"
+      ],
+      "expected_readme_lines": 83499915,
+      "verification": {
+        "baseline": {
+          "exit_code": 0,
+          "lines": 83499915,
+          "output_bytes": 4316566304,
+          "stdout_sha256": "0f50738ffb2eb749330d98d1d44cfa95d6fd60f7ea08282f23c2786627b6c6e9",
+          "order_normalized": false
+        },
+        "assembly": {
+          "exit_code": 0,
+          "lines": 83499915,
+          "output_bytes": 4316566304,
+          "stdout_sha256": "0f50738ffb2eb749330d98d1d44cfa95d6fd60f7ea08282f23c2786627b6c6e9",
+          "order_normalized": false
+        },
+        "rust-control": {
+          "exit_code": 0,
+          "lines": 83499915,
+          "output_bytes": 4316566304,
+          "stdout_sha256": "0f50738ffb2eb749330d98d1d44cfa95d6fd60f7ea08282f23c2786627b6c6e9",
+          "order_normalized": false
+        }
+      },
+      "matches_readme_count": true,
+      "affinity": [
+        4
+      ],
+      "samples": 5,
+      "residency_before": {
+        "resident_pages": 3201500,
+        "total_pages": 3201500,
+        "fraction": 1.0
+      },
+      "resources": {
+        "baseline": [
+          {
+            "major_faults": 0,
+            "user_seconds": 5.609224999999995,
+            "system_seconds": 0.4426160000000001,
+            "input_blocks": 0,
+            "involuntary_context_switches": 248
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 5.602378999999999,
+            "system_seconds": 0.4306529999999995,
+            "input_blocks": 0,
+            "involuntary_context_switches": 241
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 5.642479000000009,
+            "system_seconds": 0.40963999999999956,
+            "input_blocks": 0,
+            "involuntary_context_switches": 169
+          },
+          {
+            "major_faults": 130,
+            "user_seconds": 5.687571999999989,
+            "system_seconds": 0.5681480000000008,
+            "input_blocks": 279944,
+            "involuntary_context_switches": 203
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 5.649265000000014,
+            "system_seconds": 0.47037899999999944,
+            "input_blocks": 0,
+            "involuntary_context_switches": 232
+          }
+        ],
+        "assembly": [
+          {
+            "major_faults": 0,
+            "user_seconds": 5.385429000000002,
+            "system_seconds": 0.42066299999999934,
+            "input_blocks": 0,
+            "involuntary_context_switches": 307
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 5.382216999999997,
+            "system_seconds": 0.43359099999999984,
+            "input_blocks": 0,
+            "involuntary_context_switches": 303
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 5.378329000000008,
+            "system_seconds": 0.4167400000000008,
+            "input_blocks": 0,
+            "involuntary_context_switches": 179
+          },
+          {
+            "major_faults": 48,
+            "user_seconds": 5.496081000000004,
+            "system_seconds": 0.5228519999999985,
+            "input_blocks": 114584,
+            "involuntary_context_switches": 655
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 5.373524000000003,
+            "system_seconds": 0.4555290000000003,
+            "input_blocks": 0,
+            "involuntary_context_switches": 206
+          }
+        ],
+        "rust-control": [
+          {
+            "major_faults": 0,
+            "user_seconds": 5.385953999999998,
+            "system_seconds": 0.4564919999999999,
+            "input_blocks": 0,
+            "involuntary_context_switches": 371
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 5.353459000000001,
+            "system_seconds": 0.4136690000000005,
+            "input_blocks": 0,
+            "involuntary_context_switches": 304
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 5.328333000000001,
+            "system_seconds": 0.41286500000000004,
+            "input_blocks": 0,
+            "involuntary_context_switches": 160
+          },
+          {
+            "major_faults": 149,
+            "user_seconds": 5.341535999999991,
+            "system_seconds": 0.6359980000000007,
+            "input_blocks": 316488,
+            "involuntary_context_switches": 283
+          },
+          {
+            "major_faults": 0,
+            "user_seconds": 5.348482999999987,
+            "system_seconds": 0.47461799999999954,
+            "input_blocks": 0,
+            "involuntary_context_switches": 296
+          }
+        ]
+      },
+      "stats": {
+        "baseline": {
+          "median_ms": 6073.241595,
+          "min_ms": 6053.543188,
+          "p10_ms": 6053.543188,
+          "p90_ms": 6143.108,
+          "samples_ms": [
+            6072.711087,
+            6053.543188,
+            6073.241595,
+            6359.149486,
+            6143.108
+          ]
+        },
+        "assembly": {
+          "median_ms": 5836.584769,
+          "min_ms": 5813.734508,
+          "p10_ms": 5813.734508,
+          "p90_ms": 5849.855523,
+          "samples_ms": [
+            5826.563191,
+            5836.584769,
+            5813.734508,
+            6081.82042,
+            5849.855523
+          ]
+        },
+        "rust-control": {
+          "median_ms": 5844.249516,
+          "min_ms": 5760.449449,
+          "p10_ms": 5760.449449,
+          "p90_ms": 5863.054263,
+          "samples_ms": [
+            5863.054263,
+            5787.190534,
+            5760.449449,
+            6060.462064,
+            5844.249516
+          ]
+        }
+      },
+      "residency_after": {
+        "resident_pages": 3201500,
+        "total_pages": 3201500,
+        "fraction": 1.0
+      },
+      "speedup": 1.0405471410707443,
+      "speedup_ci95": [
+        1.0371721524807342,
+        1.050129866600468
+      ]
+    }
+  ],
+  "resumed_from_utc": "2026-09-26T03:44:46.229053+00:00",
+  "resume_note": "All prior samples retained, including IO-affected samples; output verification reused after rechecking input and binary hashes.",
+  "meminfo_after": "MemTotal:       31943836 kB\nMemFree:          743832 kB\nMemAvailable:   20823048 kB\nBuffers:             248 kB\nCached:         21818796 kB\nSwapCached:            0 kB\nActive:         16476432 kB\nInactive:       12450240 kB\nActive(anon):    6372164 kB\nInactive(anon):  1152984 kB\nActive(file):   10104268 kB\nInactive(file): 11297256 kB\nUnevictable:         168 kB\nMlocked:             168 kB\nSwapTotal:      31943676 kB\nSwapFree:       31864896 kB\nZswap:                 0 kB\nZswapped:              0 kB\nDirty:             10128 kB\nWriteback:            20 kB\nAnonPages:       6517260 kB\nMapped:         14103660 kB\nShmem:            417732 kB\nKReclaimable:     287820 kB\nSlab:             527084 kB\nSReclaimable:     287820 kB\nSUnreclaim:       239264 kB\nKernelStack:       24656 kB\nPageTables:       118184 kB\nSecPageTables:      3688 kB\nNFS_Unstable:          0 kB\nBounce:                0 kB\nWritebackTmp:          0 kB\nCommitLimit:    47915592 kB\nCommitted_AS:   36439284 kB\nVmallocTotal:   34359738367 kB\nVmallocUsed:      276364 kB\nVmallocChunk:          0 kB\nPercpu:            12928 kB\nHardwareCorrupted:     0 kB\nAnonHugePages:    882688 kB\nShmemHugePages:        0 kB\nShmemPmdMapped:        0 kB\nFileHugePages:         0 kB\nFilePmdMapped:         0 kB\nCmaTotal:              0 kB\nCmaFree:               0 kB\nUnaccepted:            0 kB\nBalloon:               0 kB\nGPUActive:        323216 kB\nGPUReclaim:       128180 kB\nHugePages_Total:       0\nHugePages_Free:        0\nHugePages_Rsvd:        0\nHugePages_Surp:        0\nHugepagesize:       2048 kB\nHugetlb:               0 kB\nDirectMap4k:     1424676 kB\nDirectMap2M:    29108224 kB\nDirectMap1G:     3145728 kB\n",
+  "memory_peak_bytes": 2436513792,
+  "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+  "memory_swap_bytes_after": 0,
+  "status": "complete"
+}

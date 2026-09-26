@@ -8,6 +8,11 @@ Frequent-match counts improved **1.104–1.161×**, but the Rust-only control ex
 most of those gains. General regex and no-match workloads showed no consistent
 improvement.
 
+The [upstream README benchmark follow-up](README-benchmarks.md) uses the full
+13 GB OpenSubtitles corpus and a built Linux kernel tree, against the latest
+upstream source verified for that run. It reports a separate workload set and
+documents the resource-management problems encountered during preparation.
+
 The implementation, tests, and this report were produced with Codex at the fork
 owner's request. This work stays in `gardnmi/ripgrep`; it is not an upstream
 contribution or a claim of endorsement. Upstream's [contribution guidelines](../../CONTRIBUTING.md)
