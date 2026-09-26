@@ -109,6 +109,10 @@ impl LineStep {
 
 /// Count the number of occurrences of `line_term` in `bytes`.
 pub(crate) fn count(bytes: &[u8], line_term: u8) -> u64 {
+    #[cfg(feature = "experimental-asm")]
+    if let Some(count) = grep_asm::count(bytes, line_term) {
+        return count as u64;
+    }
     memchr::memchr_iter(line_term, bytes).count() as u64
 }
 

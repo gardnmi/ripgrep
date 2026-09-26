@@ -77,11 +77,26 @@ impl RegexMatcherBuilder {
         // simple, but the idea applies.)
         let fast_line_regex = InnerLiterals::new(&chir, &regex).one_regex()?;
 
+        #[cfg(feature = "experimental-asm")]
+        let asm_literal = match chir.hir().kind() {
+            regex_syntax::hir::HirKind::Literal(lit) => {
+                grep_asm::Literal::new(&lit.0)
+            }
+            _ => None,
+        };
+
         // We override the line terminator in case the configured HIR doesn't
         // support it.
         let mut config = self.config.clone();
         config.line_terminator = chir.line_terminator();
-        Ok(RegexMatcher { config, regex, fast_line_regex, non_matching_bytes })
+        Ok(RegexMatcher {
+            config,
+            regex,
+            fast_line_regex,
+            non_matching_bytes,
+            #[cfg(feature = "experimental-asm")]
+            asm_literal,
+        })
     }
 
     /// Build a new matcher from a plain alternation of literals.
@@ -377,6 +392,9 @@ pub struct RegexMatcher {
     fast_line_regex: Option<Regex>,
     /// A set of bytes that will never appear in a match.
     non_matching_bytes: ByteSet,
+    /// An opt-in exact-literal scanner, selected only after parsing all flags.
+    #[cfg(feature = "experimental-asm")]
+    asm_literal: Option<grep_asm::Literal>,
 }
 
 impl RegexMatcher {
@@ -416,6 +434,12 @@ impl Matcher for RegexMatcher {
         haystack: &[u8],
         at: usize,
     ) -> Result<Option<Match>, NoError> {
+        #[cfg(feature = "experimental-asm")]
+        if let Some(ref literal) = self.asm_literal {
+            return Ok(literal
+                .find(&haystack[at..])
+                .map(|i| Match::new(at + i, at + i + literal.needle_len())));
+        }
         let input = Input::new(haystack).span(at..haystack.len());
         Ok(self.regex.find(input).map(|m| Match::new(m.start(), m.end())))
     }
@@ -473,6 +497,12 @@ impl Matcher for RegexMatcher {
         haystack: &[u8],
         at: usize,
     ) -> Result<Option<usize>, NoError> {
+        #[cfg(feature = "experimental-asm")]
+        if let Some(ref literal) = self.asm_literal {
+            return Ok(literal
+                .find(&haystack[at..])
+                .map(|i| at + i + literal.needle_len()));
+        }
         let input = Input::new(haystack).span(at..haystack.len());
         Ok(self.regex.search_half(&input).map(|hm| hm.offset()))
     }

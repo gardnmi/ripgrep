@@ -1,5 +1,10 @@
 ripgrep (rg)
 ------------
+This fork's `experiment/assembly-hotpaths` branch contains an opt-in Linux
+x86-64 assembly experiment. See the [experiment report](benchmarks/assembly/README.md)
+for measurements, limitations, and build instructions. The default build keeps
+the upstream search implementation. This experiment is not an upstream proposal.
+
 ripgrep is a line-oriented search tool that recursively searches the current
 directory for a regex pattern. By default, ripgrep will respect gitignore rules
 and automatically skip hidden files/directories and binary files. (To disable

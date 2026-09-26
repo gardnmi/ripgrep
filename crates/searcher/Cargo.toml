@@ -15,6 +15,7 @@ edition.workspace = true
 rust-version.workspace = true
 
 [dependencies]
+grep-asm = { path = "../asm", optional = true }
 bstr = { version = "1.6.2", default-features = false, features = ["std"] }
 encoding_rs = "0.8.33"
 encoding_rs_io = "0.1.7"
@@ -28,6 +29,7 @@ grep-regex = { version = "0.1.14", path = "../regex" }
 regex = "1.9.5"
 
 [features]
+experimental-asm = ["dep:grep-asm"]
 # These features are DEPRECATED. Runtime dispatch is used for SIMD now.
 simd-accel = []
 avx-accel = []

@@ -15,8 +15,12 @@ edition.workspace = true
 rust-version.workspace = true
 
 [dependencies]
+grep-asm = { path = "../asm", optional = true }
 bstr = "1.6.2"
 grep-matcher = { version = "0.1.8", path = "../matcher" }
 log = "0.4.20"
 regex-automata = { version = "0.4.0" }
 regex-syntax = "0.8.0"
+
+[features]
+experimental-asm = ["dep:grep-asm"]

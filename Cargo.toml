@@ -38,6 +38,7 @@ path = "tests/tests.rs"
 
 [workspace]
 members = [
+  "crates/asm",
   "crates/globset",
   "crates/grep",
   "crates/cli",
@@ -75,6 +76,7 @@ serde_derive = "1.0.77"
 walkdir = "2"
 
 [features]
+experimental-asm = ["grep/experimental-asm"]
 pcre2 = ["grep/pcre2"]
 # This provides opt-in support for indexing. This is currently in active
 # development and may have very serious bugs. Use at your own risk.

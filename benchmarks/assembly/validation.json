@@ -1,0 +1,40 @@
+{
+  "assembly-pcre2": {
+    "command": "cargo test --workspace --release --locked --features experimental-asm,pcre2",
+    "passed": 1233,
+    "failed": 0,
+    "ignored": 3,
+    "suites": 27,
+    "log_sha256": "3eaca0cd88e187e48148bfe69bc7bb8922154e0f61908174a621c0b3aa834849"
+  },
+  "assembly-index": {
+    "command": "cargo test --workspace --release --locked --features experimental-asm,unstable-index",
+    "passed": 1249,
+    "failed": 0,
+    "ignored": 3,
+    "suites": 27,
+    "log_sha256": "40a7c1b7ba5918e93425ddbf80f56c3d060016b5cf7badd7f790b68428fcedd3"
+  },
+  "default": {
+    "command": "cargo test --workspace --release --locked",
+    "passed": 1233,
+    "failed": 0,
+    "ignored": 3,
+    "suites": 27,
+    "log_sha256": "c0e8ab026b474d0e84c08572c6d8b5bd7cc494a3a61c900b66db8fa19ea1cf59"
+  },
+  "format": {
+    "command": "cargo fmt --all --check",
+    "result": "PASS"
+  },
+  "docs": {
+    "command": "RUSTDOCFLAGS='-D warnings' cargo doc --workspace --no-deps --locked --features experimental-asm",
+    "result": "PASS"
+  },
+  "initial-combined-features": {
+    "result": "FAIL",
+    "passed_before_stop": 1211,
+    "failed": 15,
+    "explanation": "Indexing disallowed-option tests invoke --x-crud with --pcre2. The two optional-feature test configurations were then run separately, as upstream CI does. Combined configuration is not reported as passing."
+  }
+}

@@ -177,6 +177,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "grep-asm"
+version = "0.0.1"
+dependencies = [
+ "libc",
+ "memchr",
+]
+
+[[package]]
 name = "grep-cli"
 version = "0.1.12"
 dependencies = [
@@ -235,6 +243,7 @@ name = "grep-regex"
 version = "0.1.14"
 dependencies = [
  "bstr",
+ "grep-asm",
  "grep-matcher",
  "log",
  "regex-automata",
@@ -248,6 +257,7 @@ dependencies = [
  "bstr",
  "encoding_rs",
  "encoding_rs_io",
+ "grep-asm",
  "grep-matcher",
  "grep-regex",
  "log",
