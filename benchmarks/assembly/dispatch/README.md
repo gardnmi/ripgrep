@@ -3,9 +3,11 @@
 Experimental follow-up to the [failed acceptance audit](../audit/README.md).
 Native and BOLT attempts below are rejected or inconclusive. Later unguarded
 bundle timings overlapped another task and cannot establish isolated performance.
-The assembly-entry candidate has passed correctness checks; guarded confirmation
-is pending. The installed ripgrep is unchanged; this work remains in the personal
-fork, with no upstream PR.
+The assembly-entry candidate achieves roughly **11.5–11.7×** speedups on two
+targeted class searches in the guarded runs. The strict overall gate remains
+**INCONCLUSIVE**, not approved: one baseline major fault disqualifies one case.
+Small measured slowdowns also remain within the declared tolerance, as shown
+below. The installed ripgrep is unchanged; this work stays in the personal fork.
 
 **Measurement correction:** a separate TTFX validation/build job began at
 06:26:44.92 UTC and overlapped much of library session A, all of B, and entry
@@ -20,6 +22,59 @@ No external job was stopped. Fresh runs require the
 [explicit interference guard](ENTRY-QUIET-PLAN.md); thresholds and workloads
 remain unchanged. This is a correction for independently observed concurrent
 work, not discarding an unfavorable valid result.
+
+## Guarded confirmation results
+
+Session A: **80 PASS, 0 FAIL, 1 INCONCLUSIVE**. Session B: **81 PASS, 0 FAIL, 0 INCONCLUSIVE**.
+Both use all 81 frozen workloads and 15 randomized paired rounds. All **162
+numerical performance comparisons** meet the predeclared **3% AND 0.10 ms**
+margin. Each run records 1,217 interference checks, with zero competing-work
+observations. This is evidence for the measured cases and tolerance, not a
+claim of universally zero regression. No averages cancel losses.
+
+The remaining exception is `long-line-literal` in A: one major fault in
+baseline control A, round 12, with zero recorded input blocks. Its timing
+comparison passes (candidate elapsed time 3.96% lower), but the unchanged resource
+rule marks it inconclusive. The same case passes completely in B. The
+original fault remains recorded; B does not erase it or turn the combined
+gate green. No unchanged-candidate rerun was added just to obtain a pass.
+
+[All 81 cases and intervals](ENTRY-RESULTS.md), [strict gate output](entry-gate.txt),
+[session A](entry-quiet-session-a.json), [session B](entry-quiet-session-b.json).
+
+Selected real-text cases use a **128 MiB held-out subtitle slice**. Wall time
+includes startup, file probing, worker exec and output formatting to `/dev/null`.
+
+| Pattern | A upstream ms | A candidate ms | A speedup | B upstream ms | B candidate ms | B speedup |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| `[A-Za-z]{30}` | 162.030 | 13.794 | 11.75× | 162.029 | 14.100 | 11.49× |
+| `[A-Fa-f0-9]{17}` | 162.177 | 13.887 | 11.68× | 161.910 | 13.954 | 11.60× |
+| `[0-9]{8}` | 15.022 | 12.507 | 1.20× | 15.174 | 12.435 | 1.22× |
+
+**Small losses are still losses.** Replacement output is approximately
+0.60% slower in A and 0.46% slower in B; offset output is +0.70% and
++0.16%. These are below the declared 3% relative margin, not claimed wins
+or mathematically zero overhead. The earlier multi-percent regressions
+are not reproduced in the guarded entry-candidate sessions.
+
+| Ordinary workload | A elapsed change | B elapsed change |
+| --- | ---: | ---: |
+| `literal-count` | -1.67% | -1.18% |
+| `literal-only-offset` | +0.70% | +0.16% |
+| `regex-captures` | -0.33% | -0.80% |
+| `regex-replace` | +0.60% | +0.46% |
+| `multiline` | -0.87% | -0.55% |
+
+Correctness: **1,236 workspace tests** passed (3 ignored), **4,457 CLI
+comparisons** passed (including JSON elapsed-field normalization where
+applicable), and **46 routing assertions** passed. Comparison counts include
+repeated environment modes and fallback paths; they are not 4,457 distinct
+specialized workloads. Default and combined-feature compilation checks pass.
+
+The tested local candidate is `target/entry-experiment/bundle/rg`, with
+its adjacent `rg-class-worker`. Its [manifest](entry-build.json) records
+the two hashes. It is kept as an experimental artifact; the strict
+two-session gate has not approved it as a general replacement.
 
 ## What changed and why
 
@@ -207,38 +262,50 @@ outside the audit's fixed-input scope.
 ## Reproduction
 
 The [original audit instructions](../audit/README.md#reproduction) describe input
-preparation and the identical native upstream build. Reuse the registered clean
-upstream worktree, or create one only under `~/Worktrees/ripgrep/`. Do not use
-`/dev/shm` for these corpora. Leave the recorded artifacts and failed results in
-place; use a new output directory for another experiment.
+preparation and the identical native upstream build. The final
+[upstream recheck](upstream-recheck.json) still resolves master to the measured
+`3fce3b5bb0236da2df6d99672afb8a719642eca7`. Reuse a registered clean upstream
+worktree if one exists, or create one only under `~/Worktrees/ripgrep/`. The
+completed clean worktree used here is removed after testing. Do not use
+`/dev/shm` for the corpora. Keep earlier artifacts/results and use new paths.
 
-Build the specialized worker from this fork with:
+For a fresh entry bundle, build upstream and the specialized worker with the
+same compiler and native release profile. From this fork, after preparing the
+baseline and corpora:
 
 ```sh
-systemd-run --user --scope --collect -p MemoryMax=8G -p MemorySwapMax=0 -p OOMPolicy=kill env -u CARGO_ENCODED_RUSTFLAGS CARGO_BUILD_JOBS=2 CARGO_TARGET_DIR=target/audit-candidate RUSTFLAGS='-C target-cpu=znver4' cargo build --locked --profile release-lto --features experimental-class
-python3 scripts/assembly/class_bundle.py --worker target/audit-candidate/release-lto/rg --output target/dispatch-experiment/new-bundle
+systemd-run --user --scope --collect -p MemoryMax=8G -p MemorySwapMax=0 -p OOMPolicy=kill env -u CARGO_ENCODED_RUSTFLAGS CARGO_BUILD_JOBS=2 CARGO_TARGET_DIR=target/entry-repeat/build RUSTFLAGS='-C target-cpu=znver4' cargo build --locked --profile release-lto --features experimental-class
+python3 scripts/assembly/entry_bundle.py --worker target/entry-repeat/build/release-lto/rg --output target/entry-repeat/bundle --metadata target/entry-repeat/build-metadata.json
+systemd-run --user --scope --collect -p MemoryMax=4G -p MemorySwapMax=0 -p OOMPolicy=kill python3 scripts/assembly/bundle_check.py --bundle target/entry-repeat/bundle --without-library --output target/entry-repeat/correctness.json
+systemd-run --user --scope --collect -p MemoryMax=4G -p MemorySwapMax=0 -p OOMPolicy=kill python3 scripts/assembly/machine_check.py --baseline target/machine/rg-upstream-native --candidate target/entry-repeat/bundle/rg --output target/entry-repeat/machine-correctness.json
+systemd-run --user --scope --collect -p MemoryMax=4G -p MemorySwapMax=0 -p OOMPolicy=kill env TMPDIR=/home/gardnmi/Projects/ripgrep/target python3 scripts/assembly/check.py --baseline target/machine/rg-upstream-native --candidate target/entry-repeat/bundle/rg --output target/entry-repeat/cli-correctness.json
 ```
 
-The builder requires the local patchelf location recorded above and writes its
-manifest beside the files and to `bundle-build.json` in this report directory.
-A new build can have a different hash because ripgrep embeds the Git revision.
+The entry builder uses `cc`, `ld` and `objcopy`; tool versions and commands are
+in its manifest. It does not require patchelf. The old library experiment can
+still be built using `class_bundle.py` and the recorded local patchelf tool.
 The recorded worker was compiled at parent `6f693c9` plus the Rust changes
-committed as `5de483b`; `ff546bb` changes only the library and its checks.
+committed as `5de483b`. A fresh build can differ because ripgrep embeds its Git
+revision; every new artifact needs a new audit rather than reusing these claims.
 
-Run correctness before timing, and keep compilation/testing separate from the
-timed sessions. The recorded bundle lives at `target/dispatch-experiment/bundle`.
-For another build, substitute its three paths and use new result filenames:
+Once builds, tests and competing jobs have finished, run the complete sessions
+sequentially. The watchers include the other repository and its worktree root.
+Collection aborts if a competing build or watched job appears, preserving the
+partial observations. Keep interrupted results under distinct names.
 
 ```sh
-python3 scripts/assembly/bundle_check.py --output target/dispatch-experiment/new-correctness.json
-systemd-run --user --scope --collect -p MemoryMax=8G -p MemorySwapMax=0 -p OOMPolicy=kill python3 scripts/assembly/audit_bench.py --protocol benchmarks/assembly/dispatch/BUNDLE-PLAN.md --candidate target/dispatch-experiment/bundle/rg --artifact target/dispatch-experiment/bundle/librg_class_dispatch.so --artifact target/dispatch-experiment/bundle/rg-class-worker --output target/dispatch-experiment/new-session-a.json --samples 45 --seed 929711
-systemd-run --user --scope --collect -p MemoryMax=8G -p MemorySwapMax=0 -p OOMPolicy=kill python3 scripts/assembly/audit_bench.py --protocol benchmarks/assembly/dispatch/BUNDLE-PLAN.md --candidate target/dispatch-experiment/bundle/rg --artifact target/dispatch-experiment/bundle/librg_class_dispatch.so --artifact target/dispatch-experiment/bundle/rg-class-worker --output target/dispatch-experiment/new-session-b.json --samples 45 --seed 929719 --reverse
-python3 scripts/assembly/audit_gate.py --protocol benchmarks/assembly/dispatch/BUNDLE-PLAN.md target/dispatch-experiment/new-session-a.json target/dispatch-experiment/new-session-b.json
+systemd-run --user --scope --collect -p MemoryMax=8G -p MemorySwapMax=0 -p OOMPolicy=kill python3 scripts/assembly/audit_bench.py --protocol benchmarks/assembly/dispatch/ENTRY-QUIET-PLAN.md --watch-cwd /home/gardnmi/Projects/ttfx --watch-cwd /home/gardnmi/Worktrees/ttfx --candidate target/entry-repeat/bundle/rg --artifact target/entry-repeat/bundle/rg-class-worker --output target/entry-repeat/session-a.json --samples 15 --seed 942111
+systemd-run --user --scope --collect -p MemoryMax=8G -p MemorySwapMax=0 -p OOMPolicy=kill python3 scripts/assembly/audit_bench.py --protocol benchmarks/assembly/dispatch/ENTRY-QUIET-PLAN.md --watch-cwd /home/gardnmi/Projects/ttfx --watch-cwd /home/gardnmi/Worktrees/ttfx --candidate target/entry-repeat/bundle/rg --artifact target/entry-repeat/bundle/rg-class-worker --output target/entry-repeat/session-b.json --samples 15 --seed 942119 --reverse
+python3 scripts/assembly/audit_gate.py --protocol benchmarks/assembly/dispatch/ENTRY-QUIET-PLAN.md --require-isolation-watch /home/gardnmi/Projects/ttfx --require-isolation-watch /home/gardnmi/Worktrees/ttfx --require-artifact target/entry-repeat/bundle/rg-class-worker target/entry-repeat/session-a.json target/entry-repeat/session-b.json
+python3 scripts/assembly/audit_report.py target/entry-repeat/session-a.json target/entry-repeat/session-b.json --output target/entry-repeat/RESULTS.md
 ```
 
-Benchmark collection returns normally even when the experiment fails. The
-separate gate's exit status decides acceptance. Include all companion artifact
-arguments in both runs; a launcher hash alone does not identify this candidate.
+Completed benchmark collection returns normally even if performance fails. The
+separate gate's exit status decides acceptance: 0 PASS, 1 REJECT, 2 INCONCLUSIVE
+or invalid/incomplete evidence. Include the required watcher and artifact flags;
+a launcher hash alone does not identify the worker. The interference guard's
+[integration test](isolation-test.json) uses an owned sleeping fixture in another
+cgroup and confirms the collector stops before recording any timing samples.
 
 ## Research references
 

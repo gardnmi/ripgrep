@@ -1,11 +1,18 @@
 # ripgrep assembly experiment
 
 **Acceptance status: experimental; not a validated replacement for upstream.**
+The latest [guarded Zen 4 follow-up](dispatch/README.md) records approximately
+11.5–11.7× gains on two targeted class searches, with all 162 numerical timing
+comparisons within the declared margin. Its strict gate remains inconclusive
+because of one baseline major fault; small sub-percent output slowdowns are
+also reported. It adds specialized kernels, BOLT experiments, and a tiny assembly
+entry router while preserving upstream's existing code and mappings.
+
 The later [regression audit](audit/README.md) tests a frozen, broader workload
 matrix and rejects builds with material slowdowns. Selected wins below do not
 establish that ordinary searches avoid regressions.
 
-The latest [Zen 4 machine-specific experiments](machine/README.md) add a SIMD
+The earlier [Zen 4 machine-specific experiments](machine/README.md) add a SIMD
 character-class scanner, bounded single-file parallelism, fused scanning and
 PGO comparisons. That report records substantially larger gains on selected
 workloads and the cases where these approaches regress.

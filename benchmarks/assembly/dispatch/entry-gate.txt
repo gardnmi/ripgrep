@@ -1,0 +1,13 @@
+{
+  "validation_errors": [],
+  "sessions": {
+    "benchmarks/assembly/dispatch/entry-quiet-session-a.json": {
+      "PASS": 80,
+      "INCONCLUSIVE": 1
+    },
+    "benchmarks/assembly/dispatch/entry-quiet-session-b.json": {
+      "PASS": 81
+    }
+  }
+}
+INCONCLUSIVE: the evidence does not establish the required bound.

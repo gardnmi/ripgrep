@@ -1,0 +1,19 @@
+{
+  "result": "PASS",
+  "checks": [
+    "Entry artifact hashes still match both guarded sessions and build manifest.",
+    "Default cargo check completed successfully.",
+    "Combined experimental-class/experimental-asm cargo check passed.",
+    "Rust formatting check passed before measurements; Rust source unchanged afterward.",
+    "Modified Python scripts compile.",
+    "Report local links resolve.",
+    "git diff --check passes."
+  ],
+  "workspace_test_summary": "workspace-tests.json",
+  "correctness_files": [
+    "entry-correctness.json",
+    "entry-cli-correctness.json",
+    "entry-machine-correctness.json"
+  ],
+  "performance_gate": "INCONCLUSIVE; see entry-gate.txt. This validation summary does not override it."
+}

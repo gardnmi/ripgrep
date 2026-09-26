@@ -15,12 +15,16 @@ def main():
     p.add_argument('--manifest', type=Path, default=ROOT/'benchmarks/assembly/audit/manifest.json')
     p.add_argument('--protocol', type=Path, default=ROOT/'benchmarks/assembly/audit/PLAN.md')
     p.add_argument('--require-isolation-watch',type=Path,action='append',default=[])
+    p.add_argument('--require-artifact',type=Path,action='append',default=[])
     args = p.parse_args()
     expected_names = {c['name'] for c in json.loads(args.manifest.read_text())['cases']}
     runs = [json.loads(path.read_text()) for path in args.sessions]
     problems = []
     for path, run in zip(args.sessions, runs):
         required = {str(p.resolve()) for p in args.require_isolation_watch}
+        artifacts = {str(p.resolve()) for p in args.require_artifact}
+        if not artifacts <= set(run.get('artifacts',{})):
+            problems.append(f'{path}: required companion artifact hashes missing')
         if not required <= set(run.get('isolation_watch',[])):
             problems.append(f'{path}: required interference guards missing')
         if required and run.get('isolation_checks',0) < len(expected_names)*run['samples']+2:
