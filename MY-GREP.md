@@ -72,3 +72,13 @@ The important caveats are public too:
 
 This work stays in the personal fork. It is not an upstream contribution or
 an endorsement by ripgrep's maintainers.
+
+## Everyday-search follow-up
+
+A separate [ordinary-search experiment](https://github.com/gardnmi/ripgrep/blob/experiment/everyday-isolated/MY-GREP.md)
+found repeatable folder-search gains, including 40–41% less time for a word
+search in the small source repository and about 20% less time in Linux tools.
+It also reproduced a 4–5% general-regex regression against an equally built
+upstream reference, so it failed the no-regressions gate. The installed
+`my-grep` described above is unchanged. All gains, losses and raw measurements
+are included in that experiment.
