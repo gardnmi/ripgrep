@@ -62,6 +62,10 @@ def main():
                  f"Warm-I/O cases: {io_cases or 'none'}. Unstable-control cases: {noisy or 'none'}. "
                  f"Cgroup peak: {run['memory_peak_bytes']/1024**3:.2f} GiB.", '',
                  '```text', run['memory_events'].strip(), '```', '']
+        if run.get('isolation_watch'):
+            rows += [f"Interference guard: {run['isolation_checks']:,} checks; watched repositories "
+                     f"{run['isolation_watch']}; external-work observations "
+                     f"{len(run.get('external_interference',[]))}.", '']
     args.output.write_text('\n'.join(row.rstrip() for row in rows).rstrip()+'\n')
 
 

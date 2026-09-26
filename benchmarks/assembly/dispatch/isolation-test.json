@@ -1,0 +1,64 @@
+{
+  "recorded_utc": "2026-09-26T07:09:24.711671+00:00",
+  "manifest_sha256": "942eb47e103b83e093e1c44c93fcad92ebcaa3438d393444dda3b6e5ce737f33",
+  "protocol_sha256": "34e95269a42248670fa3d288c77ebde4e5d3c7320a8a8f68297c2eef5c979eb4",
+  "runner_sha256": "e880836d2a091b7500543a136fc869753ecf403d871c8d8ee5ea0d984545ec17",
+  "candidate_parent": "ea868cd3b127599e42986182f9355c068c1948f5",
+  "working_diff_sha256": "0a3fb90466b6a16b96704673c36c1d7fee911eba23bffd64eb97f7a6cbb66069",
+  "compiler": "rustc 1.98.1 (48a229cea 2026-09-01) (Arch Linux rust 1:1.98.1-1)\nbinary: rustc\ncommit-hash: 48a229ceaefd4985c50990b14116b6d856af0985\ncommit-date: 2026-09-01\nhost: x86_64-unknown-linux-gnu\nrelease: 1.98.1\nLLVM version: 22.1.8\n",
+  "cpu": "AMD Ryzen 5 7600X 6-Core Processor",
+  "kernel": "7.2.5-3-omarchy",
+  "seed": 916253,
+  "reverse": false,
+  "samples": 9,
+  "subset": [
+    "empty"
+  ],
+  "memory_limits": {
+    "memory.max": "4294967296",
+    "memory.swap.max": "0",
+    "memory.oom.group": "1"
+  },
+  "binaries": {
+    "baseline-a": {
+      "path": "/home/gardnmi/Projects/ripgrep/target/machine/rg-upstream-native",
+      "sha256": "bc5b2c5fa5e3fcb28fc38fd31ef24a1ee10bc4bf982c93f17010359f4cb45d84"
+    },
+    "baseline-b": {
+      "path": "/home/gardnmi/Projects/ripgrep/target/machine/rg-upstream-native",
+      "sha256": "bc5b2c5fa5e3fcb28fc38fd31ef24a1ee10bc4bf982c93f17010359f4cb45d84"
+    },
+    "candidate": {
+      "path": "/home/gardnmi/Projects/ripgrep/target/entry-experiment/bundle/rg",
+      "sha256": "a7be65f27f713b0db1761a780a0ac15d92dc2cba39a3555f0d57c12ec6e43422"
+    }
+  },
+  "artifacts": {
+    "/home/gardnmi/Projects/ripgrep/target/entry-experiment/bundle/rg-class-worker": "03101117059e0e6ec11d5252d931a1164a84aced617392a1508bf7a2dc9dc3f6"
+  },
+  "isolation_watch": [
+    "/home/gardnmi/Projects/ripgrep/target/audit-guard-fixture-us1v8qtp"
+  ],
+  "isolation_checks": 1,
+  "external_interference": [
+    {
+      "recorded_utc": "2026-09-26T07:09:24.759307+00:00",
+      "processes": [
+        {
+          "pid": 1070829,
+          "name": "python",
+          "cwd": "/home/gardnmi/Projects/ripgrep/target/audit-guard-fixture-us1v8qtp",
+          "exe": "/usr/bin/python3.14",
+          "state": "S",
+          "process_group": 1070829,
+          "start_ticks": 1331361
+        }
+      ]
+    }
+  ],
+  "control_rule": "Inconclusive when either paired baseline-versus-baseline comparison FAILs; all intervals retained.",
+  "cases": [],
+  "status": "interrupted-external-work",
+  "test_purpose": "Intentional owned sleeping Python fixture outside the audit cgroup; runner must abort before timing any case.",
+  "test_result": "PASS"
+}

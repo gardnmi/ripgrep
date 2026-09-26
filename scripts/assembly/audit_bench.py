@@ -15,6 +15,7 @@ import time
 
 from bench import ROOT, digest
 from machine_check import normalize_json
+from audit_isolation import external_work
 
 
 def interval(xs):
@@ -77,6 +78,7 @@ def main():
     p.add_argument('--diagnostic', type=Path)
     p.add_argument('--reference', type=Path, help='Additional baseline the candidate must also pass.')
     p.add_argument('--artifact', type=Path, action='append', default=[], help='Hash and freeze companion binaries/libraries.')
+    p.add_argument('--watch-cwd', type=Path, action='append', default=[], help='Abort on competing builds or jobs in these repositories.')
     p.add_argument('--output', type=Path, required=True)
     p.add_argument('--samples', type=int, default=9)
     p.add_argument('--seed', type=int, default=916253)
@@ -121,12 +123,27 @@ def main():
         'samples': args.samples, 'subset': args.case, 'memory_limits': limits,
         'binaries': {m: {'path':str(binary), 'sha256':digest(binary)} for m,binary in modes.items()},
         'artifacts': {str(path.resolve()):digest(path) for path in args.artifact},
+        'isolation_watch': [str(path.resolve()) for path in args.watch_cwd],
+        'isolation_checks': 0, 'external_interference': [],
         'control_rule': 'Inconclusive when either paired baseline-versus-baseline comparison FAILs; all intervals retained.',
         'cases': [], 'status': 'running',
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)
     def save():
         args.output.write_text(json.dumps(result, indent=2)+'\n')
+    def require_quiet():
+        if not args.watch_cwd:
+            return
+        result['isolation_checks'] += 1
+        if jobs := external_work(args.watch_cwd):
+            result['external_interference'].append({
+                'recorded_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                'processes': jobs})
+            result['status'] = 'interrupted-external-work'
+            save()
+            print('STOP: competing work detected; observations retained, no acceptance.',jobs,flush=True)
+            raise SystemExit(2)
+    require_quiet()
     rng = random.Random(args.seed)
     for index, case in enumerate(cases):
         print(f"{index+1}/{len(cases)} {case['name']} verifying", flush=True)
@@ -176,6 +193,7 @@ def main():
                  'timings_ms':{m:[] for m in modes}, 'resources':{m:[] for m in modes}, 'order':[]}
         result['cases'].append(entry)
         for _ in range(args.samples):
+            require_quiet()
             order = list(modes); rng.shuffle(order); entry['order'].append(order)
             for mode in order:
                 elapsed, counters = batch(mode, repeats)
@@ -200,6 +218,7 @@ def main():
         save()
         print(case['name'], entry['verdict'], {m:round(c['elapsed_ratio'],4) for m,c in entry['comparisons'].items()},
               'warm_io='+str(entry['warm_io']), 'control_noise='+str(entry['unstable_controls']), flush=True)
+    require_quiet()
     assert all(digest(Path(path)) == sha for path,sha in result['artifacts'].items()), 'A companion artifact changed during timing'
     result['memory_events'] = (group/'memory.events').read_text()
     result['memory_peak_bytes'] = int((group/'memory.peak').read_text())

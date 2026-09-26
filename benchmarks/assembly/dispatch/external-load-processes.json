@@ -1,0 +1,82 @@
+[
+  {
+    "pid": 1003545,
+    "ppid": 992475,
+    "name": "hash-output",
+    "cwd": "/home/gardnmi/Projects/ttfx",
+    "exe": "/home/gardnmi/Projects/ttfx/target/hash-output",
+    "parent_name": "bash",
+    "parent_cwd": "/home/gardnmi/Projects/ttfx",
+    "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-graphical.slice/app-Hyprland-gtk\\x2dlaunch-8094763a.scope"
+  },
+  {
+    "pid": 1003546,
+    "ppid": 1003545,
+    "name": "final",
+    "cwd": "/home/gardnmi/Projects/ttfx",
+    "exe": "/home/gardnmi/Projects/ttfx/target/refresh/final",
+    "parent_name": "hash-output",
+    "parent_cwd": "/home/gardnmi/Projects/ttfx",
+    "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-graphical.slice/app-Hyprland-gtk\\x2dlaunch-8094763a.scope"
+  },
+  {
+    "pid": 1003929,
+    "ppid": 993185,
+    "name": "hash-output",
+    "cwd": "/home/gardnmi/Projects/ttfx",
+    "exe": "/home/gardnmi/Projects/ttfx/target/hash-output",
+    "parent_name": "bash",
+    "parent_cwd": "/home/gardnmi/Projects/ttfx",
+    "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-graphical.slice/app-Hyprland-gtk\\x2dlaunch-8094763a.scope"
+  },
+  {
+    "pid": 1003932,
+    "ppid": 1003929,
+    "name": "final",
+    "cwd": "/home/gardnmi/Projects/ttfx",
+    "exe": "/home/gardnmi/Projects/ttfx/target/refresh/final",
+    "parent_name": "hash-output",
+    "parent_cwd": "/home/gardnmi/Projects/ttfx",
+    "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-graphical.slice/app-Hyprland-gtk\\x2dlaunch-8094763a.scope"
+  },
+  {
+    "pid": 1004007,
+    "ppid": 982940,
+    "name": "hash-output",
+    "cwd": "/home/gardnmi/Projects/ttfx",
+    "exe": "/home/gardnmi/Projects/ttfx/target/hash-output",
+    "parent_name": "bash",
+    "parent_cwd": "/home/gardnmi/Projects/ttfx",
+    "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-graphical.slice/app-Hyprland-gtk\\x2dlaunch-8094763a.scope"
+  },
+  {
+    "pid": 1004009,
+    "ppid": 1004007,
+    "name": "final",
+    "cwd": "/home/gardnmi/Projects/ttfx",
+    "exe": "/home/gardnmi/Projects/ttfx/target/refresh/final",
+    "parent_name": "hash-output",
+    "parent_cwd": "/home/gardnmi/Projects/ttfx",
+    "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-graphical.slice/app-Hyprland-gtk\\x2dlaunch-8094763a.scope"
+  },
+  {
+    "pid": 1004050,
+    "ppid": 998745,
+    "name": "hash-output",
+    "cwd": "/home/gardnmi/Projects/ttfx",
+    "exe": "/home/gardnmi/Projects/ttfx/target/hash-output",
+    "parent_name": "bash",
+    "parent_cwd": "/home/gardnmi/Projects/ttfx",
+    "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-graphical.slice/app-Hyprland-gtk\\x2dlaunch-8094763a.scope"
+  },
+  {
+    "pid": 1004051,
+    "ppid": 1004050,
+    "name": "final",
+    "cwd": "/home/gardnmi/Projects/ttfx",
+    "exe": "/home/gardnmi/Projects/ttfx/target/refresh/final",
+    "parent_name": "hash-output",
+    "parent_cwd": "/home/gardnmi/Projects/ttfx",
+    "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-graphical.slice/app-Hyprland-gtk\\x2dlaunch-8094763a.scope"
+  }
+]

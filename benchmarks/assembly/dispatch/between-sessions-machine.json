@@ -1,0 +1,26 @@
+{
+  "recorded_utc": "2026-09-26T06:57:41.055742+00:00",
+  "scope": "Read-only one-second snapshot between audit sessions; not a trace of the timed run.",
+  "cpu_busy_percent": {
+    "cpu": 52.67,
+    "cpu0": 73.53,
+    "cpu1": 59.41,
+    "cpu2": 26.21,
+    "cpu3": 90.1,
+    "cpu4": 4.9,
+    "cpu5": 67.33,
+    "cpu6": 63.0,
+    "cpu7": 92.16,
+    "cpu8": 21.78,
+    "cpu9": 72.0,
+    "cpu10": 4.95,
+    "cpu11": 58.42
+  },
+  "loadavg": "8.00 8.44 7.52 7/1528 985013",
+  "memory_pressure": "some avg10=0.00 avg60=0.00 avg300=0.02 total=5528672\nfull avg10=0.00 avg60=0.00 avg300=0.02 total=5372380\n",
+  "cpu4_settings": {
+    "scaling_governor": "performance",
+    "energy_performance_preference": "performance",
+    "scaling_cur_freq": "5216364"
+  }
+}

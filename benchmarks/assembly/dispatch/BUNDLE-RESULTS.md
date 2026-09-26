@@ -1,5 +1,11 @@
 # Complete performance results
 
+**Environment caveat added after collection:** a separate four-job TTFX
+validation/build driver began at 06:26:44.92 UTC, overlapping much of A and all
+of B. These raw classifications are preserved, but they are not an isolated
+measurement of the code changes. The candidate is not approved. See the
+[measurement correction and process evidence](README.md).
+
 Elapsed time per invocation, including startup; lower is better.
 Positive percentages are slowdowns. Intervals are paired bootstrap
 95% intervals for elapsed-time change. They are per-case intervals,

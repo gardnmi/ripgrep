@@ -1,10 +1,25 @@
 # Zen 4 follow-up: specialization, BOLT and a preserved-upstream bundle
 
 Experimental follow-up to the [failed acceptance audit](../audit/README.md).
-Native, BOLT and shared-library bundle attempts below are rejected or
-inconclusive. A new assembly-entry candidate has passed correctness checks and
-awaits performance measurement. The installed ripgrep is unchanged; this work
-remains in the personal fork, with no upstream PR.
+Native and BOLT attempts below are rejected or inconclusive. Later unguarded
+bundle timings overlapped another task and cannot establish isolated performance.
+The assembly-entry candidate has passed correctness checks; guarded confirmation
+is pending. The installed ripgrep is unchanged; this work remains in the personal
+fork, with no upstream PR.
+
+**Measurement correction:** a separate TTFX validation/build job began at
+06:26:44.92 UTC and overlapped much of library session A, all of B, and entry
+discovery. Its CPU load was found only afterward. I should have checked for it
+before timing. Original samples and gate classifications remain recorded, but
+neither apparent wins nor losses in those runs are clean causal evidence about
+the executable changes. [Process evidence](external-load-processes.json),
+[driver/group evidence](external-load-groups.json), and a
+[between-session snapshot](between-sessions-machine.json) document the discovery.
+The first entry confirmation was [stopped with its samples retained](entry-session-a-external-load-incomplete.json).
+No external job was stopped. Fresh runs require the
+[explicit interference guard](ENTRY-QUIET-PLAN.md); thresholds and workloads
+remain unchanged. This is a correction for independently observed concurrent
+work, not discarding an unfavorable valid result.
 
 ## What changed and why
 
@@ -125,10 +140,12 @@ The broader CLI comparisons were repeated after this library change. V1's
 [general](bundle-cli-correctness.json), [machine](bundle-machine-correctness.json)
 and [routing](bundle-v1-correctness.json) check results are also retained.
 
-The repaired library bundle **fails acceptance**. Two complete 45-round sessions
+The repaired library bundle **fails the raw acceptance gate**, and the external
+load above independently disqualifies the runs as clean confirmation. Two complete 45-round sessions
 produced 64 PASS / 1 FAIL / 16 INCONCLUSIVE and 61 PASS / 0 FAIL / 20 INCONCLUSIVE.
 The captures/output case is +4.85% in session A, with its whole 95% interval
-above the margin (+4.39% to +5.27%). Session B's +3.83% median has an inconclusive
+above the margin (+4.39% to +5.27%). This occurred during competing work, so it
+cannot establish an isolated code regression. Session B's +3.83% median has an inconclusive
 interval. An offset-output case also has a +7.30% median in A, but its warm-cache
 major fault prevents attributing that result cleanly. These observations are
 retained, not discarded as outliers. See the [full two-session table](BUNDLE-RESULTS.md)
@@ -148,7 +165,7 @@ to upstream's original entry point. Loader-injected processes (`LD_PRELOAD` or
 
 The previous library patch changed dynamic metadata and added mappings beyond
 upstream's highest mapping. Those are plausible performance influences, not a
-proven sole cause of the observed regressions. The entry prototype preserves
+proven explanation of the mixed-load observations. The entry prototype preserves
 every original LOAD mapping, dynamic dependency, TLS/GOT/data location and
 highest mapped address. It asserts that every old file byte is unchanged except
 the ELF entry field and program-header table. This adds a stronger control over
