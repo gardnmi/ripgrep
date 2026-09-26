@@ -44,9 +44,7 @@ also measured. Both sessions and all eight workloads are in the
 
 The repeat session's absent-word search was **5.05% slower**, with its 95%
 interval entirely on the slower side. Both sessions' overall verdict was
-**INCONCLUSIVE**. The earlier user-reported search of `/` took 112.373 seconds
-versus 81.151 seconds, about **38.5% slower**; these controlled examples do not
-explain away that observation.
+**INCONCLUSIVE**.
 
 ## Was anything fudged?
 
