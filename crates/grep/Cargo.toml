@@ -27,6 +27,7 @@ termcolor = "1.0.4"
 walkdir = "2.2.7"
 
 [features]
+experimental-class = ["grep-regex/experimental-class"]
 experimental-asm = ["grep-regex/experimental-asm", "grep-searcher/experimental-asm"]
 pcre2 = ["grep-pcre2"]
 

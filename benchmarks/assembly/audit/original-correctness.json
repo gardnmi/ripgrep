@@ -1,0 +1,11 @@
+{
+  "recorded_utc": "2026-09-26T05:14:45.682096+00:00",
+  "seed": 32941,
+  "cases": 1068,
+  "comparisons": 3204,
+  "case_digest_sha256": "a56494f359be5795bb842b8ee41a89d557c7dd4a31fb6d4d1ffd204f6417b64e",
+  "result": "PASS",
+  "checks": "exact stdout, stderr and exit status; assembly, Rust control and disabled",
+  "baseline_sha256": "bc5b2c5fa5e3fcb28fc38fd31ef24a1ee10bc4bf982c93f17010359f4cb45d84",
+  "candidate_sha256": "bc13dbd0537953239d04c8e304d8c7cce3afc9338c5f8c80fa78548369f923bd"
+}

@@ -1,0 +1,25 @@
+{
+  "result": "PASS",
+  "command": "cargo test --locked --workspace --features experimental-class",
+  "RUSTFLAGS": "-C target-cpu=znver4",
+  "passed": 1235,
+  "failed": 0,
+  "ignored": 3,
+  "result_groups": 27,
+  "log_sha256": "643d3f19fd8b0d86df76109773e203da25b7e5f4835fefa84ed6eea3402cdcb2",
+  "original_cli_comparisons": 3204,
+  "machine_cli_comparisons": 1212,
+  "note": "Some environment modes are equivalent when only experimental-class is built; comparison counts are not unique workload counts.",
+  "build_checks": {
+    "default_workspace": "PASS",
+    "combined_experimental_features": "PASS",
+    "cargo_fmt": "PASS",
+    "git_diff_check": "PASS",
+    "python_compile": "PASS"
+  },
+  "performance_acceptance": {
+    "result": "REJECT",
+    "gate_exit_status": 1,
+    "validation_errors": []
+  }
+}

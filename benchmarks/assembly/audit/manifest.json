@@ -1,0 +1,1476 @@
+{
+  "seed": 23091877,
+  "subtitle_source_start": 6442450949,
+  "cases": [
+    {
+      "name": "empty",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/empty.txt",
+      "arguments": [
+        "--no-config",
+        "x",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/empty.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "tiny-hit",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/tiny.txt",
+      "arguments": [
+        "--no-config",
+        "abc",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/tiny.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "tiny-miss",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/tiny.txt",
+      "arguments": [
+        "--no-config",
+        "absent",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/tiny.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "tiny-class30",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/tiny.txt",
+      "arguments": [
+        "--no-config",
+        "[A-Za-z]{30}",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/tiny.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "small-literal",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/small.txt",
+      "arguments": [
+        "--no-config",
+        "normal",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/small.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "small-regex",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/small.txt",
+      "arguments": [
+        "--no-config",
+        "user=\\d+",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/small.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "literal-dense",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt",
+      "arguments": [
+        "--no-config",
+        "normal",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "literal-sparse-lines",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt",
+      "arguments": [
+        "--no-config",
+        "-n",
+        "RARE_MARK",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "literal-absent",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt",
+      "arguments": [
+        "--no-config",
+        "NOT_PRESENT_XYZ",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "literal-fixed",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt",
+      "arguments": [
+        "--no-config",
+        "-F",
+        "status=200",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "literal-insensitive",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt",
+      "arguments": [
+        "--no-config",
+        "-i",
+        "NORMAL",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "literal-word",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt",
+      "arguments": [
+        "--no-config",
+        "-w",
+        "alpha",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "literal-count",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt",
+      "arguments": [
+        "--no-config",
+        "-c",
+        "normal",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "literal-count-matches",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt",
+      "arguments": [
+        "--no-config",
+        "--count-matches",
+        "a",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "literal-only-offset",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt",
+      "arguments": [
+        "--no-config",
+        "-o",
+        "-b",
+        "user",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "literal-context",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt",
+      "arguments": [
+        "--no-config",
+        "-C",
+        "2",
+        "RARE_MARK",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "literal-invert",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt",
+      "arguments": [
+        "--no-config",
+        "-v",
+        "normal",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "literal-limit",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt",
+      "arguments": [
+        "--no-config",
+        "-m",
+        "2",
+        "normal",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "literal-quiet",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt",
+      "arguments": [
+        "--no-config",
+        "-q",
+        "normal",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "literal-multi-pattern",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt",
+      "arguments": [
+        "--no-config",
+        "-e",
+        "RARE_MARK",
+        "-e",
+        "status=500",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "regex-general",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt",
+      "arguments": [
+        "--no-config",
+        "-c",
+        "status=[45][0-9]{2}",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "regex-captures",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt",
+      "arguments": [
+        "--no-config",
+        "-o",
+        "(user)=([0-9]+)",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "regex-replace",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt",
+      "arguments": [
+        "--no-config",
+        "--replace",
+        "$2:$1",
+        "(user)=([0-9]+)",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "regex-anchored",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt",
+      "arguments": [
+        "--no-config",
+        "-c",
+        "^record=[0-9]+",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "regex-zero-length",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt",
+      "arguments": [
+        "--no-config",
+        "-c",
+        "[A-Z]*",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "regex-word-class",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt",
+      "arguments": [
+        "--no-config",
+        "-w",
+        "[a-z]{8}",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "regex-lazy-class",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/varied.txt",
+      "arguments": [
+        "--no-config",
+        "-c",
+        "[a-z]{2,30}?",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/varied.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "regex-whole-class",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/varied.txt",
+      "arguments": [
+        "--no-config",
+        "-x",
+        "[a-z]{30}",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/varied.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "unicode-literal",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/unicode.txt",
+      "arguments": [
+        "--no-config",
+        "-c",
+        "\u6771\u4eac",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/unicode.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "unicode-fold",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/unicode.txt",
+      "arguments": [
+        "--no-config",
+        "-i",
+        "-c",
+        "caf\u00e9",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/unicode.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "unicode-word",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/unicode.txt",
+      "arguments": [
+        "--no-config",
+        "-c",
+        "\\w+",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/unicode.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "unicode-property",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/unicode.txt",
+      "arguments": [
+        "--no-config",
+        "-c",
+        "\\pL{3}",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/unicode.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "unicode-class-fallback",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/unicode.txt",
+      "arguments": [
+        "--no-config",
+        "-c",
+        "[a-z\u03b1-\u03c9]{3}",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/unicode.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "crlf",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/crlf.txt",
+      "arguments": [
+        "--no-config",
+        "--crlf",
+        "-n",
+        "^alpha",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/crlf.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "multiline",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/multiline.txt",
+      "arguments": [
+        "--no-config",
+        "-U",
+        "foo\\nbar",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/multiline.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "binary-default",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/binary.bin",
+      "arguments": [
+        "--no-config",
+        "ABCDEF",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/binary.bin"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "binary-text",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/binary.bin",
+      "arguments": [
+        "--no-config",
+        "-a",
+        "-c",
+        "ABCDEF",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/binary.bin"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "null-lines",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/binary.bin",
+      "arguments": [
+        "--no-config",
+        "--null-data",
+        "-a",
+        "-c",
+        "abc",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/binary.bin"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "long-line-literal",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/long.txt",
+      "arguments": [
+        "--no-config",
+        "-o",
+        "TOKEN",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/long.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "long-line-class",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/long.txt",
+      "arguments": [
+        "--no-config",
+        "-c",
+        "[a-z]{65}",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/long.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "subtitles-sherlock",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/subtitles.txt",
+      "arguments": [
+        "--no-config",
+        "-w",
+        "Sherlock [A-Z]\\w+",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/subtitles.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "subtitles-sherlock-lines",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/subtitles.txt",
+      "arguments": [
+        "--no-config",
+        "-n",
+        "-w",
+        "Sherlock [A-Z]\\w+",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/subtitles.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "subtitles-frequent",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/subtitles.txt",
+      "arguments": [
+        "--no-config",
+        "the",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/subtitles.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "subtitles-alpha30",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/subtitles.txt",
+      "arguments": [
+        "--no-config",
+        "[A-Za-z]{30}",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/subtitles.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "subtitles-hex17",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/subtitles.txt",
+      "arguments": [
+        "--no-config",
+        "[A-Fa-f0-9]{17}",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/subtitles.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "subtitles-digits8",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/subtitles.txt",
+      "arguments": [
+        "--no-config",
+        "[0-9]{8}",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/subtitles.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "json",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/json.txt",
+      "arguments": [
+        "--no-config",
+        "--json",
+        "RARE_MARK",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/json.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": true
+    },
+    {
+      "name": "color",
+      "category": "ordinary",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/json.txt",
+      "arguments": [
+        "--no-config",
+        "--color",
+        "always",
+        "normal",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/json.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "class-dense-1",
+      "category": "class-stress",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/dense.txt",
+      "arguments": [
+        "--no-config",
+        "-c",
+        "[a-z]{1}",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/dense.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "class-dense-2",
+      "category": "class-stress",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/dense.txt",
+      "arguments": [
+        "--no-config",
+        "-c",
+        "[a-z]{2}",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/dense.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "class-dense-3",
+      "category": "class-stress",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/dense.txt",
+      "arguments": [
+        "--no-config",
+        "-c",
+        "[a-z]{3}",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/dense.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "class-dense-7",
+      "category": "class-stress",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/dense.txt",
+      "arguments": [
+        "--no-config",
+        "-c",
+        "[a-z]{7}",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/dense.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "class-dense-8",
+      "category": "class-stress",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/dense.txt",
+      "arguments": [
+        "--no-config",
+        "-c",
+        "[a-z]{8}",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/dense.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "class-dense-15",
+      "category": "class-stress",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/dense.txt",
+      "arguments": [
+        "--no-config",
+        "-c",
+        "[a-z]{15}",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/dense.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "class-dense-16",
+      "category": "class-stress",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/dense.txt",
+      "arguments": [
+        "--no-config",
+        "-c",
+        "[a-z]{16}",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/dense.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "class-dense-30",
+      "category": "class-stress",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/dense.txt",
+      "arguments": [
+        "--no-config",
+        "-c",
+        "[a-z]{30}",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/dense.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "class-dense-64",
+      "category": "class-stress",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/dense.txt",
+      "arguments": [
+        "--no-config",
+        "-c",
+        "[a-z]{64}",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/dense.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "class-dense-65",
+      "category": "class-stress",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/dense.txt",
+      "arguments": [
+        "--no-config",
+        "-c",
+        "[a-z]{65}",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/dense.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "class-dense-129",
+      "category": "class-stress",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/dense.txt",
+      "arguments": [
+        "--no-config",
+        "-c",
+        "[a-z]{129}",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/dense.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "class-absent-1",
+      "category": "class-stress",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/absent.txt",
+      "arguments": [
+        "--no-config",
+        "-c",
+        "[a-z]{1}",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/absent.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "class-absent-2",
+      "category": "class-stress",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/absent.txt",
+      "arguments": [
+        "--no-config",
+        "-c",
+        "[a-z]{2}",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/absent.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "class-absent-8",
+      "category": "class-stress",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/absent.txt",
+      "arguments": [
+        "--no-config",
+        "-c",
+        "[a-z]{8}",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/absent.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "class-absent-16",
+      "category": "class-stress",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/absent.txt",
+      "arguments": [
+        "--no-config",
+        "-c",
+        "[a-z]{16}",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/absent.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "class-absent-30",
+      "category": "class-stress",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/absent.txt",
+      "arguments": [
+        "--no-config",
+        "-c",
+        "[a-z]{30}",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/absent.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "class-absent-65",
+      "category": "class-stress",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/absent.txt",
+      "arguments": [
+        "--no-config",
+        "-c",
+        "[a-z]{65}",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/absent.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "class-varied-2",
+      "category": "class-stress",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/varied.txt",
+      "arguments": [
+        "--no-config",
+        "-n",
+        "[A-Za-z]{2}",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/varied.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "class-varied-8",
+      "category": "class-stress",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/varied.txt",
+      "arguments": [
+        "--no-config",
+        "-n",
+        "[A-Za-z]{8}",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/varied.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "class-varied-16",
+      "category": "class-stress",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/varied.txt",
+      "arguments": [
+        "--no-config",
+        "-n",
+        "[A-Za-z]{16}",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/varied.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "class-varied-30",
+      "category": "class-stress",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/varied.txt",
+      "arguments": [
+        "--no-config",
+        "-n",
+        "[A-Za-z]{30}",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/varied.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "class-varied-65",
+      "category": "class-stress",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/varied.txt",
+      "arguments": [
+        "--no-config",
+        "-n",
+        "[A-Za-z]{65}",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/varied.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "wide-ascii",
+      "category": "class-stress",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/varied.txt",
+      "arguments": [
+        "--no-config",
+        "-c",
+        "[\u0001-\u007f]{30}",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/varied.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "optional-class",
+      "category": "class-stress",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/varied.txt",
+      "arguments": [
+        "--no-config",
+        "-c",
+        "[a-z]{0,30}",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/varied.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "captured-class",
+      "category": "class-stress",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/varied.txt",
+      "arguments": [
+        "--no-config",
+        "-c",
+        "([a-z]{30})",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/varied.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "tree-literal",
+      "category": "directory",
+      "path": "/home/gardnmi/Projects/ripgrep/target/assembly-data/source-tree",
+      "arguments": [
+        "--no-config",
+        "Searcher",
+        "/home/gardnmi/Projects/ripgrep/target/assembly-data/source-tree"
+      ],
+      "directory": true,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "tree-regex",
+      "category": "directory",
+      "path": "/home/gardnmi/Projects/ripgrep/target/assembly-data/source-tree",
+      "arguments": [
+        "--no-config",
+        "fn\\s+\\w+",
+        "/home/gardnmi/Projects/ripgrep/target/assembly-data/source-tree"
+      ],
+      "directory": true,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "tree-files",
+      "category": "directory",
+      "path": "/home/gardnmi/Projects/ripgrep/target/assembly-data/source-tree",
+      "arguments": [
+        "--no-config",
+        "-l",
+        "Searcher",
+        "/home/gardnmi/Projects/ripgrep/target/assembly-data/source-tree"
+      ],
+      "directory": true,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "tree-sorted",
+      "category": "directory",
+      "path": "/home/gardnmi/Projects/ripgrep/target/assembly-data/source-tree",
+      "arguments": [
+        "--no-config",
+        "--sort",
+        "path",
+        "-n",
+        "Searcher",
+        "/home/gardnmi/Projects/ripgrep/target/assembly-data/source-tree"
+      ],
+      "directory": true,
+      "affinity": [
+        4
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "kernel-default",
+      "category": "directory",
+      "path": "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux",
+      "arguments": [
+        "--no-config",
+        "-n",
+        "-w",
+        "[A-Z]+_SUSPEND",
+        "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux"
+      ],
+      "directory": true,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "kernel-c",
+      "category": "directory",
+      "path": "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux",
+      "arguments": [
+        "--no-config",
+        "-uuu",
+        "-tc",
+        "-n",
+        "-w",
+        "[A-Z]+_SUSPEND",
+        "/home/gardnmi/Projects/ripgrep/target/assembly-readme/linux"
+      ],
+      "directory": true,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "cold-literal",
+      "category": "cold-io",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/cold.txt",
+      "arguments": [
+        "--no-config",
+        "-c",
+        "NOT_PRESENT_XYZ",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/cold.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "cold",
+      "json_output": false
+    },
+    {
+      "name": "cold-regex",
+      "category": "cold-io",
+      "path": "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/cold.txt",
+      "arguments": [
+        "--no-config",
+        "-c",
+        "status=[45][0-9]{2}",
+        "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/cold.txt"
+      ],
+      "directory": false,
+      "affinity": [
+        4
+      ],
+      "cache": "cold",
+      "json_output": false
+    }
+  ],
+  "inputs": {
+    "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/absent.txt": {
+      "bytes": 33554432,
+      "sha256": "2dfa3d515576bcd644786c463d62e20f6293fd66b2c44e312b3d9aba16d566b4"
+    },
+    "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/binary.bin": {
+      "bytes": 8388608,
+      "sha256": "3be7f753f21e5c7b44bcda87bc60d8065a32e3fd5d29157c0bf08fe226e77c09"
+    },
+    "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/cold.txt": {
+      "bytes": 33554432,
+      "sha256": "e8072943da22fa6d024b7ce32fccc18a9d184a21f80fdced28252beefd9a36c2"
+    },
+    "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/crlf.txt": {
+      "bytes": 8388608,
+      "sha256": "92e732f2ebe9fb57db243206d60c62e963b12ac83b97f38e71ffab059764cdcd"
+    },
+    "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/dense.txt": {
+      "bytes": 33554432,
+      "sha256": "32ee32af40ce607fd1fdd50157724ca9d7d52de5e7aecbd512247f397632195c"
+    },
+    "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/empty.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/json.txt": {
+      "bytes": 131072,
+      "sha256": "95c0329de96f3745c11726c3ec86b283d066f108ca997d195c09e1db432ad5b4"
+    },
+    "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/long.txt": {
+      "bytes": 16777222,
+      "sha256": "751a47a47b6b57a0fb5e76e80876d2403f10ecfb4833a9475c829a484a14f4e9"
+    },
+    "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt": {
+      "bytes": 33554432,
+      "sha256": "e8072943da22fa6d024b7ce32fccc18a9d184a21f80fdced28252beefd9a36c2"
+    },
+    "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/multiline.txt": {
+      "bytes": 8388608,
+      "sha256": "cb6fd3c3accda1ac2e70a1496a7740a055fb8fb2a29aca3be52ee24b3f8c60f1"
+    },
+    "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/small.txt": {
+      "bytes": 4096,
+      "sha256": "c1be39b3026db79aedb87ec586c5730c7a20768ee912aad05941cc7e6491989f"
+    },
+    "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/subtitles.txt": {
+      "bytes": 134217730,
+      "sha256": "7775ed536ec247067d6f5da47d2598e04415dca5e7cd45b47a2b1f0197c13d7a"
+    },
+    "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/tiny.txt": {
+      "bytes": 8,
+      "sha256": "c5d982dc040081e09cad25209fed928b334a21fb2ff34db5202178a7b1a8199b"
+    },
+    "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/unicode.txt": {
+      "bytes": 16777216,
+      "sha256": "3d4c3ec6153349277fa0327cbf35c54c9cbfb8a4081180bd4b1e36f77b9be56a"
+    },
+    "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/varied.txt": {
+      "bytes": 33554432,
+      "sha256": "29767c96e1c54bfe51b5a2e9f8e1f60ee8cc24ecece18986440d5de9188c5112"
+    }
+  },
+  "source_revision": "3fce3b5bb0236da2df6d99672afb8a719642eca7",
+  "kernel_revision": "84e57d292203a45c96dbcb2e6be9dd80961d981a"
+}

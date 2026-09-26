@@ -1,5 +1,11 @@
 # Zen 4 machine-specific experiments
 
+**The [broader regression audit](../audit/README.md) supersedes any recommendation
+to use these binaries as a general replacement for upstream.** Large gains in
+this report are specific to their workloads. The parallel prototype already
+has measured regressions; even the isolated class-scanner build must pass the
+audit before it can be recommended. The commands below reproduce experiments.
+
 This follow-up targets the owner’s AMD Ryzen 5 7600X only. Both the unchanged
 upstream baseline and the candidate are compiled with `-C target-cpu=znver4`,
 using the same `release-lto` profile. Upstream was fetched again and remained at

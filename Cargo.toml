@@ -78,6 +78,9 @@ serde_derive = "1.0.77"
 walkdir = "2"
 
 [features]
+# Isolate the class scanner from the earlier literal, counting and parallel
+# experiments so it can be evaluated independently against upstream.
+experimental-class = ["grep/experimental-class"]
 experimental-asm = ["grep/experimental-asm", "dep:memchr", "dep:memmap2"]
 pcre2 = ["grep/pcre2"]
 # This provides opt-in support for indexing. This is currently in active

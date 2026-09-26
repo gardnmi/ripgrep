@@ -85,7 +85,10 @@ impl RegexMatcherBuilder {
             _ => None,
         };
 
-        #[cfg(feature = "experimental-asm")]
+        #[cfg(any(
+            feature = "experimental-asm",
+            feature = "experimental-class"
+        ))]
         let class_run = class_run(chir.hir());
 
         // We override the line terminator in case the configured HIR doesn't
@@ -99,7 +102,10 @@ impl RegexMatcherBuilder {
             non_matching_bytes,
             #[cfg(feature = "experimental-asm")]
             asm_literal,
-            #[cfg(feature = "experimental-asm")]
+            #[cfg(any(
+                feature = "experimental-asm",
+                feature = "experimental-class"
+            ))]
             class_run,
             #[cfg(feature = "experimental-asm")]
             parallel_safe: parallel_safe(chir.hir()),
@@ -402,7 +408,7 @@ pub struct RegexMatcher {
     /// An opt-in exact-literal scanner, selected only after parsing all flags.
     #[cfg(feature = "experimental-asm")]
     asm_literal: Option<grep_asm::Literal>,
-    #[cfg(feature = "experimental-asm")]
+    #[cfg(any(feature = "experimental-asm", feature = "experimental-class"))]
     class_run: Option<grep_asm::ClassRun>,
     #[cfg(feature = "experimental-asm")]
     parallel_safe: bool,
@@ -531,7 +537,10 @@ impl Matcher for RegexMatcher {
         haystack: &[u8],
         at: usize,
     ) -> Result<Option<usize>, NoError> {
-        #[cfg(feature = "experimental-asm")]
+        #[cfg(any(
+            feature = "experimental-asm",
+            feature = "experimental-class"
+        ))]
         if let Some(ref run) = self.class_run {
             return Ok(run.shortest(&haystack[at..]).map(|end| at + end));
         }
@@ -574,7 +583,7 @@ impl Matcher for RegexMatcher {
     }
 }
 
-#[cfg(feature = "experimental-asm")]
+#[cfg(any(feature = "experimental-asm", feature = "experimental-class"))]
 fn class_run(hir: &regex_syntax::hir::Hir) -> Option<grep_asm::ClassRun> {
     use regex_syntax::hir::{Class, HirKind};
     let HirKind::Repetition(rep) = hir.kind() else {

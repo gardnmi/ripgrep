@@ -1,5 +1,10 @@
 # ripgrep assembly experiment
 
+**Acceptance status: experimental; not a validated replacement for upstream.**
+The later [regression audit](audit/README.md) tests a frozen, broader workload
+matrix and rejects builds with material slowdowns. Selected wins below do not
+establish that ordinary searches avoid regressions.
+
 The latest [Zen 4 machine-specific experiments](machine/README.md) add a SIMD
 character-class scanner, bounded single-file parallelism, fused scanning and
 PGO comparisons. That report records substantially larger gains on selected

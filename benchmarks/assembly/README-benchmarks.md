@@ -1,5 +1,8 @@
 # Reproducing the upstream README workloads
 
+For the acceptance decision, see the later [broader regression audit](audit/README.md).
+This historical benchmark subset does not establish regression-free behavior.
+
 This follow-up runs the seven ripgrep commands in upstream's
 [README comparison](https://github.com/BurntSushi/ripgrep/blob/3fce3b5bb0236da2df6d99672afb8a719642eca7/README.md#quick-examples-comparing-tools):
 two Linux kernel tree searches and five OpenSubtitles searches, including the
