@@ -1,0 +1,66 @@
+Running as unit: run-p2322433-i2296163.scope; invocation ID: 41585fd4c36f4a028a3c99cba0b8bef5
+1/32 source-literal verifying
+source-literal PASS {'candidate': 0.597, 'diagnostic': 0.6008, 'reference': 1.1862} warm_io=False control_noise=False
+2/32 source-absent verifying
+source-absent PASS {'candidate': 0.6428, 'diagnostic': 0.6509, 'reference': 1.2961} warm_io=False control_noise=False
+3/32 source-regex verifying
+source-regex PASS {'candidate': 0.7195, 'diagnostic': 0.7182, 'reference': 1.0004} warm_io=False control_noise=False
+4/32 source-ignore-case verifying
+source-ignore-case PASS {'candidate': 0.5862, 'diagnostic': 0.6062, 'reference': 1.1475} warm_io=False control_noise=False
+5/32 source-glob verifying
+source-glob PASS {'candidate': 0.6912, 'diagnostic': 0.7175, 'reference': 1.3447} warm_io=False control_noise=False
+6/32 source-files verifying
+source-files PASS {'candidate': 0.6302, 'diagnostic': 0.6462, 'reference': 0.9753} warm_io=False control_noise=False
+7/32 source-files-hidden verifying
+source-files-hidden PASS {'candidate': 0.6042, 'diagnostic': 0.6133, 'reference': 0.964} warm_io=False control_noise=False
+8/32 source-multi verifying
+source-multi PASS {'candidate': 0.6322, 'diagnostic': 0.6389, 'reference': 1.2314} warm_io=False control_noise=False
+9/32 source-context verifying
+source-context PASS {'candidate': 0.5907, 'diagnostic': 0.606, 'reference': 1.1511} warm_io=False control_noise=False
+10/32 source-sorted verifying
+source-sorted PASS {'candidate': 0.9776, 'diagnostic': 0.9922, 'reference': 0.9962} warm_io=False control_noise=False
+11/32 source-explicit-one-thread verifying
+source-explicit-one-thread PASS {'candidate': 0.9646, 'diagnostic': 1.0001, 'reference': 1.0006} warm_io=False control_noise=False
+12/32 tools-literal verifying
+tools-literal PASS {'candidate': 0.8165, 'diagnostic': 0.8216, 'reference': 1.0248} warm_io=False control_noise=False
+13/32 tools-files-with-match verifying
+tools-files-with-match PASS {'candidate': 0.8101, 'diagnostic': 0.806, 'reference': 0.9702} warm_io=False control_noise=False
+14/32 tools-glob verifying
+tools-glob PASS {'candidate': 0.7602, 'diagnostic': 0.7465, 'reference': 1.0147} warm_io=False control_noise=False
+15/32 tools-regex verifying
+tools-regex PASS {'candidate': 0.8183, 'diagnostic': 0.8397, 'reference': 1.0343} warm_io=False control_noise=False
+16/32 tools-files verifying
+tools-files PASS {'candidate': 0.7455, 'diagnostic': 0.7546, 'reference': 1.0144} warm_io=False control_noise=False
+17/32 kernel-literal verifying
+kernel-literal PASS {'candidate': 0.9395, 'diagnostic': 0.9765, 'reference': 0.9808} warm_io=False control_noise=False
+18/32 kernel-regex verifying
+kernel-regex PASS {'candidate': 0.9514, 'diagnostic': 0.9537, 'reference': 0.9943} warm_io=False control_noise=False
+19/32 kernel-files verifying
+kernel-files PASS {'candidate': 0.8886, 'diagnostic': 0.905, 'reference': 0.9243} warm_io=False control_noise=False
+20/32 tiny-hit verifying
+tiny-hit PASS {'candidate': 1.0097, 'diagnostic': 1.0646, 'reference': 1.0222} warm_io=False control_noise=False
+21/32 tiny-miss verifying
+tiny-miss PASS {'candidate': 1.0313, 'diagnostic': 1.0629, 'reference': 1.0372} warm_io=False control_noise=False
+22/32 small-regex verifying
+small-regex PASS {'candidate': 0.9879, 'diagnostic': 1.007, 'reference': 1.001} warm_io=False control_noise=False
+23/32 log-lines verifying
+log-lines INCONCLUSIVE {'candidate': 0.9765, 'diagnostic': 0.9875, 'reference': 0.9698} warm_io=False control_noise=False
+24/32 log-context verifying
+log-context PASS {'candidate': 0.9744, 'diagnostic': 1.026, 'reference': 0.9899} warm_io=False control_noise=False
+25/32 log-count verifying
+log-count PASS {'candidate': 0.9845, 'diagnostic': 0.9912, 'reference': 0.9839} warm_io=False control_noise=False
+26/32 log-multi verifying
+log-multi PASS {'candidate': 0.9801, 'diagnostic': 0.9596, 'reference': 0.9789} warm_io=False control_noise=False
+27/32 log-ignore-case verifying
+log-ignore-case INCONCLUSIVE {'candidate': 0.922, 'diagnostic': 0.9071, 'reference': 0.9147} warm_io=False control_noise=False
+28/32 log-json verifying
+log-json PASS {'candidate': 1.035, 'diagnostic': 1.0781, 'reference': 1.0524} warm_io=False control_noise=False
+29/32 prose-absent verifying
+prose-absent INCONCLUSIVE {'candidate': 0.9989, 'diagnostic': 1.0768, 'reference': 0.9699} warm_io=False control_noise=False
+30/32 prose-count verifying
+prose-count INCONCLUSIVE {'candidate': 1.0021, 'diagnostic': 0.9634, 'reference': 0.9909} warm_io=False control_noise=False
+31/32 prose-regex verifying
+prose-regex INCONCLUSIVE {'candidate': 0.9857, 'diagnostic': 1.0044, 'reference': 0.987} warm_io=False control_noise=False
+32/32 unicode-fold verifying
+unicode-fold INCONCLUSIVE {'candidate': 1.002, 'diagnostic': 0.9598, 'reference': 1.0005} warm_io=False control_noise=False
+AUDIT INCONCLUSIVE

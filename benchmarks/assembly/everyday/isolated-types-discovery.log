@@ -1,0 +1,10 @@
+Running as unit: run-p3490196-i3496305.scope; invocation ID: 60b06a85f98547368fde684ef18133c0
+1/4 type-selected verifying
+type-selected PASS {'candidate': 0.6905, 'reference': 1.2802} warm_io=False control_noise=False
+2/4 type-negated verifying
+type-negated PASS {'candidate': 0.6613, 'reference': 1.0246} warm_io=False control_noise=False
+3/4 type-custom verifying
+type-custom PASS {'candidate': 0.6577, 'reference': 1.2397} warm_io=False control_noise=False
+4/4 type-list verifying
+type-list PASS {'candidate': 1.0111, 'reference': 1.065} warm_io=False control_noise=False
+AUDIT PASS

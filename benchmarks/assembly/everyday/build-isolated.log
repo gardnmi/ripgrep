@@ -1,0 +1,6 @@
+Running as unit: run-p3374664-i3392527.scope; invocation ID: f9ad71641f054356bb17950d3c479cb3
+   Compiling ignore v0.4.33 (/home/gardnmi/Worktrees/ripgrep/experiment-everyday-isolated/crates/ignore)
+   Compiling lexopt v0.3.2
+   Compiling textwrap v0.16.2
+   Compiling ripgrep v15.2.0 (/home/gardnmi/Worktrees/ripgrep/experiment-everyday-isolated)
+    Finished `release-lto` profile [optimized] target(s) in 33.88s

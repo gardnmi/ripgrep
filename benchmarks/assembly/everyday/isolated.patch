@@ -1,0 +1,492 @@
+diff --git i/crates/ignore/src/dir.rs w/crates/ignore/src/dir.rs
+index 72faf48..be32293 100644
+--- i/crates/ignore/src/dir.rs
++++ w/crates/ignore/src/dir.rs
+@@ -133,6 +133,12 @@ struct IgnoreInner {
+     parent: Option<Arc<IgnoreInner>>,
+     /// Whether this is an absolute parent matcher, as added by add_parent.
+     is_absolute_parent: bool,
++    /// Whether any absolute parent has custom or .ignore rules. This lets
++    /// matching avoid constructing an absolute path when no rule can use it.
++    absolute_non_git_rules: bool,
++    /// Whether any absolute parent has .gitignore or git exclude rules.
++    /// A repository boundary can make these irrelevant to a child search.
++    absolute_git_rules: bool,
+     /// The directory that gitignores should be interpreted relative to.
+     ///
+     /// Usually this is the directory containing the gitignore file. But in
+@@ -238,6 +244,11 @@ impl Ignore {
+             let (mut igtmp, err) = ig.add_child_path(parent);
+             errs.maybe_push(err);
+             igtmp.is_absolute_parent = true;
++            igtmp.absolute_non_git_rules |=
++                !igtmp.custom_ignore_matcher.is_empty()
++                    || !igtmp.ignore_matcher.is_empty();
++            igtmp.absolute_git_rules |= !igtmp.git_ignore_matcher.is_empty()
++                || !igtmp.git_exclude_matcher.is_empty();
+             igtmp.has_git =
+                 if self.inner.opts.require_git && self.inner.opts.git_ignore {
+                     parent.join(".git").exists() || parent.join(".jj").exists()
+@@ -446,6 +457,8 @@ impl Ignore {
+             types: self.inner.types.clone(),
+             parent: Some(self.inner.clone()),
+             is_absolute_parent: false,
++            absolute_non_git_rules: self.inner.absolute_non_git_rules,
++            absolute_git_rules: self.inner.absolute_git_rules,
+             global_gitignores_relative_to: self
+                 .inner
+                 .global_gitignores_relative_to
+@@ -592,7 +605,10 @@ impl Ignore {
+             }
+             saw_git = saw_git || ig.inner.has_git;
+         }
+-        if self.inner.opts.parents {
++        if self.inner.opts.parents
++            && (self.inner.absolute_non_git_rules
++                || (any_git && !saw_git && self.inner.absolute_git_rules))
++        {
+             if let Some(abs_parent_path) = self.absolute_base() {
+                 // What we want to do here is take the absolute base path of
+                 // this directory and join it with the path we're searching.
+@@ -844,6 +860,8 @@ impl IgnoreBuilder {
+                 types: self.types.clone(),
+                 parent: None,
+                 is_absolute_parent: true,
++                absolute_non_git_rules: false,
++                absolute_git_rules: false,
+                 global_gitignores_relative_to,
+                 explicit_ignores: Arc::new(self.explicit_ignores.clone()),
+                 custom_ignore_filenames: Arc::new(
+@@ -1427,6 +1445,29 @@ mod tests {
+         assert!(ig2.matched("src/foo", false).is_ignore());
+     }
+ 
++    #[test]
++    fn absolute_ignore_rules_cross_nested_repository_boundary() {
++        let td = tmpdir();
++        let nested = td.path().join("nested");
++        mkdirp(td.path().join(".git"));
++        mkdirp(nested.join(".git"));
++        wfile(td.path().join(".gitignore"), "git-only\n");
++        wfile(td.path().join(".ignore"), "plain-ignore\n");
++        wfile(td.path().join(".custom"), "custom-ignore\n");
++
++        let mut builder = IgnoreBuilder::new();
++        builder.add_custom_ignore_filename(".custom");
++        let (parents, err) = builder.build().add_parents(&nested);
++        assert!(err.is_none());
++        let (child, err) = parents.add_child(&nested);
++        assert!(err.is_none());
++        assert!(child.matched(nested.join("git-only"), false).is_none());
++        assert!(child.matched(nested.join("plain-ignore"), false).is_ignore());
++        assert!(
++            child.matched(nested.join("custom-ignore"), false).is_ignore()
++        );
++    }
++
+     #[test]
+     fn absolute_parent_matchers_are_cached_across_roots() {
+         let td = tmpdir();
+diff --git i/crates/ignore/src/gitignore.rs w/crates/ignore/src/gitignore.rs
+index 7b017c7..bf55dea 100644
+--- i/crates/ignore/src/gitignore.rs
++++ w/crates/ignore/src/gitignore.rs
+@@ -8,16 +8,21 @@ the `git` command line tool.
+ */
+ 
+ use std::{
++    cell::RefCell,
+     fs::File,
+     io::{BufRead, BufReader, Read},
+     path::{Path, PathBuf},
+-    sync::Arc,
+ };
+ 
+-use {
+-    globset::{Candidate, GlobBuilder, GlobSet, GlobSetBuilder},
+-    regex_automata::util::pool::Pool,
+-};
++use globset::{Candidate, GlobBuilder, GlobSet, GlobSetBuilder};
++
++thread_local! {
++    // Matching does not call back into Gitignore, so one scratch vector can
++    // serve every matcher on this thread. No matches survive a call. This
++    // avoids acquiring a shared pool for every directory entry, and releases
++    // scratch storage when a traversal worker exits.
++    static MATCHES: RefCell<Vec<usize>> = const { RefCell::new(Vec::new()) };
++}
+ 
+ use crate::{
+     Error, Match, PartialErrorBuilder,
+@@ -84,7 +89,6 @@ pub struct Gitignore {
+     globs: Vec<Glob>,
+     num_ignores: u64,
+     num_whitelists: u64,
+-    matches: Option<Arc<Pool<Vec<usize>>>>,
+ }
+ 
+ impl Gitignore {
+@@ -155,7 +159,6 @@ impl Gitignore {
+             globs: vec![],
+             num_ignores: 0,
+             num_whitelists: 0,
+-            matches: None,
+         }
+     }
+ 
+@@ -265,9 +268,29 @@ impl Gitignore {
+             return Match::None;
+         }
+         let path = path.as_ref();
+-        let mut matches = self.matches.as_ref().unwrap().get();
+         let candidate = Candidate::new(path);
+-        self.set.matches_candidate_into(&candidate, &mut *matches);
++        MATCHES
++            .try_with(|scratch| {
++                scratch.try_borrow_mut().ok().map(|mut matches| {
++                    self.matched_candidate(&candidate, is_dir, &mut matches)
++                })
++            })
++            .ok()
++            .flatten()
++            // A caller may match from another thread-local's destructor after
++            // our scratch was destroyed. Reentrant use also gets its own vec.
++            .unwrap_or_else(|| {
++                self.matched_candidate(&candidate, is_dir, &mut vec![])
++            })
++    }
++
++    fn matched_candidate(
++        &self,
++        candidate: &Candidate<'_>,
++        is_dir: bool,
++        matches: &mut Vec<usize>,
++    ) -> Match<&Glob> {
++        self.set.matches_candidate_into(candidate, matches);
+         for &i in matches.iter().rev() {
+             let glob = &self.globs[i];
+             if !glob.is_only_dir() || is_dir {
+@@ -359,9 +382,6 @@ impl GitignoreBuilder {
+             globs: self.globs.clone(),
+             num_ignores: nignore as u64,
+             num_whitelists: nwhite as u64,
+-            matches: Some(Arc::new(
+-                Pool::with_available_parallelism_capacity(|| vec![]),
+-            )),
+         })
+     }
+ 
+@@ -715,6 +735,58 @@ mod tests {
+         builder.build().unwrap()
+     }
+ 
++    #[test]
++    fn shared_matchers_keep_scratch_results_separate() {
++        let small = gi_from_str(".", "*.tmp\n!keep.tmp\nkeep.tmp/\n");
++        let large = gi_from_str(".", &"*.rs\n".repeat(128));
++        std::thread::scope(|scope| {
++            for _ in 0..24 {
++                let (small, large) = (&small, &large);
++                scope.spawn(move || {
++                    for _ in 0..100 {
++                        assert!(large.matched("lib.rs", false).is_ignore());
++                        assert!(
++                            small.matched("keep.tmp", false).is_whitelist()
++                        );
++                        assert!(small.matched("keep.tmp", true).is_ignore());
++                        assert!(large.matched("keep.tmp", false).is_none());
++                        assert!(small.matched("other.tmp", false).is_ignore());
++                        assert!(small.matched("lib.rs", false).is_none());
++                    }
++                });
++            }
++        });
++    }
++
++    #[test]
++    fn matching_during_thread_local_teardown() {
++        struct MatchOnDrop;
++        impl Drop for MatchOnDrop {
++            fn drop(&mut self) {
++                assert!(
++                    gi_from_str(".", "*.tmp")
++                        .matched("file.tmp", false)
++                        .is_ignore()
++                );
++            }
++        }
++        thread_local! {
++            static LATE: MatchOnDrop = const { MatchOnDrop };
++        }
++        std::thread::spawn(|| {
++            // Destructors run in reverse initialization order: MATCHES will
++            // have been destroyed when LATE's destructor performs its match.
++            LATE.with(|_| {});
++            assert!(
++                gi_from_str(".", "*.tmp")
++                    .matched("file.tmp", false)
++                    .is_ignore()
++            );
++        })
++        .join()
++        .unwrap();
++    }
++
+     macro_rules! ignored {
+         ($name:ident, $root:expr, $gi:expr, $path:expr) => {
+             ignored!($name, $root, $gi, $path, false);
+diff --git i/crates/ignore/src/types.rs w/crates/ignore/src/types.rs
+index 313cf5c..9bd4202 100644
+--- i/crates/ignore/src/types.rs
++++ w/crates/ignore/src/types.rs
+@@ -176,8 +176,9 @@ pub struct Types {
+     glob_to_selection: Vec<(usize, usize)>,
+     /// The set of all glob selections, used for actual matching.
+     set: GlobSet,
+-    /// Temporary storage for globs that match.
+-    matches: Arc<Pool<Vec<usize>>>,
++    /// Temporary storage for globs that match. Empty sets need no scratch
++    /// pool, including its query for the available parallelism.
++    matches: Option<Arc<Pool<Vec<usize>>>>,
+ }
+ 
+ /// Indicates the type of a selection for a particular file type.
+@@ -231,9 +232,7 @@ impl Types {
+             has_selected: false,
+             glob_to_selection: vec![],
+             set: GlobSetBuilder::new().build().unwrap(),
+-            matches: Arc::new(Pool::with_available_parallelism_capacity(
+-                || vec![],
+-            )),
++            matches: None,
+         }
+     }
+ 
+@@ -281,7 +280,7 @@ impl Types {
+                 return Match::None;
+             }
+         };
+-        let mut matches = self.matches.get();
++        let mut matches = self.matches.as_ref().unwrap().get();
+         self.set.matches_into(name, &mut *matches);
+         // The highest precedent match is the last one.
+         if let Some(&i) = matches.last() {
+@@ -353,15 +352,18 @@ impl TypesBuilder {
+         let set = build_set
+             .build()
+             .map_err(|err| Error::Glob { glob: None, err: err.to_string() })?;
++        let matches = (!set.is_empty()).then(|| {
++            Arc::new(Pool::<Vec<usize>>::with_available_parallelism_capacity(
++                || vec![],
++            ))
++        });
+         Ok(Types {
+             defs,
+             selections,
+             has_selected,
+             glob_to_selection,
+             set,
+-            matches: Arc::new(Pool::with_available_parallelism_capacity(
+-                || vec![],
+-            )),
++            matches,
+         })
+     }
+ 
+diff --git i/crates/ignore/src/walk.rs w/crates/ignore/src/walk.rs
+index 2b0300e..9dac89b 100644
+--- i/crates/ignore/src/walk.rs
++++ w/crates/ignore/src/walk.rs
+@@ -1503,6 +1503,7 @@ impl WalkParallel {
+         // Create the workers and then wait for them to finish.
+         let quit_now = Arc::new(AtomicBool::new(false));
+         let active_workers = Arc::new(AtomicUsize::new(threads));
++        let wakeup = Arc::new(Wakeup::new(threads));
+         let stacks = Stack::new_for_each_thread(threads, stack);
+         // Collect all of the workers first. In the case that
+         // `builder.build()` panics, we want that to happen and
+@@ -1515,6 +1516,7 @@ impl WalkParallel {
+                 stack,
+                 quit_now: quit_now.clone(),
+                 active_workers: active_workers.clone(),
++                wakeup: wakeup.clone(),
+                 max_depth: self.max_depth,
+                 min_depth: self.min_depth,
+                 max_filesize: self.max_filesize,
+@@ -1714,6 +1716,72 @@ impl Stack {
+     }
+ }
+ 
++/// Wake idle workers when work arrives instead of waiting for a polling tick.
++/// The bitset covers the common case; extra workers retain timed polling.
++struct Wakeup {
++    sleeping: AtomicUsize,
++    threads: Vec<OnceLock<std::thread::Thread>>,
++}
++
++impl Wakeup {
++    fn new(threads: usize) -> Wakeup {
++        Wakeup {
++            sleeping: AtomicUsize::new(0),
++            threads: (0..threads.min(usize::BITS as usize))
++                .map(|_| OnceLock::new())
++                .collect(),
++        }
++    }
++
++    fn register(&self, index: usize) {
++        if let Some(slot) = self.threads.get(index) {
++            let _ = slot.set(std::thread::current());
++        }
++    }
++
++    fn prepare(&self, index: usize) -> bool {
++        if index >= self.threads.len() {
++            return false;
++        }
++        self.sleeping.fetch_or(1 << index, AtomicOrdering::Release);
++        true
++    }
++
++    fn cancel(&self, index: usize) {
++        if index < self.threads.len() {
++            self.sleeping.fetch_and(!(1 << index), AtomicOrdering::AcqRel);
++        }
++    }
++
++    fn notify_one(&self) {
++        let mut sleeping = self.sleeping.load(AtomicOrdering::Acquire);
++        while sleeping != 0 {
++            match self.sleeping.compare_exchange_weak(
++                sleeping,
++                sleeping & (sleeping - 1),
++                AtomicOrdering::AcqRel,
++                AtomicOrdering::Acquire,
++            ) {
++                Ok(_) => {
++                    let index = sleeping.trailing_zeros() as usize;
++                    self.threads[index].get().unwrap().unpark();
++                    return;
++                }
++                Err(now) => sleeping = now,
++            }
++        }
++    }
++
++    fn notify_all(&self) {
++        let mut sleeping = self.sleeping.swap(0, AtomicOrdering::AcqRel);
++        while sleeping != 0 {
++            let index = sleeping.trailing_zeros() as usize;
++            self.threads[index].get().unwrap().unpark();
++            sleeping &= sleeping - 1;
++        }
++    }
++}
++
+ /// A worker is responsible for descending into directories, updating the
+ /// ignore matchers, producing new work and invoking the caller's callback.
+ ///
+@@ -1734,6 +1802,8 @@ struct Worker<'s> {
+     quit_now: Arc<AtomicBool>,
+     /// The number of currently active workers.
+     active_workers: Arc<AtomicUsize>,
++    /// Idle-thread notification, separate from work ownership and termination.
++    wakeup: Arc<Wakeup>,
+     /// The maximum depth of directories to descend. A value of `0` means no
+     /// descension at all.
+     max_depth: Option<usize>,
+@@ -1759,6 +1829,7 @@ impl<'s> Worker<'s> {
+     /// The worker will call the caller's callback for all entries that aren't
+     /// skipped by the ignore matcher.
+     fn run(mut self) {
++        self.wakeup.register(self.stack.index);
+         while let Some(work) = self.get_work() {
+             if let WalkState::Quit = self.run_one(work) {
+                 self.quit_now();
+@@ -1971,20 +2042,27 @@ impl<'s> Worker<'s> {
+                     }
+                     // Wait for next `Work` or `Quit` message.
+                     loop {
++                        // Announce the wait before rechecking the queue. An
++                        // unpark arriving before park leaves a token, so this
++                        // cannot miss a notification between check and sleep.
++                        let park = self.wakeup.prepare(self.stack.index);
+                         if self.is_quit_now() {
++                            self.wakeup.cancel(self.stack.index);
+                             return None;
+                         }
+                         if let Some(v) = self.recv() {
++                            self.wakeup.cancel(self.stack.index);
+                             self.activate_worker();
+                             value = Some(v);
+                             break;
+                         }
+-                        // Our stack isn't blocking. Instead of burning the
+-                        // CPU waiting, we let the thread sleep for a bit. In
+-                        // general, this tends to only occur once the search is
+-                        // approaching termination.
+                         let dur = std::time::Duration::from_millis(1);
+-                        std::thread::sleep(dur);
++                        if park {
++                            std::thread::park_timeout(dur);
++                        } else {
++                            std::thread::sleep(dur);
++                        }
++                        self.wakeup.cancel(self.stack.index);
+                     }
+                 }
+             }
+@@ -1994,6 +2072,7 @@ impl<'s> Worker<'s> {
+     /// Indicates that all workers should quit immediately.
+     fn quit_now(&self) {
+         self.quit_now.store(true, AtomicOrdering::SeqCst);
++        self.wakeup.notify_all();
+     }
+ 
+     /// Returns true if this worker should quit immediately.
+@@ -2004,11 +2083,13 @@ impl<'s> Worker<'s> {
+     /// Send work.
+     fn send(&self, work: Work) {
+         self.stack.push(Message::Work(work));
++        self.wakeup.notify_one();
+     }
+ 
+     /// Send a quit message.
+     fn send_quit(&self) {
+         self.stack.push(Message::Quit);
++        self.wakeup.notify_one();
+     }
+ 
+     /// Receive work.
+@@ -2703,6 +2784,31 @@ mod tests {
+         );
+     }
+ 
++    #[test]
++    fn worker_notifications_preserve_all_entries() {
++        let td = tmpdir();
++        for dir in 0..8 {
++            let path = td.path().join(format!("dir{dir}/nested"));
++            mkdirp(&path);
++            for file in 0..32 {
++                wfile(path.join(format!("file{file}")), "");
++            }
++        }
++        let expected = walk_collect(td.path(), &WalkBuilder::new(td.path()));
++        // Include a worker beyond the notification bitset's capacity.
++        for threads in [2, 12, usize::BITS as usize + 1] {
++            for _ in 0..4 {
++                let mut builder = WalkBuilder::new(td.path());
++                builder.threads(threads);
++                assert_eq!(
++                    walk_collect_parallel(td.path(), &builder),
++                    expected,
++                    "threads={threads}",
++                );
++            }
++        }
++    }
++
+     // This should always panic and never hang.
+     //
+     // Ref: https://github.com/BurntSushi/ripgrep/issues/3009

@@ -1,0 +1,12 @@
+Running as unit: run-p3407347-i3417236.scope; invocation ID: d0ebbbfb06224b429e508024e257d492
+{
+  "recorded_utc": "2026-09-26T15:13:17.851130+00:00",
+  "seed": 32941,
+  "cases": 1068,
+  "comparisons": 3204,
+  "case_digest_sha256": "a56494f359be5795bb842b8ee41a89d557c7dd4a31fb6d4d1ffd204f6417b64e",
+  "result": "PASS",
+  "checks": "exact stdout, stderr and exit status; assembly, Rust control and disabled",
+  "baseline_sha256": "0cf034b3dac03059f6bb647ca980e8e1d14666cee184bb38021f56282df74768",
+  "candidate_sha256": "0d5f756bb912cda19c98c744effaea4fcc7ed9e7ce0b08b2896be44d451bd9f8"
+}

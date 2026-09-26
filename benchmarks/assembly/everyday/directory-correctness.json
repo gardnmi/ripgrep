@@ -1,0 +1,3561 @@
+{
+  "result": "PASS",
+  "comparisons": 288,
+  "baseline_sha256": "0cf034b3dac03059f6bb647ca980e8e1d14666cee184bb38021f56282df74768",
+  "candidate_sha256": "25e4f019e022b49395492977eda6942d8b6299f956ec89f4f7b174ed775a91ff",
+  "normalization": "Unordered directory output lines/JSON records; JSON elapsed fields removed. Exit and errors compared.",
+  "checks": [
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--files"
+      ],
+      "exit": 0,
+      "stdout_sha256": "efe35747ecc0bbcf9683d1aba3d13b3ccf19674410c8ef020c2de24fe7c473e5",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--files",
+        "--hidden"
+      ],
+      "exit": 0,
+      "stdout_sha256": "3e3798ce899e26f92f4bbcfd5bb0e5d3f101c7ecc1f3aa7a832f6072a10b15d6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--files",
+        "-uuu"
+      ],
+      "exit": 0,
+      "stdout_sha256": "ecbd009033da579009354a7dd0cfd89890b63ddbc50114ed17e9fc384fc04678",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--files",
+        "-g",
+        "*.rs"
+      ],
+      "exit": 0,
+      "stdout_sha256": "30e19a2dfb99cb18eb66c0ab3f8db2fdc72dad12b213af2a2ed081d0bac2c82d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--files",
+        "-g",
+        "!notes.txt"
+      ],
+      "exit": 0,
+      "stdout_sha256": "9148d00a58ef75fd1aac6755204038e2c0d555271cc19a1062e20a5bbb574997",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "-n",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "d7ccc332796e5f6876e9d4bf659f95fba30d10b667c4b6be323c05cdb5c01718",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "-l",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "29e6e1aa92e42b608fbbaae65c5db7939764fc0a991aad300912e4a1f489dd24",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "-i",
+        "-n",
+        "NEEDLE"
+      ],
+      "exit": 0,
+      "stdout_sha256": "d7ccc332796e5f6876e9d4bf659f95fba30d10b667c4b6be323c05cdb5c01718",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "-C",
+        "1",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "a8bd99dfc8a7faee45b06542a549d30f359ce131ee6de9ff8761937c14569f0e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--sort",
+        "path",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "46b8e2e703d3e7ac13a01c0f6803938300ca056c177ea1456cf9c0eb12caa11d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--json",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "99c7406194c0c1c5f56f137577c72e8508bf78bffa5e1b68879dfdaee6071a2f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--no-ignore-parent",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "46b8e2e703d3e7ac13a01c0f6803938300ca056c177ea1456cf9c0eb12caa11d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--no-ignore-vcs",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "c55e8994aab516b42c944e72b38525f8c8dbcecf46a3d8c9969902d8d46358a8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "-L",
+        "-n",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "beda1de1e3308924af762109ece099ddd7f21f178aee9abfa30ccb117dc8f4b1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--ignore-file",
+        "/tmp/rg-everyday-check-guqxxqg4/rules",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "46b95aeefe1d656de7bf0e6066dacc4533feab8136848532085aafc14c70b324",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "-q",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "-q",
+        "absent"
+      ],
+      "exit": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "-c",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "bedcbfbe4dfddc0537f797d17fc380829ba64374f4f1317656db7f627660fba6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--files",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "c6f1c5ec9a42caca5aed0d9553bb320d07c4c0b4c00581aa68d711e256031434",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--files",
+        "--hidden",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "2a989fe3eba1fdd07d04eb56013546a4c9a7bb0993366995a607d1b0d1b1a6a3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--files",
+        "-uuu",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "a66c16a7764732051b42885503d95546dce8fda13b19cee2bab13c3a26ff13e7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--files",
+        "-g",
+        "*.rs",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "37c44d4f1fa9fb4276d92ecbcb3520088c534bc8a8af38e730c7930f29f205c9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--files",
+        "-g",
+        "!notes.txt",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "f97ae9e35846543a3f7cff20205d16bd98d1779a5930c508641c12e3c2174047",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "-n",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "7612aa02cc5a9f843b681949147acfb7d66bffc52777e8a3c6e47e8cba738465",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "-l",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "e77c8efaeb713b07a05e3b4f0d1e7e996bccc68c123542088ce6e39ec18b1d31",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "-i",
+        "-n",
+        "NEEDLE",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "7612aa02cc5a9f843b681949147acfb7d66bffc52777e8a3c6e47e8cba738465",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "-C",
+        "1",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "ca8642a7808221a9c872062cd1aa970ee7835c2f5a5f5615a3b9edb90071e40f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--sort",
+        "path",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "0242ecbdc91c2614f2245700967b60ffb841beb5fee38656dddb8035a74c98e3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--json",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "950d983f0d1a33d92b1418880f38aee2214c7e1bc8b4ffec3885b2d84263c915",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--no-ignore-parent",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "0242ecbdc91c2614f2245700967b60ffb841beb5fee38656dddb8035a74c98e3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--no-ignore-vcs",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "37c4ac869db727f90855fb54c3d20e56497f6fc70d47b3fa4e6a4cedb4daedd8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "-L",
+        "-n",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "4d05aa5c7b4f7fdd76650a20b8f5287a711a073257bf26fe0afdbe8838bfac9c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--ignore-file",
+        "/tmp/rg-everyday-check-guqxxqg4/rules",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "a66da829623a25a57ef1d898f2243677d725a57990c59c86a6cd42e392337a28",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "-q",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "-q",
+        "absent",
+        "."
+      ],
+      "exit": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "-c",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "a0619f24736081916278e177d55959331d75880c5d493ca3cbe82a8561ec37c1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--files",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "61c6c7938dacf09376da80351d2fb799feec80cd25ceb8effcd6007ddf87767d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--files",
+        "--hidden",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "7fbe873ebe5423c32e56f0d8304fd352d9c64e7955b179baf2cf9ae3e54f3876",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--files",
+        "-uuu",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "590451632429666b62babb80c8b7d126d0d4e4bb2fe9557206f17b5fe05204c5",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--files",
+        "-g",
+        "*.rs",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "6e1f6b7974c42be90fe0bc9a55f1054cf36323076e96c866c6020a47c39d8544",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--files",
+        "-g",
+        "!notes.txt",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "61c6c7938dacf09376da80351d2fb799feec80cd25ceb8effcd6007ddf87767d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "-n",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "0d5babb48fdf6af9046da6fa74e3916b1aed56ef54cdf4e179b16f1820e9adcc",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "-l",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "61c6c7938dacf09376da80351d2fb799feec80cd25ceb8effcd6007ddf87767d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "-i",
+        "-n",
+        "NEEDLE",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "0d5babb48fdf6af9046da6fa74e3916b1aed56ef54cdf4e179b16f1820e9adcc",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "-C",
+        "1",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "721fc843bb3f5de6500990c7ebc0f97269fa828781356f6d15a0852834fe8db9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--sort",
+        "path",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "5dbeb6638fae1f2cc74282d5921e6d4862eb8f5f18a0fb913de7bd98c8c98946",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--json",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "58cfa9d418e06d157cf12fa7be8e8b0d8d15323ec3e8ecf4eae37492b311573f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--no-ignore-parent",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "6ee12706b692e3bfb2de43ce0c65c1746cf8f2635e7afe497d62b5242c9146fe",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--no-ignore-vcs",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "69fc8ff2f7c3aa02a7870c9709a1f29f53d8390a6bf19b2dd9d08e5ada4c7469",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "-L",
+        "-n",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "0d5babb48fdf6af9046da6fa74e3916b1aed56ef54cdf4e179b16f1820e9adcc",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--ignore-file",
+        "/tmp/rg-everyday-check-guqxxqg4/rules",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "70bd03a9a0cf824b4d733f1b68ea508a47a63afe3d6478101aaf7908465eb3f4",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "-q",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "-q",
+        "absent",
+        "nested"
+      ],
+      "exit": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "-c",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "de648f428b8390ec7eff993d7365e75ba912412b0b41e3d94f4fa0d70caeef7d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--files",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "471cc82835eee219528537ac3de975411fc9a578ed9300afe380c9a768bfa69e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--files",
+        "--hidden",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "8a3ec79aa4abeb1b22a219c87f8996050e219a1be8df7cec7ab09cb182c3f09c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--files",
+        "-uuu",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "bae0195db05e1f0ac96a39273206edc950a7b3095a02795b7dd56780a27a9d50",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--files",
+        "-g",
+        "*.rs",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "b00382cec76704e202cdc99348d3cf39c28fb530c8f91fd9c6c5114c8492d14d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--files",
+        "-g",
+        "!notes.txt",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "8808d7d467d88cb4cef47499d6fbc29a810a277dc7399adf20542fdcbf311f8e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "-n",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e1fd4d19de5097d5900a8b4d024152cf65077cc205eddd1f0b73613b306a6e41",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "-l",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "df5a28ab7d02f6202319f5af91ffedc8862bc2e7c63aa5d17cb73722cd9a3f57",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "-i",
+        "-n",
+        "NEEDLE",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e1fd4d19de5097d5900a8b4d024152cf65077cc205eddd1f0b73613b306a6e41",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "-C",
+        "1",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "f49a05f8042cdbdf794de79de48aa2488ed6614daf6939fbdc8a1b9d02bf85d0",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--sort",
+        "path",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "55b243bf4e86a0bcbc29dd0e08196256479a90d2b283bbe570df75154357f92d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--json",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "cfbeb08597e1a01452b86a3afd86001452ae4ad9766a31509eb6b8ffbb0efe59",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--no-ignore-parent",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "5c4c2ee00de91a35400b5b250a0715e7cf7aee3e4e5186de3a0bad6985a188a4",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--no-ignore-vcs",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "fee857c0de5b34eb2b97c5274e733d1516723a360cc42fefddc0122afa15b9e6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "-L",
+        "-n",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "f64bb7389ea7a0317297539cb3c078828b302cdb5620a19d4ee2acc9d050ace3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "--ignore-file",
+        "/tmp/rg-everyday-check-guqxxqg4/rules",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "15780aa8420956fa5ad4db724130278d92a2545d459672cc859694dd31742cbb",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "-q",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "-q",
+        "absent",
+        "src",
+        "tests"
+      ],
+      "exit": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j1",
+        "-c",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "1496c9a25454b52138c29907033e2b1422bc845bd2d5a6d26abe205da81527a5",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--files"
+      ],
+      "exit": 0,
+      "stdout_sha256": "efe35747ecc0bbcf9683d1aba3d13b3ccf19674410c8ef020c2de24fe7c473e5",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--files",
+        "--hidden"
+      ],
+      "exit": 0,
+      "stdout_sha256": "3e3798ce899e26f92f4bbcfd5bb0e5d3f101c7ecc1f3aa7a832f6072a10b15d6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--files",
+        "-uuu"
+      ],
+      "exit": 0,
+      "stdout_sha256": "ecbd009033da579009354a7dd0cfd89890b63ddbc50114ed17e9fc384fc04678",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--files",
+        "-g",
+        "*.rs"
+      ],
+      "exit": 0,
+      "stdout_sha256": "30e19a2dfb99cb18eb66c0ab3f8db2fdc72dad12b213af2a2ed081d0bac2c82d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--files",
+        "-g",
+        "!notes.txt"
+      ],
+      "exit": 0,
+      "stdout_sha256": "9148d00a58ef75fd1aac6755204038e2c0d555271cc19a1062e20a5bbb574997",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "-n",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "d7ccc332796e5f6876e9d4bf659f95fba30d10b667c4b6be323c05cdb5c01718",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "-l",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "29e6e1aa92e42b608fbbaae65c5db7939764fc0a991aad300912e4a1f489dd24",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "-i",
+        "-n",
+        "NEEDLE"
+      ],
+      "exit": 0,
+      "stdout_sha256": "d7ccc332796e5f6876e9d4bf659f95fba30d10b667c4b6be323c05cdb5c01718",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "-C",
+        "1",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "a8bd99dfc8a7faee45b06542a549d30f359ce131ee6de9ff8761937c14569f0e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--sort",
+        "path",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "46b8e2e703d3e7ac13a01c0f6803938300ca056c177ea1456cf9c0eb12caa11d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--json",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "99c7406194c0c1c5f56f137577c72e8508bf78bffa5e1b68879dfdaee6071a2f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--no-ignore-parent",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "46b8e2e703d3e7ac13a01c0f6803938300ca056c177ea1456cf9c0eb12caa11d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--no-ignore-vcs",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "c55e8994aab516b42c944e72b38525f8c8dbcecf46a3d8c9969902d8d46358a8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "-L",
+        "-n",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "beda1de1e3308924af762109ece099ddd7f21f178aee9abfa30ccb117dc8f4b1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--ignore-file",
+        "/tmp/rg-everyday-check-guqxxqg4/rules",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "46b95aeefe1d656de7bf0e6066dacc4533feab8136848532085aafc14c70b324",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "-q",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "-q",
+        "absent"
+      ],
+      "exit": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "-c",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "bedcbfbe4dfddc0537f797d17fc380829ba64374f4f1317656db7f627660fba6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--files",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "c6f1c5ec9a42caca5aed0d9553bb320d07c4c0b4c00581aa68d711e256031434",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--files",
+        "--hidden",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "2a989fe3eba1fdd07d04eb56013546a4c9a7bb0993366995a607d1b0d1b1a6a3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--files",
+        "-uuu",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "a66c16a7764732051b42885503d95546dce8fda13b19cee2bab13c3a26ff13e7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--files",
+        "-g",
+        "*.rs",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "37c44d4f1fa9fb4276d92ecbcb3520088c534bc8a8af38e730c7930f29f205c9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--files",
+        "-g",
+        "!notes.txt",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "f97ae9e35846543a3f7cff20205d16bd98d1779a5930c508641c12e3c2174047",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "-n",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "7612aa02cc5a9f843b681949147acfb7d66bffc52777e8a3c6e47e8cba738465",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "-l",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "e77c8efaeb713b07a05e3b4f0d1e7e996bccc68c123542088ce6e39ec18b1d31",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "-i",
+        "-n",
+        "NEEDLE",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "7612aa02cc5a9f843b681949147acfb7d66bffc52777e8a3c6e47e8cba738465",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "-C",
+        "1",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "ca8642a7808221a9c872062cd1aa970ee7835c2f5a5f5615a3b9edb90071e40f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--sort",
+        "path",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "0242ecbdc91c2614f2245700967b60ffb841beb5fee38656dddb8035a74c98e3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--json",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "950d983f0d1a33d92b1418880f38aee2214c7e1bc8b4ffec3885b2d84263c915",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--no-ignore-parent",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "0242ecbdc91c2614f2245700967b60ffb841beb5fee38656dddb8035a74c98e3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--no-ignore-vcs",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "37c4ac869db727f90855fb54c3d20e56497f6fc70d47b3fa4e6a4cedb4daedd8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "-L",
+        "-n",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "4d05aa5c7b4f7fdd76650a20b8f5287a711a073257bf26fe0afdbe8838bfac9c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--ignore-file",
+        "/tmp/rg-everyday-check-guqxxqg4/rules",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "a66da829623a25a57ef1d898f2243677d725a57990c59c86a6cd42e392337a28",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "-q",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "-q",
+        "absent",
+        "."
+      ],
+      "exit": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "-c",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "a0619f24736081916278e177d55959331d75880c5d493ca3cbe82a8561ec37c1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--files",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "61c6c7938dacf09376da80351d2fb799feec80cd25ceb8effcd6007ddf87767d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--files",
+        "--hidden",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "7fbe873ebe5423c32e56f0d8304fd352d9c64e7955b179baf2cf9ae3e54f3876",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--files",
+        "-uuu",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "590451632429666b62babb80c8b7d126d0d4e4bb2fe9557206f17b5fe05204c5",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--files",
+        "-g",
+        "*.rs",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "6e1f6b7974c42be90fe0bc9a55f1054cf36323076e96c866c6020a47c39d8544",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--files",
+        "-g",
+        "!notes.txt",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "61c6c7938dacf09376da80351d2fb799feec80cd25ceb8effcd6007ddf87767d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "-n",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "0d5babb48fdf6af9046da6fa74e3916b1aed56ef54cdf4e179b16f1820e9adcc",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "-l",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "61c6c7938dacf09376da80351d2fb799feec80cd25ceb8effcd6007ddf87767d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "-i",
+        "-n",
+        "NEEDLE",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "0d5babb48fdf6af9046da6fa74e3916b1aed56ef54cdf4e179b16f1820e9adcc",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "-C",
+        "1",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "721fc843bb3f5de6500990c7ebc0f97269fa828781356f6d15a0852834fe8db9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--sort",
+        "path",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "5dbeb6638fae1f2cc74282d5921e6d4862eb8f5f18a0fb913de7bd98c8c98946",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--json",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "58cfa9d418e06d157cf12fa7be8e8b0d8d15323ec3e8ecf4eae37492b311573f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--no-ignore-parent",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "6ee12706b692e3bfb2de43ce0c65c1746cf8f2635e7afe497d62b5242c9146fe",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--no-ignore-vcs",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "69fc8ff2f7c3aa02a7870c9709a1f29f53d8390a6bf19b2dd9d08e5ada4c7469",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "-L",
+        "-n",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "0d5babb48fdf6af9046da6fa74e3916b1aed56ef54cdf4e179b16f1820e9adcc",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--ignore-file",
+        "/tmp/rg-everyday-check-guqxxqg4/rules",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "70bd03a9a0cf824b4d733f1b68ea508a47a63afe3d6478101aaf7908465eb3f4",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "-q",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "-q",
+        "absent",
+        "nested"
+      ],
+      "exit": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "-c",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "de648f428b8390ec7eff993d7365e75ba912412b0b41e3d94f4fa0d70caeef7d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--files",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "471cc82835eee219528537ac3de975411fc9a578ed9300afe380c9a768bfa69e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--files",
+        "--hidden",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "8a3ec79aa4abeb1b22a219c87f8996050e219a1be8df7cec7ab09cb182c3f09c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--files",
+        "-uuu",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "bae0195db05e1f0ac96a39273206edc950a7b3095a02795b7dd56780a27a9d50",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--files",
+        "-g",
+        "*.rs",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "b00382cec76704e202cdc99348d3cf39c28fb530c8f91fd9c6c5114c8492d14d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--files",
+        "-g",
+        "!notes.txt",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "8808d7d467d88cb4cef47499d6fbc29a810a277dc7399adf20542fdcbf311f8e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "-n",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e1fd4d19de5097d5900a8b4d024152cf65077cc205eddd1f0b73613b306a6e41",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "-l",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "df5a28ab7d02f6202319f5af91ffedc8862bc2e7c63aa5d17cb73722cd9a3f57",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "-i",
+        "-n",
+        "NEEDLE",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e1fd4d19de5097d5900a8b4d024152cf65077cc205eddd1f0b73613b306a6e41",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "-C",
+        "1",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "f49a05f8042cdbdf794de79de48aa2488ed6614daf6939fbdc8a1b9d02bf85d0",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--sort",
+        "path",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "55b243bf4e86a0bcbc29dd0e08196256479a90d2b283bbe570df75154357f92d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--json",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "cfbeb08597e1a01452b86a3afd86001452ae4ad9766a31509eb6b8ffbb0efe59",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--no-ignore-parent",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "5c4c2ee00de91a35400b5b250a0715e7cf7aee3e4e5186de3a0bad6985a188a4",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--no-ignore-vcs",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "fee857c0de5b34eb2b97c5274e733d1516723a360cc42fefddc0122afa15b9e6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "-L",
+        "-n",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "f64bb7389ea7a0317297539cb3c078828b302cdb5620a19d4ee2acc9d050ace3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "--ignore-file",
+        "/tmp/rg-everyday-check-guqxxqg4/rules",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "15780aa8420956fa5ad4db724130278d92a2545d459672cc859694dd31742cbb",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "-q",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "-q",
+        "absent",
+        "src",
+        "tests"
+      ],
+      "exit": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j2",
+        "-c",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "1496c9a25454b52138c29907033e2b1422bc845bd2d5a6d26abe205da81527a5",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--files"
+      ],
+      "exit": 0,
+      "stdout_sha256": "efe35747ecc0bbcf9683d1aba3d13b3ccf19674410c8ef020c2de24fe7c473e5",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--files",
+        "--hidden"
+      ],
+      "exit": 0,
+      "stdout_sha256": "3e3798ce899e26f92f4bbcfd5bb0e5d3f101c7ecc1f3aa7a832f6072a10b15d6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--files",
+        "-uuu"
+      ],
+      "exit": 0,
+      "stdout_sha256": "ecbd009033da579009354a7dd0cfd89890b63ddbc50114ed17e9fc384fc04678",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--files",
+        "-g",
+        "*.rs"
+      ],
+      "exit": 0,
+      "stdout_sha256": "30e19a2dfb99cb18eb66c0ab3f8db2fdc72dad12b213af2a2ed081d0bac2c82d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--files",
+        "-g",
+        "!notes.txt"
+      ],
+      "exit": 0,
+      "stdout_sha256": "9148d00a58ef75fd1aac6755204038e2c0d555271cc19a1062e20a5bbb574997",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "-n",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "d7ccc332796e5f6876e9d4bf659f95fba30d10b667c4b6be323c05cdb5c01718",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "-l",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "29e6e1aa92e42b608fbbaae65c5db7939764fc0a991aad300912e4a1f489dd24",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "-i",
+        "-n",
+        "NEEDLE"
+      ],
+      "exit": 0,
+      "stdout_sha256": "d7ccc332796e5f6876e9d4bf659f95fba30d10b667c4b6be323c05cdb5c01718",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "-C",
+        "1",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "a8bd99dfc8a7faee45b06542a549d30f359ce131ee6de9ff8761937c14569f0e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--sort",
+        "path",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "46b8e2e703d3e7ac13a01c0f6803938300ca056c177ea1456cf9c0eb12caa11d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--json",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "99c7406194c0c1c5f56f137577c72e8508bf78bffa5e1b68879dfdaee6071a2f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--no-ignore-parent",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "46b8e2e703d3e7ac13a01c0f6803938300ca056c177ea1456cf9c0eb12caa11d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--no-ignore-vcs",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "c55e8994aab516b42c944e72b38525f8c8dbcecf46a3d8c9969902d8d46358a8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "-L",
+        "-n",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "beda1de1e3308924af762109ece099ddd7f21f178aee9abfa30ccb117dc8f4b1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--ignore-file",
+        "/tmp/rg-everyday-check-guqxxqg4/rules",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "46b95aeefe1d656de7bf0e6066dacc4533feab8136848532085aafc14c70b324",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "-q",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "-q",
+        "absent"
+      ],
+      "exit": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "-c",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "bedcbfbe4dfddc0537f797d17fc380829ba64374f4f1317656db7f627660fba6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--files",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "c6f1c5ec9a42caca5aed0d9553bb320d07c4c0b4c00581aa68d711e256031434",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--files",
+        "--hidden",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "2a989fe3eba1fdd07d04eb56013546a4c9a7bb0993366995a607d1b0d1b1a6a3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--files",
+        "-uuu",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "a66c16a7764732051b42885503d95546dce8fda13b19cee2bab13c3a26ff13e7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--files",
+        "-g",
+        "*.rs",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "37c44d4f1fa9fb4276d92ecbcb3520088c534bc8a8af38e730c7930f29f205c9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--files",
+        "-g",
+        "!notes.txt",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "f97ae9e35846543a3f7cff20205d16bd98d1779a5930c508641c12e3c2174047",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "-n",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "7612aa02cc5a9f843b681949147acfb7d66bffc52777e8a3c6e47e8cba738465",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "-l",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "e77c8efaeb713b07a05e3b4f0d1e7e996bccc68c123542088ce6e39ec18b1d31",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "-i",
+        "-n",
+        "NEEDLE",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "7612aa02cc5a9f843b681949147acfb7d66bffc52777e8a3c6e47e8cba738465",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "-C",
+        "1",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "ca8642a7808221a9c872062cd1aa970ee7835c2f5a5f5615a3b9edb90071e40f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--sort",
+        "path",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "0242ecbdc91c2614f2245700967b60ffb841beb5fee38656dddb8035a74c98e3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--json",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "950d983f0d1a33d92b1418880f38aee2214c7e1bc8b4ffec3885b2d84263c915",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--no-ignore-parent",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "0242ecbdc91c2614f2245700967b60ffb841beb5fee38656dddb8035a74c98e3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--no-ignore-vcs",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "37c4ac869db727f90855fb54c3d20e56497f6fc70d47b3fa4e6a4cedb4daedd8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "-L",
+        "-n",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "4d05aa5c7b4f7fdd76650a20b8f5287a711a073257bf26fe0afdbe8838bfac9c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--ignore-file",
+        "/tmp/rg-everyday-check-guqxxqg4/rules",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "a66da829623a25a57ef1d898f2243677d725a57990c59c86a6cd42e392337a28",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "-q",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "-q",
+        "absent",
+        "."
+      ],
+      "exit": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "-c",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "a0619f24736081916278e177d55959331d75880c5d493ca3cbe82a8561ec37c1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--files",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "61c6c7938dacf09376da80351d2fb799feec80cd25ceb8effcd6007ddf87767d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--files",
+        "--hidden",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "7fbe873ebe5423c32e56f0d8304fd352d9c64e7955b179baf2cf9ae3e54f3876",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--files",
+        "-uuu",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "590451632429666b62babb80c8b7d126d0d4e4bb2fe9557206f17b5fe05204c5",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--files",
+        "-g",
+        "*.rs",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "6e1f6b7974c42be90fe0bc9a55f1054cf36323076e96c866c6020a47c39d8544",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--files",
+        "-g",
+        "!notes.txt",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "61c6c7938dacf09376da80351d2fb799feec80cd25ceb8effcd6007ddf87767d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "-n",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "0d5babb48fdf6af9046da6fa74e3916b1aed56ef54cdf4e179b16f1820e9adcc",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "-l",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "61c6c7938dacf09376da80351d2fb799feec80cd25ceb8effcd6007ddf87767d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "-i",
+        "-n",
+        "NEEDLE",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "0d5babb48fdf6af9046da6fa74e3916b1aed56ef54cdf4e179b16f1820e9adcc",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "-C",
+        "1",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "721fc843bb3f5de6500990c7ebc0f97269fa828781356f6d15a0852834fe8db9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--sort",
+        "path",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "5dbeb6638fae1f2cc74282d5921e6d4862eb8f5f18a0fb913de7bd98c8c98946",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--json",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "58cfa9d418e06d157cf12fa7be8e8b0d8d15323ec3e8ecf4eae37492b311573f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--no-ignore-parent",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "6ee12706b692e3bfb2de43ce0c65c1746cf8f2635e7afe497d62b5242c9146fe",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--no-ignore-vcs",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "69fc8ff2f7c3aa02a7870c9709a1f29f53d8390a6bf19b2dd9d08e5ada4c7469",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "-L",
+        "-n",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "0d5babb48fdf6af9046da6fa74e3916b1aed56ef54cdf4e179b16f1820e9adcc",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--ignore-file",
+        "/tmp/rg-everyday-check-guqxxqg4/rules",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "70bd03a9a0cf824b4d733f1b68ea508a47a63afe3d6478101aaf7908465eb3f4",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "-q",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "-q",
+        "absent",
+        "nested"
+      ],
+      "exit": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "-c",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "de648f428b8390ec7eff993d7365e75ba912412b0b41e3d94f4fa0d70caeef7d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--files",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "471cc82835eee219528537ac3de975411fc9a578ed9300afe380c9a768bfa69e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--files",
+        "--hidden",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "8a3ec79aa4abeb1b22a219c87f8996050e219a1be8df7cec7ab09cb182c3f09c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--files",
+        "-uuu",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "bae0195db05e1f0ac96a39273206edc950a7b3095a02795b7dd56780a27a9d50",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--files",
+        "-g",
+        "*.rs",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "b00382cec76704e202cdc99348d3cf39c28fb530c8f91fd9c6c5114c8492d14d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--files",
+        "-g",
+        "!notes.txt",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "8808d7d467d88cb4cef47499d6fbc29a810a277dc7399adf20542fdcbf311f8e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "-n",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e1fd4d19de5097d5900a8b4d024152cf65077cc205eddd1f0b73613b306a6e41",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "-l",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "df5a28ab7d02f6202319f5af91ffedc8862bc2e7c63aa5d17cb73722cd9a3f57",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "-i",
+        "-n",
+        "NEEDLE",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e1fd4d19de5097d5900a8b4d024152cf65077cc205eddd1f0b73613b306a6e41",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "-C",
+        "1",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "f49a05f8042cdbdf794de79de48aa2488ed6614daf6939fbdc8a1b9d02bf85d0",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--sort",
+        "path",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "55b243bf4e86a0bcbc29dd0e08196256479a90d2b283bbe570df75154357f92d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--json",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "cfbeb08597e1a01452b86a3afd86001452ae4ad9766a31509eb6b8ffbb0efe59",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--no-ignore-parent",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "5c4c2ee00de91a35400b5b250a0715e7cf7aee3e4e5186de3a0bad6985a188a4",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--no-ignore-vcs",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "fee857c0de5b34eb2b97c5274e733d1516723a360cc42fefddc0122afa15b9e6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "-L",
+        "-n",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "f64bb7389ea7a0317297539cb3c078828b302cdb5620a19d4ee2acc9d050ace3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "--ignore-file",
+        "/tmp/rg-everyday-check-guqxxqg4/rules",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "15780aa8420956fa5ad4db724130278d92a2545d459672cc859694dd31742cbb",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "-q",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "-q",
+        "absent",
+        "src",
+        "tests"
+      ],
+      "exit": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j12",
+        "-c",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "1496c9a25454b52138c29907033e2b1422bc845bd2d5a6d26abe205da81527a5",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--files"
+      ],
+      "exit": 0,
+      "stdout_sha256": "efe35747ecc0bbcf9683d1aba3d13b3ccf19674410c8ef020c2de24fe7c473e5",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--files",
+        "--hidden"
+      ],
+      "exit": 0,
+      "stdout_sha256": "3e3798ce899e26f92f4bbcfd5bb0e5d3f101c7ecc1f3aa7a832f6072a10b15d6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--files",
+        "-uuu"
+      ],
+      "exit": 0,
+      "stdout_sha256": "ecbd009033da579009354a7dd0cfd89890b63ddbc50114ed17e9fc384fc04678",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--files",
+        "-g",
+        "*.rs"
+      ],
+      "exit": 0,
+      "stdout_sha256": "30e19a2dfb99cb18eb66c0ab3f8db2fdc72dad12b213af2a2ed081d0bac2c82d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--files",
+        "-g",
+        "!notes.txt"
+      ],
+      "exit": 0,
+      "stdout_sha256": "9148d00a58ef75fd1aac6755204038e2c0d555271cc19a1062e20a5bbb574997",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "-n",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "d7ccc332796e5f6876e9d4bf659f95fba30d10b667c4b6be323c05cdb5c01718",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "-l",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "29e6e1aa92e42b608fbbaae65c5db7939764fc0a991aad300912e4a1f489dd24",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "-i",
+        "-n",
+        "NEEDLE"
+      ],
+      "exit": 0,
+      "stdout_sha256": "d7ccc332796e5f6876e9d4bf659f95fba30d10b667c4b6be323c05cdb5c01718",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "-C",
+        "1",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "a8bd99dfc8a7faee45b06542a549d30f359ce131ee6de9ff8761937c14569f0e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--sort",
+        "path",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "46b8e2e703d3e7ac13a01c0f6803938300ca056c177ea1456cf9c0eb12caa11d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--json",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "99c7406194c0c1c5f56f137577c72e8508bf78bffa5e1b68879dfdaee6071a2f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--no-ignore-parent",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "46b8e2e703d3e7ac13a01c0f6803938300ca056c177ea1456cf9c0eb12caa11d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--no-ignore-vcs",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "c55e8994aab516b42c944e72b38525f8c8dbcecf46a3d8c9969902d8d46358a8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "-L",
+        "-n",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "beda1de1e3308924af762109ece099ddd7f21f178aee9abfa30ccb117dc8f4b1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--ignore-file",
+        "/tmp/rg-everyday-check-guqxxqg4/rules",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "46b95aeefe1d656de7bf0e6066dacc4533feab8136848532085aafc14c70b324",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "-q",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "-q",
+        "absent"
+      ],
+      "exit": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "-c",
+        "needle"
+      ],
+      "exit": 0,
+      "stdout_sha256": "bedcbfbe4dfddc0537f797d17fc380829ba64374f4f1317656db7f627660fba6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--files",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "c6f1c5ec9a42caca5aed0d9553bb320d07c4c0b4c00581aa68d711e256031434",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--files",
+        "--hidden",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "2a989fe3eba1fdd07d04eb56013546a4c9a7bb0993366995a607d1b0d1b1a6a3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--files",
+        "-uuu",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "a66c16a7764732051b42885503d95546dce8fda13b19cee2bab13c3a26ff13e7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--files",
+        "-g",
+        "*.rs",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "37c44d4f1fa9fb4276d92ecbcb3520088c534bc8a8af38e730c7930f29f205c9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--files",
+        "-g",
+        "!notes.txt",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "f97ae9e35846543a3f7cff20205d16bd98d1779a5930c508641c12e3c2174047",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "-n",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "7612aa02cc5a9f843b681949147acfb7d66bffc52777e8a3c6e47e8cba738465",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "-l",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "e77c8efaeb713b07a05e3b4f0d1e7e996bccc68c123542088ce6e39ec18b1d31",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "-i",
+        "-n",
+        "NEEDLE",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "7612aa02cc5a9f843b681949147acfb7d66bffc52777e8a3c6e47e8cba738465",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "-C",
+        "1",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "ca8642a7808221a9c872062cd1aa970ee7835c2f5a5f5615a3b9edb90071e40f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--sort",
+        "path",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "0242ecbdc91c2614f2245700967b60ffb841beb5fee38656dddb8035a74c98e3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--json",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "950d983f0d1a33d92b1418880f38aee2214c7e1bc8b4ffec3885b2d84263c915",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--no-ignore-parent",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "0242ecbdc91c2614f2245700967b60ffb841beb5fee38656dddb8035a74c98e3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--no-ignore-vcs",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "37c4ac869db727f90855fb54c3d20e56497f6fc70d47b3fa4e6a4cedb4daedd8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "-L",
+        "-n",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "4d05aa5c7b4f7fdd76650a20b8f5287a711a073257bf26fe0afdbe8838bfac9c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--ignore-file",
+        "/tmp/rg-everyday-check-guqxxqg4/rules",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "a66da829623a25a57ef1d898f2243677d725a57990c59c86a6cd42e392337a28",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "-q",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "-q",
+        "absent",
+        "."
+      ],
+      "exit": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "-c",
+        "needle",
+        "."
+      ],
+      "exit": 0,
+      "stdout_sha256": "a0619f24736081916278e177d55959331d75880c5d493ca3cbe82a8561ec37c1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--files",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "61c6c7938dacf09376da80351d2fb799feec80cd25ceb8effcd6007ddf87767d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--files",
+        "--hidden",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "7fbe873ebe5423c32e56f0d8304fd352d9c64e7955b179baf2cf9ae3e54f3876",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--files",
+        "-uuu",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "590451632429666b62babb80c8b7d126d0d4e4bb2fe9557206f17b5fe05204c5",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--files",
+        "-g",
+        "*.rs",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "6e1f6b7974c42be90fe0bc9a55f1054cf36323076e96c866c6020a47c39d8544",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--files",
+        "-g",
+        "!notes.txt",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "61c6c7938dacf09376da80351d2fb799feec80cd25ceb8effcd6007ddf87767d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "-n",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "0d5babb48fdf6af9046da6fa74e3916b1aed56ef54cdf4e179b16f1820e9adcc",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "-l",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "61c6c7938dacf09376da80351d2fb799feec80cd25ceb8effcd6007ddf87767d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "-i",
+        "-n",
+        "NEEDLE",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "0d5babb48fdf6af9046da6fa74e3916b1aed56ef54cdf4e179b16f1820e9adcc",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "-C",
+        "1",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "721fc843bb3f5de6500990c7ebc0f97269fa828781356f6d15a0852834fe8db9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--sort",
+        "path",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "5dbeb6638fae1f2cc74282d5921e6d4862eb8f5f18a0fb913de7bd98c8c98946",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--json",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "58cfa9d418e06d157cf12fa7be8e8b0d8d15323ec3e8ecf4eae37492b311573f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--no-ignore-parent",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "6ee12706b692e3bfb2de43ce0c65c1746cf8f2635e7afe497d62b5242c9146fe",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--no-ignore-vcs",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "69fc8ff2f7c3aa02a7870c9709a1f29f53d8390a6bf19b2dd9d08e5ada4c7469",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "-L",
+        "-n",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "0d5babb48fdf6af9046da6fa74e3916b1aed56ef54cdf4e179b16f1820e9adcc",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--ignore-file",
+        "/tmp/rg-everyday-check-guqxxqg4/rules",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "70bd03a9a0cf824b4d733f1b68ea508a47a63afe3d6478101aaf7908465eb3f4",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "-q",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "-q",
+        "absent",
+        "nested"
+      ],
+      "exit": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "-c",
+        "needle",
+        "nested"
+      ],
+      "exit": 0,
+      "stdout_sha256": "de648f428b8390ec7eff993d7365e75ba912412b0b41e3d94f4fa0d70caeef7d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--files",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "471cc82835eee219528537ac3de975411fc9a578ed9300afe380c9a768bfa69e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--files",
+        "--hidden",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "8a3ec79aa4abeb1b22a219c87f8996050e219a1be8df7cec7ab09cb182c3f09c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--files",
+        "-uuu",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "bae0195db05e1f0ac96a39273206edc950a7b3095a02795b7dd56780a27a9d50",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--files",
+        "-g",
+        "*.rs",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "b00382cec76704e202cdc99348d3cf39c28fb530c8f91fd9c6c5114c8492d14d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--files",
+        "-g",
+        "!notes.txt",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "8808d7d467d88cb4cef47499d6fbc29a810a277dc7399adf20542fdcbf311f8e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "-n",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e1fd4d19de5097d5900a8b4d024152cf65077cc205eddd1f0b73613b306a6e41",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "-l",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "df5a28ab7d02f6202319f5af91ffedc8862bc2e7c63aa5d17cb73722cd9a3f57",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "-i",
+        "-n",
+        "NEEDLE",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e1fd4d19de5097d5900a8b4d024152cf65077cc205eddd1f0b73613b306a6e41",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "-C",
+        "1",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "f49a05f8042cdbdf794de79de48aa2488ed6614daf6939fbdc8a1b9d02bf85d0",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--sort",
+        "path",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "55b243bf4e86a0bcbc29dd0e08196256479a90d2b283bbe570df75154357f92d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--json",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "cfbeb08597e1a01452b86a3afd86001452ae4ad9766a31509eb6b8ffbb0efe59",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--no-ignore-parent",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "5c4c2ee00de91a35400b5b250a0715e7cf7aee3e4e5186de3a0bad6985a188a4",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--no-ignore-vcs",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "fee857c0de5b34eb2b97c5274e733d1516723a360cc42fefddc0122afa15b9e6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "-L",
+        "-n",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "f64bb7389ea7a0317297539cb3c078828b302cdb5620a19d4ee2acc9d050ace3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "--ignore-file",
+        "/tmp/rg-everyday-check-guqxxqg4/rules",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "15780aa8420956fa5ad4db724130278d92a2545d459672cc859694dd31742cbb",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "-q",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "-q",
+        "absent",
+        "src",
+        "tests"
+      ],
+      "exit": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "arguments": [
+        "--no-config",
+        "-j65",
+        "-c",
+        "needle",
+        "src",
+        "tests"
+      ],
+      "exit": 0,
+      "stdout_sha256": "1496c9a25454b52138c29907033e2b1422bc845bd2d5a6d26abe205da81527a5",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

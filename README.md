@@ -1,3 +1,9 @@
+Personal everyday-search experiment: [plain-English summary](MY-GREP.md) and
+[measurements and limitations](benchmarks/assembly/everyday/README.md).
+This prototype has not passed the no-regressions gate.
+
+---
+
 ripgrep (rg)
 ------------
 ripgrep is a line-oriented search tool that recursively searches the current

@@ -1,0 +1,13 @@
+{
+  "base": "3fce3b5bb0236da2df6d99672afb8a719642eca7",
+  "source_patch_sha256": "c6cba88b2899e8c72236a68a015150ecb16fd8ed8e7bd2ea14bc74ad847b3011",
+  "binary_sha256": "0d5f756bb912cda19c98c744effaea4fcc7ed9e7ce0b08b2896be44d451bd9f8",
+  "binary_bytes": 4205744,
+  "profile": "release-lto",
+  "features": [
+    "pcre2"
+  ],
+  "rustflags": "",
+  "compiler": "rustc 1.98.1 (48a229cea 2026-09-01) (Arch Linux rust 1:1.98.1-1)\nbinary: rustc\ncommit-hash: 48a229ceaefd4985c50990b14116b6d856af0985\ncommit-date: 2026-09-01\nhost: x86_64-unknown-linux-gnu\nrelease: 1.98.1\nLLVM version: 22.1.8\n",
+  "version": "ripgrep 15.2.0 (rev 3fce3b5bb0)\n\nfeatures:+pcre2\nsimd(compile):+SSE2,-SSSE3,-AVX2\nsimd(runtime):+SSE2,+SSSE3,+AVX2\n\nPCRE2 10.45 is available (JIT is available)\n"
+}

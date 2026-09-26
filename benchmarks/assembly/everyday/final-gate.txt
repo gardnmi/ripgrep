@@ -1,0 +1,16 @@
+{
+  "validation_errors": [],
+  "sessions": {
+    "/home/gardnmi/Projects/ripgrep/target/everyday/final-session-a.json": {
+      "PASS": 97,
+      "INCONCLUSIVE": 19,
+      "FAIL": 1
+    },
+    "/home/gardnmi/Projects/ripgrep/target/everyday/final-session-b.json": {
+      "PASS": 97,
+      "INCONCLUSIVE": 19,
+      "FAIL": 1
+    }
+  }
+}
+REJECT: measured regressions; do not promote this binary.

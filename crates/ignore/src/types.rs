@@ -176,8 +176,9 @@ pub struct Types {
     glob_to_selection: Vec<(usize, usize)>,
     /// The set of all glob selections, used for actual matching.
     set: GlobSet,
-    /// Temporary storage for globs that match.
-    matches: Arc<Pool<Vec<usize>>>,
+    /// Temporary storage for globs that match. Empty sets need no scratch
+    /// pool, including its query for the available parallelism.
+    matches: Option<Arc<Pool<Vec<usize>>>>,
 }
 
 /// Indicates the type of a selection for a particular file type.
@@ -231,9 +232,7 @@ impl Types {
             has_selected: false,
             glob_to_selection: vec![],
             set: GlobSetBuilder::new().build().unwrap(),
-            matches: Arc::new(Pool::with_available_parallelism_capacity(
-                || vec![],
-            )),
+            matches: None,
         }
     }
 
@@ -281,7 +280,7 @@ impl Types {
                 return Match::None;
             }
         };
-        let mut matches = self.matches.get();
+        let mut matches = self.matches.as_ref().unwrap().get();
         self.set.matches_into(name, &mut *matches);
         // The highest precedent match is the last one.
         if let Some(&i) = matches.last() {
@@ -353,15 +352,18 @@ impl TypesBuilder {
         let set = build_set
             .build()
             .map_err(|err| Error::Glob { glob: None, err: err.to_string() })?;
+        let matches = (!set.is_empty()).then(|| {
+            Arc::new(Pool::<Vec<usize>>::with_available_parallelism_capacity(
+                || vec![],
+            ))
+        });
         Ok(Types {
             defs,
             selections,
             has_selected,
             glob_to_selection,
             set,
-            matches: Arc::new(Pool::with_available_parallelism_capacity(
-                || vec![],
-            )),
+            matches,
         })
     }
 

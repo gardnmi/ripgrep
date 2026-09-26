@@ -1,0 +1,3 @@
+Running as unit: run-p3242113-i3223321.scope; invocation ID: 9401e28ab9e44dbab5249223fef155fc
+   Compiling ripgrep v15.2.0 (/home/gardnmi/Worktrees/ripgrep/experiment-everyday-baseline)
+    Finished `release-lto` profile [optimized] target(s) in 31.02s

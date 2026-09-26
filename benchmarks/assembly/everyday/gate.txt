@@ -1,0 +1,14 @@
+{
+  "validation_errors": [],
+  "sessions": {
+    "/home/gardnmi/Projects/ripgrep/target/everyday/session-a.json": {
+      "PASS": 31,
+      "INCONCLUSIVE": 1
+    },
+    "/home/gardnmi/Projects/ripgrep/target/everyday/session-b.json": {
+      "PASS": 29,
+      "INCONCLUSIVE": 3
+    }
+  }
+}
+INCONCLUSIVE: the evidence does not establish the required bound.

@@ -1,0 +1,236 @@
+Running as unit: run-p3772916-i3774049.scope; invocation ID: 82dffa04ac3544e4b1f593864281a910
+1/117 type-list verifying
+type-list PASS {'candidate': 1.0062, 'reference': 1.0662} warm_io=False control_noise=False
+2/117 type-custom verifying
+type-custom PASS {'candidate': 0.6601, 'reference': 1.2845} warm_io=False control_noise=False
+3/117 type-negated verifying
+type-negated INCONCLUSIVE {'candidate': 0.637, 'reference': 0.9872} warm_io=True control_noise=False
+4/117 type-selected verifying
+type-selected PASS {'candidate': 0.6781, 'reference': 1.2746} warm_io=False control_noise=False
+5/117 broad-cold-regex verifying
+broad-cold-regex INCONCLUSIVE {'candidate': 0.9899, 'reference': 0.9439} warm_io=False control_noise=False
+6/117 broad-cold-literal verifying
+broad-cold-literal INCONCLUSIVE {'candidate': 0.9821, 'reference': 1.036} warm_io=False control_noise=False
+7/117 broad-kernel-c verifying
+broad-kernel-c INCONCLUSIVE {'candidate': 0.9968, 'reference': 1.0241} warm_io=False control_noise=False
+8/117 broad-kernel-default verifying
+broad-kernel-default PASS {'candidate': 0.9605, 'reference': 0.987} warm_io=False control_noise=False
+9/117 broad-tree-sorted verifying
+broad-tree-sorted INCONCLUSIVE {'candidate': 1.0143, 'reference': 1.0265} warm_io=False control_noise=False
+10/117 broad-tree-files verifying
+broad-tree-files PASS {'candidate': 0.5847, 'reference': 1.0778} warm_io=False control_noise=False
+11/117 broad-tree-regex verifying
+broad-tree-regex PASS {'candidate': 0.7245, 'reference': 0.9654} warm_io=False control_noise=False
+12/117 broad-tree-literal verifying
+broad-tree-literal PASS {'candidate': 0.5804, 'reference': 1.0549} warm_io=False control_noise=False
+13/117 broad-captured-class verifying
+broad-captured-class INCONCLUSIVE {'candidate': 1.0118, 'reference': 1.022} warm_io=False control_noise=False
+14/117 broad-optional-class verifying
+broad-optional-class PASS {'candidate': 0.9795, 'reference': 1.0051} warm_io=False control_noise=False
+15/117 broad-wide-ascii verifying
+broad-wide-ascii INCONCLUSIVE {'candidate': 1.0067, 'reference': 1.0054} warm_io=False control_noise=False
+16/117 broad-class-varied-65 verifying
+broad-class-varied-65 PASS {'candidate': 0.9854, 'reference': 0.9901} warm_io=False control_noise=False
+17/117 broad-class-varied-30 verifying
+broad-class-varied-30 PASS {'candidate': 0.9646, 'reference': 0.9639} warm_io=False control_noise=False
+18/117 broad-class-varied-16 verifying
+broad-class-varied-16 PASS {'candidate': 0.97, 'reference': 0.9687} warm_io=False control_noise=False
+19/117 broad-class-varied-8 verifying
+broad-class-varied-8 PASS {'candidate': 0.9564, 'reference': 0.9694} warm_io=False control_noise=False
+20/117 broad-class-varied-2 verifying
+broad-class-varied-2 PASS {'candidate': 0.9829, 'reference': 0.9918} warm_io=False control_noise=False
+21/117 broad-class-absent-65 verifying
+broad-class-absent-65 PASS {'candidate': 1.0052, 'reference': 1.0047} warm_io=False control_noise=False
+22/117 broad-class-absent-30 verifying
+broad-class-absent-30 PASS {'candidate': 1.0091, 'reference': 1.0108} warm_io=False control_noise=False
+23/117 broad-class-absent-16 verifying
+broad-class-absent-16 PASS {'candidate': 1.0072, 'reference': 1.0087} warm_io=False control_noise=False
+24/117 broad-class-absent-8 verifying
+broad-class-absent-8 PASS {'candidate': 1.008, 'reference': 1.0057} warm_io=False control_noise=False
+25/117 broad-class-absent-2 verifying
+broad-class-absent-2 PASS {'candidate': 1.0085, 'reference': 1.0126} warm_io=False control_noise=False
+26/117 broad-class-absent-1 verifying
+broad-class-absent-1 PASS {'candidate': 1.0092, 'reference': 1.0106} warm_io=False control_noise=False
+27/117 broad-class-dense-129 verifying
+broad-class-dense-129 PASS {'candidate': 1.0078, 'reference': 1.0097} warm_io=False control_noise=False
+28/117 broad-class-dense-65 verifying
+broad-class-dense-65 PASS {'candidate': 1.0072, 'reference': 1.0097} warm_io=False control_noise=False
+29/117 broad-class-dense-64 verifying
+broad-class-dense-64 PASS {'candidate': 1.0039, 'reference': 1.0078} warm_io=False control_noise=False
+30/117 broad-class-dense-30 verifying
+broad-class-dense-30 PASS {'candidate': 1.0126, 'reference': 1.0144} warm_io=False control_noise=False
+31/117 broad-class-dense-16 verifying
+broad-class-dense-16 PASS {'candidate': 1.0094, 'reference': 1.0094} warm_io=False control_noise=False
+32/117 broad-class-dense-15 verifying
+broad-class-dense-15 PASS {'candidate': 1.0073, 'reference': 1.0066} warm_io=False control_noise=False
+33/117 broad-class-dense-8 verifying
+broad-class-dense-8 PASS {'candidate': 1.0069, 'reference': 1.0118} warm_io=False control_noise=False
+34/117 broad-class-dense-7 verifying
+broad-class-dense-7 PASS {'candidate': 1.0174, 'reference': 1.01} warm_io=False control_noise=False
+35/117 broad-class-dense-3 verifying
+broad-class-dense-3 PASS {'candidate': 1.0031, 'reference': 1.0073} warm_io=False control_noise=False
+36/117 broad-class-dense-2 verifying
+broad-class-dense-2 PASS {'candidate': 1.0127, 'reference': 1.0066} warm_io=False control_noise=False
+37/117 broad-class-dense-1 verifying
+broad-class-dense-1 PASS {'candidate': 1.0128, 'reference': 1.0066} warm_io=False control_noise=False
+38/117 broad-color verifying
+broad-color PASS {'candidate': 1.0106, 'reference': 1.0351} warm_io=False control_noise=False
+39/117 broad-json verifying
+broad-json PASS {'candidate': 1.0106, 'reference': 1.0393} warm_io=False control_noise=False
+40/117 broad-subtitles-digits8 verifying
+broad-subtitles-digits8 PASS {'candidate': 0.9893, 'reference': 0.9996} warm_io=False control_noise=False
+41/117 broad-subtitles-hex17 verifying
+broad-subtitles-hex17 PASS {'candidate': 1.0084, 'reference': 1.0072} warm_io=False control_noise=False
+42/117 broad-subtitles-alpha30 verifying
+broad-subtitles-alpha30 PASS {'candidate': 1.0074, 'reference': 1.0072} warm_io=False control_noise=False
+43/117 broad-subtitles-frequent verifying
+broad-subtitles-frequent PASS {'candidate': 0.9931, 'reference': 0.9816} warm_io=False control_noise=False
+44/117 broad-subtitles-sherlock-lines verifying
+broad-subtitles-sherlock-lines PASS {'candidate': 0.986, 'reference': 0.9927} warm_io=False control_noise=False
+45/117 broad-subtitles-sherlock verifying
+broad-subtitles-sherlock INCONCLUSIVE {'candidate': 1.0172, 'reference': 1.0476} warm_io=False control_noise=False
+46/117 broad-long-line-class verifying
+broad-long-line-class PASS {'candidate': 0.9986, 'reference': 1.0208} warm_io=False control_noise=False
+47/117 broad-long-line-literal verifying
+broad-long-line-literal PASS {'candidate': 0.9868, 'reference': 1.0061} warm_io=False control_noise=False
+48/117 broad-null-lines verifying
+broad-null-lines PASS {'candidate': 0.9569, 'reference': 0.9905} warm_io=False control_noise=False
+49/117 broad-binary-text verifying
+broad-binary-text PASS {'candidate': 1.0049, 'reference': 0.9995} warm_io=False control_noise=False
+50/117 broad-binary-default verifying
+broad-binary-default PASS {'candidate': 1.0127, 'reference': 1.0387} warm_io=False control_noise=False
+51/117 broad-multiline verifying
+broad-multiline PASS {'candidate': 0.9908, 'reference': 0.989} warm_io=False control_noise=False
+52/117 broad-crlf verifying
+broad-crlf PASS {'candidate': 0.9517, 'reference': 0.9456} warm_io=False control_noise=False
+53/117 broad-unicode-class-fallback verifying
+broad-unicode-class-fallback PASS {'candidate': 0.9965, 'reference': 0.992} warm_io=False control_noise=False
+54/117 broad-unicode-property verifying
+broad-unicode-property INCONCLUSIVE {'candidate': 0.9435, 'reference': 0.9216} warm_io=False control_noise=False
+55/117 broad-unicode-word verifying
+broad-unicode-word PASS {'candidate': 0.9632, 'reference': 0.9564} warm_io=False control_noise=False
+56/117 broad-unicode-fold verifying
+broad-unicode-fold PASS {'candidate': 1.0035, 'reference': 1.0064} warm_io=False control_noise=False
+57/117 broad-unicode-literal verifying
+broad-unicode-literal PASS {'candidate': 0.9609, 'reference': 0.9607} warm_io=False control_noise=False
+58/117 broad-regex-whole-class verifying
+broad-regex-whole-class PASS {'candidate': 1.02, 'reference': 1.0159} warm_io=False control_noise=False
+59/117 broad-regex-lazy-class verifying
+broad-regex-lazy-class INCONCLUSIVE {'candidate': 1.0235, 'reference': 0.9729} warm_io=False control_noise=False
+60/117 broad-regex-word-class verifying
+broad-regex-word-class PASS {'candidate': 1.0099, 'reference': 1.0119} warm_io=False control_noise=False
+61/117 broad-regex-zero-length verifying
+broad-regex-zero-length PASS {'candidate': 0.9532, 'reference': 0.9819} warm_io=False control_noise=False
+62/117 broad-regex-anchored verifying
+broad-regex-anchored INCONCLUSIVE {'candidate': 1.0214, 'reference': 1.036} warm_io=False control_noise=False
+63/117 broad-regex-replace verifying
+broad-regex-replace PASS {'candidate': 0.9877, 'reference': 0.9787} warm_io=False control_noise=False
+64/117 broad-regex-captures verifying
+broad-regex-captures PASS {'candidate': 0.9789, 'reference': 0.9927} warm_io=False control_noise=False
+65/117 broad-regex-general verifying
+broad-regex-general FAIL {'candidate': 0.9913, 'reference': 0.9482} warm_io=False control_noise=False
+66/117 broad-literal-multi-pattern verifying
+broad-literal-multi-pattern PASS {'candidate': 0.9656, 'reference': 0.9837} warm_io=False control_noise=False
+67/117 broad-literal-quiet verifying
+broad-literal-quiet PASS {'candidate': 1.0139, 'reference': 1.0382} warm_io=False control_noise=False
+68/117 broad-literal-limit verifying
+broad-literal-limit PASS {'candidate': 1.0134, 'reference': 1.0455} warm_io=False control_noise=False
+69/117 broad-literal-invert verifying
+broad-literal-invert PASS {'candidate': 0.9788, 'reference': 0.9722} warm_io=False control_noise=False
+70/117 broad-literal-context verifying
+broad-literal-context PASS {'candidate': 0.9864, 'reference': 0.9932} warm_io=False control_noise=False
+71/117 broad-literal-only-offset verifying
+broad-literal-only-offset INCONCLUSIVE {'candidate': 0.9909, 'reference': 0.9654} warm_io=False control_noise=False
+72/117 broad-literal-count-matches verifying
+broad-literal-count-matches INCONCLUSIVE {'candidate': 0.9642, 'reference': 0.9376} warm_io=False control_noise=False
+73/117 broad-literal-count verifying
+broad-literal-count PASS {'candidate': 0.9766, 'reference': 0.9605} warm_io=False control_noise=False
+74/117 broad-literal-word verifying
+broad-literal-word PASS {'candidate': 0.909, 'reference': 0.9074} warm_io=False control_noise=False
+75/117 broad-literal-insensitive verifying
+broad-literal-insensitive INCONCLUSIVE {'candidate': 1.0211, 'reference': 0.9827} warm_io=False control_noise=False
+76/117 broad-literal-fixed verifying
+broad-literal-fixed PASS {'candidate': 0.9861, 'reference': 0.9904} warm_io=False control_noise=False
+77/117 broad-literal-absent verifying
+broad-literal-absent PASS {'candidate': 0.9859, 'reference': 1.0019} warm_io=False control_noise=False
+78/117 broad-literal-sparse-lines verifying
+broad-literal-sparse-lines PASS {'candidate': 0.99, 'reference': 0.9959} warm_io=False control_noise=False
+79/117 broad-literal-dense verifying
+broad-literal-dense PASS {'candidate': 0.9443, 'reference': 0.9673} warm_io=False control_noise=False
+80/117 broad-small-regex verifying
+broad-small-regex PASS {'candidate': 0.9884, 'reference': 1.0065} warm_io=False control_noise=False
+81/117 broad-small-literal verifying
+broad-small-literal PASS {'candidate': 1.0127, 'reference': 1.0505} warm_io=False control_noise=False
+82/117 broad-tiny-class30 verifying
+broad-tiny-class30 PASS {'candidate': 1.0129, 'reference': 1.0396} warm_io=False control_noise=False
+83/117 broad-tiny-miss verifying
+broad-tiny-miss PASS {'candidate': 1.0081, 'reference': 1.0441} warm_io=False control_noise=False
+84/117 broad-tiny-hit verifying
+broad-tiny-hit PASS {'candidate': 1.0224, 'reference': 1.0483} warm_io=False control_noise=False
+85/117 broad-empty verifying
+broad-empty PASS {'candidate': 1.0035, 'reference': 1.0336} warm_io=False control_noise=False
+86/117 unicode-fold verifying
+unicode-fold PASS {'candidate': 1.0, 'reference': 1.0069} warm_io=False control_noise=False
+87/117 prose-regex verifying
+prose-regex INCONCLUSIVE {'candidate': 1.004, 'reference': 1.0036} warm_io=False control_noise=False
+88/117 prose-count verifying
+prose-count INCONCLUSIVE {'candidate': 0.9965, 'reference': 0.9834} warm_io=False control_noise=False
+89/117 prose-absent verifying
+prose-absent INCONCLUSIVE {'candidate': 0.981, 'reference': 0.9904} warm_io=False control_noise=False
+90/117 log-json verifying
+log-json PASS {'candidate': 1.0198, 'reference': 1.0705} warm_io=False control_noise=False
+91/117 log-ignore-case verifying
+log-ignore-case INCONCLUSIVE {'candidate': 0.9465, 'reference': 0.9262} warm_io=False control_noise=False
+92/117 log-multi verifying
+log-multi PASS {'candidate': 0.9876, 'reference': 0.9955} warm_io=False control_noise=False
+93/117 log-count verifying
+log-count PASS {'candidate': 0.9589, 'reference': 0.9816} warm_io=False control_noise=False
+94/117 log-context verifying
+log-context PASS {'candidate': 0.9852, 'reference': 1.0127} warm_io=False control_noise=False
+95/117 log-lines verifying
+log-lines INCONCLUSIVE {'candidate': 1.009, 'reference': 1.0338} warm_io=False control_noise=False
+96/117 small-regex verifying
+small-regex PASS {'candidate': 0.9847, 'reference': 1.0179} warm_io=False control_noise=False
+97/117 tiny-miss verifying
+tiny-miss PASS {'candidate': 1.0284, 'reference': 1.0801} warm_io=False control_noise=False
+98/117 tiny-hit verifying
+tiny-hit PASS {'candidate': 1.0272, 'reference': 1.0759} warm_io=False control_noise=False
+99/117 kernel-files verifying
+kernel-files PASS {'candidate': 0.8787, 'reference': 0.9698} warm_io=False control_noise=False
+100/117 kernel-regex verifying
+kernel-regex PASS {'candidate': 0.9604, 'reference': 0.9902} warm_io=False control_noise=False
+101/117 kernel-literal verifying
+kernel-literal PASS {'candidate': 0.9492, 'reference': 0.9798} warm_io=False control_noise=False
+102/117 tools-files verifying
+tools-files PASS {'candidate': 0.7504, 'reference': 1.0002} warm_io=False control_noise=False
+103/117 tools-regex verifying
+tools-regex PASS {'candidate': 0.8099, 'reference': 1.0136} warm_io=False control_noise=False
+104/117 tools-glob verifying
+tools-glob PASS {'candidate': 0.7249, 'reference': 1.0016} warm_io=False control_noise=False
+105/117 tools-files-with-match verifying
+tools-files-with-match PASS {'candidate': 0.7959, 'reference': 0.9965} warm_io=False control_noise=False
+106/117 tools-literal verifying
+tools-literal PASS {'candidate': 0.7983, 'reference': 1.0097} warm_io=False control_noise=False
+107/117 source-explicit-one-thread verifying
+source-explicit-one-thread PASS {'candidate': 1.0038, 'reference': 1.0095} warm_io=False control_noise=False
+108/117 source-sorted verifying
+source-sorted PASS {'candidate': 0.99, 'reference': 0.9999} warm_io=False control_noise=False
+109/117 source-context verifying
+source-context PASS {'candidate': 0.5929, 'reference': 1.1337} warm_io=False control_noise=False
+110/117 source-multi verifying
+source-multi PASS {'candidate': 0.6025, 'reference': 1.1993} warm_io=False control_noise=False
+111/117 source-files-hidden verifying
+source-files-hidden PASS {'candidate': 0.5678, 'reference': 0.9736} warm_io=False control_noise=False
+112/117 source-files verifying
+source-files PASS {'candidate': 0.5797, 'reference': 0.9834} warm_io=False control_noise=False
+113/117 source-glob verifying
+source-glob PASS {'candidate': 0.6934, 'reference': 1.3368} warm_io=False control_noise=False
+114/117 source-ignore-case verifying
+source-ignore-case PASS {'candidate': 0.5927, 'reference': 1.1425} warm_io=False control_noise=False
+115/117 source-regex verifying
+source-regex PASS {'candidate': 0.7238, 'reference': 0.9928} warm_io=False control_noise=False
+116/117 source-absent verifying
+source-absent PASS {'candidate': 0.6236, 'reference': 1.2284} warm_io=False control_noise=False
+117/117 source-literal verifying
+source-literal PASS {'candidate': 0.5861, 'reference': 1.1522} warm_io=False control_noise=False
+AUDIT FAIL

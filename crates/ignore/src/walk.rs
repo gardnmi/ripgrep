@@ -1503,6 +1503,7 @@ impl WalkParallel {
         // Create the workers and then wait for them to finish.
         let quit_now = Arc::new(AtomicBool::new(false));
         let active_workers = Arc::new(AtomicUsize::new(threads));
+        let wakeup = Arc::new(Wakeup::new(threads));
         let stacks = Stack::new_for_each_thread(threads, stack);
         // Collect all of the workers first. In the case that
         // `builder.build()` panics, we want that to happen and
@@ -1515,6 +1516,7 @@ impl WalkParallel {
                 stack,
                 quit_now: quit_now.clone(),
                 active_workers: active_workers.clone(),
+                wakeup: wakeup.clone(),
                 max_depth: self.max_depth,
                 min_depth: self.min_depth,
                 max_filesize: self.max_filesize,
@@ -1714,6 +1716,72 @@ impl Stack {
     }
 }
 
+/// Wake idle workers when work arrives instead of waiting for a polling tick.
+/// The bitset covers the common case; extra workers retain timed polling.
+struct Wakeup {
+    sleeping: AtomicUsize,
+    threads: Vec<OnceLock<std::thread::Thread>>,
+}
+
+impl Wakeup {
+    fn new(threads: usize) -> Wakeup {
+        Wakeup {
+            sleeping: AtomicUsize::new(0),
+            threads: (0..threads.min(usize::BITS as usize))
+                .map(|_| OnceLock::new())
+                .collect(),
+        }
+    }
+
+    fn register(&self, index: usize) {
+        if let Some(slot) = self.threads.get(index) {
+            let _ = slot.set(std::thread::current());
+        }
+    }
+
+    fn prepare(&self, index: usize) -> bool {
+        if index >= self.threads.len() {
+            return false;
+        }
+        self.sleeping.fetch_or(1 << index, AtomicOrdering::Release);
+        true
+    }
+
+    fn cancel(&self, index: usize) {
+        if index < self.threads.len() {
+            self.sleeping.fetch_and(!(1 << index), AtomicOrdering::AcqRel);
+        }
+    }
+
+    fn notify_one(&self) {
+        let mut sleeping = self.sleeping.load(AtomicOrdering::Acquire);
+        while sleeping != 0 {
+            match self.sleeping.compare_exchange_weak(
+                sleeping,
+                sleeping & (sleeping - 1),
+                AtomicOrdering::AcqRel,
+                AtomicOrdering::Acquire,
+            ) {
+                Ok(_) => {
+                    let index = sleeping.trailing_zeros() as usize;
+                    self.threads[index].get().unwrap().unpark();
+                    return;
+                }
+                Err(now) => sleeping = now,
+            }
+        }
+    }
+
+    fn notify_all(&self) {
+        let mut sleeping = self.sleeping.swap(0, AtomicOrdering::AcqRel);
+        while sleeping != 0 {
+            let index = sleeping.trailing_zeros() as usize;
+            self.threads[index].get().unwrap().unpark();
+            sleeping &= sleeping - 1;
+        }
+    }
+}
+
 /// A worker is responsible for descending into directories, updating the
 /// ignore matchers, producing new work and invoking the caller's callback.
 ///
@@ -1734,6 +1802,8 @@ struct Worker<'s> {
     quit_now: Arc<AtomicBool>,
     /// The number of currently active workers.
     active_workers: Arc<AtomicUsize>,
+    /// Idle-thread notification, separate from work ownership and termination.
+    wakeup: Arc<Wakeup>,
     /// The maximum depth of directories to descend. A value of `0` means no
     /// descension at all.
     max_depth: Option<usize>,
@@ -1759,6 +1829,7 @@ impl<'s> Worker<'s> {
     /// The worker will call the caller's callback for all entries that aren't
     /// skipped by the ignore matcher.
     fn run(mut self) {
+        self.wakeup.register(self.stack.index);
         while let Some(work) = self.get_work() {
             if let WalkState::Quit = self.run_one(work) {
                 self.quit_now();
@@ -1971,20 +2042,27 @@ impl<'s> Worker<'s> {
                     }
                     // Wait for next `Work` or `Quit` message.
                     loop {
+                        // Announce the wait before rechecking the queue. An
+                        // unpark arriving before park leaves a token, so this
+                        // cannot miss a notification between check and sleep.
+                        let park = self.wakeup.prepare(self.stack.index);
                         if self.is_quit_now() {
+                            self.wakeup.cancel(self.stack.index);
                             return None;
                         }
                         if let Some(v) = self.recv() {
+                            self.wakeup.cancel(self.stack.index);
                             self.activate_worker();
                             value = Some(v);
                             break;
                         }
-                        // Our stack isn't blocking. Instead of burning the
-                        // CPU waiting, we let the thread sleep for a bit. In
-                        // general, this tends to only occur once the search is
-                        // approaching termination.
                         let dur = std::time::Duration::from_millis(1);
-                        std::thread::sleep(dur);
+                        if park {
+                            std::thread::park_timeout(dur);
+                        } else {
+                            std::thread::sleep(dur);
+                        }
+                        self.wakeup.cancel(self.stack.index);
                     }
                 }
             }
@@ -1994,6 +2072,7 @@ impl<'s> Worker<'s> {
     /// Indicates that all workers should quit immediately.
     fn quit_now(&self) {
         self.quit_now.store(true, AtomicOrdering::SeqCst);
+        self.wakeup.notify_all();
     }
 
     /// Returns true if this worker should quit immediately.
@@ -2004,11 +2083,13 @@ impl<'s> Worker<'s> {
     /// Send work.
     fn send(&self, work: Work) {
         self.stack.push(Message::Work(work));
+        self.wakeup.notify_one();
     }
 
     /// Send a quit message.
     fn send_quit(&self) {
         self.stack.push(Message::Quit);
+        self.wakeup.notify_one();
     }
 
     /// Receive work.
@@ -2701,6 +2782,31 @@ mod tests {
                 "a/b/c",
             ],
         );
+    }
+
+    #[test]
+    fn worker_notifications_preserve_all_entries() {
+        let td = tmpdir();
+        for dir in 0..8 {
+            let path = td.path().join(format!("dir{dir}/nested"));
+            mkdirp(&path);
+            for file in 0..32 {
+                wfile(path.join(format!("file{file}")), "");
+            }
+        }
+        let expected = walk_collect(td.path(), &WalkBuilder::new(td.path()));
+        // Include a worker beyond the notification bitset's capacity.
+        for threads in [2, 12, usize::BITS as usize + 1] {
+            for _ in 0..4 {
+                let mut builder = WalkBuilder::new(td.path());
+                builder.threads(threads);
+                assert_eq!(
+                    walk_collect_parallel(td.path(), &builder),
+                    expected,
+                    "threads={threads}",
+                );
+            }
+        }
     }
 
     // This should always panic and never hang.

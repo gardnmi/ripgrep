@@ -1,0 +1,120 @@
+diff --git i/crates/ignore/src/gitignore.rs w/crates/ignore/src/gitignore.rs
+index 7b017c7..77ff980 100644
+--- i/crates/ignore/src/gitignore.rs
++++ w/crates/ignore/src/gitignore.rs
+@@ -8,16 +8,21 @@ the `git` command line tool.
+ */
+ 
+ use std::{
++    cell::RefCell,
+     fs::File,
+     io::{BufRead, BufReader, Read},
+     path::{Path, PathBuf},
+-    sync::Arc,
+ };
+ 
+-use {
+-    globset::{Candidate, GlobBuilder, GlobSet, GlobSetBuilder},
+-    regex_automata::util::pool::Pool,
+-};
++use globset::{Candidate, GlobBuilder, GlobSet, GlobSetBuilder};
++
++thread_local! {
++    // Matching does not call back into Gitignore, so one scratch vector can
++    // serve every matcher on this thread. No matches survive a call. This
++    // avoids acquiring a shared pool for every directory entry, and releases
++    // scratch storage when a traversal worker exits.
++    static MATCHES: RefCell<Vec<usize>> = const { RefCell::new(Vec::new()) };
++}
+ 
+ use crate::{
+     Error, Match, PartialErrorBuilder,
+@@ -84,7 +89,6 @@ pub struct Gitignore {
+     globs: Vec<Glob>,
+     num_ignores: u64,
+     num_whitelists: u64,
+-    matches: Option<Arc<Pool<Vec<usize>>>>,
+ }
+ 
+ impl Gitignore {
+@@ -155,7 +159,6 @@ impl Gitignore {
+             globs: vec![],
+             num_ignores: 0,
+             num_whitelists: 0,
+-            matches: None,
+         }
+     }
+ 
+@@ -265,20 +268,22 @@ impl Gitignore {
+             return Match::None;
+         }
+         let path = path.as_ref();
+-        let mut matches = self.matches.as_ref().unwrap().get();
+         let candidate = Candidate::new(path);
+-        self.set.matches_candidate_into(&candidate, &mut *matches);
+-        for &i in matches.iter().rev() {
+-            let glob = &self.globs[i];
+-            if !glob.is_only_dir() || is_dir {
+-                return if glob.is_whitelist() {
+-                    Match::Whitelist(glob)
+-                } else {
+-                    Match::Ignore(glob)
+-                };
++        MATCHES.with(|scratch| {
++            let mut matches = scratch.borrow_mut();
++            self.set.matches_candidate_into(&candidate, &mut matches);
++            for &i in matches.iter().rev() {
++                let glob = &self.globs[i];
++                if !glob.is_only_dir() || is_dir {
++                    return if glob.is_whitelist() {
++                        Match::Whitelist(glob)
++                    } else {
++                        Match::Ignore(glob)
++                    };
++                }
+             }
+-        }
+-        Match::None
++            Match::None
++        })
+     }
+ 
+     /// Strips the given path such that it's suitable for matching with this
+@@ -359,9 +364,6 @@ impl GitignoreBuilder {
+             globs: self.globs.clone(),
+             num_ignores: nignore as u64,
+             num_whitelists: nwhite as u64,
+-            matches: Some(Arc::new(
+-                Pool::with_available_parallelism_capacity(|| vec![]),
+-            )),
+         })
+     }
+ 
+@@ -715,6 +717,27 @@ mod tests {
+         builder.build().unwrap()
+     }
+ 
++    #[test]
++    fn shared_matchers_keep_scratch_results_separate() {
++        let small = gi_from_str(".", "*.tmp\n!keep.tmp\nkeep.tmp/\n");
++        let large = gi_from_str(".", &"*.rs\n".repeat(128));
++        std::thread::scope(|scope| {
++            for _ in 0..24 {
++                let (small, large) = (&small, &large);
++                scope.spawn(move || {
++                    for _ in 0..100 {
++                        assert!(large.matched("lib.rs", false).is_ignore());
++                        assert!(small.matched("keep.tmp", false).is_whitelist());
++                        assert!(small.matched("keep.tmp", true).is_ignore());
++                        assert!(large.matched("keep.tmp", false).is_none());
++                        assert!(small.matched("other.tmp", false).is_ignore());
++                        assert!(small.matched("lib.rs", false).is_none());
++                    }
++                });
++            }
++        });
++    }
++
+     macro_rules! ignored {
+         ($name:ident, $root:expr, $gi:expr, $path:expr) => {
+             ignored!($name, $root, $gi, $path, false);

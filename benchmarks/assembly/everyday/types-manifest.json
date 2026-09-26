@@ -1,0 +1,152 @@
+{
+  "cases": [
+    {
+      "name": "type-selected",
+      "category": "type-filter",
+      "path": "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep",
+      "arguments": [
+        "--no-config",
+        "-t",
+        "rust",
+        "-n",
+        "Searcher",
+        "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep"
+      ],
+      "directory": true,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "type-negated",
+      "category": "type-filter",
+      "path": "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep",
+      "arguments": [
+        "--no-config",
+        "-T",
+        "rust",
+        "--files",
+        "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep"
+      ],
+      "directory": true,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "type-custom",
+      "category": "type-filter",
+      "path": "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep",
+      "arguments": [
+        "--no-config",
+        "--type-add",
+        "source:*.rs",
+        "-t",
+        "source",
+        "-n",
+        "Searcher",
+        "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep"
+      ],
+      "directory": true,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cache": "warm",
+      "json_output": false
+    },
+    {
+      "name": "type-list",
+      "category": "type-filter",
+      "path": "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep",
+      "arguments": [
+        "--no-config",
+        "--type-list",
+        "/home/gardnmi/Projects/ripgrep/target/everyday/source-ripgrep"
+      ],
+      "directory": true,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cache": "warm",
+      "json_output": false
+    }
+  ],
+  "inputs": {
+    "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/json.txt": {
+      "bytes": 131072,
+      "sha256": "95c0329de96f3745c11726c3ec86b283d066f108ca997d195c09e1db432ad5b4"
+    },
+    "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/mixed.txt": {
+      "bytes": 33554432,
+      "sha256": "e8072943da22fa6d024b7ce32fccc18a9d184a21f80fdced28252beefd9a36c2"
+    },
+    "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/small.txt": {
+      "bytes": 4096,
+      "sha256": "c1be39b3026db79aedb87ec586c5730c7a20768ee912aad05941cc7e6491989f"
+    },
+    "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/subtitles.txt": {
+      "bytes": 134217730,
+      "sha256": "7775ed536ec247067d6f5da47d2598e04415dca5e7cd45b47a2b1f0197c13d7a"
+    },
+    "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/tiny.txt": {
+      "bytes": 8,
+      "sha256": "c5d982dc040081e09cad25209fed928b334a21fb2ff34db5202178a7b1a8199b"
+    },
+    "/home/gardnmi/Projects/ripgrep/target/regression-audit/data/unicode.txt": {
+      "bytes": 16777216,
+      "sha256": "3d4c3ec6153349277fa0327cbf35c54c9cbfb8a4081180bd4b1e36f77b9be56a"
+    }
+  },
+  "source_revision": "3fce3b5bb0236da2df6d99672afb8a719642eca7",
+  "source_archive_sha256": "d7997b44111000aa86d338f83710146840391451e1607b05c8759561eacfd518",
+  "kernel_revision": "84e57d292203a45c96dbcb2e6be9dd80961d981a",
+  "notes": "Supplemental file-type checks added before timing after changing empty Types scratch allocation. No earlier cases removed."
+}
